@@ -1,0 +1,10 @@
+Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test Temp,Ignition?,Hot/Cold?,Sound?,Press (Torr),Relative Humidity,Notes
+jh,gjkhg,jkhg,jkhg,kjhg,kjhg,kjhg,kjhg,kjhg,kjhg,kjhg,kjh
++ TA-DA start time is: 2017/6/15 15:48:21
+System start time is: 2017/06/15 15:48:21
+time,t1,t2,t3,t4
+15218.00,256.75,265.25,263.50,263.75
+15492.00,257.00,265.25,263.50,263.75
+15764.00,257.00,265.25,263.50,263.75
+16036.00,257.00,265.25,263.50,263.75
+16314.00,256.75,265.25,263.50,263.75
