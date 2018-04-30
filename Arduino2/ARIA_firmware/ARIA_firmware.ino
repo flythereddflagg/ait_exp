@@ -92,7 +92,7 @@ void setup(){
   DumperServo.attach(PinServo);
   DumperServo.write(-PosServo);
   DumperServo.write(PosServo);
-  LiftStepper.step(-LiftSteps);
+  LiftStepper.step(LiftSteps);
   PORTD = B00000011; // code sets pins high or low, killing current to stepper motors to prevent overheating. Turns on LED Buttons connected to pins 0,1
   PORTB = B00000000; // enter standby mode
   }
@@ -102,13 +102,12 @@ void loop()
 if(digitalRead(BUTTON1) == HIGH){    // liquid program
     digitalWrite(LEDBUTTON1, LOW); // turns off the LED buttons
     digitalWrite(LEDBUTTON2, LOW);
-    LiftStepper.step(LiftSteps);
-    // problem seems to be here
+    LiftStepper.step(-LiftSteps); // down
     delay(sec);
     PORTD = B00000000;             // kills current to LiftStepper, allowing more torque in PushStepper
-    PushStepper.step(-PushSteps);
-    LiftStepper.step(-LiftSteps);
-    PushStepper.step(PushSteps);
+    PushStepper.step(-PushSteps); // push
+    LiftStepper.step(LiftSteps);  // up
+    PushStepper.step(PushSteps); // pull
     PORTD = B00000011;      // sets pins 0,1 high, turning on the LED buttons, and setting all other pins low
     PORTB = B00000000;      // cycle complete, returns to standby mode
      
@@ -120,7 +119,7 @@ if(digitalRead(BUTTON2) == HIGH){
     delay(sec);
     PORTD = B00000000;           // kills current to LiftStepper, allowing more torque in PushStepper
     DumperServo.write(-PosServo);
-    delay((int) 1.5 * sec);
+    delay(sec);
     LiftStepper.step(-LiftSteps);
     DumperServo.write(PosServo);
     PORTD = B00000011;    // sets pins 0,1 high, turning on the LED buttons, and setting all other pins low
