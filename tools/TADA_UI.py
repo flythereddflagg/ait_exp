@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-name: TA-DA UI - ALPHA
-version: 0.4.5
-author: Mark Redd, Jared Schaumann
+file: TADA_UI.py
+name: Thermocouple Amplifier-Data Aquisition User Interface (TA-DA UI)
+author: Mark Redd
 email: redddogjr@gmail.com
-Source Forge: https://sourceforge.net/u/flythereddflagg/profile/
 
-last modified: 1 February 2017
 python version: 3.6.3
 
 Description:
@@ -18,8 +16,9 @@ and plot one of the temperatures in real time with matplotlib. Ideal for
 use with Arduino.
 
 Changes to this version:
- - Fixed 'byte string' conversion bug into UTF-8.
- - Fixed same bug for UTF-8 --> 'byte string' going out to Arduino
+  Fixes by: Jared Schaumann
+   - Fixed 'byte string' conversion bug into UTF-8.
+   - Fixed same bug for UTF-8 --> 'byte string' going out to Arduino
 """
 
 ## Tkinter imports
@@ -506,9 +505,7 @@ class DAQGUI(Frame):
         
         datastring = ','.join(data_exp)
         return datastring
-            
-        
-        
+
         
 def main():
     root = Tk()
