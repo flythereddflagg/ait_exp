@@ -1,0 +1,25 @@
+import serial
+from time import sleep
+
+usb_channel = 'COM6'
+out = False
+while(not out):
+    try:
+        ser = serial.Serial(usb_channel, 9600, timeout=10)
+    except serial.serialutil.SerialException:
+        
+        print "Connection Failed!"
+        raw_input("Press ENTER to try again")
+
+while True:
+    x = ser.readline()
+    
+    data = x.split(',')
+    lst = list(x)
+    print data
+    
+    if len(data) > 2 and float(data[1]) > 1000*60*20: # stop at 20 minutes
+        break
+
+raw_input("\n\nFinished listening to %s. Press Enter to quit...\n\n" \
+    % usb_channel)
