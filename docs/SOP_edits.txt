@@ -1,0 +1,37 @@
+4.1.4: 
+fix spelling. Equilibrate
+
+4.1.4 bullet point 1 & 2:
+Switch the order of bullet points
+Point 1: "When initially powered on (Step 3), ...."
+Point 2: "Therefore, wait..."
+
+4.1.9
+Fix File Path to be: C:\Users\Public\Documents\AIT\ait_exp\TADA\TADA_firmware
+
+4.1.12 Bullet points
+Point 3: Remove "in the hood"
+Point 4: ...align the camera's view "to see through the sight glass" directly...
+	remove the notes under point 4. Replace them with new tips for angling the mirror correctly.
+Point 6: Remove this point about the hood
+
+4.1.13 
+Remove this point
+
+4.2.1 
+Change this to, "In the lab notebook, record the absolute pressure of the lab"
+
+4.2.2
+Either Remove entirely or adjust it to a humidity test using hygrometer with the air leaving the Pressure Vessel once an elapsed (time) has passed.
+ - Need to do testing to decide this
+ 
+4.2.5
+There is a hand written note. A more simple way to say it is: "Tare the scale with the weigh boat"
+
+4.2.6 delete and change (I haven't finished this part, I would separate this in to two sections. Liquid and Solid) 
+ - Liquid Sample
+ - Solid Sample
+
+4.2.8 Dependant upon lighting test results
+Remove this point
+

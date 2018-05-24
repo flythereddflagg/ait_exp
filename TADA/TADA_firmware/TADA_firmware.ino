@@ -1,11 +1,9 @@
-/*
-    TA-DA ZUKO
- Thermocouple Amplifier - Data Aquisition
- Version 1 codename: ZUKO
- Firmware version: 0.4.3
-
- last modified on 20 June 2017
- by Mark Redd
+/**
+*    TA-DA ZUKO
+* Thermocouple Amplifier - Data Aquisition
+* Version 1 codename: ZUKO
+* Firmware version: 0.5.0
+* by Mark Redd
 */
 
 /************** TEMPERATURE MEASUREMENT PREPROCESSOR INFO *********************/
@@ -43,18 +41,16 @@ float t1;
 float t2;
 float t3;
 
-// Calibration Arrays
-// Default values
-// double coeffs0[5] = {0.0, 0.0, 0.0, 1.0, 0.0};
-// double coeffs1[5] = {0.0, 0.0, 0.0, 1.0, 0.0};
-// double coeffs2[5] = {0.0, 0.0, 0.0, 1.0, 0.0};
-// double coeffs3[5] = {0.0, 0.0, 0.0, 1.0, 0.0};
-
-double coeffs0[5] = {25.0, 0.0, 0.0, 1.0, 0.0};
-double coeffs1[5] = {24.0, 0.0, 0.0, 1.0, 0.0};
-double coeffs2[5] = {23.0, 0.0, 0.0, 1.0, 0.0};
-double coeffs3[5] = {22.0, 0.0, 0.0, 1.0, 0.0};
-
+// function to print a device address
+void printAddress(DeviceAddress deviceAddress)
+{
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    // zero pad the address if necessary
+    if (deviceAddress[i] < 16) Serial.print("0");
+    Serial.print(deviceAddress[i], HEX);
+  }
+}
 
 /************** SD CARD DEFINITIONS *********************/
 const int chipSelect = 10;
@@ -65,7 +61,14 @@ int incomingByte = 48; // Set to ASCII byte 48 or "0" which means do NOT collect
 
 /************** RTC DEFINITIONS ********************/
 RTC_PCF8523 rtc;
-char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+char daysOfTheWeek[7][12] = {
+  "Sunday", 
+  "Monday", 
+  "Tuesday", 
+  "Wednesday", 
+  "Thursday", 
+  "Friday", 
+  "Saturday"};
 DateTime now;
 DateTime start;
 long starttime;
@@ -76,8 +79,6 @@ String time_string;
 int tindex;
 String dtime1[6] = {"","","","","",""};
 
-
-/************** RTC FUNCTIONS *********************/
 void set_write_time(void)
 {
   starttime = millis();
@@ -118,26 +119,21 @@ void set_write_time(void)
   }
 }
 
-/************* TEMPERATURE MEASUREMENT FUNCTIONS *************************/
-// function to print a device address
-void printAddress(DeviceAddress deviceAddress)
-{
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    // zero pad the address if necessary
-    if (deviceAddress[i] < 16) Serial.print("0");
-    Serial.print(deviceAddress[i], HEX);
-  }
-}
+/************* PRESSURE MEASUREMENT DEFINITIONS *******************/
+int pressurePin = A0; // input pin for pressure transducer
+double pv_psi = 0;        // initialize value from pressure vessel
 
-// Function to correct for calibrations
-float t_corr(float val, double cf[5])
+//Calibration fit line
+// R = 263.511; //ohm resistance across the 4-20 mA signal 
+double m = 5.785E-3;   // psi/sig (slope of calibration fit line)
+double b = -1.253;     // psi (intercept of calibration line)
+
+//Function for psig
+double sigToPsi(int sig)
 {
-  float cval;
-  float val2 = val*val;
-  cval = cf[0]*val2*val2 + cf[1]*val*val2 + cf[2]*val2 +\
-    cf[3]*val + cf[4];
-  return cval;
+  double psig;
+  psig = sig * m + b;             
+  return psig;
 }
 
 /************* SETUP FUNCTION ***************************/
@@ -265,22 +261,19 @@ void loop(void)
     t1 = sensors.getTempC(Thermometer1);
     t2 = sensors.getTempC(Thermometer2);
     t3 = sensors.getTempC(Thermometer3);
+    pv_psi = sigToPsi(analogRead(pressurePin));
     
     tmel = now1 - starttime; // get elapsed time
 
-/*
-    t0 = t_corr(t0, coeffs0); // Correct for calibrations
-    t1 = t_corr(t1, coeffs1);
-    t2 = t_corr(t2, coeffs2);
-    t3 = t_corr(t3, coeffs3);
-*/
+// Correct for calibrations here
   
     dataString = "|,";  // Put it all in a string
     dataString += String(tmel) + ",";
     dataString += String(t0)   + ",";
     dataString += String(t1)   + ",";
     dataString += String(t2)   + ",";
-    dataString += String(t3);
+    dataString += String(t3)   + ",";
+    dataString += String(pv_psi);
   
     if(Serial.available() > 0) incomingByte = Serial.read(); // Check for communication over serial
     if(incomingByte == 49) { // look for an ASCII '1' which means write data to file
