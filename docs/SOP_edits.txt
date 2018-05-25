@@ -1,3 +1,5 @@
+4.1.1:
+remove 
 4.1.4: 
 fix spelling. Equilibrate
 
@@ -12,7 +14,8 @@ Fix File Path to be: C:\Users\Public\Documents\AIT\ait_exp\TADA\TADA_firmware
 4.1.12 Bullet points
 Point 3: Remove "in the hood"
 Point 4: ...align the camera's view "to see through the sight glass" directly...
-	remove the notes under point 4. Replace them with new tips for angling the mirror correctly.
+	remove the notes under point 4. Replace them with new tips for angling the 
+	mirror correctly.
 Point 6: Remove this point about the hood
 
 4.1.13 
@@ -22,16 +25,71 @@ Remove this point
 Change this to, "In the lab notebook, record the absolute pressure of the lab"
 
 4.2.2
-Either Remove entirely or adjust it to a humidity test using hygrometer with the air leaving the Pressure Vessel once an elapsed (time) has passed.
+Either Remove entirely or adjust it to a humidity test using hygrometer with the
+air leaving the Pressure Vessel once an elapsed (time) has passed.
  - Need to do testing to decide this
  
 4.2.5
-There is a hand written note. A more simple way to say it is: "Tare the scale with the weigh boat"
+There is a hand written note. A more simple way to say it is: "Tare the scale 
+with the weigh boat"
 
-4.2.6 delete and change (I haven't finished this part, I would separate this in to two sections. Liquid and Solid) 
- - Liquid Sample
+4.2.6 delete and change (I haven't finished this part, I would separate this in 
+to two sections. Liquid and Solid) 
+ - Liquid Sample 
+	Place syringe into syringe holder in ARIA, making sure the tip of the 
+		syringe is aligned with the hole in the furnace lid
+	
  - Solid Sample
-
+	Weigh out sample in plastic weigh boat
+	Carefully insert weigh boat into the holder on ARIA, making certain it is 
+		secure
+	
+	
+ADD HERE
+	Place the lid on the PV and secure in place with the clamps
+	Based on the lab's absolute pressure, determine the pressure increase needed
+		to obtain atmospheric pressure inside the vessel and adjust the control 
+		air inc. pressure regulator to this pressure
+	(There needs to be something here about adjusting the outlet flow rate. I'm 
+		not exactly sure how that will work)
+	If it is the first run of the day, ensure that ARIA is in the lowered 
+		position. If it is not, manually lower it until it is touching the plate.
+		Plug in the ARIA power source and allow it to reach stand-by 
+		position.If it is not the first run, ensure ARIA is in stand-by mode and
+		the arm	is in the raised, stand-by position. The LED lights will be lit, 
+		indicating it is in stand-by mode.
+		
 4.2.8 Dependant upon lighting test results
-Remove this point
 
+4.2.11 Remove
+
+4.2.12 Remove
+
+4.2.13 Remove, although I think there should be something we do to indicate that 
+	the sample has been injected.
+4.2.13a  remove
+
+ADD HERE	
+	Press the LED button that corresponds to the physical state of the sample.
+	Green = Solid
+	Blue = Liquid
+
+4.2.13c remove	
+
+4.2.17
+
+ADD HERE	
+	Wait the specified time to allow for pressure vessel to be purged. 
+	After the specified time and all safety percautions have been met, turn off
+		the inlet flow of air and take the lid off the pressure vessel.
+	ATTENTION: Anytime the pressure vessel lid is removed, the snorkel should be 
+		placed over the furnace
+
+		
+4.3
+	Remove Dash 2
+	Remove dash 3
+ADD HERE
+	Unplug the power cable from ARIA 
+	Manually lower the arm until it is touching the plate.
+    
