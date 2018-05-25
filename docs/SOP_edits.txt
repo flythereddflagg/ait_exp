@@ -24,6 +24,9 @@ Remove this point
 4.2.1 
 Change this to, "In the lab notebook, record the absolute pressure of the lab"
 
+Make sure to add information about summing the ambient lab pressure to the gauge
+pressure of the vessel to ensure that the pressure of the vessel is at 1 atm.
+
 4.2.2
 Either Remove entirely or adjust it to a humidity test using hygrometer with the
 air leaving the Pressure Vessel once an elapsed (time) has passed.
@@ -33,17 +36,42 @@ air leaving the Pressure Vessel once an elapsed (time) has passed.
 There is a hand written note. A more simple way to say it is: "Tare the scale 
 with the weigh boat"
 
-4.2.6 delete and change (I haven't finished this part, I would separate this in 
-to two sections. Liquid and Solid) 
- - Liquid Sample 
-	Place syringe into syringe holder in ARIA, making sure the tip of the 
+ADD HERE
+Specify when and where gloves will need to be worn... probably only when you initially weigh and
+handle the material before and after ARIA does her job
+
+4.2.6 delete and change (I would separate this into two sections, Liquids/Gases and Solids, and keep 
+them that way until the end. Makes it clearer)
+
+ADD HERE
+ - Liquid/Gases Sample 
+	-Adjust the mirror so that you can see into the flask
+	-Place syringe into syringe holder in ARIA, making sure the tip of the 
 		syringe is aligned with the hole in the furnace lid
-	
+	-Close and secure the lid on ARIA (more detail needed)
+	- Turn off lights to make it easy to see any present flame (refer to 4.2.8)
+	- Begin data collection (refer to 4.2.9)
+	- Begin recording (refer to 4.2.10)
+	- Let ARIA do her thing (I don't know what needs to be done in order to have ARIA drop the 
+	material in the flask and begin the measurement but this is where detail needs to be given)
+	- Start a timer for 10 mins. (refer to 4.2.13)
+
+ADD HERE
  - Solid Sample
-	Weigh out sample in plastic weigh boat
-	Carefully insert weigh boat into the holder on ARIA, making certain it is 
+	- Adjust the mirror so you can see into the flask
+	- Weigh out sample in plastic weigh boat
+	- Carefully insert weigh boat into the holder on ARIA, making certain it is 
 		secure
-	
+	- As securely and vertically as possible place the funnel on the ring stand arm of ARIA
+	-Close and secure the lid on ARIA (more detail needed)
+	- Turn off lights to make it easy to see any present flame (refer to 4.2.8)
+	- Begin data collection (refer to 4.2.9)
+	- Begin recording (refer to 4.2.10)
+	- Let ARIA do her thing (I don't know what needs to be done in order to have ARIA drop the 
+	material in the flask and begin the measurement but this is where detail needs to be given)
+	- Start a timer for 10 mins. (refer to 4.2.13)
+
+- Mention that safety glasses must be worn at all times during an experiment
 	
 ADD HERE
 	Place the lid on the PV and secure in place with the clamps
@@ -76,20 +104,35 @@ ADD HERE
 
 4.2.13c remove	
 
+4.2.15
+
+	Dash 11 (second from the bottom) - The total barometric pressure, the ambient room temperature and 
+										the gauge pressure of ARIA at the time of the experiment (in mmHg)  
+
 4.2.17
 
 ADD HERE	
 	Wait the specified time to allow for pressure vessel to be purged. 
-	After the specified time and all safety percautions have been met, turn off
+	After the specified time and all safety precautions have been met, turn off
 		the inlet flow of air and take the lid off the pressure vessel.
-	ATTENTION: Anytime the pressure vessel lid is removed, the snorkel should be 
+	ATTENTION: Any time the pressure vessel lid is removed, the snorkel should be 
 		placed over the furnace
+
+ADD HERE
+	Details on how to remove bulb flask from ARIA for cleaning
 
 		
 4.3
 	Remove Dash 2
 	Remove dash 3
+	Dash 4 - add a reference to Section 5 (ex. see Section 5 data extraction for more details)
 ADD HERE
 	Unplug the power cable from ARIA 
 	Manually lower the arm until it is touching the plate.
+	
+5
+
+Include the use of ARIA in the file name ( You will want a separate file for this right?)
+
+	
     
