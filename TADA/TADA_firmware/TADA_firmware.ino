@@ -121,19 +121,19 @@ void set_write_time(void)
 
 /************* PRESSURE MEASUREMENT DEFINITIONS *******************/
 int pressurePin = A0; // input pin for pressure transducer
-double pv_psi = 0;        // initialize value from pressure vessel
+double pv_torr = 0;        // initialize value from pressure vessel
 
 //Calibration fit line
 // R = 263.511; //ohm resistance across the 4-20 mA signal 
-double m = 5.785E-3;   // psi/sig (slope of calibration fit line)
-double b = -1.253;     // psi (intercept of calibration line)
+double m = 0.30021;   // torr/sig (slope of calibration fit line)
+double b = -64.786;     // torr (intercept of calibration line)
 
-//Function for psig
-double sigToPsi(int sig)
+//Function for torr
+double sigToTorr(int sig)
 {
-  double psig;
-  psig = sig * m + b;             
-  return psig;
+  double ptorr;
+  ptorr = sig * m + b;
+  return ptorr;
 }
 
 /************* SETUP FUNCTION ***************************/
@@ -261,7 +261,7 @@ void loop(void)
     t1 = sensors.getTempC(Thermometer1);
     t2 = sensors.getTempC(Thermometer2);
     t3 = sensors.getTempC(Thermometer3);
-    pv_psi = sigToPsi(analogRead(pressurePin));
+    pv_torr = sigToTorr(analogRead(pressurePin));
     
     tmel = now1 - starttime; // get elapsed time
 
@@ -273,7 +273,7 @@ void loop(void)
     dataString += String(t1)   + ",";
     dataString += String(t2)   + ",";
     dataString += String(t3)   + ",";
-    dataString += String(pv_psi);
+    dataString += String(pv_torr);
   
     if(Serial.available() > 0) incomingByte = Serial.read(); // Check for communication over serial
     if(incomingByte == 49) { // look for an ASCII '1' which means write data to file

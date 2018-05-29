@@ -11,6 +11,9 @@ Point 2: "Therefore, wait..."
 4.1.9
 Fix File Path to be: C:\Users\Public\Documents\AIT\ait_exp\TADA\TADA_firmware
 
+4.1.10
+Capitalize Arduino
+
 4.1.12 Bullet points
 Point 3: Remove "in the hood"
 Point 4: ...align the camera's view "to see through the sight glass" directly...
@@ -45,10 +48,10 @@ them that way until the end. Makes it clearer)
 
 ADD HERE
  - Liquid/Gases Sample 
-	-Adjust the mirror so that you can see into the flask
-	-Place syringe into syringe holder in ARIA, making sure the tip of the 
-		syringe is aligned with the hole in the furnace lid
-	-Close and secure the lid on ARIA (more detail needed)
+	- Adjust the mirror so that you can see into the flask
+	- Place syringe into syringe holder in ARIA, making sure the tip of the 
+	syringe is aligned with the hole in the furnace lid
+	- Close and secure the lid on ARIA (more detail needed)
 	- Turn off lights to make it easy to see any present flame (refer to 4.2.8)
 	- Begin data collection (refer to 4.2.9)
 	- Begin recording (refer to 4.2.10)
@@ -63,7 +66,7 @@ ADD HERE
 	- Carefully insert weigh boat into the holder on ARIA, making certain it is 
 		secure
 	- As securely and vertically as possible place the funnel on the ring stand arm of ARIA
-	-Close and secure the lid on ARIA (more detail needed)
+	- Close and secure the lid on ARIA (more detail needed)
 	- Turn off lights to make it easy to see any present flame (refer to 4.2.8)
 	- Begin data collection (refer to 4.2.9)
 	- Begin recording (refer to 4.2.10)
@@ -74,18 +77,19 @@ ADD HERE
 - Mention that safety glasses must be worn at all times during an experiment
 	
 ADD HERE
-	Place the lid on the PV and secure in place with the clamps
-	Based on the lab's absolute pressure, determine the pressure increase needed
-		to obtain atmospheric pressure inside the vessel and adjust the control 
-		air inc. pressure regulator to this pressure
-	(There needs to be something here about adjusting the outlet flow rate. I'm 
-		not exactly sure how that will work)
 	If it is the first run of the day, ensure that ARIA is in the lowered 
 		position. If it is not, manually lower it until it is touching the plate.
 		Plug in the ARIA power source and allow it to reach stand-by 
 		position.If it is not the first run, ensure ARIA is in stand-by mode and
 		the arm	is in the raised, stand-by position. The LED lights will be lit, 
 		indicating it is in stand-by mode.
+	Place the lid on the PV and secure in place with the clamps
+	Based on the lab's absolute pressure, determine the pressure increase needed
+		to obtain atmospheric pressure inside the vessel and adjust the control 
+		air inc. pressure regulator to this pressure
+	(There needs to be something here about adjusting the outlet flow rate. I'm 
+		not exactly sure how that will work)
+
 		
 4.2.8 Dependant upon lighting test results
 
@@ -126,6 +130,7 @@ ADD HERE
 	Remove Dash 2
 	Remove dash 3
 	Dash 4 - add a reference to Section 5 (ex. see Section 5 data extraction for more details)
+	Remove dash 8 about cardboard
 ADD HERE
 	Unplug the power cable from ARIA 
 	Manually lower the arm until it is touching the plate.

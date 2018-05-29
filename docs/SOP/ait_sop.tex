@@ -564,17 +564,15 @@ requirements of the method.
     
     \subsection{Startup}
     \begin{enumerate}
-    \item Plug in the 220 V extension cord in the corresponding outlet on 
-        the wall opposite the hood (adjacent to the DSC computer)
     \item Plug in the furnace to the 220 V extension cord
     \item Power on furnace and set furnace temperature between 20 - 30 degrees 
         above your initial target flask temperature 
     \item Reduce the set point temperature when the internal flask temperature 
         exceeds your initial target temperature by 5 - 10 degrees 
         \begin{itemize}
-        \item Wait a minimum of 90 minutes before changing the temperature
         \item When powered on initially, the furnace may take up to 2 hours or   
-            more to reach a desired temperature and thermally eqilibrate
+            more to reach a desired temperature and thermally equilibrate
+		\item Wait a minimum of 90 minutes before changing the temperature
         \end{itemize}
     
     \item Start up computer and log on
@@ -614,7 +612,7 @@ requirements of the method.
             \begin{itemize}
             \item Path: \textit{C:\textbackslash Users\textbackslash  
                 Public\textbackslash Documents\textbackslash AIT\textbackslash 
-                tools\textbackslash TADA\_UI.py}
+                ait_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
             \item Upon opening the program, a yellow LED in the TA-DA should 
@@ -629,7 +627,7 @@ requirements of the method.
 \end{figure}
     
     \item Press the "Sync Time" button on the bottom left corner of the TADA\_UI
-        window to syncronize the arduino clock to the computer time
+        window to syncronize the Arduino clock to the computer time
         \begin{itemize}
         \item This must be done at least once every work day
         \end{itemize}
@@ -641,27 +639,22 @@ requirements of the method.
         \item Power on the tablet and connect it to the camera's Wi-Fi (See 
             Section \ref{sec:cam_tab} on how to do this)
         \item Open the capture app to view the camera's view finder
-        \item Mount the camera on the tripod in the hood using the quick-release
+        \item Mount the camera on the tripod using the quick-release
             plastic camera mount on top of the tripod
         \item Using the camera's view finder on the tablet, adjust the
-            position of the camera, tripod and mirror on the furnace to 
-            align the camera's view directly down the center of the flask
+            position of the camera, tripod, and mirror on the furnace to 
+            align the camera's view to see through the sight glass directly down the center of the flask
             \begin{itemize}
             \item The camera should be positioned approximately level with the 
                  top of the furnace looking slightly upward into the mirror
             \item For the best view, the camera should be as close to the 
-                furnace as the tripod will allow and pointed directly into 
+                sight glass as the tripod will allow and pointed directly into 
                 the mirror
             \end{itemize}
         
         \item Gently tighten the knobs on the tripod to fix the camera in place
-        \item Close the hood sash
         \end{itemize}
     
-    \item Place a piece of cardboard or other opaque sheet on the right side 
-        of the hood against the outer sash and tuck it into the edges of the 
-        space between the sash and the hood wall so that it blocks light from 
-        entering the hood
     \item Once the target temperature is reached, allow 30 minutes for thermal 
         equilibration then begin experiments
     \end{enumerate}
@@ -671,32 +664,7 @@ This section outlines the steps for experimental runs. Each experiment should be
 performed following these steps exactly (insofar as that is possible). Doing so
 will ensure consistent results with the lowest uncertainty possible.
     \begin{enumerate}
-    \item Measure the absolute pressure in the lab with the mercury barometer 
-        mounted on the west wall by the sink and write down the pressure
-        in the lab notebook
-    \item Measure the relative humidity and ambient temperature in the hood  
-        with the hygrometer and write down those values in the lab notebook
-        \begin{itemize}
-        \item Remove the cap from the hygrometer probe and set the probe inside 
-            the hood away from the furnace
-        \item Press the "ON/OFF" button on the hygrometer to turn the unit on
-        \item Press "MODE" until the unit displays the relative humidity
-        \item Wait 1 minute to allow the unit to equilibrate
-        \item Write down the value for the relative humidity in the lab notebook
-        \item Press "MODE" again until the temperature is displayed
-        \item Write down the value for the ambient temperature in the lab 
-            notebook
-        \item Turn off the unit by pressing the "ON/OFF" button, remove the 
-            probe from the hood and put the probe cap back on and store the unit
-            in its case
-        \item For more information on the proper use of the hygrometer, refer to 
-            the instructions in the hygrometer case
-        \item Do \textbf{NOT} leave the probe sitting in the hood for an 
-            extended period of time without its cap on. The hygrometer probe is 
-            sensitive to dust and debris and can be easily damaged if left in 
-            the hood
-        \end{itemize}
-        
+  
     \item In the TADA\_UI program, press the "Choose Target File" button and 
         choose where to save your file
         \begin{itemize}
@@ -759,7 +727,6 @@ will ensure consistent results with the lowest uncertainty possible.
                 should be done in the left hood to avoid a potential fire hazard 
             \end{itemize}
     
-
     \item Measure out sample
         \begin{itemize}
         \item Liquids
@@ -769,11 +736,7 @@ will ensure consistent results with the lowest uncertainty possible.
         
         \item Solids
             \begin{itemize}
-            \item Measure out sample in a weigh boat on the lab scale
-            \item Use a powder funnel to inject the sample into the furnace
-            \item Keep the funnel as close to vertical as possible during 
-                injection to minimize the amount of compound that does not enter
-                the flask
+            \item Tare the lab scale with the weigh boat and measure out sample
             \end{itemize}
             
         \item Gases
@@ -782,52 +745,76 @@ will ensure consistent results with the lowest uncertainty possible.
             \end{itemize}
             
         \end{itemize}
+		
+	\item Adjust mirror so you can see into the flask
     
-    \item Set the measured sample aside in the left hood
-    \item Remove any glove from your LEFT hand and use your left hand for 
+    \item Prepare sample on ARIA
+		\begin{itemize}
+		\item Liquid/Gases Sample
+			begin{itemize}
+			\item Place syringe into syringe holder on ARIA, making sure the tip of the syringe is 
+				aligned with the hole in the furnace lid
+			\end{itemize}
+			
+		\item Solid Sample
+			\begin{itemize}
+			\item Carefully insert weigh boat onto holder on ARIA, making sure that it is secure
+			\item As securely and vertically as possible, place the funnel on the ring stand arm of ARIA
+			\end{itemize}
+			
+		\end{itemize}
+			
+	\item If it is the first run of the day, ensure that ARIA is in the lowered position. 
+		\begin{itemize} 
+		\item If it is not in the lowered position, manually lower it until
+			it is touching the plate. 
+		\item Plug in the ARIA power source and allow it to reach stand-by position. The LED lights will be lit, indicating it is 
+			in stand-by mode.
+		\end{itemize}
+	
+	\item If it is not the first run of the day, ensure that ARIA is in stand-by mode and the arm is in the raised 
+		stand-by position. The LED lights will be lit, indicating it is in stand-by mode.
+		
+	
+	\item Place lid on pressure vessel and secure in place with the clamps.
+		\begin{itemize}
+		\item Tighten in a star pattern
+		\end{itemize}
+		
+	\item Note the absolute pressure in the lab on the barometer 
+        mounted on the east wall by the fume hood and write down the pressure
+        in the lab notebook 
+		
+	\item Pressurize vessel
+		\begin{itemize}
+		\item Open the pressure transducer measurements by going to the TADA firmware Arduino file and clicking 
+			"Serial Monitor" in the top right-hand corner.
+		\item Adjust pressure in vessel using air tank valve until the pressure in the vessel and the absolute pressure of the 
+			lab add up to 1 atm (760 torr)
+		\end{itemize} 
+		
+	\item Remove any glove from your LEFT hand and use your left hand for 
         touching any non-hazardous surfaces
-    \item Ensure the lab is sufficiently dark to see any flame from the mirror
+	
+	\item Ensure the lab is sufficiently dark to see any flame from the mirror
         on top of the furnace
-        \begin{itemize}
-        \item Use the lights in the hoods for preparation before your run
-        \end{itemize}
-    
-    \item With your LEFT hand, press the Enter key to 
-        initiate data collection (a red LED in the TA-DA should begin blinking)
-        \begin{itemize}
-        \item The TA-DA UI will keep track of the elapsed time since data 
-            collection began at the bottom of the window. This may be used
-            to time the experiment
-        \end{itemize}
-    \item With your LEFT hand, press the red button on the tablet screen to 
+	
+	\item Begin data collection 
+		begin{itemize}
+		\item Use your left (ungloved) hand to press the Enter key
+		\item A red LED in the TA-DA should begin blinking
+		\item The TA-DA UI will keep track of the elapsed time since data 
+          collection began at the bottom of the window. This may be used
+          to time the experiment
+		\end{itemize}
+	
+    \item With your LEFT (ungloved) hand, press the red button on the tablet screen to 
         start recording
-    \item With your LEFT hand, open the sash horizontally just enough that your
-        RIGHT hand can inject the sample
-    \item With your RIGHT (gloved) hand, retrieve your sample and center the 
-        end of the syringe or funnel in the hole at the top of the furnace for 
-        injection, ensuring that the sample will go straight down and not hit 
-        the sides of the flask
-    \item Simultaneously turn off the light in the hood (with your LEFT hand) 
-        and introduce your sample (with your RIGHT hand) (the light turning off 
-        indicates to the camera that the sample has been injected)
-        \begin{itemize}
-        \item Immediately withdraw the syringe or funnel, close the sash (with 
-            your LEFT hand) and place the syringe in the adjacent hood
-        \item Begin the 10 minute timer
-        \item \textbf{NOTE ON EXPERIMENTS WITH SOLIDS:} When experimenting with 
-            solids, it is difficult for one person to simultaneously introduce a 
-            sample, hold the funnel in place and turn off the light. Therefore 
-            for solid experiments, have a second person there to turn off the 
-            light as the sample is injected. If a second person is present, 
-            he/she must also wear appropriate PPE for the experiment. (i.e. The
-            second person must wear PPE corresponding to the compound SDS but 
-            must NOT be wearing gloves when switching off the light.)
-
-            If no one is available to do this, the light may be turned off 
-            quickly after introducing the sample and removing the funnel. In 
-            this case, the camera should be able to view the sample entering the
-            flask and have an accurate time of injection.
-        \end{itemize}    
+		
+	\item Press the LED button on the ARIA control box that corresponds to the physical state of the sample
+		(green for solid, blue for liquid) to initialize ARIA sample injection.
+	
+	\item Set a timer for 10 minutes (refer to 4.2.13)
             
     \item Watch the mirror above the furnace for any flame/glow or the TA-DA UI
         for a large temperature spike for 10 minutes
@@ -881,12 +868,9 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Indicate whether a hot flame or cold flame was observed (if 
                 applicable)
             \item Indicate if any sound was heard upon ignition (if applicable)
-            \item The barometric pressure at the time of the experiment 
-                (in mmHg)
-            \item The relative humidity (\%) and the ambient air temperature
-                in the hood
+            \item The total barometric pressure, the ambient room pressure and the pressure vessel gauge pressure
+				at the time of the experiment(in mmHg)
             \end{itemize}
-
         \item If any item is not applicable write down N/A in its place
         \item If any item is unknown, leave a blank until it can be determined
         \item Optionally, leave any pertinent comments about the experiment
@@ -904,7 +888,13 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Video recording may be stopped as soon as a flame or glow
             disappears
         \end{itemize}
-
+	
+	\item Wait the specified time to allow for the pressure vessel to be purged
+	
+	\item Turn off the inlet air flow and wait for pressure vessel to FULLY depressurize
+	
+	\item Place snorkel over furnace and remove the pressure vessel lid.
+	
     \item Prepare for the next measurement
         \begin{itemize}
         \item Set furnace to next temperature
@@ -915,11 +905,11 @@ will ensure consistent results with the lowest uncertainty possible.
             \item This practice is intended to control for hysteresis effects
                 (See Section \ref{sec:hyst})
             \end{itemize}
-        \item Clean out the flask between measurements by blowing hot air into 
+        \item Clean out the flask between measurements by blowing hot air into
             the flask for 5 minutes using the heat gun
             \begin{itemize}
             \item The heat gun should \textbf{only} be plugged in to the outlet 
-                when in  use
+                when in use
             \end{itemize}
 
         \item Extract, save and appropriately rename the video data between 
@@ -934,24 +924,20 @@ will ensure consistent results with the lowest uncertainty possible.
     \subsection{Shutdown}
     \begin{itemize}
     \item The following should be done before leaving the lab at the end of 
-        every work day or anytime the setup is not in use:
+        every work day or any time the setup is not in use:
         \begin{itemize}
         \item Power off the furnace
-        \item Unplug the furnace from the 220 V extension cord
-        \item Unplug the 220 V extension cord from the wall opposite the hood
         \item Unplug TA-DA from the computer 
         \item Tuck the end of the USB cord into the mounted section under the 
             edge of the hood so it does not present a tripping hazard
-        \item Extract all data to the computer and appropriately rename them
+        \item Extract all data to the computer and appropriately rename them (Refer to section 5)
         \item Shut down and unplug the tablet and the camera
-        \item Remove the cardboard from the hood and stow it between the hood 
-            and the toolbox
         \item Remove the camera from the tripod using the plastic quick-release 
             lever and store the camera next to the lab computer
         \item Put all chemicals and syringes away in their proper places
         \item Remove any organic solid residue from all working surfaces 
             (See Section \ref{sec:spill_solid})
-        \item Close all programs and shutdown the computer
+        \item Close all programs and shut down the computer
         \end{itemize}
     
     \item A hot furnace may be left in the hood without waiting for it to cool
