@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  23 MAY 2018 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  29 MAY 2018 14:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,163 +360,211 @@ e
 ))
 (./ait_sop.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 4.
+(Font)              <10.95> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 4.
+(Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 4.
- [1
-
-{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(Font)              <6> on input line 2.
+)
 \tf@toc=\write3
 \openout3 = `ait_sop.toc'.
 
- [2] [3] [4] [5] <wrap.jpg, id=23, 912.40875pt x 670.75594pt>
+ [1
+
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] <wrap.jpg, 
+id=14, 912.40875pt x 670.75594pt>
 File: wrap.jpg Graphic file (type jpg)
  <use wrap.jpg>
-Package pdftex.def Info: wrap.jpg used on input line 234.
+Package pdftex.def Info: wrap.jpg used on input line 164.
 (pdftex.def)             Requested size: 505.89pt x 371.89525pt.
-
-[6] [7 <./wrap.jpg>]
-<insert_in_lid_w_donut.jpg, id=32, 350.81062pt x 644.4075pt>
+ [3] [4 <./wrap.jpg>] <insert_in_lid_w_donut.jpg, id=22, 350.81062pt x 644.4075
+pt>
 File: insert_in_lid_w_donut.jpg Graphic file (type jpg)
 
 <use insert_in_lid_w_donut.jpg>
-Package pdftex.def Info: insert_in_lid_w_donut.jpg used on input line 274.
+Package pdftex.def Info: insert_in_lid_w_donut.jpg used on input line 204.
 (pdftex.def)             Requested size: 227.64894pt x 418.18144pt.
- [8 <./insert_in_lid_w_donut.jpg>]
-<top_of_furnace_w_wrench.jpg, id=36, 3035.34pt x 4047.12pt>
+ [5 <./insert_in_lid_w_donut.jpg>]
+<top_of_furnace_w_wrench.jpg, id=26, 3035.34pt x 4047.12pt>
 File: top_of_furnace_w_wrench.jpg Graphic file (type jpg)
 
 <use top_of_furnace_w_wrench.jpg>
-Package pdftex.def Info: top_of_furnace_w_wrench.jpg used on input line 305.
+Package pdftex.def Info: top_of_furnace_w_wrench.jpg used on input line 235.
 (pdftex.def)             Requested size: 177.06458pt x 236.08554pt.
 
-<Furnace_diagram_mod.jpg, id=37, 542.025pt x 462.22687pt>
+<Furnace_diagram_mod.jpg, id=27, 542.025pt x 462.22687pt>
 File: Furnace_diagram_mod.jpg Graphic file (type jpg)
 
 <use Furnace_diagram_mod.jpg>
-Package pdftex.def Info: Furnace_diagram_mod.jpg used on input line 316.
+Package pdftex.def Info: Furnace_diagram_mod.jpg used on input line 246.
 (pdftex.def)             Requested size: 328.82541pt x 280.42043pt.
- [9 <./top_of_furnace_w_wrench.jpg> <./Furnace_diagram_mod.jpg>]
-Overfull \hbox (10.25096pt too wide) in paragraph at lines 340--343
+ [6 <./top_of_furnace_w_wrench.jpg> <./Furnace_diagram_mod.jpg>]
+Overfull \hbox (10.25096pt too wide) in paragraph at lines 270--273
 []\OT1/cmr/m/n/10.95 Once all stains have been erad-i-cated from the in-side of
  the flask and the flask has been scrubbed 
  []
 
-<clean_dirty_flask.jpg, id=41, 1880.02374pt x 2827.56375pt>
+<clean_dirty_flask.jpg, id=31, 1880.02374pt x 2827.56375pt>
 File: clean_dirty_flask.jpg Graphic file (type jpg)
 
 <use clean_dirty_flask.jpg>
-Package pdftex.def Info: clean_dirty_flask.jpg used on input line 362.
+Package pdftex.def Info: clean_dirty_flask.jpg used on input line 292.
 (pdftex.def)             Requested size: 126.47249pt x 190.18356pt.
- [10 <./clean_dirty_flask.jpg>]
-<Furnace_pic_diagram.jpg, id=45, 493.845pt x 544.28343pt>
+ [7 <./clean_dirty_flask.jpg>]
+<Furnace_pic_diagram.jpg, id=36, 493.845pt x 544.28343pt>
 File: Furnace_pic_diagram.jpg Graphic file (type jpg)
 
 <use Furnace_pic_diagram.jpg>
-Package pdftex.def Info: Furnace_pic_diagram.jpg used on input line 387.
+Package pdftex.def Info: Furnace_pic_diagram.jpg used on input line 317.
 (pdftex.def)             Requested size: 227.64894pt x 250.89664pt.
- [11 <./Furnace_pic_diagram.jpg>]
-Overfull \hbox (34.21355pt too wide) in paragraph at lines 426--427
+ [8 <./Furnace_pic_diagram.jpg>]
+Overfull \hbox (34.21355pt too wide) in paragraph at lines 356--357
 []\OT1/cmtt/m/n/10.95 https://gopro.com/help/articles/Block/How-to-Pair-the-Cam
 era-with-the-GoPro-App#HERO4 
  []
 
-<Camera_diagram.jpg, id=49, 508.90125pt x 301.8778pt>
+<Camera_diagram.jpg, id=40, 508.90125pt x 301.8778pt>
 File: Camera_diagram.jpg Graphic file (type jpg)
  <use Camera_diagram.jpg>
-Package pdftex.def Info: Camera_diagram.jpg used on input line 434.
+Package pdftex.def Info: Camera_diagram.jpg used on input line 364.
 (pdftex.def)             Requested size: 303.53708pt x 180.06403pt.
 
-<tablet.jpg, id=50, 1039.63406pt x 443.40656pt>
+<tablet.jpg, id=41, 1039.63406pt x 443.40656pt>
 File: tablet.jpg Graphic file (type jpg)
  <use tablet.jpg>
-Package pdftex.def Info: tablet.jpg used on input line 442.
+Package pdftex.def Info: tablet.jpg used on input line 372.
 (pdftex.def)             Requested size: 505.89pt x 215.76233pt.
- [12 <./Camera_diagram.jpg>]
-Overfull \hbox (10.52478pt too wide) in paragraph at lines 481--486
+ [9 <./Camera_diagram.jpg>]
+Overfull \hbox (10.52478pt too wide) in paragraph at lines 411--416
 []\OT1/cmr/m/n/10.95 All op-er-a-tions may be done re-motely on the tablet via 
 Wi-Fi or di-rectly with the "info/wireless" 
  []
 
-[13 <./tablet.jpg>] [14]
-Overfull \hbox (10.31172pt too wide) in paragraph at lines 590--592
+[10 <./tablet.jpg>] [11]
+Overfull \hbox (10.31172pt too wide) in paragraph at lines 539--541
 []\OT1/cmr/m/n/10.95 You may need to spec-ify the do-main you are log-ging into
 . If that is the case en-ter your CAEDM 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 593.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 542.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 593.
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 617.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 542.
+ [12]
 
-<led_red_yellow.jpg, id=63, 1164.60094pt x 459.21562pt>
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 565.
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+
+<led_red_yellow.jpg, id=56, 1164.60094pt x 459.21562pt>
 File: led_red_yellow.jpg Graphic file (type jpg)
 
 <use led_red_yellow.jpg>
-Package pdftex.def Info: led_red_yellow.jpg used on input line 626.
+Package pdftex.def Info: led_red_yellow.jpg used on input line 574.
 (pdftex.def)             Requested size: 379.4175pt x 149.60767pt.
- [15] [16 <./led_red_yellow.jpg>]
-Overfull \hbox (0.79741pt too wide) in paragraph at lines 745--754
+ [13 <./led_red_yellow.jpg>]
+Overfull \hbox (0.79741pt too wide) in paragraph at lines 663--672
 []\OT1/cmr/m/n/10.95 NOTE: Some SDS's will rec-om-mend us-ing a face shield in 
 ad-di-tion to splash gog-gles when 
  []
 
-[17] [18] [19] [20]
-Overfull \hbox (0.28036pt too wide) in paragraph at lines 987--989
+[14] [15] [16]
+
+LaTeX Warning: Reference `sec:hyst' on page 17 undefined on input line 859.
+
+[17]
+Overfull \hbox (0.28036pt too wide) in paragraph at lines 926--928
 []\OT1/cmr/m/n/10.95 Time of day that data col-lec-tion be-gan for that run us-
 ing a 24 hour clock for-mat "hhmm"  
  []
 
-[21]
-Overfull \hbox (60.21039pt too wide) in paragraph at lines 1060--1064
+[18]
+
+LaTeX Warning: Reference `sec:data_pa' on page 19 undefined on input line 993.
+
+
+Overfull \hbox (60.21039pt too wide) in paragraph at lines 999--1003
 []\OT1/cmr/m/n/10.95 Pull out the SD card from the dat-a-log-ger and use the US
 B SD card adapter to copy the"DATALOG.CSV" 
  []
 
-[22]
-Overfull \hbox (0.73749pt too wide) in paragraph at lines 1111--1112
-[]\OT1/cmr/bx/n/10.95 The re-ported AIT must be the in-ter-nal flask tem-per-a-
-ture (Ther-mo-cou-ple 4) and NOT 
- []
 
-[23] [24] [25] [26]
-Overfull \hbox (6.78342pt too wide) in paragraph at lines 1322--1325
+Overfull \hbox (6.78342pt too wide) in paragraph at lines 1032--1035
 []\OT1/cmr/m/n/10.95 If the spill oc-curs in or out of the hood, use ab-sorbent
  clay that can be found un-der the counter 
  []
 
-[27] [28] (./ait_sop.aux) ) 
+[19] [20] (./ait_sop.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3149 strings out of 494769
- 45830 string characters out of 6176752
- 107522 words of memory out of 5000000
- 6408 multiletter control sequences out of 15000+600000
- 9789 words of font info for 34 fonts, out of 8000000 for 9000
+ 3145 strings out of 494769
+ 45780 string characters out of 6176752
+ 107475 words of memory out of 5000000
+ 6405 multiletter control sequences out of 15000+600000
+ 9444 words of font info for 33 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
  39i,5n,32p,239b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super
-/cm-super-ts1.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-b10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pf
-b><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texl
-ive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on ait_sop.pdf (28 pages, 3551429 bytes).
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2016/texmf-
+dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2016/texmf-dist/fonts
+/type1/public/cm-super/sfrm1095.pfb>
+Output written on ait_sop.pdf (20 pages, 3538131 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

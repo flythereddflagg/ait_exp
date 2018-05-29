@@ -55,6 +55,76 @@
 %\tableofcontents 
 
 \newpage
+
+\section{Introduction}
+This SOP outlines the established procedure for performing autoignition 
+temperature (AIT) experiments in Dr. Wilding's laboratory (CB 343A), including 
+detailed instructions on how to perform experiments and corresponding safety 
+protocols. As such, lab policy requires every person working on AIT to have read
+and become familiar with the most updated version of this document and affirm 
+this by signing the AIT SOP Signatures Sheet.
+
+This document is intended to outline experimental procedures that conform to
+ASTM Standard E659. If any part of the experimental procedure violates the 
+standard, that part should be changed promptly to conform to established 
+guidelines in ASTM Standard E659. The only exception to this rule is when 
+conforming to the standard would present a significant hazard or risk.
+
+This document will be updated continually as changes to the process are made or 
+improvements are found. If you find an error in this document or have a 
+suggestion to improve it please contact the last person who modified it to 
+submit your proposed changes.
+
+\section{Safety and Hazard Mitigation}
+Prior to performing experimental work, all researchers should be familiar with
+this section, which outlines the hazards considered in these 
+experiments as well as the steps taken to mitigate them. While reading the 
+remainder of this SOP, researchers should note which steps in the procedure 
+control for these hazards. If there are hazards that could be better mitigated, 
+researchers should propose appropriate changes to the SOP.
+
+There are three primary hazards that exist in this experiment. These hazards are
+listed below with corresponding general protocols that have been implemented to 
+mitigate them.
+
+\begin{itemize}
+\item Electrical shock from furnace, heat gun, computer or other sources
+    \begin{itemize}
+    \item Researchers will receive corresponding training about safe use of 
+        electrical equipment and follow established standards for electrical 
+        safety including lockout-tagout protocol
+    \end{itemize}
+
+\item Exposure to toxic chemicals via skin or eye contact, inhalation or 
+    ingestion
+    \begin{itemize}
+    \item Researchers will receive corresponding training about safe handling of
+        chemicals
+    \item Researchers will use appropriate PPE when handling any chemical based 
+        on recommendations from the corresponding SDS and lab policy
+    \item All handling of volatile chemicals will take place inside one of the 
+    ventilated hoods in the lab
+    \item As per ASTM Standard E659, small amounts of compound will be used in 
+        any one experiment (Maximum amounts for any one experiment are limited 
+        to 1 milliliter for liquids and 1 gram for solids and gases)
+    \end{itemize}
+
+\item Fire or explosion of flammable chemicals
+    \begin{itemize}
+    \item Researchers will receive corresponding training about fire and 
+        explosion safety and prevention
+    \item Experiments will take place in a ventilated hood
+    \item A fire extinguisher is available in the lab in the event of a small 
+        fire
+    \item As per ASTM Standard E659, small amounts of compound will be used in 
+        any one experiment (Maximum amounts for any one experiment are limited 
+        to 1 milliliter for liquids and 1 gram for solids and gases)
+    \end{itemize}  
+
+\end{itemize}
+
+\newpage
+ 
 \section{Experimental Setup and Maintenance}
     \subsection{Flask and Lid}
     \begin{itemize}
@@ -479,7 +549,10 @@
         
     \end{itemize}
     
-\newpage
+    %\subsection{TA-DA}
+    
+\newpage % NEW SECTION OF DOCUMENT
+
 \section{Measurement and Data Collection}
 This section enumerates the procedure for measuring AIT. Researchers 
 should follow these procedures every day and for every experiment performed to 
@@ -491,39 +564,15 @@ requirements of the method.
     
     \subsection{Startup}
     \begin{enumerate}
-    \item Ensure the lid is off the pressure vessel and the vessel is being 
-        vented by the snorkel
-        \begin{itemize}
-        \item Under normal operation, the vessel should be vented with the 
-            snorkel any time the vessel is open
-        \item The only exception to this rule is when the experimental setup has
-            been shut down for an extended period of time for maintenance 
-            purposes
-        \end{itemize}
-    \item Ensure the ARIA lead screws are set such that the ARIA is in the 
-        shutdown position
-    \item Ensure the three molex cables are securely plugged in to the ARIA and
-        will not come out while the ARIA is moving
-    \item Align the ARIA so that the needle or funnel is aligned to the center
-        of the injection hole in the top of the furnace
-        \begin{itemize}
-        \item You will need to install the appropriate setup for the compound
-            you intend to test that day
-        \item After alignment, remove any setup materials used to reach 
-            alignment
-        \end{itemize}
-    \item Plug in the ARIA control to the 5 volt power supply and wait for 
-        initial setup sequence to complete (The two button lights on the ARIA
-        control will come on)
-    \item Ensure the furnace is plugged in
+    \item Plug in the furnace to the 220 V extension cord
     \item Power on furnace and set furnace temperature between 20 - 30 degrees 
         above your initial target flask temperature 
     \item Reduce the set point temperature when the internal flask temperature 
         exceeds your initial target temperature by 5 - 10 degrees 
         \begin{itemize}
-        \item Wait a minimum of 90 minutes before changing the temperature
         \item When powered on initially, the furnace may take up to 2 hours or   
             more to reach a desired temperature and thermally equilibrate
+		\item Wait a minimum of 90 minutes before changing the temperature
         \end{itemize}
     
     \item Start up computer and log on
@@ -555,9 +604,10 @@ requirements of the method.
     \item Ensure a compatible SD card is inserted securely into the TA-DA 
         datalogger
     \item Ensure the thermocouples are connected to the TA-DA
+
     \item Connect the TA-DA to the lab computer via the USB cable mounted 
         under the edge of the hood
-    \item Plug in the 24 volt power supply to the TA-DA
+    
     \item Open the TA-DA user interface program 
             \begin{itemize}
             \item Path: \textit{$C:\textbackslash Users\textbackslash  
@@ -737,11 +787,9 @@ will ensure consistent results with the lowest uncertainty possible.
 		
 	\item Pressurize vessel
 		\begin{itemize}
-		\item Open the pressure transducer measurements by going to the TADA 
-            firmware Arduino file and clicking 
+		\item Open the pressure transducer measurements by going to the TADA firmware Arduino file and clicking 
 			"Serial Monitor" in the top right-hand corner.
-		\item Adjust pressure in vessel using air tank valve until the pressure 
-            in the vessel and the absolute pressure of the 
+		\item Adjust pressure in vessel using air tank valve until the pressure in the vessel and the absolute pressure of the 
 			lab add up to 1 atm (760 torr)
 		\end{itemize} 
 		
@@ -760,14 +808,13 @@ will ensure consistent results with the lowest uncertainty possible.
           to time the experiment
 		\end{itemize}
 	
-    \item With your LEFT (ungloved) hand, press the red button on the tablet 
-        screen to start recording
+    \item With your LEFT (ungloved) hand, press the red button on the tablet screen to 
+        start recording
 		
-	\item Press the LED button on the ARIA control box that corresponds to the 
-        physical state of the sample
-		(green for solid, blue for liquid) to initiate ARIA sample injection.
+	\item Press the LED button on the ARIA control box that corresponds to the physical state of the sample
+		(green for solid, blue for liquid) to initialize ARIA sample injection.
 	
-	%\item Set a timer for 10 minutes (refer to 4.2.13)
+	\item Set a timer for 10 minutes (refer to 4.2.13)
             
     \item Watch the mirror above the furnace for any flame/glow or the TA-DA UI
         for a large temperature spike for 10 minutes
@@ -790,8 +837,8 @@ will ensure consistent results with the lowest uncertainty possible.
             \item 10 minutes pass with no ignition event observed
             \end{itemize}
         \item If the UI is used to keep track of time and no flame is observed, 
-            continue collecting temperature data until 600 seconds have passed 
-            since injection
+            continue collecting temperature data until 700 seconds have passed 
+            to ensure the full 10 minutes of data have been captured
         \end{itemize}
     
     \item Record pertinent data and observations in the lab book and the 
@@ -1018,7 +1065,236 @@ efficiency and avoid common mistakes.
             
     \end{itemize}
 
+\newpage % NEW SECTION OF DOCUMENT 
+%\blankpage
+\section{Experimental Design}
+This section outlines basic principles for finding the AIT of a compound from 
+perspective of experimental design.
+This section must be read at least once to be authorized to work on AIT. 
+However, understanding all the steps in this section is optional to begin 
+experimental work. It is expected that researchers will become familiar with and
+understand these steps over time after some experience measuring AIT.
 
+The other sections of this SOP concern matters related to saftey and precise, 
+consistent measurement and should be followed exactly to ensure the best 
+results. This section, however, deals with a much more nuanced view of AIT and
+how to find the minimum value. Because of this, the steps and procedures in this
+section may be taken as flexible guidelines rather than imperative rules. They
+should inform decisions made by researchers rather than perscribe them. With 
+this in mind, these are the guidelines for some specifics on how to measure AIT.
+
+The following principles should guide all decisions regarding AIT measurement:
+\begin{itemize}
+\item \textbf{The autoignition temperature is defined as the minimum temperature 
+    at which hot-flame ignition occurs in the absence of an ignition source}
+    \begin{itemize}
+    \item Hot-flame ignition is defined as seeing a yellow/orange/red part of a 
+        flame or glow associated with the ignition event
+    \item Cool-flame ignition is defined as seeing an entirely blue flame or 
+        glow associated with the ignition event
+    \end{itemize}
+\item \textbf{The reported AIT must be the internal flask temperature 
+    (Thermocouple 4) and NOT the temperature of the furnace}
+    \begin{itemize}
+    \item The best measure available for AIT in the ASTM method is having the
+        AIT be the air temperature prior to injection inside the flask
+    \end{itemize}
+
+\item \textbf{The bracket size goal for AIT measurement is $\pm$ 3 \degree C}
+    \begin{itemize}
+    \item This means that if a hot-flame ignition can be consistently measured  
+        at a certain temperature and a cold flame can be consistently measured  
+        $< 3$ degrees below it, the hot-flame temperature should be reported as 
+        the measured AIT
+    \end{itemize}
+\end{itemize}
+    
+    \subsection{Guidelines for Finding AIT} \label{sec:guide}
+    \begin{itemize}
+    \item A more complete and precise definition of AIT as per ASTM E659: The 
+        minimum temperature of a fuel/air mixture at which hot-flame 
+        ignition occurs, in the absence of an ignition source, for a system that
+        meets the following criteria:
+        \begin{itemize}
+        \item The fuel/air mixture is contained in a 500 ml borosilicate 
+            bulb flask
+        \item The bulb flask is open to the atmosphere
+        \item The bulb flask is at a uniform temperature
+        \item Both the bulb flask and the air inside are at steady state 
+            temperatures immediately before the fuel is introduced
+        \item The composition of the air in the flask is 20.95\% oxygen with the
+            balance being inert gases
+        \item The barometric pressure of the system is 1 atmosphere
+        \item The fuel to air ratio is optimized to minimize the AIT
+        \end{itemize}
+    
+    \item The experimental setup has been designed to conform to these criteria
+        insofar as it is practical to do so. Changes will be made continually
+        to the setup to better match these criteria.
+    \item To choose temperatures to be tested the following guidelines may be 
+        useful:
+        \begin{itemize}
+        \item If there are any data that indicate where the AIT is, start there
+        \item If there are no data for a compound look at the compound's family 
+            and interpolate from those data to choose a starting temperature
+        \item If there are no data for a compound or its family find a compound 
+            with data that most resembles your compound and start at that 
+            compound's AIT
+        \item Once a starting point is found, begin with a broad strokes 
+            approach by jumping up and down by 30 degrees Celsius or more until 
+            you bracket the minimum AIT with hot-flame and cold flame ignitions
+        \item Shrink that bracket with a bisection method until the bracket is 
+            $<$ 3 degrees Celsius
+        \end{itemize}
+    
+    \item Once a minimum AIT is found for a baseline sample size, vary the 
+        sample size (See Section \ref{sec:samp_sz}) and repeat the procedure 
+        above until you find a minimum AIT with an optimum sample size
+    \end{itemize}
+    
+    \subsection{Furnace/Flask Temperatures} \label{sec:hyst}
+    \begin{itemize}
+    \item We have observed some hysteresis effects in how we approach the 
+        temperature to be tested. We have noticed if we start high and drop down
+        to the desired temperature the AIT tends to be lower than if we start 
+        low and heat up to the desired temperature.
+    \item To control for these effects, we strongly recommend always 
+        overshooting higher than the temperature needed and then backing off the
+        heat to allow the temperature to fall to the desired value. Doing so
+        should control for the hysteresis effects observed.
+    \item The flask temperature (Thermocouple 4) should be monitored while 
+        temperatures change to check for steady state. From tests on the 
+        response curve of the furnace, we have determined that the time constant
+        of the system is roughly 10 minutes and the dead time is about 2 minutes 
+        which would mean that within 30 - 35 minutes the flask should come close
+        to steady state. If the temperature changes less than 3 degrees Celsius 
+        over 10 minutes researchers may always consider the system at steady 
+        state.
+    \end{itemize}
+    
+    \subsection{Sample Size} \label{sec:samp_sz}
+    In Section \ref{sec:guide} the guidelines for finding AIT were covered with 
+    respect to temperature. This section lays out guidelines for how to choose 
+    a sample size and how to store and inject. Before varying sample size, 
+    researchers should generally find an AIT for the current sample size
+
+    \begin{itemize}
+    \item Liquids
+        \begin{itemize}
+        \item Draw sample amount into a right-angle syringe
+        \item Sample size:
+            \begin{itemize}
+            \item Initially use a sample size of 100 microliters
+            \item Once AIT is measured for 100 microliters, go to 150 
+                microliters
+            \item If the AIT decreases for 150 microliters, go to 200/250 
+                microliters
+            \item If the AIT increases for 150 microliters, go to 50 
+                microliters
+            \end{itemize}
+        
+        \end{itemize}
+            
+
+    \item Solids
+        \begin{itemize}
+        \item Measure out sample in a weigh boat on the lab scale
+        \item Use a powder funnel to inject the sample into the furnace keeping
+            the funnel vertical to minimize the amount of compound not entering 
+            the furnace
+        \item Sample size:
+            \begin{itemize}
+            \item Initially use a sample size of 100 milligrams
+            \item Once AIT is measured for 100 milligrams, go to 150 
+                milligrams
+            \item If the AIT decreases for 150 milligrams, go to 200/250 
+                milligrams
+            \item If the AIT increases for 150 milligrams, go to 50 
+                milligrams
+            \end{itemize}
+        
+        \end{itemize}
+        
+    \item Gases
+        \begin{itemize}
+        \item Draw sample amount into a right-angle syringe
+        \item Sample size:
+            \begin{itemize}
+            \item Initially use a sample size of 100 milligrams
+            \item Once AIT is measured for 100 milligrams, go to 150 
+                miligrams
+            \item If the AIT decreases for 150 miligrams, go to 200/250 
+                miligrams
+            \item If the AIT increases for 150 miligrams, go to 50
+                miligrams
+            \end{itemize}
+        
+        \end{itemize}
+    
+    \end{itemize}
+
+    
+    \subsection{Flame and Glow}
+    The following are guidelines for flame observation:
+    \begin{itemize}
+    \item If the flame is at least partly bright yellow, orange or red, this is 
+        the hot-flame autoignition and the temperature should be 
+        decreased for the next test
+    \item If the flame is faint and blueish, this is the cool-flame 
+        autoignition and the temperature should be increased for 
+        the next test
+    \item If no flame or glow if observed by the 10 minute mark, 
+        increase the temperature for the next measurement
+    \end{itemize}
+
+
+\section{Data Processing and Analysis (Section is in ALPHA)} \label{sec:data_pa}
+\textbf{NOTE: This section is in ALPHA stage of development and does not outline any 
+procedures that are necessary for safety in the lab. Therefore, until this
+section is taken out of ALPHA stage the material in this section is optional and
+not considered part of the SOP. This means that you may skip this and any 
+sections in ALPHA stage when reading the entirety of the SOP as required for lab
+work.}
+ 
+ 
+\section{Temperature Calibration (Section is in ALPHA)}
+\textbf{NOTE: This section is in ALPHA stage of development and does not outline any 
+procedures that are necessary for safety in the lab. Therefore, until this
+section is taken out of ALPHA stage the material in this section is optional and
+not considered part of the SOP. This means that you may skip this and any 
+sections in ALPHA stage when reading the entirety of the SOP as required for lab
+work.}
+
+This section outlines the procedure for temperature calibration of the TA-DA.
+It also includes guidelines for maintaining thermocouples. The practices in this
+section are intended to ensure minimum uncertainty in temperature measurements.
+Therefore to ensure consistentcy, researchers should follow procedures 
+outlined here as rigourously as the experimental procedures.
+
+% T deg C: 0,100,200,225,250,275,300,325,350,375,400,425,450,475,500,600,700
+
+    \subsection{VA710 Thermocouple Calibrator}
+The VA710 Thermocouple Calibrator, sold by ThermoWorks, is calibrated to NIST 
+standards by ThermoWorks before shipping and recommends recalibrating the VA710 
+on an annual basis. The instrument was originally put into service on 
+June 15, 2017. Every June, ThermoWorks should be contacted to recalibrate the 
+instrument to NIST standards. Associated documentation gives specific data on 
+the most recent calibration.
+
+When up-to-date on its calibration schedule, the VA710 should accurately measure
+and simulate thermocouple voltages. This ensures thermocouple measurement 
+uncertainty remains below the uncertainty inherent in the thermocouples. The 
+uncertainty inherent in the thermocouples is usually specified by the 
+thermocouple manufacturer (usually Omega in the case of the AIT setup).
+
+For detailed instructions on how to use the VA710, please refer to the User's 
+Manual in the inside pocket of the VA710 case.
+
+    \subsection{Calibration Procedure}
+The TA-DA should be calibrated to output correct temperatures
+
+\newpage
+%\blankpage   
 \section{Spill Clean-up}
 In the event of any spill, appropriate PPE specified in the corresponding SDS 
     should be used in clean-up. Always check the SDS for special considerations
@@ -1066,7 +1342,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         residue should be dissolved in acetone and discarded in liquid waste
     \end{itemize}
 
-
+\newpage
 \section{Emergency Shutdown} \label{sec:e_shtdn}
 
     \begin{itemize}
