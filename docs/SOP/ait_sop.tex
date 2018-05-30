@@ -119,7 +119,8 @@
         
         \item Use a \textbf{clean}, 500 ml, round bottom, long neck, bulb flask 
             (PYREX\textsuperscript{\textcopyright} 500mL Long Neck Boiling 
-            Flask, Round Bottom, Tooled Mouth, Product No.: 4280-500 from Corning Inc.)
+            Flask, Round Bottom, Tooled Mouth, Product No.: 4280-500 from 
+            Corning Inc.)
         \item If dirty, wash out the flask using soap and water and dry as much 
             as possible (see "Flask Cleaning" below); be sure to rinse
             thoroughly
@@ -500,32 +501,6 @@ requirements of the method.
             been shut down for an extended period of time for maintenance 
             purposes
         \end{itemize}
-    \item Ensure the ARIA lead screws are set such that the ARIA is in the 
-        shutdown position
-    \item Ensure the three molex cables are securely plugged in to the ARIA and
-        will not come out while the ARIA is moving
-    \item Align the ARIA so that the needle or funnel is aligned to the center
-        of the injection hole in the top of the furnace
-        \begin{itemize}
-        \item You will need to install the appropriate setup for the compound
-            you intend to test that day
-        \item After alignment, remove any setup materials used to reach 
-            alignment
-        \end{itemize}
-    \item Plug in the ARIA control to the 5 volt power supply and wait for 
-        initial setup sequence to complete (The two button lights on the ARIA
-        control will come on)
-    \item Ensure the furnace is plugged in
-    \item Power on furnace and set furnace temperature between 20 - 30 degrees 
-        above your initial target flask temperature 
-    \item Reduce the set point temperature when the internal flask temperature 
-        exceeds your initial target temperature by 5 - 10 degrees 
-        \begin{itemize}
-        \item Wait a minimum of 90 minutes before changing the temperature
-        \item When powered on initially, the furnace may take up to 2 hours or   
-            more to reach a desired temperature and thermally equilibrate
-        \end{itemize}
-    
     \item Start up computer and log on
         \begin{itemize}
         \item Use your CAEDM account to log in
@@ -560,9 +535,9 @@ requirements of the method.
     \item Plug in the 24 volt power supply to the TA-DA
     \item Open the TA-DA user interface program 
             \begin{itemize}
-            \item Path: \textit{$C:\textbackslash Users\textbackslash  
+            \item Path: \textit{C:\textbackslash Users\textbackslash  
                 Public\textbackslash Documents\textbackslash AIT\textbackslash 
-                ait_exp\textbackslash TADA\textbackslash TADA\_UI.py$}
+                ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
             \item Upon opening the program, a yellow LED in the TA-DA should 
@@ -575,8 +550,8 @@ requirements of the method.
 \caption{Control LEDs inside the TA-DA}
 \label{fig:tada_leds}
 \end{figure}
-    
-     \item Press the "Sync Time" button on the bottom left corner of the TADA\_UI
+    \item Return to the computer and press the "Sync Time" button on the bottom 
+        left corner of the TADA\_UI
         window to synchronize the Arduino clock to the computer time
         \begin{itemize}
         \item This must be done at least once every work day
@@ -584,16 +559,60 @@ requirements of the method.
         
     \item Use the TADA\_UI program to track the internal temperature of the 
         flask as it heats up initially
+    \item Check the temperature of the furnace to ensure safe handling for 
+        startup
+        \begin{itemize}
+        \item The temperature should be close to ambient lab temperature
+        \item If the temperature does not read close to ambient temperature, do 
+            do not begin experiments. 
+        \end{itemize}
+    \item Ensure the ARIA lead screws are set such that the ARIA is in the 
+        shutdown position
+    \item Ensure the three molex cables are securely plugged in to the ARIA and
+        will not come out while the ARIA is moving
+    \item Align the ARIA so that the needle or funnel is aligned to the center
+        of the injection hole in the top of the furnace
+        \begin{itemize}
+        \item You will need to install the appropriate setup for the compound
+            you intend to test that day
+        \item After alignment, remove any setup materials used to reach 
+            alignment
+        \end{itemize}
+    \item Plug in the ARIA control to the 5 volt power supply and wait for 
+        initial setup sequence to complete (The two button lights on the ARIA
+        control will come on when the sequence is complete)
+    \item Test the placement of the ARIA by using an empty sample of the type 
+        you will be working with today
+         \begin{itemize}
+         \item For liquids/gases, place the empty syringe in the ARIA, lined up 
+            over the flask, and run the Liquid program.
+         \item For solids, place the ring stand in the ARIA, then place the 
+            funnel in the ring stand, then run the solid program
+         \item If the syringe or the funnel do not go directly into the flask, 
+            adjust the placement and test until the proper positioning is found
+         \end{itemize}
+    \item Ensure the furnace is plugged in
+    \item Power on furnace and set furnace temperature between 20 - 30 degrees 
+        above your initial target flask temperature 
+    \item Reduce the set point temperature when the internal flask temperature 
+        exceeds your initial target temperature by 5 - 10 degrees 
+        \begin{itemize}
+        \item Wait a minimum of 90 minutes before changing the temperature
+        \item When powered on initially, the furnace may take up to 2 hours or   
+            more to reach a desired temperature and thermally equilibrate
+        \end{itemize}
+    
     \item Prepare the tablet and the camera
         \begin{itemize}
         \item Power on the tablet and connect it to the camera's Wi-Fi (See 
             Section \ref{sec:cam_tab} on how to do this)
-        \item Open the capture app to view the camera's view finder
+        \item Open the "Capture" app to view the camera's view finder
         \item Mount the camera on the tripod using the quick-release
             plastic camera mount on top of the tripod
         \item Using the camera's view finder on the tablet, adjust the
             position of the camera, tripod, and mirror on the furnace to 
-            align the camera's view to see through the sight glass directly down the center of the flask
+            align the camera's view to see through the sight glass directly down
+            the center of the flask
             \begin{itemize}
             \item The camera should be positioned approximately level with the 
                  top of the furnace looking slightly upward into the mirror
@@ -606,7 +625,7 @@ requirements of the method.
         \end{itemize}
     
     \item Once the target temperature is reached, allow 30 minutes for thermal 
-        equilibration then begin experiments
+        equilibration, then begin experiments
     \end{enumerate}
     
 \subsection{Experimental}
@@ -707,73 +726,109 @@ will ensure consistent results with the lowest uncertainty possible.
 		
 	\item Adjust mirror so you can see into the flask
     
+	\item If it is the first run of the day, ensure that ARIA is in the lowered 
+        position. 
+		\begin{itemize} 
+		\item If it is not in the lowered position, manually lower it until
+			it is touching the plate. 
+		\item Plug in the ARIA power source and allow it to reach stand-by 
+            position. The LED lights will be lit, indicating it is in stand-by 
+            mode.
+		\end{itemize}
+	
+		\item If it is not the first run of the day, ensure that ARIA is in 
+            stand-by mode and the arm is in the raised stand-by position. The 
+            LED lights will be lit, indicating it is in stand-by mode.
+	
+    
      \item Prepare sample on ARIA
 		\begin{itemize}
 		\item Liquid/Gases Sample
 			\begin{itemize}
-			\item Place syringe securely into syringe holder on ARIA, making sure the tip of the syringe 
-			needle is aligned with the hole in the furnace lid
+			\item Place syringe securely into syringe holder on ARIA, making 
+                sure the tip of the syringe 
+                needle is aligned with the hole in the furnace lid
 			\end{itemize}
 			
 		\item Solid Sample
 			\begin{itemize}
-			\item Carefully insert weigh boat onto holder on ARIA servo, making sure that it is secure
-			\item As securely and vertically as possible, place the funnel on the ring stand arm of ARIA
+			\item Carefully insert weigh boat onto holder on ARIA servo, making 
+                sure that it is secure
+			\item As securely and vertically as possible, place the funnel on 
+                the ring stand arm of ARIA
 			\end{itemize}
 			
-		%\end{itemize}
-			
-	\item If it is the first run of the day, ensure that ARIA is in the lowered position. 
-		\begin{itemize} 
-		\item If it is not in the lowered position, manually lower it until
-			it is touching the plate. 
-		\item Plug in the ARIA power source and allow it to reach stand-by position. The LED lights 
-		will be lit, indicating it is in stand-by mode.
 		\end{itemize}
-	
-		\item If it is not the first run of the day, ensure that ARIA is in stand-by mode and the arm is in the raised 
-		stand-by position. The LED lights will be lit, indicating it is in stand-by mode.
-	
+			
+
 			
 	\item Remove gloves for touching any non-hazardous surfaces
 	
-	\item Place lid on pressure vessel and secure in place with the clamps.
+	\item Place lid on pressure vessel and secure in place with the clamps. Make
+        sure to line up the marks on the lid with the marks on the vessel.
 		\begin{itemize}
-		\item Hand-tighten clamps gently all the way around, and then tighten again in a 
-		"criss-cross" pattern in the numbered order indicated on the clamps (hand tight is all that is necessary, 
-		but we talked about potentially using a torque wrench) This involves tightening two directly across from 
-		each other, then skipping one set to do the next one, and then repeating until all have been tightened.
+		\item Hand-tighten clamps gently all the way around, and then tighten 
+            again in a "criss-cross" pattern in the numbered order indicated on the 
+            clamps. 
+            %(hand tight is all that is necessary but we talked about potentially using a torque wrench).
+            This involves tightening two directly across from each other, then 
+            skipping one set to do the next one, and then repeating until all have been tightened.
+        \item After the "criss-cross" pattern tightening is completed, double 
+        check that all clamps are tightened by going all the way around once more
+        tightening fully
 		\end{itemize}
 		
-	\item Note the absolute pressure in the lab on the barometer mounted on the east wall by the fume hood 
-	and write down the pressure in the lab notebook
+	\item Note the absolute pressure in the lab on the barometer mounted on the 
+    east wall by the fume hood and write down the pressure in the lab notebook
 		
 	\item Pressurize vessel
 		\begin{itemize}
 		\item Open the pressure transducer measurements by going to the TADA 
             firmware Arduino file and clicking 
 			"Serial Monitor" in the top right-hand corner.
-		\item Adjust pressure in vessel using air cylinder valves until the pressure in the vessel and the 
-		absolute pressure of the lab add up to 1 atm (760 torr)
+        \item Ensure the ball valve after the regulators on the compressed air 
+            tank is closed
+        %\item Place and secure the safety chain\cable 
+        \item Fully open the rotometer on the exhaust of the pressure vessel
+        \item Slowly open the valve on the compressed air tank. Once pressurized,
+            open the valve fully, then close one quarter turn
+        \item Open the ball valve fully
+            \begin{itemize}
+            \item Note: If a loud, high pitched squeal is heard, immediately 
+                close the ball valve and allow the vessel to fully depressurize,
+                it is a sign of a leak
+            \end{itemize}
+        \item Slowly close the rotometer until the indicator shows just above the 
+            lowest mark
+		\item Adjust pressure in vessel using air cylinder valves until the    
+            pressure in the vessel and the absolute pressure of the lab add up 
+            to 1 atm (760 torr)
 		\end{itemize} 
 		
 	\item Ensure that there are no leaks
 	    \begin{itemize}
-	    \item First check by running your fingers all around the lid. If you feel air coming out, shut off the air flow, 
-		allow the vessel to depressurize fully, and remove the lid to see what the problem is. Ensure that the ARIA 
-		and the cords are placed in such a way that they would not be in the way of the lid sealing all the way. Also 
-		check to make sure that the o-ring around the vessel is clean (no dust, debris etc.) so that proper sealing is possible. 
-		When you have located and solved the problem, go through the steps to pressurize again and then test it again.
-	    \item Second, do an additional pressure check by shutting off the air flow and watching the pressure readings. 
-		If the pressure is staying about constant over time, you can know that the vessel is properly sealed.
+	    \item First check by running your fingers all around the lid. If you 
+            feel air coming out, shut off the air flow, allow the vessel to 
+            depressurize fully, and remove the lid to see what the problem is. 
+            Ensure that the ARIA and the cords are placed in such a way that 
+            they would not be in the way of the lid sealing all the way. Also 
+            check to make sure that the O-ring around the vessel is clean (no 
+            dust, debris etc.) so that proper sealing is possible. When you have
+            located and solved the problem, go through the steps to pressurize 
+            again and then test it again.
+	    \item Second, do an additional pressure check by shutting off the air 
+            flow and watching the pressure readings. If the pressure is staying 
+            about constant over time, you can know that the vessel is properly 
+            sealed.
 	    \item Turn air flow back on
 	    \end{itemize}
 
-	\item Turn off lights and ensure the lab is sufficiently dark to see any flame from the mirror on top of the furnace in the vessel.
+	\item Turn off lights and ensure the lab is sufficiently dark to see any 
+        flame from the mirror on top of the furnace in the vessel.
 	
 	\item Begin data collection 
 		\begin{itemize}
-		\item Press the Enter key
+		\item In the TA-DA UI program, press the Enter key
 		\item A red LED in the TA-DA should begin blinking
 		\item The TA-DA UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
@@ -841,8 +896,9 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Indicate whether a hot flame or cold flame was observed (if 
                 applicable)
             \item Indicate if any sound was heard upon ignition (if applicable)
-            \item The total barometric pressure, the ambient room pressure and the pressure vessel gauge pressure
-				at the time of the experiment(in mmHg)
+            \item The total barometric pressure, the ambient room pressure and 
+                the pressure vessel gauge pressure at the time of the experiment
+                (in mmHg)
             \end{itemize}
         \item If any item is not applicable write down N/A in its place
         \item If any item is unknown, leave a blank until it can be determined
@@ -861,24 +917,22 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Video recording may be stopped as soon as a flame or glow
             disappears
         \end{itemize}
+        
+ 
 	
-		\item Wait the specified time, about 10-20 minutes to allow for the pressure vessel to be purged of the combustion products
-	
-	\item Turn off the inlet air flow and wait for pressure vessel to FULLY depressurize (outflow rotameter reads zero)
-	
-	\item Place snorkel over furnace and remove the pressure vessel lid.
-	
-    \item Prepare for the next measurement
+    \item Wait the specified time, about 20 minutes to allow for the pressure 
+        vessel to be purged of the combustion products
+    \item During the purge time, set furnace to next temperature
         \begin{itemize}
-        \item Set furnace to next temperature
-            \begin{itemize}
             \item When changing temperature, always approach your target
                 temperature from 5 - 10 degrees Celsius above and then 
                 descending slowly to your target temperature
-            \item This practice is intended to control for hysteresis effects
-                (See Section \ref{sec:hyst})
-            \end{itemize}
-        \item Clean out the flask between measurements by blowing hot air into
+        
+        \end{itemize}	
+	\item After the purge time as ended, turn off the inlet air flow and wait 
+        for pressure vessel to FULLY depressurize (outflow rotameter reads zero)
+	\item Place snorkel over furnace and remove the pressure vessel lid.
+    \item Clean out the flask between measurements by blowing hot air into
             the flask for 5 minutes using the heat gun
             \begin{itemize}
             \item The heat gun should \textbf{only} be plugged in to the outlet 
@@ -889,10 +943,10 @@ will ensure consistent results with the lowest uncertainty possible.
             experiments
         \item Wait a minimum of 30 minutes to reach the new temperature and 
             allow the furnace and flask to thermally equilibrate
-        \end{itemize}
-    
     \item Start this procedure over from step 1 (measure the pressure)
     \end{enumerate}
+	
+   
     
 \subsection{Shutdown}
     \begin{itemize}
@@ -903,7 +957,8 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Unplug TA-DA from the computer 
         \item Tuck the end of the USB cord into the mounted section under the 
             edge of the hood so it does not present a tripping hazard
-        \item Extract all data to the computer and appropriately rename them (Refer to section 5)
+        \item Extract all data to the computer and appropriately rename them 
+            (Refer to section 5)
         \item Shut down and unplug the tablet and the camera
         \item Remove the camera from the tripod using the plastic quick-release 
             lever and store the camera next to the lab computer
@@ -913,7 +968,8 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Close all programs and shut down the computer
         \end{itemize}
     
-    \item A hot furnace may be left in the hood without waiting for it to cool
+    \item A hot furnace may be left in the pressure vessel without waiting for 
+        it to cool
     \item Do not rinse out needles %% add policy for needles !!!!!!!
     \item Under normal use, disposable gloves may be thrown into the normal 
         trash receptacle instead of solid chemical waste
@@ -1093,10 +1149,13 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     \item In the event of an emergency do the following:
         
         \begin{itemize}
+        \item Turn off the air at the compressed air cylinder
         \item Power off the furnace
+        \item Fully open the rotameter exhaust
         \item Unplug the furnace
         \item Stop the camera recording (if applicable)
         \item Shutdown and unplug the camera and tablet
+        \item Unplug the ARIA and TADA
         \item Close all programs and shutdown the computer
         \end{itemize}
     
