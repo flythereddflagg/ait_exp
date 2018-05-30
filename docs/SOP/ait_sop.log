@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  29 MAY 2018 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  30 MAY 2018 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,31 +375,31 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 id=14, 912.40875pt x 670.75594pt>
 File: wrap.jpg Graphic file (type jpg)
  <use wrap.jpg>
-Package pdftex.def Info: wrap.jpg used on input line 164.
+Package pdftex.def Info: wrap.jpg used on input line 165.
 (pdftex.def)             Requested size: 505.89pt x 371.89525pt.
  [3] [4 <./wrap.jpg>] <insert_in_lid_w_donut.jpg, id=22, 350.81062pt x 644.4075
 pt>
 File: insert_in_lid_w_donut.jpg Graphic file (type jpg)
 
 <use insert_in_lid_w_donut.jpg>
-Package pdftex.def Info: insert_in_lid_w_donut.jpg used on input line 204.
+Package pdftex.def Info: insert_in_lid_w_donut.jpg used on input line 205.
 (pdftex.def)             Requested size: 227.64894pt x 418.18144pt.
  [5 <./insert_in_lid_w_donut.jpg>]
 <top_of_furnace_w_wrench.jpg, id=26, 3035.34pt x 4047.12pt>
 File: top_of_furnace_w_wrench.jpg Graphic file (type jpg)
 
 <use top_of_furnace_w_wrench.jpg>
-Package pdftex.def Info: top_of_furnace_w_wrench.jpg used on input line 235.
+Package pdftex.def Info: top_of_furnace_w_wrench.jpg used on input line 236.
 (pdftex.def)             Requested size: 177.06458pt x 236.08554pt.
 
 <Furnace_diagram_mod.jpg, id=27, 542.025pt x 462.22687pt>
 File: Furnace_diagram_mod.jpg Graphic file (type jpg)
 
 <use Furnace_diagram_mod.jpg>
-Package pdftex.def Info: Furnace_diagram_mod.jpg used on input line 246.
+Package pdftex.def Info: Furnace_diagram_mod.jpg used on input line 247.
 (pdftex.def)             Requested size: 328.82541pt x 280.42043pt.
  [6 <./top_of_furnace_w_wrench.jpg> <./Furnace_diagram_mod.jpg>]
-Overfull \hbox (10.25096pt too wide) in paragraph at lines 270--273
+Overfull \hbox (10.25096pt too wide) in paragraph at lines 271--274
 []\OT1/cmr/m/n/10.95 Once all stains have been erad-i-cated from the in-side of
  the flask and the flask has been scrubbed 
  []
@@ -408,17 +408,17 @@ Overfull \hbox (10.25096pt too wide) in paragraph at lines 270--273
 File: clean_dirty_flask.jpg Graphic file (type jpg)
 
 <use clean_dirty_flask.jpg>
-Package pdftex.def Info: clean_dirty_flask.jpg used on input line 292.
+Package pdftex.def Info: clean_dirty_flask.jpg used on input line 293.
 (pdftex.def)             Requested size: 126.47249pt x 190.18356pt.
  [7 <./clean_dirty_flask.jpg>]
 <Furnace_pic_diagram.jpg, id=36, 493.845pt x 544.28343pt>
 File: Furnace_pic_diagram.jpg Graphic file (type jpg)
 
 <use Furnace_pic_diagram.jpg>
-Package pdftex.def Info: Furnace_pic_diagram.jpg used on input line 317.
+Package pdftex.def Info: Furnace_pic_diagram.jpg used on input line 318.
 (pdftex.def)             Requested size: 227.64894pt x 250.89664pt.
  [8 <./Furnace_pic_diagram.jpg>]
-Overfull \hbox (34.21355pt too wide) in paragraph at lines 356--357
+Overfull \hbox (34.21355pt too wide) in paragraph at lines 357--358
 []\OT1/cmtt/m/n/10.95 https://gopro.com/help/articles/Block/How-to-Pair-the-Cam
 era-with-the-GoPro-App#HERO4 
  []
@@ -426,124 +426,94 @@ era-with-the-GoPro-App#HERO4
 <Camera_diagram.jpg, id=40, 508.90125pt x 301.8778pt>
 File: Camera_diagram.jpg Graphic file (type jpg)
  <use Camera_diagram.jpg>
-Package pdftex.def Info: Camera_diagram.jpg used on input line 364.
+Package pdftex.def Info: Camera_diagram.jpg used on input line 365.
 (pdftex.def)             Requested size: 303.53708pt x 180.06403pt.
 
 <tablet.jpg, id=41, 1039.63406pt x 443.40656pt>
 File: tablet.jpg Graphic file (type jpg)
  <use tablet.jpg>
-Package pdftex.def Info: tablet.jpg used on input line 372.
+Package pdftex.def Info: tablet.jpg used on input line 373.
 (pdftex.def)             Requested size: 505.89pt x 215.76233pt.
  [9 <./Camera_diagram.jpg>]
-Overfull \hbox (10.52478pt too wide) in paragraph at lines 411--416
+Overfull \hbox (10.52478pt too wide) in paragraph at lines 412--417
 []\OT1/cmr/m/n/10.95 All op-er-a-tions may be done re-motely on the tablet via 
 Wi-Fi or di-rectly with the "info/wireless" 
  []
 
 [10 <./tablet.jpg>] [11]
-Overfull \hbox (10.31172pt too wide) in paragraph at lines 539--541
+Overfull \hbox (10.31172pt too wide) in paragraph at lines 517--519
 []\OT1/cmr/m/n/10.95 You may need to spec-ify the do-main you are log-ging into
 . If that is the case en-ter your CAEDM 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 542.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 520.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 542.
- [12]
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 520.
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 565.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 543.
 
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
+Overfull \hbox (13.58464pt too wide) in paragraph at lines 550--553
+[]\OT1/cmr/m/n/10.95 Return to the com-puter and press the "Sync Time" but-ton 
+on the bot-tom left cor-ner of the TADA[]UI 
+ []
 
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 565.
-
-<led_red_yellow.jpg, id=56, 1164.60094pt x 459.21562pt>
+<led_red_yellow.jpg, id=53, 1164.60094pt x 459.21562pt>
 File: led_red_yellow.jpg Graphic file (type jpg)
 
 <use led_red_yellow.jpg>
-Package pdftex.def Info: led_red_yellow.jpg used on input line 574.
+Package pdftex.def Info: led_red_yellow.jpg used on input line 559.
 (pdftex.def)             Requested size: 379.4175pt x 149.60767pt.
- [13 <./led_red_yellow.jpg>]
-Overfull \hbox (0.79741pt too wide) in paragraph at lines 663--672
+ [12] [13 <./led_red_yellow.jpg>] [14]
+Overfull \hbox (0.79741pt too wide) in paragraph at lines 685--694
 []\OT1/cmr/m/n/10.95 NOTE: Some SDS's will rec-om-mend us-ing a face shield in 
 ad-di-tion to splash gog-gles when 
  []
 
-[14] [15] [16]
+[15]
+Overfull \hbox (3.83305pt too wide) in paragraph at lines 828--831
+[]\OT1/cmr/m/n/10.95 If a tem-per-a-ture spike is ob-served, al-low enough time
+ for the tem-per-a-ture to re-turn to a steady 
+ []
 
-LaTeX Warning: Reference `sec:hyst' on page 17 undefined on input line 859.
+[16] [17]
 
-[17]
-Overfull \hbox (0.28036pt too wide) in paragraph at lines 926--928
+LaTeX Warning: Reference `' on page 18 undefined on input line 937.
+
+
+Overfull \hbox (0.28036pt too wide) in paragraph at lines 978--980
 []\OT1/cmr/m/n/10.95 Time of day that data col-lec-tion be-gan for that run us-
 ing a 24 hour clock for-mat "hhmm"  
  []
 
 [18]
 
-LaTeX Warning: Reference `sec:data_pa' on page 19 undefined on input line 993.
+LaTeX Warning: Reference `sec:data_pa' on page 19 undefined on input line 1045.
 
 
-Overfull \hbox (60.21039pt too wide) in paragraph at lines 999--1003
+
+Overfull \hbox (60.21039pt too wide) in paragraph at lines 1051--1055
 []\OT1/cmr/m/n/10.95 Pull out the SD card from the dat-a-log-ger and use the US
 B SD card adapter to copy the"DATALOG.CSV" 
  []
 
-
-Overfull \hbox (6.78342pt too wide) in paragraph at lines 1032--1035
+[19]
+Overfull \hbox (6.78342pt too wide) in paragraph at lines 1084--1087
 []\OT1/cmr/m/n/10.95 If the spill oc-curs in or out of the hood, use ab-sorbent
  clay that can be found un-der the counter 
  []
 
-[19] [20] (./ait_sop.aux)
+[20] [21] (./ait_sop.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
  3145 strings out of 494769
- 45780 string characters out of 6176752
+ 45772 string characters out of 6176752
  107475 words of memory out of 5000000
  6405 multiletter control sequences out of 15000+600000
  9444 words of font info for 33 fonts, out of 8000000 for 9000
@@ -554,17 +524,17 @@ live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2016/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
-pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/t
+ic/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2016/texmf-
 dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2016/texmf-dist/fonts
 /type1/public/cm-super/sfrm1095.pfb>
-Output written on ait_sop.pdf (20 pages, 3538131 bytes).
+Output written on ait_sop.pdf (21 pages, 3534331 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 130 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
