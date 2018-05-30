@@ -576,8 +576,8 @@ requirements of the method.
 \label{fig:tada_leds}
 \end{figure}
     
-    \item Press the "Sync Time" button on the bottom left corner of the TADA\_UI
-        window to syncronize the Arduino clock to the computer time
+     \item Press the "Sync Time" button on the bottom left corner of the TADA\_UI
+        window to synchronize the Arduino clock to the computer time
         \begin{itemize}
         \item This must be done at least once every work day
         \end{itemize}
@@ -681,34 +681,43 @@ will ensure consistent results with the lowest uncertainty possible.
         \begin{itemize}
         \item Liquids
             \begin{itemize}
-            \item Draw sample amount into a right-angle syringe            
+            \item Draw sample amount into a right-angle syringe
+                \begin{itemize}
+                \item This should not exceed about 300 microliters
+                \end{itemize}
             \end{itemize}
         
         \item Solids
             \begin{itemize}
             \item Tare the lab scale with the weigh boat and measure out sample
+                \begin{itemize}
+                \item Do not exceed specified amount
+                \end{itemize}
             \end{itemize}
             
         \item Gases
             \begin{itemize}
-            \item Draw sample amount into a right-angle syringe           
+            \item Draw sample amount into a right-angle syringe  
+                \begin{itemize}
+                \item This should not exceed about 300 microliters
+                \end{itemize}
             \end{itemize}
             
         \end{itemize}
 		
 	\item Adjust mirror so you can see into the flask
     
-    \item Prepare sample on ARIA
+     \item Prepare sample on ARIA
 		\begin{itemize}
 		\item Liquid/Gases Sample
-			begin{itemize}
-			\item Place syringe into syringe holder on ARIA, making sure the tip of the syringe is 
-				aligned with the hole in the furnace lid
+			\begin{itemize}
+			\item Place syringe securely into syringe holder on ARIA, making sure the tip of the syringe 
+			needle is aligned with the hole in the furnace lid
 			\end{itemize}
 			
 		\item Solid Sample
 			\begin{itemize}
-			\item Carefully insert weigh boat onto holder on ARIA, making sure that it is secure
+			\item Carefully insert weigh boat onto holder on ARIA servo, making sure that it is secure
 			\item As securely and vertically as possible, place the funnel on the ring stand arm of ARIA
 			\end{itemize}
 			
@@ -718,56 +727,67 @@ will ensure consistent results with the lowest uncertainty possible.
 		\begin{itemize} 
 		\item If it is not in the lowered position, manually lower it until
 			it is touching the plate. 
-		\item Plug in the ARIA power source and allow it to reach stand-by position. The LED lights will be lit, indicating it is 
-			in stand-by mode.
+		\item Plug in the ARIA power source and allow it to reach stand-by position. The LED lights 
+		will be lit, indicating it is in stand-by mode.
 		\end{itemize}
 	
-	\item If it is not the first run of the day, ensure that ARIA is in stand-by mode and the arm is in the raised 
+		\item If it is not the first run of the day, ensure that ARIA is in stand-by mode and the arm is in the raised 
 		stand-by position. The LED lights will be lit, indicating it is in stand-by mode.
-		
+	
+			
+	\item Remove gloves for touching any non-hazardous surfaces
 	
 	\item Place lid on pressure vessel and secure in place with the clamps.
 		\begin{itemize}
-		\item Tighten in a star pattern
+		\item Hand-tighten clamps gently all the way around, and then tighten again in a 
+		"criss-cross" pattern in the numbered order indicated on the clamps (hand tight is all that is necessary, 
+		but we talked about potentially using a torque wrench) This involves tightening two directly across from 
+		each other, then skipping one set to do the next one, and then repeating until all have been tightened.
 		\end{itemize}
 		
-	\item Note the absolute pressure in the lab on the barometer 
-        mounted on the east wall by the fume hood and write down the pressure
-        in the lab notebook 
+	\item Note the absolute pressure in the lab on the barometer mounted on the east wall by the fume hood 
+	and write down the pressure in the lab notebook
 		
 	\item Pressurize vessel
 		\begin{itemize}
 		\item Open the pressure transducer measurements by going to the TADA 
             firmware Arduino file and clicking 
 			"Serial Monitor" in the top right-hand corner.
-		\item Adjust pressure in vessel using air tank valve until the pressure 
-            in the vessel and the absolute pressure of the 
-			lab add up to 1 atm (760 torr)
+		\item Adjust pressure in vessel using air cylinder valves until the pressure in the vessel and the 
+		absolute pressure of the lab add up to 1 atm (760 torr)
 		\end{itemize} 
 		
-	\item Remove any glove from your LEFT hand and use your left hand for 
-        touching any non-hazardous surfaces
-	
-	\item Ensure the lab is sufficiently dark to see any flame from the mirror
-        on top of the furnace
+	\item Ensure that there are no leaks
+	    \begin{itemize}
+	    \item First check by running your fingers all around the lid. If you feel air coming out, shut off the air flow, 
+		allow the vessel to depressurize fully, and remove the lid to see what the problem is. Ensure that the ARIA 
+		and the cords are placed in such a way that they would not be in the way of the lid sealing all the way. Also 
+		check to make sure that the o-ring around the vessel is clean (no dust, debris etc.) so that proper sealing is possible. 
+		When you have located and solved the problem, go through the steps to pressurize again and then test it again.
+	    \item Second, do an additional pressure check by shutting off the air flow and watching the pressure readings. 
+		If the pressure is staying about constant over time, you can know that the vessel is properly sealed.
+	    \item Turn air flow back on
+	    \end{itemize}
+
+	\item Turn off lights and ensure the lab is sufficiently dark to see any flame from the mirror on top of the furnace in the vessel.
 	
 	\item Begin data collection 
 		\begin{itemize}
-		\item Use your left (ungloved) hand to press the Enter key
+		\item Press the Enter key
 		\item A red LED in the TA-DA should begin blinking
 		\item The TA-DA UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
           to time the experiment
 		\end{itemize}
 	
-    \item With your LEFT (ungloved) hand, press the red button on the tablet 
+    \item Press the red button on the tablet 
         screen to start recording
 		
 	\item Press the LED button on the ARIA control box that corresponds to the 
         physical state of the sample
 		(green for solid, blue for liquid) to initiate ARIA sample injection.
 	
-	%\item Set a timer for 10 minutes (refer to 4.2.13)
+	%\item Set a timer for 10 minutes
             
     \item Watch the mirror above the furnace for any flame/glow or the TA-DA UI
         for a large temperature spike for 10 minutes
@@ -842,9 +862,9 @@ will ensure consistent results with the lowest uncertainty possible.
             disappears
         \end{itemize}
 	
-	\item Wait the specified time to allow for the pressure vessel to be purged
+		\item Wait the specified time, about 10-20 minutes to allow for the pressure vessel to be purged of the combustion products
 	
-	\item Turn off the inlet air flow and wait for pressure vessel to FULLY depressurize
+	\item Turn off the inlet air flow and wait for pressure vessel to FULLY depressurize (outflow rotameter reads zero)
 	
 	\item Place snorkel over furnace and remove the pressure vessel lid.
 	
