@@ -44,6 +44,7 @@ class DAQGUI(Frame):
         self.path1 = 'C:\\Users\\Public\\Documents\\AIT\\data\\dump.csv'
         self.collect = False
         self.vis_data = 100     #Number of visible data points
+        self.com_port = ''
         self.baud_rate = 9600   #Serial rate (/s)
         self.init_delay = 1000  #Time to wait before restarting interface (ms)
         self.recurse_counter = 0
@@ -53,6 +54,10 @@ class DAQGUI(Frame):
         self.system_timestamp = ""
         self.rs232_port = 'COM1'
         self.rs232_baudrate = 19200
+        self.pemergency = 1000.0
+        self.atm1 = 760.0
+        self.plower = 758.0
+        self.pupper = 762.0
         self.initUI()
 
     def initUI(self):
@@ -68,9 +73,7 @@ class DAQGUI(Frame):
         
         self.parent.rowconfigure(0, pad=5)
         self.parent.rowconfigure(1, pad=5)
-        #self.parent.rowconfigure(2, weight=1)
         self.parent.rowconfigure(4, weight=2)
-        #self.parent.rowconfigure(4, weight=1)
         self.parent.rowconfigure(5, pad=5)
         
         
@@ -221,11 +224,12 @@ class DAQGUI(Frame):
         self.press.grid(row=5,column=2,columnspan=5)
         self.button2.grid(row=5,column=12)
         
-        print("GUI Set up attempting to connect to arduino...")
+        print("GUI Set up complete.\nAttempting to connect to TA-DA...")
         ## Start the DAQ
         while not self.connect():
-            input("Please fix the above issues and press "\
-                "ENTER to continue...")
+            x = input("Could not connect to TA-DA.\n Please fix the above issues and press "\
+                "ENTER to continue \n OR\n Enter q and press ENTER to quit ")
+            if len(x) > 0 and x[0] == 'q': self.quit_it()
 
         print("Arduino is connected.")
         self.clean_up()
@@ -233,17 +237,23 @@ class DAQGUI(Frame):
         
     def connect(self):
         try:
+            self.com_port = self.serial_port()
             self.ser = serial.Serial(
                 self.serial_port(), 
-                self.baud_rate, 
+                self.baud_rate,
                 timeout=1.0)
             self.rs232 = serial.Serial(
                 self.rs232_port,
                 self.rs232_baudrate)
-            #self.rs232.write(b'r')
+            assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
         except serial.serialutil.SerialException as detail:
-            print("\nSerialException: %s\n" % detail)
+            print("\nSerialException: \n{}\n".format(detail))
+            return False
+        except AssertionError:
+            print("\nAssertionError:\n TA-DA port '{}' and"\
+                " Vaisala Barometer Port '{}' are not open.\n".format(
+                self.com_port, self.rs232_port))
             return False
             
         
@@ -300,7 +310,8 @@ class DAQGUI(Frame):
         try:
             data_string = self.ser.readline().decode()
             data_chars = list(data_string)
-        except self.ser.serialTimeoutException:
+        except Exception as e:
+            print(e)
             print('Data could not be read')
             return None
         
@@ -329,26 +340,36 @@ class DAQGUI(Frame):
         for i in range(len(data)):
             try:
                 data[i] = float(data[i])
-            except ValueError:  #replace non-number data with zeroes
+            except ValueError:  #replace non-number data with zeros
                 data[i] = 0.0
         self.update_baro(data)
         return data
     
     def update_baro(self,data):
+        """
+        Pulls barometric pressure data in and adds it to the gauge pressure
+        Also updates the state of the pressure label to indicate if the 
+        pressure is within acceptable parameters. Makes a warning sound if 
+        pressure far exceeds acceptable parameters.
+        """
         baro_press = float(self.rs232.readline().decode())
         data[-1] += baro_press
-        self.press['text'] = "P(abs): {:3.2f} torr".format(data[-1])
-        if data[-1] < 755.0:
+        if data[-1] < self.plower:
             self.press['bg'] = 'blue'
             self.press['fg'] = 'white'
-        elif data[-1] > 765.0:
+            state = " (low)"
+        elif data[-1] > self.pupper:
             self.press['bg'] = '#cc0000'
             self.press['fg'] = 'white'
+            state = " (high)"
         else:
             self.press['bg'] = '#80ff00'
             self.press['fg'] = 'black'
-
-        if data[-1] > 1000:
+            state = ""
+        
+        self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
+        
+        if data[-1] > pemergency:
             self.press['text'] = "WARNING! P > 1000 TORR! SHUTDOWN!"
             while True:
                 winsound.Beep(880, 125)
@@ -417,9 +438,7 @@ class DAQGUI(Frame):
         self.parent.quit()
         self.parent.destroy()
         exit()
-    
-    #def passit(self):
-    #    pass
+
     
     def start_stop(self, event=None):
         """ The Start Stop proceedure. Once stopped the program will ask you 
@@ -494,10 +513,9 @@ class DAQGUI(Frame):
     
     def serial_port(self):
         """
-        XXXX Returns a generator for all available serial ports
-        returns a string of the 
-        excludes 'COM 1' because that is generally reserved for the RS 232 interface
-        from the barometer
+        returns a string of the first available port that is not COM 1
+        excludes 'COM 1' because that is generally reserved for the 
+        RS 232 interface from the barometer
         """
         if osname == 'nt':
             # windows
