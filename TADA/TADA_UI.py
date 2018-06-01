@@ -14,11 +14,6 @@ A GUI for collecting time dependent data and storing the data in comma separated
 values files (.csv). Originally designed to collect 4 temperature data vs. time 
 and plot one of the temperatures in real time with matplotlib. Ideal for 
 use with Arduino.
-
-Changes to this version:
-  Fixes by: Jared Schaumann
-   - Fixed 'byte string' conversion bug into UTF-8.
-   - Fixed same bug for UTF-8 --> 'byte string' going out to Arduino
 """
 
 ## Tkinter imports
@@ -38,6 +33,7 @@ from os import system, name as osname
 from sys import exit
 import serial
 from time import localtime, strftime
+import winsound
 
 
 class DAQGUI(Frame):
@@ -55,6 +51,8 @@ class DAQGUI(Frame):
         self.time = 0
         self.arduino_timestamp = ""
         self.system_timestamp = ""
+        self.rs232_port = 'COM1'
+        self.rs232_baudrate = 19200
         self.initUI()
 
     def initUI(self):
@@ -147,8 +145,6 @@ class DAQGUI(Frame):
             fg='white',padx=3)
         self.lrel_hum = Label(master=self.parent,text="rh%/ext temp",
             bg='black', fg='white',padx=3)
-        self.lpress_torr = Label(master=self.parent,text="Press (torr)",
-            bg='black', fg='white',padx=3)
         self.lnotes = Label(master=self.parent,text="Notes",
             bg='black', fg='white',padx=3)
         
@@ -171,8 +167,6 @@ class DAQGUI(Frame):
             justify='center',insertbackground='white')
         self.sound      = Entry(master=self.parent,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.press_torr = Entry(master=self.parent,bg='black', fg='white',
-            justify='center',insertbackground='white')
         self.rel_hum = Entry(master=self.parent,bg='black', fg='white',
             justify='center',insertbackground='white')
         self.notes = Entry(master=self.parent,bg='black', fg='white',
@@ -187,6 +181,8 @@ class DAQGUI(Frame):
             command=self.start_stop, bg='green',padx=5,pady=5)
         self.msg1 = Label(master=self.parent, text="Data Collection Ready", 
             bg='black', fg='white',padx=5,pady=5)
+        self.press = Label(master=self.parent, text="P(abs): 0 torr", 
+            bg='black', fg='white',padx=5,pady=5,relief='groove')
         
         # grid set
         self.sv_btn.grid(row=0,column=0,columnspan=13)
@@ -201,7 +197,6 @@ class DAQGUI(Frame):
         self.lignition.grid(row=2,column=7)
         self.lhot_cold.grid(row=2,column=8) 
         self.lsound.grid(row=2,column=9)   
-        self.lpress_torr.grid(row=2,column=10)
         self.lrel_hum.grid(row=2,column=11)
         self.lnotes.grid(row=2,column=12)
         
@@ -213,8 +208,7 @@ class DAQGUI(Frame):
         self.test_temp.grid(row=3,column=6)
         self.ignition.grid(row=3,column=7)
         self.hot_cold.grid(row=3,column=8) 
-        self.sound.grid(row=3,column=9)   
-        self.press_torr.grid(row=3,column=10)
+        self.sound.grid(row=3,column=9)
         self.rel_hum.grid(row=3,column=11)
         self.notes.grid(row=3,column=12)
         
@@ -223,7 +217,8 @@ class DAQGUI(Frame):
         
         self.button1.grid(row=5,column=0)
         self.button_sync.grid(row=5,column=1,sticky=W)
-        self.msg1.grid(row=5,column=2,columnspan=11)
+        self.msg1.grid(row=5,column=7,columnspan=4)
+        self.press.grid(row=5,column=2,columnspan=5)
         self.button2.grid(row=5,column=12)
         
         print("GUI Set up attempting to connect to arduino...")
@@ -238,7 +233,14 @@ class DAQGUI(Frame):
         
     def connect(self):
         try:
-            self.ser = serial.Serial('COM3', self.baud_rate, timeout=1.0)
+            self.ser = serial.Serial(
+                self.serial_port(), 
+                self.baud_rate, 
+                timeout=1.0)
+            self.rs232 = serial.Serial(
+                self.rs232_port,
+                self.rs232_baudrate)
+            #self.rs232.write(b'r')
             return True
         except serial.serialutil.SerialException as detail:
             print("\nSerialException: %s\n" % detail)
@@ -253,7 +255,7 @@ class DAQGUI(Frame):
         self.xdata = []
         self.ydata = []
         self.data = [
-            ['time','t1','t2','t3','t4']]
+            ['time','t1','t2','t3','t4','pressure']]
     
     def file_save_as(self, event=None):
         """ Run save as dialog to choose target file. If an existing file is
@@ -277,13 +279,12 @@ class DAQGUI(Frame):
         data_out = []
         for i in data:
             pt1 = []
-            if i == ['time','t1','t2','t3','t4']:# or list(str(i[0]))[0] == '+':
+            if i == ['time','t1','t2','t3','t4','pressure']:# or list(str(i[0]))[0] == '+':
                 pt2 = ",".join(i)
                 data_out.append(pt2)
                 continue
             for j in i:
-
-                pt1.append("%.2f" % j)
+                pt1.append("{.2f}".format(j))
             pt2 = ",".join(pt1)
             data_out.append(pt2)
         data_out.insert(0,"")
@@ -299,7 +300,7 @@ class DAQGUI(Frame):
         try:
             data_string = self.ser.readline().decode()
             data_chars = list(data_string)
-        except self.ser.self.serialTimeoutException:
+        except self.ser.serialTimeoutException:
             print('Data could not be read')
             return None
         
@@ -324,13 +325,33 @@ class DAQGUI(Frame):
         # It is a complete data string
         data_string = data_string.strip("\r\n")
         data = data_string.split(',')
-        data.pop(0)
+        data.pop(0) # get rid of leading symbol
         for i in range(len(data)):
             try:
                 data[i] = float(data[i])
             except ValueError:  #replace non-number data with zeroes
                 data[i] = 0.0
+        self.update_baro(data)
         return data
+    
+    def update_baro(self,data):
+        baro_press = float(self.rs232.readline().decode())
+        data[-1] += baro_press
+        self.press['text'] = "P(abs): {:3.2f} torr".format(data[-1])
+        if data[-1] < 755.0:
+            self.press['bg'] = 'blue'
+            self.press['fg'] = 'white'
+        elif data[-1] > 765.0:
+            self.press['bg'] = '#cc0000'
+            self.press['fg'] = 'white'
+        else:
+            self.press['bg'] = '#80ff00'
+            self.press['fg'] = 'black'
+
+        if data[-1] > 1000:
+            self.press['text'] = "WARNING! P > 1000 TORR! SHUTDOWN!"
+            while True:
+                winsound.Beep(880, 125)
     
     def graph_it(self, data1):
         """ Reset the data to be graphed and then update the graph """
@@ -436,7 +457,7 @@ class DAQGUI(Frame):
             text_out = self.format_data(self.data)
             data_name_out = self.get_data_name()
             f.write("Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test "\
-            "Temp,Ignition?,Hot/Cold?,Sound?,Press (Torr),Relative Humidity,"\
+            "Temp,Ignition?,Hot/Cold?,Sound?,Relative Humidity,"\
             "Notes\n")
             f.write(data_name_out)
             f.write('\n')
@@ -471,6 +492,27 @@ class DAQGUI(Frame):
         self.clean_up()
         #self.parent.after(self.init_delay, self.ser.open())
     
+    def serial_port(self):
+        """
+        XXXX Returns a generator for all available serial ports
+        returns a string of the 
+        excludes 'COM 1' because that is generally reserved for the RS 232 interface
+        from the barometer
+        """
+        if osname == 'nt':
+            # windows
+            for i in range(1,256):
+                try:
+                    s = serial.Serial('COM'+ str(i + 1))
+                    s.close()
+                    return 'COM' + str(i + 1)
+                except serial.SerialException:
+                    pass
+        else:
+            # unix
+            for port in list_ports.comports():
+                return port[0]
+    
     def trigger_check(self, trigger):
         if trigger:
             self.start_stop()
@@ -486,7 +528,6 @@ class DAQGUI(Frame):
             self.ignition.get(),
             self.hot_cold.get(),
             self.sound.get(),
-            self.press_torr.get(),
             self.rel_hum.get(),
             self.notes.get()]
         
@@ -499,7 +540,6 @@ class DAQGUI(Frame):
         self.ignition.delete(0, END)
         self.hot_cold.delete(0, END)
         self.sound.delete(0, END)
-        self.press_torr.delete(0, END)
         self.rel_hum.delete(0, END)
         self.notes.delete(0, END)
         

@@ -2,7 +2,7 @@
 *    TA-DA ZUKO
 * Thermocouple Amplifier - Data Aquisition
 * Version 1 codename: ZUKO
-* Firmware version: 0.5.0
+* Firmware version: 0.5.1
 * by Mark Redd
 */
 
@@ -273,7 +273,7 @@ void loop(void)
     dataString += String(t1)   + ",";
     dataString += String(t2)   + ",";
     dataString += String(t3)   + ",";
-    dataString += String(pv_torr);
+    dataString += String(pv_torr,3);
   
     if(Serial.available() > 0) incomingByte = Serial.read(); // Check for communication over serial
     if(incomingByte == 49) { // look for an ASCII '1' which means write data to file
