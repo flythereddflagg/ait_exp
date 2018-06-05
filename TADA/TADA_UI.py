@@ -58,6 +58,8 @@ class DAQGUI(Frame):
         self.atm1 = 760.0
         self.plower = 758.0
         self.pupper = 762.0
+        self.baro_press = 640.0 # barometric pressure in torr (nominal expected value
+        self.pvessel = 640.0 # absolute pressure inside the vessel
         self.initUI()
 
     def initUI(self):
@@ -75,7 +77,6 @@ class DAQGUI(Frame):
         self.parent.rowconfigure(1, pad=5)
         self.parent.rowconfigure(4, weight=2)
         self.parent.rowconfigure(5, pad=5)
-        
         
         self.parent.columnconfigure(0, weight=1)
         self.parent.columnconfigure(1, weight=1)
@@ -220,9 +221,9 @@ class DAQGUI(Frame):
         
         self.button1.grid(row=5,column=0)
         self.button_sync.grid(row=5,column=1,sticky=W)
-        self.msg1.grid(row=5,column=7,columnspan=4)
-        self.press.grid(row=5,column=2,columnspan=5)
+        self.msg1.grid(row=5,column=6,columnspan=5)
         self.button2.grid(row=5,column=12)
+        self.press.grid(row=5,column=2,columnspan=5)
         
         print("GUI Set up complete.\nAttempting to connect to TA-DA...")
         ## Start the DAQ
@@ -353,13 +354,18 @@ class DAQGUI(Frame):
         pressure is within acceptable parameters. Makes a warning sound if 
         pressure far exceeds acceptable parameters.
         """
-        baro_press = float(self.rs232.readline().decode())
-        data[-1] += baro_press
-        if data[-1] < self.plower:
+        try:
+            self.baro_press = float(self.rs232.readline().decode())
+            data[-1] += self.baro_press
+            self.pvessel = data[-1]
+        except ValueError:
+             self.pvessel = data[-1] + self.baro_press
+        
+        if self.pvessel < self.plower:
             self.press['bg'] = 'blue'
             self.press['fg'] = 'white'
             state = " (low)"
-        elif data[-1] > self.pupper:
+        elif self.pvessel > self.pupper:
             self.press['bg'] = '#cc0000'
             self.press['fg'] = 'white'
             state = " (high)"
@@ -370,9 +376,12 @@ class DAQGUI(Frame):
         
         self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
         
-        if data[-1] > self.pemergency:
-            self.press['text'] = "WARNING! P > 1000 TORR! SHUTDOWN!"
+        if self.pvessel > self.pemergency:
+            self.msg1['text'] = "WARNING! P > 1000 TORR! SHUTDOWN NOW!"
+            self.msg['bg'] = '#cc0000'
+            self.msg['fg'] = 'white'
             winsound.Beep(880, 125)
+            
     
     def graph_it(self, data1):
         """ Reset the data to be graphed and then update the graph """
