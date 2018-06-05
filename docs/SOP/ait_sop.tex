@@ -713,7 +713,7 @@ will ensure consistent results with the lowest uncertainty possible.
             \begin{itemize}
             \item Tare the lab scale with the weigh boat and measure out sample
                 \begin{itemize}
-                \item Do not exceed specified amount
+                \item This should not exceed 250 mg
                 \end{itemize}
             \end{itemize}
             
@@ -721,13 +721,13 @@ will ensure consistent results with the lowest uncertainty possible.
             \begin{itemize}
             \item Draw sample amount into a right-angle syringe  
                 \begin{itemize}
-                \item This should not exceed about 250 microliters
+                \item This should not exceed 250 microliters
                 \end{itemize}
             \end{itemize}
             
         \end{itemize}
 
-     \item Prepare sample on the ARIA
+     \item Secure the sample to the ARIA
 		\begin{itemize}
 		\item Liquid/Gases Sample
 			\begin{itemize}
@@ -746,7 +746,7 @@ will ensure consistent results with the lowest uncertainty possible.
 	\item Remove gloves before proceeding
 	
 	\item Place lid on pressure vessel and secure in place with the 
-        clamps % and cable
+        clamps and cable
 		\begin{itemize}
         \item When placing the lid, hold the lid directly above the vessel and 
             carefully lower it straight down on the vessel to avoid hitting the
@@ -756,52 +756,53 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Ensure the lid is centered on the vessel by running your fingers
             around the edge to ensure the edge of the vessel and the lid are
             flush 
-		\item Tighten all the pressure vessel clamps on the lip of the lid so 
+		\item Hand tighten all the pressure vessel clamps on the lip of the lid so 
             the slack is taken out
-            %(hand tight is all that is necessary but we talked about 
-            % potentially using a torque wrench).
-        \item Tighten all clamps hand tight in opposing pairs following the 
-            numbering on the back of each clamp
-        \item Further tighten each clamp by going all the way around once more
-         %\item Place and secure the safety chain\cable 
+        \item Tighten the clamps in opposing pairs following the numbering on 
+			the back of each clamp (see Figure \ref{fig:Top_of_lid}) using a torque wrench, tightening each clamp until the torque reads 60 inch pounds
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\textwidth]{Top_of_lid.jpg}
+\caption{Clamp numbering}
+\label{fig:Top_of_lid}
+\end{figure}
+         
+        \item Tighten each clamp again with the torque wrench, this time by going around
+			the circle, ensuring that torque is 60 inch pounds on each.
+        \item Loop the safety cable through both lid handles and through the handles on
+			both sides of the vessel and then up through the lid handles and secure the two ends 
+			together (See Figure \ref{fig:Cable})
+           
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\textwidth]{Cable.png}
+\caption{Secure Cable}
+\label{fig:Cable}
+\end{figure}
+
 		\end{itemize}
 		
 	\item Pressurize vessel
 		\begin{itemize}
-		%\item Open the pressure transducer measurements by going to the TADA 
-        %    firmware Arduino file and clicking 
-        %    "Serial Monitor" in the top right-hand corner.
+		\item Open the TADA\_UI in the ait\_exp folder. The absolute pressure in the vessel
+			is read at the bottom of the window highlighted in blue
         \item Ensure the ball valve is closed
-       
         \item Fully open the rotometer on the exhaust of the pressure vessel
-        \item Slowly open the cylinder valve 
+        \item Slowly open the cylinder valve all the way and then turn back one 
+			quarter turn
         \item Once the regulators are pressurized, slowly open the ball valve
             \begin{itemize}
             \item Note: If a loud, high pitched noise is heard, there is a 
                 leak. Immediately close the ball valve and allow the vessel to 
                 fully vent to ambient pressure and check all seals
             \item Ensure that there are no leaks
-            % \begin{itemize}
-            % \item First check by running your fingers all around the lid. If you 
-                % feel air coming out, shut off the air flow, allow the vessel to 
-                % depressurize fully, and remove the lid to see what the problem is. 
-                % Ensure that the ARIA and the cords are placed in such a way that 
-                % they would not be in the way of the lid sealing all the way. Also 
-                % check to make sure that the O-ring around the vessel is clean (no 
-                % dust, debris etc.) so that proper sealing is possible. When you have
-                % located and solved the problem, go through the steps to pressurize 
-                % again and then test it again.
-            % \item Second, do an additional pressure check by shutting off the air 
-                % flow and watching the pressure readings. If the pressure is staying 
-                % about constant over time, you can know that the vessel is properly 
-                % sealed.
-            % \item Turn air flow back on
-            % \end{itemize}
             \end{itemize}
         \item Slowly close the rotometer until the air flow reads 0.4 SCFM 
             (the lowest graduation on the rotometer)
 		\item Adjust pressure in vessel using low pressure regulator until the    
-            absolute pressure in the vessel is 1 atm (760 Torr)
+            absolute pressure reading in the TADA\_UI is highlighted green indicating that the 
+			pressure in the vessel is 1 atm (760 Torr)
 		\end{itemize} 
 
 	\item Ensure the vessel is sufficiently dark to see any 
@@ -907,8 +908,15 @@ will ensure consistent results with the lowest uncertainty possible.
         \end{itemize}	
 	\item After the purge time as ended, turn off the inlet air flow and wait 
         for pressure vessel to \textit{fully} depressurize (outflow rotometer reads zero)
-	\item Remove the pressure vessel lid and \textit{immediately} place snorkel 
-        inside the pressure vessel approximately 6" over the furnace  
+	\item Remove the pressure vessel lid 
+		\begin{itemize}
+		\item Loosen the clamps in the same way that they were tightened, this time 
+			using a regular wrench instead of a torque wrench
+		\item Remove the safety cable \textit{after} you remove the clamps
+		\item Lift off the lid and\textit{immediately} place snorkel inside the 
+		pressure vessel approximately 6" over the furnace 
+		\end{itemize}
+		
     \item Clean out the flask between measurements by blowing hot air into
             the flask for 5 minutes using the heat gun
             \begin{itemize}
@@ -920,6 +928,7 @@ will ensure consistent results with the lowest uncertainty possible.
             allow the furnace and flask to thermally equilibrate
     \item Start this procedure over from step 1 (choose the target file)
     \end{enumerate}
+
 	
 \subsection{Shutdown}
     \begin{itemize}
@@ -934,7 +943,7 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Tuck the end of the USB cord into the mounted section under the 
             edge of the hood so it does not present a tripping hazard
         \item Extract all data to the computer and appropriately rename them 
-            (Refer to section \ref{})
+            (Refer to section ........)
         \item Shut down and unplug the tablet and the camera
         \item Remove the camera from the tripod using the plastic quick-release 
             lever and store the camera next to the lab computer
@@ -1041,8 +1050,7 @@ efficiency and avoid common mistakes.
             docs\textbackslash GoPro\_App\_for\_Desktop\_User\_Manual.pdf}
             \end{itemize}
         \item Once extracted to the DIPPR legacy server, video data may be 
-            timestamped and converted to .avi format on the server (See 
-            Section \ref{sec:data_pa})
+            timestamped and converted to .avi format on the server
         \end{itemize}
         
     \item To extract data from the datalogger

@@ -244,7 +244,8 @@ class DAQGUI(Frame):
                 timeout=1.0)
             self.rs232 = serial.Serial(
                 self.rs232_port,
-                self.rs232_baudrate)
+                self.rs232_baudrate,
+				timeout=1.0)
             assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
         except serial.serialutil.SerialException as detail:
@@ -369,10 +370,9 @@ class DAQGUI(Frame):
         
         self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
         
-        if data[-1] > pemergency:
+        if data[-1] > self.pemergency:
             self.press['text'] = "WARNING! P > 1000 TORR! SHUTDOWN!"
-            while True:
-                winsound.Beep(880, 125)
+            winsound.Beep(880, 125)
     
     def graph_it(self, data1):
         """ Reset the data to be graphed and then update the graph """
