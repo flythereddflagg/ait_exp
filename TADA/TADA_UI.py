@@ -319,10 +319,9 @@ class DAQGUI(Frame):
         
         if len(data_chars) == 0: # check for empty string
             return None
-            
-        print("%s" %data_string, end=' ')
         
         if data_chars[0] != '|': # it's not data
+            print(data_string, end='')
             if data_chars[0] == '+': # it's the arduino timestamp
                 self.system_timestamp = "\nSystem start time is: "\
                     "%s" % strftime("%Y/%m/%d %H:%M:%S", localtime())
@@ -337,6 +336,7 @@ class DAQGUI(Frame):
             
         # It is a complete data string
         data_string = data_string.strip("\r\n")
+        print(data_string, '-', self.baro_press)
         data = data_string.split(',')
         data.pop(0) # get rid of leading symbol
         for i in range(len(data)):
@@ -377,10 +377,12 @@ class DAQGUI(Frame):
         self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
         
         if self.pvessel > self.pemergency:
+            self.msg_str = self.msg1['text']
             self.msg1['text'] = "WARNING! P > 1000 TORR! SHUTDOWN NOW!"
-            self.msg['bg'] = '#cc0000'
-            self.msg['fg'] = 'white'
+            self.msg1['bg'] = '#cc0000'
+            self.msg1['fg'] = 'white'
             winsound.Beep(880, 125)
+
             
     
     def graph_it(self, data1):
@@ -418,7 +420,9 @@ class DAQGUI(Frame):
             t1 = float(data1[0] - self.start_time)/1000
             self.msg1['text'] = "Collecting Data...\t"\
                 "Time (sec): %.1f" % (t1)
-
+        else:
+            self.msg1['text'] = "Data Collection Ready"
+            self.msg1['bg'] = 'black'
         self.graph_it(data1)              # put the data on a graph
         
         self.parent.after(0, self.daq_loop) # loop
