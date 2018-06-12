@@ -12,11 +12,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  psignal = 0;
-  for (int i = 0; i < 5; i++){
-    psignal += analogRead(pressurePin);
-  }
-  psignal /= 5;
+  psignal = analogRead(pressurePin);
   Serial.println(psignal);
-  delay(250);
+  // delay(250);
 }

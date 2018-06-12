@@ -1,3 +1,4 @@
+
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage[letterpaper, margin=0.75in]{geometry}
@@ -77,15 +78,15 @@ requirements of the method.
         \end{itemize}
     \item Start up computer and log on
         \begin{itemize}
-        \item Before you do anything else with the furnace you should ensure 
-            that it is at a safe temperature the next few steps explain how 
+        \item Before working with the furnace you should ensure 
+            that it is at a safe temperature. The next few steps explain how 
             to do this
         \item Use your CAEDM account to log in
             \begin{itemize}
             \item You should be able to access all the needed tools and 
                 programs from your account
             \item If you cannot access a program or file from your account, let 
-                me know and I will give you administrator access as needed
+                Mark know and he will give you administrator access as needed
             \end{itemize}
         
         \item You may need to specify the domain you are logging into. If that 
@@ -105,7 +106,7 @@ requirements of the method.
         \end{itemize}
     
     \item Ensure a compatible SD card is inserted securely into the TA-DA 
-        datalogger
+        datalogger (see Figure \ref{fig:tada_leds})
     \item Ensure the thermocouples are connected to the TA-DA
     \item Connect the TA-DA to the lab computer via the USB cable mounted 
         under the edge of the hood
@@ -121,6 +122,13 @@ requirements of the method.
                 begin flashing (See Figure \ref{fig:tada_leds})
             \end{itemize}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\textwidth]{led_red_yellow.jpg}
+\caption{Control LEDs inside the TA-DA}
+\label{fig:tada_leds}
+\end{figure}
+
     \item Return to the computer and press the "Sync Time" button on the bottom 
         left corner of the TADA\_UI
         window to synchronize the Arduino clock to the computer time
@@ -128,12 +136,6 @@ requirements of the method.
         \item This must be done at least once every work day
         \end{itemize}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{led_red_yellow.jpg}
-\caption{Control LEDs inside the TA-DA}
-\label{fig:tada_leds}
-\end{figure}
         
     \item Use the TADA\_UI program to track the internal temperature of the 
         flask as it heats up initially
@@ -351,7 +353,7 @@ will ensure consistent results with the lowest uncertainty possible.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.35\textwidth]{Cable.png}
-\caption{secure cable}
+\caption{Secure Cable}
 \label{fig:Cable}
 \end{figure}
 

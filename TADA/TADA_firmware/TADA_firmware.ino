@@ -120,13 +120,26 @@ void set_write_time(void)
 }
 
 /************* PRESSURE MEASUREMENT DEFINITIONS *******************/
-int pressurePin = A0; // input pin for pressure transducer
-double pv_torr = 0;        // initialize value from pressure vessel
+const int 
+  pressurePin = A8, // input pin for pressure transducer
+  solenoidPin = 7;  // pin to open solenoid
+int safetySig = 0;    // signal from pressure transducer for solenoid open
+double pv_torr = 0;   // initialize value from pressure vessel
+
+// to easily remember which position is open and closed respectivly
+const size_t 
+  sol_open = HIGH, 
+  sol_close = LOW; 
+
+const int 
+  sigOn = 213, // signal lower limit saying the pressure transducer is NOT powered on 
+  sigHi = 700; // signal upper limit saying the pressure is too high
 
 //Calibration fit line
 // R = 263.511; //ohm resistance across the 4-20 mA signal 
-double m = 0.30021;   // torr/sig (slope of calibration fit line)
-double b = -64.786;     // torr (intercept of calibration line)
+const double 
+  m = 0.30021,   // torr/sig (slope of calibration fit line)
+  b = -64.786;     // torr (intercept of calibration line)
 
 //Function for torr
 double sigToTorr(int sig)
@@ -148,6 +161,10 @@ void setup(void)
   Serial.println("\tTA-DA ZUKO");
   Serial.println("Thermocouple Amplifier - Data Aquisition");
 
+  /************* SETUP SAFETY SOLENOID ***************************/
+  pinMode(solenoidPin, OUTPUT);
+  digitalWrite(solenoidPin, sol_close);
+  
   /************* SETUP TEMPERATURE MEASUREMENT ***************************/
   // Start up the library
   Serial.println("Starting Thermocouple Amplifiers...");
@@ -235,21 +252,40 @@ void setup(void)
   
   if (! rtc.initialized()) {
     Serial.println("RTC is NOT running!");
-    // following line sets the RTC to the date & time this sketch was compiled
-    // rtc.adjust(DateTime(__DATE__, __TIME__));
-    // This line sets the RTC with an explicit date & time, for example to set
-    // January 21, 2014 at 3am you would call:
-    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+    /*
+     * The following line sets the RTC to the date & time this sketch was compiled:
+     *   rtc.adjust(DateTime(__DATE__, __TIME__));
+     * This line sets the RTC with an explicit date & time, 
+     * for example to set January 21, 2014 at 3am you would call:
+     *   rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+    */
   }
   
   set_write_time();
   sensors.requestTemperatures(); // get the first temp reading
   now1 = millis(); // get the time of that first reading
-  
-} /* END SETUP */
+  Serial.println("--- SETUP FINISHED ---");
+} /**************** END SETUP *********************/
 
 void loop(void)
 { 
+  safetySig = analogRead(pressurePin);
+  if (safetySig > sigOn && safetySig < sigHi){
+    /*
+     * if the pressure transducer is powered on and 
+     * is below the dangerous upper pressure limit then
+     * open the solenoid safety valve  
+    */
+    digitalWrite(solenoidPin, sol_open);
+  }
+  else{
+     /*
+     * if one of the above conditions is not met,
+     * close the solenoid saftey valve
+    */
+    digitalWrite(solenoidPin, sol_close);
+  }
+  
   if (sensors.isConversionAvailable(Thermometer0) &&\
       sensors.isConversionAvailable(Thermometer1) &&\
       sensors.isConversionAvailable(Thermometer2) &&\
@@ -265,7 +301,7 @@ void loop(void)
     
     tmel = now1 - starttime; // get elapsed time
 
-// Correct for calibrations here
+    // Correct for calibrations here
   
     dataString = "|,";  // Put it all in a string
     dataString += String(tmel) + ",";
