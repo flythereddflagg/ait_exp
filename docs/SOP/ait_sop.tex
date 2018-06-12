@@ -1,3 +1,4 @@
+
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage[letterpaper, margin=0.75in]{geometry}
@@ -65,6 +66,10 @@ any step of the process violates the ASTM E659 Method to conform to the
 requirements of the method.
     
     \subsection{Startup}
+    
+	Before you work with the furnace you should ensure 
+            that it is at a safe temperature %%the next few steps explain how to do this
+    
     \begin{enumerate}
     \item Ensure the lid is off the pressure vessel and the vessel is being 
         vented by the snorkel
@@ -77,15 +82,13 @@ requirements of the method.
         \end{itemize}
     \item Start up computer and log on
         \begin{itemize}
-        \item Before you do anything else with the furnace you should ensure 
-            that it is at a safe temperature the next few steps explain how 
-            to do this
+      
         \item Use your CAEDM account to log in
             \begin{itemize}
             \item You should be able to access all the needed tools and 
                 programs from your account
             \item If you cannot access a program or file from your account, let 
-                me know and I will give you administrator access as needed
+                Mark know and he will give you administrator access as needed
             \end{itemize}
         
         \item You may need to specify the domain you are logging into. If that 
@@ -106,19 +109,35 @@ requirements of the method.
     
     \item Ensure a compatible SD card is inserted securely into the TA-DA 
         datalogger
-    \item Ensure the thermocouples are connected to the TA-DA
+        
+\begin{figure}[H]
+\centering
+\includegraphics[width=.2\textwidth]{sdcard_reader.jpg}
+\caption{SD card reader}
+\label{fig:SDcard_reader}
+\end{figure}
+        
+    \item Ensure the thermocouples are connected to the TA-DA %%Connectors? Picture?
     \item Connect the TA-DA to the lab computer via the USB cable mounted 
         under the edge of the hood
+        
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{TA-DA.jpg}
+\caption{connect TA-DA}
+\label{fig:TA-DA}
+\end{figure}
+        
     \item Plug in the 24 volt power supply to the TA-DA
     \item Open the TA-DA user interface program 
             \begin{itemize}
             \item Path: \textit{C:\textbackslash Users\textbackslash  
-                Public\textbackslash Documents\textbackslash AIT\textbackslash 
+                Public\textbackslash Public Documents\textbackslash AIT\textbackslash 
                 ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
             \item Upon opening the program, a yellow LED in the TA-DA should 
-                begin flashing (See Figure \ref{fig:tada_leds})
+                begin flashing (See Figure \ref{fig:tada_leds}) %Check to see that you are getting data
             \end{itemize}
 
     \item Return to the computer and press the "Sync Time" button on the bottom 
@@ -145,9 +164,16 @@ requirements of the method.
             $100^\circ C$
         \end{itemize}
     \item Ensure the ARIA lead screws are set such that the ARIA is in the 
-        shutdown position
+        shutdown position %Expand on this/ pictures?
     \item Ensure the three molex cables are securely plugged in to the ARIA and
         will not come out while the ARIA is moving
+        
+\begin{figure}[H]
+\centering\includegraphics[width=.5\textwidth]{Molex_Cables_ARIA2.jpg}
+\caption{Molex cables secured and out of the way}
+\label{fig:Molex_Cables_ARIA}
+\end{figure}
+        
     \item Align the ARIA so that the needle or funnel is aligned to the center
         of the injection hole in the top of the furnace
         \begin{itemize}
@@ -834,7 +860,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
 \label{fig:wrap}
 \end{figure}
 
-        \item Loosen the nut on top of the lid assembly and slide the 
+        \item Using the bracket, loosen the nut on top of the lid assembly and slide the 
             corresponding half of the ceramic part of the lid assembly out
         \item Fit the neck of the flask in the center hole of the ceramic lid 
             assembly with the lip of the flask fitting into the groove at the 
@@ -849,8 +875,9 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
                 \item The two halves nearest to the top of the assembly should 
                     meet or very nearly meet; if they don't then some 
                     foil should be removed from the neck of the flask
-                \item Use a circular spring to help hold the halves together
-                \end{itemize}
+                 \end{itemize}
+        \item Use a circular spring to help hold the halves together
+               
         
         \item Make a "donut" of foil wrapped around the neck of the flask that 
             will rest up against the bottom of the lid assembly
@@ -923,7 +950,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         as possible before use, the following steps are required for flask 
         cleaning:
         \begin{itemize}
-        \item Always begin by soaking the inside of the flask with soapy water 
+		        \item Always begin by soaking the inside of the flask with soapy water 
             for 12 - 24 hours, regardless of how dirty it is
         \item While soaking, the flask should always be secured to a ring stand
         \item Wash out flask with soap and water, scrubbing the inside with 
@@ -964,6 +991,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
 
 \newpage 
     \subsection{Furnace}
+    	\subsubsection{Overview}
     \begin{itemize}
     \item The furnace, shown in Figure \ref{fig:furnace_pic}, is an encased 
         stack of ceramic insulation with cavities 
@@ -992,13 +1020,13 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     \item Any time a desired temperature is reached, allow at least 30 
         minutes for thorough thermal equilibration in the flask; allow extra 
         time during initial start up
+     
+     \end{itemize}
 
-    \item Furnace Operation (See Figure \ref{fig:furnace_pic}):
-        \begin{itemize}
-        \item Plug in the 220 V extension cord in the corresponding outlet on 
-        the wall opposite the hood (adjacent to the DSC computer)
-        \item Plug in the furnace to the 220 V extension cord
-        \item Power on the furnace with the power switch and use the temperature
+\subsubsection{Furnace Operation (See Figure \ref{fig:furnace_pic})}
+      \begin{itemize}
+      \item Plug in the furnace to the 220 V extension cord
+      \item Power on the furnace with the power switch and use the temperature
             controller to choose a setpoint temperature
         \item To change the set point, press the up or down arrows until 
             the desired temperature is reached
@@ -1007,12 +1035,12 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         \item When shutting down, turn off the power switch, unplug the 
             furnace and unplug the 220 V extension cord from the opposite wall
         \end{itemize}
-    \end{itemize}
 
         
     \subsection{Camera and Tablet} \label{sec:cam_tab}
-    \begin{itemize}
-    \item Prior to using the experimental setup, all researchers must become 
+    \subsubsection{Overview}
+    	\begin{itemize}
+    	\item Prior to using the experimental setup, all researchers must become 
         familiar with basic use and operation of the 
         GoPro\textsuperscript{\textcopyright} HERO4
         Session\textsuperscript{TM} camera and the Samsung Galaxy Tab A Tablet. 
@@ -1044,16 +1072,20 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     
     \item Refer to Figures \ref{fig:cam_diag} and \ref{fig:tablet} for camera 
         and tablet setup
-    \item Connecting to the camera:
+        
+     \end{itemize}
+        
+       
+    \subsubsection{Connecting to the camera} 
         \begin{itemize}
-        \item Press the "info/wireless" button on the back of the camera until 
+        \item Firmly press and release the "info/wireless" button on the back of the camera multiple times until 
             you see "APP" on the camera status screen
         \item Press the "shutter/select" button to confirm your selection
             \begin{itemize}
             \item The "wireless status" (blue) light will begin flashing. This 
                 indicates the camera is broadcasting a Wi-Fi signal 
             \end{itemize}
-        \item Power on the tablet by holding down the power key until you see 
+        \item Power on the tablet by holding down the power key (top, right side) until you see 
             splash screen indicating the tablet is booting up
         \item Once the tablet has booted, swipe to get to the home screen and 
             select the "Settings" app
@@ -1066,7 +1098,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
             screen by pressing the home key
         \item Open the GoPro Capture App (app is labeled "Capture" on the home 
             screen) % CONTINUE HERE!
-        \item Select the connect box on the top left corner of the screen
+        \item Select the connect box on the top left corner of the screen to connect to camera
         \item Press the camera icon in the center of the screen
             \begin{itemize}
             \item The camera will make a beeping noise and the camera view will 
@@ -1074,28 +1106,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
             \end{itemize}
         \end{itemize}
     
-    \item Camera operation:
-        \begin{itemize}
-        \item All operations may be done remotely on the tablet via Wi-Fi or 
-            directly with the "info/wireless" and "shutter/select" buttons on 
-            the camera. For experimental purposes, only basic operations
-            will be covered. For more detail on camera 
-            operation please see the URLs above
-        \item In the camera's off or normal modes the "shutter/select" button 
-            toggles recording or standby; the camera will automatically shut off
-            after a few seconds on standby
-        \item If the camera is remotly controlled, the on screen red button 
-            toggles recording or standby
-        \item During recording, the camera will not allow viewing via the 
-            tablet. This is due to the high framerate of our experiments
-        \item Captured video may be reviewed and managed remotely with the grid
-            button on the bottom left corner of the screen
-        \item The camera may be powered on and off remotely with the power  
-            button on the top right corner of the screen. The camera should be 
-            powered off between experiments or when not in use
-        \end{itemize}
-    
-    \item Shutdown:
+    \subsection{Shutdown}
         \begin{itemize}
         \item To shutdown the camera:
             \begin{itemize}
@@ -1130,21 +1141,46 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         
         \end{itemize}
     
-    \item Batteries:
-        \begin{itemize}
-        \item Recharging power supplies and usb cables are availible for both
-            the tablet and camera
-        \item Both the camera and the tablet may be charged while in use
-        \item Do NOT charge tablet with the computer as it does not deliver 
-            enough current for effective charging
-        \item Batteries should be allowed to discharge to between 10 - 20\%
-            before recharging
-        \item Batteries should always be recharged to 100\% capacity before 
-            unplugging
-        \item Do not overcharge any battery. Do not leave any battery 
-            charging overnight
-        \end{itemize}
+    \subsection{Other Information}
+    	\begin{itemize}
+        \item Camera Operation
+        	\begin{itemize}
+        	\item All operations may be done remotely on the tablet via Wi-Fi or 
+            directly with the "info/wireless" and "shutter/select" buttons on 
+            the camera. For experimental purposes, only basic operations
+            will be covered. For more detail on camera 
+            operation please see the URLs above
+        	\item In the camera's off or normal modes the "shutter/select" button 
+            toggles recording or standby; the camera will automatically shut off
+            after a few seconds on standby
+        	\item If the camera is remotly controlled, the on screen red button 
+            toggles recording or standby
+        	\item During recording, the camera will not allow viewing via the 
+            tablet. This is due to the high framerate of our experiments
+        	\item Captured video may be reviewed and managed remotely with the grid
+            button on the bottom left corner of the screen
+        	\item The camera may be powered on and off remotely with the power  
+            button on the top right corner of the screen. The camera should be 
+            powered off between experiments or when not in use
+        	\end{itemize}
         
-    \end{itemize}
+        
+        
+    	\item Batteries:
+        	\begin{itemize}
+        	\item Recharging power supplies and usb cables are availible for both
+            the tablet and camera
+        	\item Both the camera and the tablet may be charged while in use
+        	\item Do NOT charge tablet with the computer as it does not deliver 
+            enough current for effective charging
+        	\item Batteries should be allowed to discharge to between 10 - 20\%
+            before recharging
+        	\item Batteries should always be recharged to 100\% capacity before 
+            unplugging
+        	\item Do not overcharge any battery. Do not leave any battery 
+            charging overnight
+        	\end{itemize}
+        
+    	\end{itemize}
 
 \end{document}
