@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  30 MAY 2018 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  6 JUN 2018 14:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -473,68 +473,66 @@ Overfull \hbox (0.79741pt too wide) in paragraph at lines 685--694
 ad-di-tion to splash gog-gles when 
  []
 
-[15]
-Overfull \hbox (3.83305pt too wide) in paragraph at lines 828--831
+<Top_of_lid.jpg, id=68, 537.6888pt x 541.5432pt>
+File: Top_of_lid.jpg Graphic file (type jpg)
+ <use Top_of_lid.jpg>
+Package pdftex.def Info: Top_of_lid.jpg used on input line 766.
+(pdftex.def)             Requested size: 177.06458pt x 178.33795pt.
+ [15]
+<Cable.png, id=72, 410.2828pt x 456.95718pt>
+File: Cable.png Graphic file (type png)
+ <use Cable.png>
+Package pdftex.def Info: Cable.png used on input line 779.
+(pdftex.def)             Requested size: 177.06458pt x 197.20593pt.
+ [16 <./Top_of_lid.jpg> <./Cable.png>]
+Overfull \hbox (3.83305pt too wide) in paragraph at lines 829--832
 []\OT1/cmr/m/n/10.95 If a tem-per-a-ture spike is ob-served, al-low enough time
  for the tem-per-a-ture to re-turn to a steady 
  []
 
-[16] [17]
-
-LaTeX Warning: Reference `' on page 18 undefined on input line 937.
-
-
-Overfull \hbox (0.28036pt too wide) in paragraph at lines 978--980
+[17] [18]
+Overfull \hbox (0.28036pt too wide) in paragraph at lines 987--989
 []\OT1/cmr/m/n/10.95 Time of day that data col-lec-tion be-gan for that run us-
 ing a 24 hour clock for-mat "hhmm"  
  []
 
-[18]
-
-LaTeX Warning: Reference `sec:data_pa' on page 19 undefined on input line 1045.
-
-
-
-Overfull \hbox (60.21039pt too wide) in paragraph at lines 1051--1055
+[19]
+Overfull \hbox (60.21039pt too wide) in paragraph at lines 1059--1063
 []\OT1/cmr/m/n/10.95 Pull out the SD card from the dat-a-log-ger and use the US
 B SD card adapter to copy the"DATALOG.CSV" 
  []
 
-[19]
-Overfull \hbox (6.78342pt too wide) in paragraph at lines 1084--1087
+[20]
+Overfull \hbox (6.78342pt too wide) in paragraph at lines 1092--1095
 []\OT1/cmr/m/n/10.95 If the spill oc-curs in or out of the hood, use ab-sorbent
  clay that can be found un-der the counter 
  []
 
-[20] [21] (./ait_sop.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[21] [22] (./ait_sop.aux) ) 
 Here is how much of TeX's memory you used:
- 3145 strings out of 494769
- 45772 string characters out of 6176752
- 107475 words of memory out of 5000000
- 6405 multiletter control sequences out of 15000+600000
+ 3156 strings out of 494769
+ 45941 string characters out of 6176752
+ 107495 words of memory out of 5000000
+ 6413 multiletter control sequences out of 15000+600000
  9444 words of font info for 33 fonts, out of 8000000 for 9000
  107 hyphenation exceptions out of 8191
- 39i,5n,32p,239b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2016/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2016/texmf-
-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2016/texmf-dist/fonts
-/type1/public/cm-super/sfrm1095.pfb>
-Output written on ait_sop.pdf (21 pages, 3534331 bytes).
+ 39i,5n,32p,239b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super
+/cm-super-ts1.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+b10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
+b><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texl
+ive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on ait_sop.pdf (22 pages, 4174063 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
+ 135 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
