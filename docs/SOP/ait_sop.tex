@@ -7,8 +7,10 @@
 \usepackage{gensymb}
 \usepackage{textcomp}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{float}
 \usepackage{wrapfig}
+
 
 
 \setlength{\parskip}{1em}
@@ -67,9 +69,6 @@ requirements of the method.
     
     \subsection{Startup}
     
-	Before you work with the furnace you should ensure 
-            that it is at a safe temperature %%the next few steps explain how to do this
-    
     \begin{enumerate}
     \item Ensure the lid is off the pressure vessel and the vessel is being 
         vented by the snorkel
@@ -107,36 +106,52 @@ requirements of the method.
         
         \end{itemize}
     
-    \item Ensure a compatible SD card is inserted securely into the TA-DA 
-        datalogger
+    \item Ensure a compatible SD card is inserted securely into the TADA 
+        datalogger (see Figure \ref{fig:sd_card_reader})
         
 \begin{figure}[H]
 \centering
-\includegraphics[width=.2\textwidth]{sdcard_reader.jpg}
-\caption{SD card reader}
-\label{fig:SDcard_reader}
+\includegraphics[width=.3\textwidth]{sd_card_reader.jpg}
+\caption{SD card slot location}
+\label{fig:sd_card_reader}
 \end{figure}
         
-    \item Ensure the thermocouples are connected to the TA-DA %%Connectors? Picture?
-    \item Connect the TA-DA to the lab computer via the USB cable mounted 
-        under the edge of the hood
-        
+    \item Ensure the furnace thermocouples are connected to their corresponding connectors inside 
+		the vessel (see Figure \ref{fig:Thermocouples}) %%Connectors? Picture?
+		
 \begin{figure}[H]
 \centering
-\includegraphics[width=.5\textwidth]{TA-DA.jpg}
-\caption{connect TA-DA}
-\label{fig:TA-DA}
+\includegraphics[width=.4\textwidth]{Thermocouples.jpg}
+\caption{Thermocouples connections}
+\label{fig:Thermocouples}
+\end{figure}		
+		
+    \item Connect the TADA to the lab computer via the USB cable mounted 
+        under the edge of the hood (see Figure \ref{fig:TADA_USB})
+
+		
+\begin{figure}%
+    \centering
+	\subfloat[USB Connection]{{\includegraphics[height=5cm]{TADA_USB.jpg} }}%
+    \qquad
+    \subfloat[24V Power Connection]{{\includegraphics[height=5cm]{24V_cable.jpg} }}%
+    \caption{TADA Connections}%
+    \label{fig:tada_connect}%
 \end{figure}
+
         
-    \item Plug in the 24 volt power supply to the TA-DA
-    \item Open the TA-DA user interface program 
+    \item Plug in the 24 volt power supply to the TADA
+
+
+		
+    \item Open the TADA user interface program 
             \begin{itemize}
             \item Path: \textit{C:\textbackslash Users\textbackslash  
                 Public\textbackslash Public Documents\textbackslash AIT\textbackslash 
                 ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
-            \item Upon opening the program, a yellow LED in the TA-DA should 
+            \item Upon opening the program, a yellow LED in the TADA should 
                 begin flashing (See Figure \ref{fig:tada_leds}) %Check to see that you are getting data
             \end{itemize}
 
@@ -148,30 +163,32 @@ requirements of the method.
         \end{itemize}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=.75\textwidth]{led_red_yellow.jpg}
-\caption{Control LEDs inside the TA-DA}
-\label{fig:tada_leds}
+	\centering
+	\includegraphics[width=.75\textwidth]{led_red_yellow.jpg}
+	\caption{Control LEDs inside the TADA}
+	\label{fig:tada_leds}
 \end{figure}
-        
-    \item Use the TADA\_UI program to track the internal temperature of the 
-        flask as it heats up initially
-    \item Check the temperature of the furnace to ensure safe handling for 
+
+    \item Using the TADA\_UI, check the temperature of the furnace to ensure safe handling for 
         startup
         \begin{itemize}
         \item The temperature should be close to ambient lab temperature
-        \item Do not begin experiments until the internal temperature is below
-            $100^\circ C$
+        \item Do not perform maintenance or change the flask unless the internal temperature of the 
+			furnace is below $40^\circ C$
         \end{itemize}
     \item Ensure the ARIA lead screws are set such that the ARIA is in the 
         shutdown position %Expand on this/ pictures?
-    \item Ensure the three molex cables are securely plugged in to the ARIA and
-        will not come out while the ARIA is moving
+    \item Ensure the three molex cables are securely plugged in to the ARIA (see Figure \ref{fig:Molex_cables})
+		\begin{itemize}
+		\item There are three connection points shown in Figure \ref{fig:Molex_cables}
+		\item Regardless of the experiments to be performed, ensure all are plugged in and the 
+			corresponding cables are not strained
+		\end{itemize}
         
 \begin{figure}[H]
-\centering\includegraphics[width=.5\textwidth]{Molex_Cables_ARIA2.jpg}
+\centering\includegraphics[width=.5\textwidth]{Molex_cables.jpg}
 \caption{Molex cables secured and out of the way}
-\label{fig:Molex_Cables_ARIA}
+\label{fig:Molex_cables}
 \end{figure}
         
     \item Align the ARIA so that the needle or funnel is aligned to the center
@@ -184,7 +201,14 @@ requirements of the method.
         \end{itemize}
     \item Plug in the ARIA control to the 5 volt power supply and wait for 
         initial setup sequence to complete (The two button lights on the ARIA
-        control will come on when the sequence is complete)
+        control will come on when the sequence is complete) (See Figure \ref{fig:5V_cable})
+		
+\begin{figure}[H]
+\centering\includegraphics[width=.5\textwidth]{5V_cable.jpg}
+\caption{Plug in ARIA; 5V ONLY}
+\label{fig:5V_cable}
+\end{figure}
+
     \item Test the placement of the ARIA using a blank sample
          \begin{itemize}
          \item For liquids/gases, place the empty syringe in the ARIA, lined up 
@@ -267,7 +291,7 @@ will ensure consistent results with the lowest uncertainty possible.
                 March 19, 2013 at 4:25 pm would be: \newline
                 "hexane\_l\_130319\_1625\_100\_450\_.csv"
             \end{itemize}    
-        \item This action will reset the TA-DA for the next measurement        
+        \item This action will reset the TADA for the next measurement        
         \end{itemize}
     
     \item \textbf{Safety: Ensure you are using proper PPE and have minimized 
@@ -410,9 +434,9 @@ will ensure consistent results with the lowest uncertainty possible.
 	
 	\item Begin data collection 
 		\begin{itemize}
-		\item In the TA-DA UI program, press the Enter key
-		\item A red LED in the TA-DA should begin blinking
-		\item The TA-DA UI will keep track of the elapsed time since data 
+		\item In the TADA UI program, press the Enter key
+		\item A red LED in the TADA should begin blinking
+		\item The TADA UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
           to time the experiment
 		\end{itemize}
@@ -424,7 +448,7 @@ will ensure consistent results with the lowest uncertainty possible.
         physical state of the sample
 		(green for solid, blue for liquid) to initiate ARIA sample injection.
             
-    \item Watch the TA-DA UI for a large temperature spike for 10 minutes
+    \item Watch the TADA UI for a large temperature spike for 10 minutes
         \begin{itemize}
         \item If a temperature spike is observed, allow enough time for the
             temperature to return to a steady state before stopping the camera 
@@ -445,7 +469,7 @@ will ensure consistent results with the lowest uncertainty possible.
         temperature spike
     
     \item Record pertinent data and observations in the lab book and the 
-        TA-DA UI
+        TADA UI
         \begin{itemize}
         \item The following data must be present on the same row, in the 
             following order:
@@ -482,14 +506,14 @@ will ensure consistent results with the lowest uncertainty possible.
         \item If any item is unknown, leave a blank until it can be determined
         \item Optionally, leave any pertinent comments about the experiment
             next to or directly under this row of data
-        \item Record the same data in the corresponding fields in the TA-DA UI
+        \item Record the same data in the corresponding fields in the TADA UI
             \textbf{before} terminating temperature data collection
         \end{itemize}
         
     \item After the experiment ends, terminate data collection
         \begin{itemize}
         \item Press the Enter key  again to stop data 
-            collection (the red light on the TA-DA should stop blinking)
+            collection (the red light on the TADA should stop blinking)
         \item Press the red button on the tablet screen to stop recording
         \item Turn the lights back on
         \item Video recording may be stopped as soon as a flame or glow
@@ -536,8 +560,8 @@ will ensure consistent results with the lowest uncertainty possible.
         every work day or any time the setup is not in use:
         \begin{itemize}
         \item Power off the furnace
-        \item Unplug TA-DA from the computer
-        \item Unplug the ARIA and TA-DA power supplies 
+        \item Unplug TADA from the computer
+        \item Unplug the ARIA and TADA power supplies 
         \item Remove and store the syringe or ring stand if applicable
         \item Rinse the funnel with acetone and dispose of the waste
         \item Tuck the end of the USB cord into the mounted section under the 
@@ -562,7 +586,7 @@ will ensure consistent results with the lowest uncertainty possible.
     
 \section{Data Extraction} 
 During experiments data are being recorded on the lab computer, the datalogger 
-and the camera. Both the camera and the datalogger on the TA-DA have SD cards 
+and the camera. Both the camera and the datalogger on the TADA have SD cards 
 with a 32 GB storage capacity that allows multiple runs to be recorded without 
 extraction. The following policies are in place to ensure ease of use, 
 efficiency and avoid common mistakes.
@@ -655,7 +679,7 @@ efficiency and avoid common mistakes.
         
     \item To extract data from the datalogger
         \begin{itemize}
-        \item Unplug the TA-DA from the computer
+        \item Unplug the TADA from the computer
         \item Pull out the SD card from the datalogger and use the USB SD card 
             adapter to copy the"DATALOG.CSV" file into the "raw\_data" path and 
             rename it to the original filename with the date 
@@ -932,7 +956,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
 \end{figure}
 
         \item Connect the thermocouple connectors to join the  
-            leads from the flask to the TA-DA
+            leads from the flask to the TADA
         \item Ensure the mirrors are set up correctly
         \item The final setup should resemble Figure \ref{fig:in_furnace}
         \end{itemize}
@@ -1080,8 +1104,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
        
     \subsubsection{Connecting to the camera} 
         \begin{itemize}
-        \item Firmly press and release the "info/wireless" button on the back of the camera multiple times until 
-            you see "APP & RC" on the camera status screen
+        \item Firmly press and release the "info/wireless" button on the back of the camera multiple times until you see "APP \& RC" on the camera status screen
         \item Press the "shutter/select" button to confirm your selection
             \begin{itemize}
             \item The "wireless status" (blue) light will begin flashing. This 
