@@ -1,0 +1,1211 @@
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{titlesec}
+\usepackage[document]{ragged2e}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{wrapfig}
+
+
+
+\setlength{\parskip}{1em}
+
+\DeclareGraphicsExtensions{.jpg,.JPG}
+
+\newcommand*{\TitleFont}{
+      \usefont{\encodingdefault}{\rmdefault}{b}{n}
+      \fontsize{12}{20}
+      \selectfont}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    %\addtocounter{page}{-1}%
+    \newpage}
+      
+\begin{document}
+
+% generates the title
+%\maketitle
+\begin{center}
+\TitleFont AIT Measurement Standard Operating Procedure\newline
+\TitleFont Last modified on: \today \hspace{1mm} by Mark Redd \newline
+\end{center}
+
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+
+\begin{itemize}
+\item \textbf{NOTICE: Lab policy requires that any person performing 
+    AIT measurements must have done the following before performing any 
+    experimental work:}
+    
+    \begin{itemize}
+    \item \textbf{Complete pertinent laboratory safety training 
+    \item Read this SOP in its entirety
+    \item Become familiar with all the experimental steps outlined in this SOP
+    \item Sign and Date the AIT SOP Signatures Sheet}
+    \end {itemize}
+\end{itemize}
+%\renewcommand{\baselinestretch}{.75}\normalsize
+\tableofcontents    % insert the table of contents
+%\renewcommand{\baselinestretch}{1.0}\normalsize
+%\tableofcontents 
+    
+\newpage
+\section{Measurement and Data Collection}
+This section enumerates the procedure for measuring AIT. Researchers 
+should follow these procedures every day and for every experiment performed to 
+ensure consistent results. The first priority should always be safety. 
+Therefore, if any step of this process is found to be unsafe or pose an 
+unacceptable risk it should be changed. Furthermore, changes should be made if 
+any step of the process violates the ASTM E659 Method to conform to the 
+requirements of the method.
+    
+    \subsection{Startup}
+    
+    \begin{enumerate}
+    \item Ensure the lid is off the pressure vessel and the vessel is being 
+        vented by the snorkel
+        \begin{itemize}
+        \item Under normal operation, the vessel should be vented with the 
+            snorkel any time the vessel is open
+        \item The only exception to this rule is when the experimental setup has
+            been shut down for an extended period of time for maintenance 
+            purposes
+        \end{itemize}
+    \item Start up computer and log on
+        \begin{itemize}
+      
+        \item Use your CAEDM account to log in
+            \begin{itemize}
+            \item You should be able to access all the needed tools and 
+                programs from your account
+            \item If you cannot access a program or file from your account, let 
+                Mark know and he will give you administrator access as needed
+            \end{itemize}
+        
+        \item You may need to specify the domain you are logging into. If that 
+            is the case enter your CAEDM credentials in as follows:
+            \begin{itemize}
+            \item Username: CAEDM\_AD\textbackslash
+            \textit{your\_caedm\_username}
+            \item Password: \textit{your\_caedm\_password}
+            \end{itemize}
+        
+        %\item Using the administrator account:
+        %    \begin{itemize}
+        %    \item Username: CHEME-R-2014-25\textbackslash AIT\_LAB
+        %    \item Password: Explosionsinthesky16 (Explosions in the sky 16)
+        %    \end{itemize}
+        
+        \end{itemize}
+    
+    \item Ensure a compatible SD card is inserted securely into the TADA 
+        datalogger (see Figure \ref{fig:sd_card_reader})
+        
+\begin{figure}[H]
+\centering
+\includegraphics[width=.3\textwidth]{sd_card_reader.jpg}
+\caption{SD card slot location}
+\label{fig:sd_card_reader}
+\end{figure}
+        
+    \item Ensure the furnace thermocouples are connected to their corresponding connectors inside 
+		the vessel (see Figure \ref{fig:Thermocouples}) %%Connectors? Picture?
+		
+\begin{figure}[H]
+\centering
+\includegraphics[width=.4\textwidth]{Thermocouples.jpg}
+\caption{Thermocouples connections}
+\label{fig:Thermocouples}
+\end{figure}		
+		
+    \item Connect the TADA to the lab computer via the USB cable mounted 
+        under the edge of the hood (see Figure \ref{fig:TADA_USB})
+
+		
+\begin{figure}%
+    \centering
+	\subfloat[USB Connection]{{\includegraphics[height=5cm]{TADA_USB.jpg} }}%
+    \qquad
+    \subfloat[24V Power Connection]{{\includegraphics[height=5cm]{24V_cable.jpg} }}%
+    \caption{TADA Connections}%
+    \label{fig:tada_connect}%
+\end{figure}
+
+        
+    \item Plug in the 24 volt power supply to the TADA
+
+
+		
+    \item Open the TADA user interface program 
+            \begin{itemize}
+            \item Path: \textit{C:\textbackslash Users\textbackslash  
+                Public\textbackslash Public Documents\textbackslash AIT\textbackslash 
+                ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
+            \item You may wish to make a shortcut to this location and put it on 
+                your CAEDM desktop.
+            \item Upon opening the program, a yellow LED in the TADA should 
+                begin flashing (See Figure \ref{fig:tada_leds}) %Check to see that you are getting data
+            \end{itemize}
+
+    \item Return to the computer and press the "Sync Time" button on the bottom 
+        left corner of the TADA\_UI
+        window to synchronize the Arduino clock to the computer time
+        \begin{itemize}
+        \item This must be done at least once every work day
+        \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.75\textwidth]{led_red_yellow.jpg}
+	\caption{Control LEDs inside the TADA}
+	\label{fig:tada_leds}
+\end{figure}
+
+    \item Using the TADA\_UI, check the temperature of the furnace to ensure safe handling for 
+        startup
+        \begin{itemize}
+        \item The temperature should be close to ambient lab temperature
+        \item Do not perform maintenance or change the flask unless the internal temperature of the 
+			furnace is below $40^\circ C$
+        \end{itemize}
+    \item Ensure the ARIA lead screws are set such that the ARIA is in the 
+        shutdown position %Expand on this/ pictures?
+    \item Ensure the three molex cables are securely plugged in to the ARIA (see Figure \ref{fig:Molex_cables})
+		\begin{itemize}
+		\item There are three connection points shown in Figure \ref{fig:Molex_cables}
+		\item Regardless of the experiments to be performed, ensure all are plugged in and the 
+			corresponding cables are not strained
+		\end{itemize}
+        
+\begin{figure}[H]
+\centering\includegraphics[width=.5\textwidth]{Molex_cables.jpg}
+\caption{Molex cables secured and out of the way}
+\label{fig:Molex_cables}
+\end{figure}
+        
+    \item Align the ARIA so that the needle or funnel is aligned to the center
+        of the injection hole in the top of the furnace
+        \begin{itemize}
+        \item You will need to install the appropriate setup for the compound
+            you intend to test that day
+        \item After alignment, remove any setup materials used to reach 
+            alignment
+        \end{itemize}
+    \item Plug in the ARIA control to the 5 volt power supply and wait for 
+        initial setup sequence to complete (The two button lights on the ARIA
+        control will come on when the sequence is complete) (See Figure \ref{fig:5V_cable})
+		
+\begin{figure}[H]
+\centering\includegraphics[width=.5\textwidth]{5V_cable.jpg}
+\caption{Plug in ARIA; 5V ONLY}
+\label{fig:5V_cable}
+\end{figure}
+
+    \item Test the placement of the ARIA using a blank sample
+         \begin{itemize}
+         \item For liquids/gases, place the empty syringe in the ARIA, lined up 
+            over the flask, and run the Liquid program.
+         \item For solids, place the ring stand in the ARIA, then secure the 
+            funnel in the ring stand, then run the solid program
+         \item If the syringe or the funnel do not go directly into the flask, 
+            adjust the placement and retest until properly positioned
+         \end{itemize}
+    \item Ensure the furnace is plugged in
+    \item Power on furnace and set furnace temperature between 20 - 30 degrees 
+        above your initial target flask temperature 
+    \item Reduce the set point temperature when the internal flask temperature 
+        exceeds your initial target temperature by 5 - 10 degrees 
+        \begin{itemize}
+        \item Wait a minimum of 90 minutes before changing the temperature
+        \item When powered on initially, the furnace may take up to 2 hours or   
+            more to reach a desired temperature and thermally equilibrate
+        \end{itemize}
+    
+    \item While the furnace heats initially, prepare the tablet and the camera
+        \begin{itemize}
+        \item Power on the tablet and connect it to the camera's Wi-Fi (See 
+            Section \ref{sec:cam_tab} on how to do this)
+        \item Open the Capture app to view the camera's view finder
+        \item Mount the camera on the tripod using the plastic quick-release
+            mount on top of the tripod
+        \item Using the camera's view finder on the tablet, adjust the
+            position of the camera, tripod, and mirror on the furnace to 
+            align the camera's view to see through the sight glass directly down
+            the center of the flask
+            \begin{itemize}
+            \item The camera should be positioned looking into the sight glass
+                so that the hole in the furnace \textit{and} the mirror 
+                are visible 
+            \item For the best view, the camera should be as close to the 
+                sight glass as the tripod will allow
+            \end{itemize}
+        
+        \item Gently tighten the knobs on the tripod to fix the camera in place
+        \end{itemize}
+    
+    \item Once the target temperature is reached, allow 30 minutes for thermal 
+        equilibration, then begin experiments
+    \end{enumerate}
+    
+\subsection{Experimental}
+This section outlines the steps for experimental runs. Each experiment should be
+performed following these steps exactly (insofar as that is possible). Doing so
+will ensure consistent results with the lowest uncertainty possible.
+    \begin{enumerate}
+  
+    \item In the TADA\_UI program, press the "Choose Target File" button and 
+        choose where to save your file
+        \begin{itemize}
+        \item Save all temperature data files in comma separated values (.csv) 
+            format
+        \item Path: \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            data\textbackslash compound\_name\textbackslash filename.csv}
+        \item File naming convention: 
+            \begin{itemize}
+            \item Filenames will be organized by the following values in order 
+                separated by underscores ("\_")
+                    \begin{itemize}
+                    \item Compound name
+                    \item Phase of the compound ('g' for gases, 'l' for liquids,
+                        's' for solids)
+                    \item Date of experiment with the format "YYMMDD"
+                    \item Time of day that data collection began for that run
+                        using a 24 hour clock format "hhmm"
+                    \item Sample size in microliters (for liquids) or milligrams
+                        (for solids and gases)
+                    \item Test temperature in degrees Celsius (rounded to the 
+                        nearest integer)
+                    \end{itemize}
+                    
+            \item For example: The file name of an AIT experiment where 100 
+                microliters of liquid hexane were tested at 450 \degree C on 
+                March 19, 2013 at 4:25 pm would be: \newline
+                "hexane\_l\_130319\_1625\_100\_450\_.csv"
+            \end{itemize}    
+        \item This action will reset the TADA for the next measurement        
+        \end{itemize}
+    
+    \item \textbf{Safety: Ensure you are using proper PPE and have minimized 
+        hazards in the lab environment before continuing}
+            
+            \begin{itemize}
+            \item Ensure your workspace, the area around the computer and 
+                both hoods are free of clutter, tripping hazards or any object 
+                which could present a hazard to you or anyone else in the lab
+            \item Appropriate PPE (e.g. nitrile gloves and splash goggles) are 
+                required when handling chemicals
+            \item Refer to the SDS for the chemical you are working 
+                with when determining appropriate PPE
+                \begin{itemize}
+                \item NOTE: Some SDS's will recommend using a face shield in 
+                    addition to splash goggles when handing their respective 
+                    chemicals. In our lab we will use ventilation hoods which, 
+                    when used properly, serve as better protection than face 
+                    shields. Therefore, any time an SDS recommends using a 
+                    face shield you may safely ignore that recommendation 
+                    provided you are using the hood properly by positioning the 
+                    sash between your face and the work being performed in 
+                    the hood.
+                \end{itemize}
+                
+            \item Unless an SDS states otherwise, lab coats are recommended but 
+                not required when handling chemicals
+            \item All chemical handling (except for injection into the furnace) 
+                should be done in the left hood to avoid a potential fire hazard 
+            \end{itemize}
+    
+    \item Measure out sample
+        \begin{itemize}
+        \item Liquids
+            \begin{itemize}
+            \item Draw sample amount into a right-angle syringe
+                \begin{itemize}
+                \item This should not exceed about 250 microliters
+                \end{itemize}
+            \end{itemize}
+        
+        \item Solids
+            \begin{itemize}
+            \item Tare the lab scale with the weigh boat and measure out sample
+                \begin{itemize}
+                \item This should not exceed 250 mg
+                \end{itemize}
+            \end{itemize}
+            
+        \item Gases
+            \begin{itemize}
+            \item Draw sample amount into a right-angle syringe  
+                \begin{itemize}
+                \item This should not exceed 250 microliters
+                \end{itemize}
+            \end{itemize}
+            
+        \end{itemize}
+
+     \item Secure the sample to the ARIA
+		\begin{itemize}
+		\item Liquid/Gases Sample
+			\begin{itemize}
+			\item Place the syringe securely into the syringe holder on the 
+                ARIA, making sure the tip of the syringe 
+                needle is aligned down the center of the hole in the furnace
+			\end{itemize}
+			
+		\item Solid Sample
+			\begin{itemize}
+			\item Carefully insert weigh boat onto holder on the ARIA servo
+			\end{itemize}
+			
+		\end{itemize}
+			
+	\item Remove gloves before proceeding
+	
+	\item Place lid on pressure vessel and secure in place with the 
+        clamps and cable
+		\begin{itemize}
+        \item When placing the lid, hold the lid directly above the vessel and 
+            carefully lower it straight down on the vessel to avoid hitting the
+            ARIA with the lid
+        \item Line up the two marks on the lid with the corresponding marks 
+            on the vessel
+        \item Ensure the lid is centered on the vessel by running your fingers
+            around the edge to ensure the edge of the vessel and the lid are
+            flush 
+		\item Hand tighten all the pressure vessel clamps on the lip of the lid so 
+            the slack is taken out
+        \item Tighten the clamps in opposing pairs following the numbering on 
+			the back of each clamp (see Figure \ref{fig:Top_of_lid}) using a torque wrench, tightening each clamp until the torque reads 60 inch pounds
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\textwidth]{Top_of_lid.jpg}
+\caption{Clamp numbering}
+\label{fig:Top_of_lid}
+\end{figure}
+         
+        \item Tighten each clamp again with the torque wrench, this time by going around
+			the circle, ensuring that torque is 60 inch pounds on each.
+        \item Loop the safety cable through both lid handles and through the handles on
+			both sides of the vessel and then up through the lid handles and secure the two ends 
+			together (See Figure \ref{fig:Cable})
+           
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\textwidth]{Cable.png}
+\caption{secure cable}
+\label{fig:Cable}
+\end{figure}
+
+		\end{itemize}
+		
+	\item Pressurize vessel
+		\begin{itemize}
+		\item Open the TADA\_UI in the ait\_exp folder. The absolute pressure in the vessel
+			is read at the bottom of the window highlighted in blue
+        \item Ensure the ball valve is closed
+        \item Fully open the rotometer on the exhaust of the pressure vessel
+        \item Slowly open the cylinder valve all the way and then turn back one 
+			quarter turn
+        \item Once the regulators are pressurized, slowly open the ball valve
+            \begin{itemize}
+            \item Note: If a loud, high pitched noise is heard, there is a 
+                leak. Immediately close the ball valve and allow the vessel to 
+                fully vent to ambient pressure and check all seals
+            \item Ensure that there are no leaks
+            \end{itemize}
+        \item Slowly close the rotometer until the air flow reads 0.4 SCFM 
+            (the lowest graduation on the rotometer)
+		\item Adjust pressure in vessel using low pressure regulator until the    
+            absolute pressure reading in the TADA\_UI is highlighted green indicating that the 
+			pressure in the vessel is 1 atm (760 Torr)
+		\end{itemize} 
+
+	\item Ensure the vessel is sufficiently dark to see any 
+        flame from the mirror on top of the furnace
+	
+	\item Begin data collection 
+		\begin{itemize}
+		\item In the TADA UI program, press the Enter key
+		\item A red LED in the TADA should begin blinking
+		\item The TADA UI will keep track of the elapsed time since data 
+          collection began at the bottom of the window. This may be used
+          to time the experiment
+		\end{itemize}
+	
+    \item Press the red button on the tablet 
+        screen to start recording
+		
+	\item Press the LED button on the ARIA control box that corresponds to the 
+        physical state of the sample
+		(green for solid, blue for liquid) to initiate ARIA sample injection.
+            
+    \item Watch the TADA UI for a large temperature spike for 10 minutes
+        \begin{itemize}
+        \item If a temperature spike is observed, allow enough time for the
+            temperature to return to a steady state before stopping the camera 
+            and terminating temperature data collection
+        
+        \item The experiment ends when one of the following criteria is met:
+            \begin{itemize} 
+            \item An ignition event is observed (i.e. a temperature spike) 
+                and the temperature returns to steady state
+            \item 10 minutes pass with no ignition event observed
+            \end{itemize}
+        \item If the UI is used to keep track of time and no flame is observed, 
+            continue collecting temperature data until 600 seconds have passed 
+            since injection
+        \end{itemize}
+        
+    \item Review the camera footage, looking for a flame corresponding to the 
+        temperature spike
+    
+    \item Record pertinent data and observations in the lab book and the 
+        TADA UI
+        \begin{itemize}
+        \item The following data must be present on the same row, in the 
+            following order:
+            \begin{itemize}
+            \item Time of day that data collection began for that run
+            \item Compound name 
+            \item The lot number and/or sample number of the 
+                container (This only needs to be recorded in the lab book  and 
+                only once for every compound container)
+            \item Phase of the compound upon injection ('g' for gases, 'l' for 
+                liquids, 's' for solids)
+            \item Sample size in microliters (for liquids) or milligrams
+                (for solids and gases)
+            \item Set-point temperature of the furnace
+            \item Test temperature in degrees Celsius (rounded to the 
+                nearest integer)
+                \begin{itemize}
+                \item This should be the internal flask temperature 
+                    (Thermocouple 4) prior to injection
+                \end{itemize}
+            \item Indicate whether an ignition event was observed (i.e. Did 
+                the camera see a flame?)
+            \item Indicate whether a hot flame or cold flame was observed (if 
+                applicable)
+                \begin{itemize}
+                \item If the flame is bright yellow/orange, this is considered a 
+                    hot-flame autoignition
+                \item If the flame is faint and blueish, this is considered a 
+                    cool-flame autoignition
+                \end{itemize}
+            \item Indicate if any sound was heard upon ignition (if applicable)
+            \end{itemize}
+        \item If any item is not applicable write down N/A in its place
+        \item If any item is unknown, leave a blank until it can be determined
+        \item Optionally, leave any pertinent comments about the experiment
+            next to or directly under this row of data
+        \item Record the same data in the corresponding fields in the TADA UI
+            \textbf{before} terminating temperature data collection
+        \end{itemize}
+        
+    \item After the experiment ends, terminate data collection
+        \begin{itemize}
+        \item Press the Enter key  again to stop data 
+            collection (the red light on the TADA should stop blinking)
+        \item Press the red button on the tablet screen to stop recording
+        \item Turn the lights back on
+        \item Video recording may be stopped as soon as a flame or glow
+            disappears
+        \end{itemize}
+ 
+    \item Wait about 20 minutes to allow for the pressure 
+        vessel to be purged of the combustion products
+    \item Extract, save and appropriately rename the video data between 
+            experiments
+    \item During the purge time, set furnace to next temperature
+        \begin{itemize}
+            \item When changing temperature, always approach your target
+                temperature from 5 - 10 degrees Celsius above and then 
+                descending slowly to your target temperature
+        \end{itemize}	
+	\item After the purge time as ended, turn off the inlet air flow and wait 
+        for pressure vessel to \textit{fully} depressurize (outflow rotometer reads zero)
+	\item Remove the pressure vessel lid 
+		\begin{itemize}
+		\item Loosen the clamps in the same way that they were tightened, this time 
+			using a regular wrench instead of a torque wrench
+		\item Remove the safety cable \textit{after} you remove the clamps
+		\item Lift off the lid and\textit{immediately} place snorkel inside the 
+		pressure vessel approximately 6" over the furnace 
+		\end{itemize}
+		
+    \item Clean out the flask between measurements by blowing hot air into
+            the flask for 5 minutes using the heat gun
+            \begin{itemize}
+            \item The heat gun should \textbf{only} be plugged in to the outlet 
+                when in use
+            \end{itemize}
+            
+        \item Wait a minimum of 30 minutes to reach the new temperature and 
+            allow the furnace and flask to thermally equilibrate
+    \item Start this procedure over from step 1 (choose the target file)
+    \end{enumerate}
+
+	
+\subsection{Shutdown}
+    \begin{itemize}
+    \item The following should be done before leaving the lab at the end of 
+        every work day or any time the setup is not in use:
+        \begin{itemize}
+        \item Power off the furnace
+        \item Unplug TADA from the computer
+        \item Unplug the ARIA and TADA power supplies 
+        \item Remove and store the syringe or ring stand if applicable
+        \item Rinse the funnel with acetone and dispose of the waste
+        \item Tuck the end of the USB cord into the mounted section under the 
+            edge of the hood so it does not present a tripping hazard
+        \item Extract all data to the computer and appropriately rename them 
+            (Refer to section ........)
+        \item Shut down and unplug the tablet and the camera
+        \item Remove the camera from the tripod using the plastic quick-release 
+            lever and store the camera next to the lab computer
+        \item Put all chemicals and syringes away in their proper places
+        \item Remove any organic solid residue from all working surfaces 
+            (See Section \ref{sec:spill_solid})
+        \item Close all programs and shut down the computer
+        \end{itemize}
+    
+    \item A hot furnace may be left in the open pressure vessel with the snorkel 
+        venting it without waiting for it to cool
+    \item Do not rinse out needles %% add policy for needles !!!!!!!
+    \item Under normal use, disposable gloves may be thrown into the normal 
+        trash receptacle instead of solid chemical waste
+    \end{itemize}
+    
+\section{Data Extraction} 
+During experiments data are being recorded on the lab computer, the datalogger 
+and the camera. Both the camera and the datalogger on the TADA have SD cards 
+with a 32 GB storage capacity that allows multiple runs to be recorded without 
+extraction. The following policies are in place to ensure ease of use, 
+efficiency and avoid common mistakes.
+    \begin{itemize} 
+    \item For the AIT setup, do not exceed 10 runs without extracting 
+        temperature data to the computer and deleting the data from the SD  
+        cards.
+    \item All data should be extracted at least \textit{daily}
+    \item Video data should be extracted and properly renamed as often as  
+        possible (i.e. between every run or every other run) to ensure the 
+        correct filenames are assigned to their corresponding video files
+    
+    \item File naming convention: 
+        \begin{itemize}
+        \item Filenames will be organized by the following values in order 
+            separated by underscores ("\_")
+                \begin{itemize}
+                \item Compound name
+                \item Phase of the compound ('g' for gases, 'l' for liquids,
+                    's' for solids)
+                \item Date of experiment with the format "YYMMDD"
+                \item Time of day that data collection began for that run
+                    using a 24 hour clock format "hhmm"
+                \item Sample size in microliters (for liquids) or milligrams
+                    (for solids and gases)
+                \item Test temperature in degrees Celsius (rounded to the 
+                    nearest integer)
+                \end{itemize}
+                
+        \item For example: The filename for temperatures from an AIT experiment  
+            where 100 microliters of liquid hexane were tested at 450
+             \degree C on March 19, 2013 at 4:25 pm would be: \newline 
+            "hexane\_l\_130319\_1625\_100\_450.csv"
+        \end{itemize}
+
+    \item Video and datalogger data must be processed (i.e. parsed, edited, 
+        timestamped etc.) before being organized and therefore will be saved to 
+        a different path initially
+
+    \item After processing, all data should be organized according to the 
+        following path convention:
+        \begin{itemize}
+        \item Path: \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            data\textbackslash compound\_name\textbackslash filename.ext}
+        \item All data, including videos, from the same run should have the same
+            filename and path but different extensions except data from the 
+            datalogger
+        \item The datalogger filename convention should also have '\_dlog' at 
+            the end of the name to distinguish it from the UI generated file 
+            (e.g. "hexane\_l\_130319\_1625\_100\_450\_dlog.csv")
+        \item When processing is finished all runs should have the following 
+            4 files with the same name preceding them
+            \begin{itemize}
+            \item A .xlsx file (for temperature data with graphs and analysis)
+            \item A .csv file (UI generated)
+            \item A \_dlog.csv file (datalogger)
+            \item A .avi/.mp4 file (video)
+            \end{itemize}
+        \end{itemize}
+
+    \item The camera may be plugged in via USB and video extracted with
+        GoPro\textsuperscript{\textcopyright} Quik software
+        \begin{itemize}
+        \item Connect the camera to the computer via a micro USB cable (See 
+            Figure \ref{fig:cam_diag})
+        \item Press the "info/wireless" button on the camera to connect the 
+            camera to the computer
+        \item Quik should be configured to open automatically extract video and 
+            erase the microSD card when the camera connects to the computer
+        \item Video files should be extracted to the DIPPR legacy server and 
+            organized by date:
+            \begin{itemize}
+            \item Path: \textit{\textbackslash \textbackslash 
+               dipprlegacy.et.byu.edu\textbackslash aitra\textbackslash 
+               video\_import}
+            \item Username: dipprleg\textbackslash aitra
+            \item Password: hotflame16
+            \end{itemize}
+        \item If Quik is not configured to do this refer to the Quik manual for
+            how to configure this (or ask me and I will configure it)
+            \begin{itemize}
+            \item \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            docs\textbackslash GoPro\_App\_for\_Desktop\_User\_Manual.pdf}
+            \end{itemize}
+        \item Once extracted to the DIPPR legacy server, video data may be 
+            timestamped and converted to .avi format on the server
+        \end{itemize}
+        
+    \item To extract data from the datalogger
+        \begin{itemize}
+        \item Unplug the TADA from the computer
+        \item Pull out the SD card from the datalogger and use the USB SD card 
+            adapter to copy the"DATALOG.CSV" file into the "raw\_data" path and 
+            rename it to the original filename with the date 
+            tagged on in "YYMMMDD" format (e.g. "DATALOG\_130319.CSV")
+            \begin{itemize}
+            \item Path: \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            data\textbackslash raw\_data}
+            \end{itemize}
+        \item Open the "DATALOG.CSV" file on the SD card, erase all data from
+            it and save it, making sure to not change its name, extension or 
+            file path
+        \item Close all windows with the USB SD card adapter open (i.e. Excel 
+            files, Windows Explorer etc.)
+        \item Pull out the SD card without ejecting the unit from the computer
+        \end{itemize}
+    
+    \item Ensure all files from the camera and datalogger are deleted after they
+        have been properly saved in the data folder 
+            
+    \end{itemize}
+
+
+\section{Spill Clean-up}
+In the event of any spill, appropriate PPE specified in the corresponding SDS 
+    should be used in clean-up. Always check the SDS for special considerations
+    when cleaning up any compound.
+    \subsection{Liquids}
+    \begin{itemize}
+    
+    \item In the event of a small spill (i.e. less than 100 ml), the following 
+        protocol should be followed:
+        \begin{itemize}
+        \item If the spill occurs in or out of the hood, use absorbent clay that
+            can be found under the counter west of the sink to soak up the 
+            bulk of the liquid and wipe up the rest with a paper towel
+        \item Dispose of the clay, any disposable gloves and towels in the solid 
+            waste container
+        \end{itemize}    
+    \item In the event of a large spill (i.e. greater than 100 ml), the 
+        following protocol should be followed:
+        \begin{itemize}
+        \item If the spill occurs in the hood, use absorbent clay that can be 
+            found in the lab to soak up the bulk of the liquid and wipe up the 
+            rest with a paper towel
+        \item Dispose of the clay, any disposable gloves and towels in the solid 
+            waste container
+        \item If the spill occurs outside the hood or the spill is particularly 
+            large (e.g. an entire bottle of a flammable material breaks) 
+            \textbf{perform the Emergency Shutdown Procedure (Section 
+            \ref{sec:e_shtdn}), evacuate the lab and call: BYU Risk Management 
+            and Safety - (801)-422-4468} 
+        \end{itemize}
+    
+    \item Spills involving compounds that are particularly toxic or unstable 
+        should always be considered large spills
+    
+    \end{itemize}
+
+    \subsection{Solids} \label{sec:spill_solid}
+    We will generally work with organic solids that readily dissolve
+    in acetone. Researchers must always check chemical compatablity with acetone
+    before dissolving any compound in acetone.
+    \begin{itemize}
+    \item Small amounts of organic solids may be dissolved in a small amount of 
+        acetone and put in organic liquid waste
+    \item Larger amounts of solids should be transferred to solid waste and the
+        residue should be dissolved in acetone and discarded in liquid waste
+    \end{itemize}
+
+
+\section{Emergency Shutdown} \label{sec:e_shtdn}
+
+    \begin{itemize}
+    \item In the event of an emergency do the following:
+        
+        \begin{itemize}
+        \item Close the air cylinder valve
+        \item Power off the furnace
+        \item Fully open the rotometer exhaust
+        \item Unplug the furnace
+        \item Stop the camera recording (if applicable)
+        \item Shutdown and unplug the camera and tablet
+        \item Unplug the ARIA and TADA
+        \item Close all programs and shutdown the computer
+        \end{itemize}
+    
+    \item If an emergency requires you to evacuate the lab, do only the first 
+        2 steps
+    \end{itemize}
+
+\newpage	
+\section{Experimental Setup and Maintenance}
+    \subsection{Flask and Lid}
+    \begin{itemize}
+    \item \textbf{Latex or nitrile gloves and safety glasses are 
+            required while working with the flask/lid assembly}
+    \item The flask in the furnace must be exchanged for a clean flask in the 
+        following situations:
+        \begin{itemize}
+        \item The next experiment will be for a different compound
+        \item The next experiment will be for a new container of the same 
+            compound
+        \item There is reason to suspect that the flask has become 
+            contaminated or substantially dirty
+        \item The flask has been used for 10 runs without being cleaned
+        \item Once the AIT has been found for a compound, the final measurements
+            should be repeated with a clean flask to verify the results
+        \end{itemize}
+    
+    \item Disassembling the Flask and Lid
+        \begin{itemize}
+        \item \textbf{The furnace may be too hot to open for several hours after
+             an experiment}
+        \item Unplug the thermocouples from the furnace
+        \item Once the furnace is cool, remove flask/lid assembly
+            \begin{itemize}
+            \item Loosen (do NOT remove) the nut that secures the bracket and 
+                the rubber hose to the top of the furnace with a wrench
+            \item Move the bracket out of the way and remove Thermocouple 4 
+                (along with the rubber hose) from the top of the furnace
+            \item Move the mirror out of the way to allow the flask/lid assembly
+                to come out
+            \item Grip the assembly with both hands by the screws on top and 
+                pull directly upward
+            \item \textbf{NOTE: The flask/lid assembly is heavy and pulling it  
+                out can be awkward. Please ask someone to help you remove it 
+                if you are at all unsure about removing the assembly}
+            \item The flask/lid assembly should easily come out of the furnace 
+                without catching on anything
+            \end{itemize}
+        
+        \item \textbf{Carefully} set the assembly on a table or other stable 
+            surface with the flask on top (See Figure \ref{fig:f_lid_done})
+        \item Ensure the bracket screw is loose
+        \item Remove the circular spring from its groove and slide the ceramic
+            halves of the lid apart sufficiently to allow the flask to be 
+            removed
+        \item Remove flask from lid assembly and  remove all of the aluminum 
+            foil and thermocouples from the flask
+        \item Discard the used aluminum foil in a normal trash can and set 
+            aside the thermocouples in the hood or on a surface where they will
+            not catch on anything or become damaged
+        \item \textbf{Always store bulb flasks on the drying rack above the sink 
+            or appropriately secured to a ring stand} (see "Flask Cleaning"
+             below)
+        \end{itemize}
+
+\newpage      
+    \item Assembling the Flask and Lid 
+        \begin{itemize}
+        \item Use the figures in this section as a reference when putting 
+            together the assembly
+        
+        \item Use a \textbf{clean}, 500 ml, round bottom, long neck, bulb flask 
+            (PYREX\textsuperscript{\textcopyright} 500mL Long Neck Boiling 
+            Flask, Round Bottom, Tooled Mouth, Product No.: 4280-500 from 
+            Corning Inc.)
+        \item If dirty, wash out the flask using soap and water and dry as much 
+            as possible (see "Flask Cleaning" below); be sure to rinse
+            thoroughly
+                \begin{itemize}
+                \item Any leftover water will boil away when the furnace heats 
+                up and before any measurements are taken
+                \end{itemize}        
+        \item Wrap entire flask in aluminum foil with thermocouples at the 
+            bottom, side and top of the round part of the flask (thermocouples 
+            should be touching the glass directly) (Refer to Figure 
+            \ref{fig:wrap})
+                \begin{itemize}
+                \item NOTE: The more reflective side of the foil should always 
+                    be facing inward
+                \item Start by getting a long strip of aluminum foil (12" long 
+                    or so)
+                \item Use a utility knife to poke a hole near the middle of 
+                    the foil and insert thermocouple 3 through the foil so the 
+                    bead sits at the bottom of the flask and then wrap the foil 
+                    around the bottom (1 and 2)
+                \item Slide thermocouple 2 down to the approximate 
+                    middle/equator of the flask between the flask and foil and 
+                    use a second piece of foil to wrap further up the flask, 
+                    ensuring the thermocouple wires run parallel up the side of 
+                    the flask (3)
+                \item Place thermocouple 1 at the top of the bulb of the flask 
+                    (not on the neck of the flask) and use a third piece of foil
+                     to wrap around the top starting at the middle (4)
+                \item Add an additional layer of foil around  the flask so the 
+                    wires are covered and run parallel when wrapping is finished
+                    (5)
+                \item Wrap additional foil around the neck of the flask to cover 
+                    it completely and secure flask in lid assembly
+                \item The thermocouple wires should emerge from the foil 
+                    covering near the top (but not at the top) of the flask 
+                    neck, allowing them to run between the two ceramic halves of
+                    the lid assembly (6)
+                \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{wrap.jpg}
+\caption{Steps for wrapping the flask in foil}
+\label{fig:wrap}
+\end{figure}
+
+        \item Ensure the bracket screw is loose
+        \item Fit the neck of the flask in the center hole of the ceramic lid 
+            assembly with the lip of the flask fitting into the groove at the 
+            base of the center hole on both sides
+        \item Guide the thermocouple wires in the gap between the two ceramic 
+            halves so they are out of the way when the flask/lid assembly is 
+            inserted into the furnace
+        \item Slide the loose half of the ceramic back in to be snug 
+            around the flask neck, replace the spring, and tighten the nut on the top to hold it
+            in position
+                \begin{itemize}
+                \item The two halves nearest to the top of the assembly should 
+                    meet or very nearly meet; if they don't then some 
+                    foil should be removed from the neck of the flask
+                 \end{itemize}
+        \item Use a circular spring to help hold the halves together
+               
+        
+        \item Make a "donut" of foil wrapped around the neck of the flask that 
+            will rest up against the bottom of the lid assembly
+        \item Slide the foil "donut" up so and press it so it is flush against 
+            the ceramic and restricts air flow around the opening
+        \item Carefully turn the flask/lid assembly over making sure the flask 
+            doesn't fall out
+                \begin{itemize}
+                \item \textbf{Do this over a table or close to a level surface 
+                    to avoid accidental breaking of the flask}
+                \item The flask will fit into the lid assembly somewhat loosely, 
+                    but it shouldn't fall out
+                \item If the flask falls out, remove it and add more foil 
+                around the neck
+                \end{itemize}
+         
+\begin{figure}[H]
+\centering
+\includegraphics[width=.45\textwidth]{insert_in_lid_w_donut.jpg}
+\caption{Final state of the flask/lid assembly}
+\label{fig:f_lid_done}
+\end{figure}
+        
+        \item See Figure \ref{fig:f_lid_done} for the final flask/lid
+            assembly before insertion into the furnace
+        \item Place the prepared flask/lid assembly into the furnace by gripping
+            the assembly with both hands by the screws on top and slowly 
+            lowering the assembly into place
+        \item Turn the flask/lid assembly so the thermocouple wires point away 
+            from where researchers will be working
+        \item Insert flask interior thermocouple (\#4) carefully down the flask 
+            neck, making sure it goes straight in and the bead doesn't get 
+            caught anywhere
+                \begin{itemize}
+                \item The bead of Thermocouple 4 should be suspended in the 
+                    approximate center of the flask, not be touching any part
+                \item The wire of Thermocouple 4 should run up the edge of the 
+                    neck and not the middle to allow compound to be injected 
+                    without making contact with the thermocouple
+                \item Use the bracket on one of the two screws on top of the 
+                    lid to secure the rubber hose holding the thermocouple
+                    in place
+                \item Tighten the nut on the bracket hand tight and then give a 
+                    half turn with a wrench to secure the nut (See Figure 
+                    \ref{fig:wrench_tight})
+                \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.35\textwidth]{top_of_furnace_w_wrench.jpg}
+\caption{Position thermocouple 4 with the rubber hose and tighten}
+\label{fig:wrench_tight}
+\end{figure}
+
+        \item Connect the thermocouple connectors to join the  
+            leads from the flask to the TADA
+        \item Ensure the mirrors are set up correctly
+        \item The final setup should resemble Figure \ref{fig:in_furnace}
+        \end{itemize}
+    
+\begin{figure}[H]
+\centering
+\includegraphics[width=.65\textwidth]{Furnace_diagram_mod.jpg}
+\caption{Diagram of the furnace when assembled}
+\label{fig:in_furnace}
+\end{figure}
+
+    \item Flask Cleaning \newline
+        For consistent experimental results, flasks must be as clean as possible
+        (See Figure \ref{fig:clean_dirty}). Dirty flasks can terminate radical 
+        reactions and artificially raise the AIT. To ensure flasks are as clean 
+        as possible before use, the following steps are required for flask 
+        cleaning:
+        \begin{itemize}
+		        \item Always begin by soaking the inside of the flask with soapy water 
+            for 12 - 24 hours, regardless of how dirty it is
+        \item While soaking, the flask should always be secured to a ring stand
+        \item Wash out flask with soap and water, scrubbing the inside with 
+            tube brushes
+        \item For difficult stains, soak the flask inside with soapy water for 
+            another 24 hours or longer if needed 
+            \begin{itemize}
+            \item During this process, scrub the inside and replace the 
+                soapy water on a regular basis (generally every 12 - 24 hours)
+            \end{itemize}
+        
+        \item Once all stains have been eradicated from the inside of the flask
+            and the flask has been scrubbed in soapy water, rinse the inside and
+            outside of the flask thoroughly
+            \begin{itemize}
+            \item Using hot water for rinsing is preferred but not required
+            \item Rinse with tap water a minimum of 3 times, filling the flask
+                with water, agitating the water for about 10 seconds, and then 
+                dumping the water
+            \item Repeat this process with distilled water available from the 
+                smaller tap on the Northeast corner of the lab sink
+            \end{itemize}
+        
+        \item If hard water spots or salt deposits appear on the inside of the 
+            flask, rinse the inside of the flask with a small amount of vinegar
+            to remove the deposits and repeat the rinse procedure above
+        \item Once the flask has been cleaned and rinsed thoroughly, place the 
+            clean flask on the drying rack over the sink
+        \end{itemize}        
+    \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.25\textwidth]{clean_dirty_flask.jpg}
+\caption{A clean flask (dirty flask in the background)}
+\label{fig:clean_dirty}
+\end{figure}  
+
+\newpage 
+    \subsection{Furnace}
+    	\subsubsection{Overview}
+    \begin{itemize}
+    \item The furnace, shown in Figure \ref{fig:furnace_pic}, is an encased 
+        stack of ceramic insulation with cavities 
+        cut out to allow space for the heating elements and the test flask
+        (see Figure \ref{fig:in_furnace} for an internal diagram of the 
+        furnace). The furnace is controlled with measurements taken at the 
+        insulated furnace wall. This design causes the furnace to have
+        large temperature gradients while in operation. As a result, the 
+        setpoint temperature and the flask temperature will almost always 
+        differ significantly (as much as 25 K in some cases). Therefore, 
+        setpoints must be chosen between approximately 10 - 20 K above the 
+        desired temperature to reach that temperature inside the flask.
+        \textbf{The reported AIT must be taken from the internal flask 
+        temperature (Thermocouple 4) and NOT the control thermocouple inside
+        the furnace}
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.45\textwidth]{Furnace_pic_diagram.jpg}
+    \caption{AIT Furnace}
+    \label{fig:furnace_pic}
+    \end{figure}
+    
+    \item When powered on initially, the furnace may take up to 2 hours or more  
+        to reach a desired temperature and thermally equilibrate
+    \item Any time a desired temperature is reached, allow at least 30 
+        minutes for thorough thermal equilibration in the flask; allow extra 
+        time during initial start up
+     
+     \end{itemize}
+
+\subsubsection{Furnace Operation (See Figure \ref{fig:furnace_pic})}
+      \begin{itemize}
+      \item Power on the furnace with the power switch and use the temperature
+            controller to choose a setpoint temperature
+        \begin{itemize}
+            \item To change the set point, press the up or down     arrows until 
+                the desired temperature is reached
+            \item The lower (green) display is the setpoint and     the upper 
+                (red) display is the control thermocouple temperature
+        \end{itemize}
+        
+        \item When shutting down, turn off the power switch and unplug the furnace
+        \end{itemize}
+
+        
+    \subsection{Camera and Tablet} \label{sec:cam_tab}
+    \subsubsection{Overview}
+    	\begin{itemize}
+    	\item Prior to using the experimental setup, all researchers must become 
+        familiar with basic use and operation of the 
+        GoPro\textsuperscript{\textcopyright} HERO4
+        Session\textsuperscript{TM} camera and the Samsung Galaxy Tab A Tablet. 
+        
+        More detailed instructions on how to do basic tasks may be found at the 
+        following URLs:
+        \begin{itemize}
+        \item \texttt{https://shop.gopro.com/softwareandapp}
+        \item \texttt{https://gopro.com/help/articles/Block/How-to-Pair-the-Camera-with-the-GoPro-App\#HERO4 Session}
+        \item \texttt{https://gopro.com/help/articles/Block/Getting-Started-with-the-GoPro-App}
+        \item \texttt{http://www.samsung.com/us/support/owners/product/galaxy-tab-a-8-0-wi-fi}
+        \end{itemize}
+    
+    
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Camera_diagram.jpg}
+\caption{GoPro\textsuperscript{\textcopyright} HERO4
+        Session\textsuperscript{TM} Camera Parts}
+\label{fig:cam_diag}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{tablet.jpg}
+\caption{Samsung Galaxy Tab A}
+\label{fig:tablet}
+\end{figure}
+    
+    \item Refer to Figures \ref{fig:cam_diag} and \ref{fig:tablet} for camera 
+        and tablet setup
+        
+     \end{itemize}
+        
+       
+    \subsubsection{Connecting to the camera} 
+        \begin{itemize}
+        \item Firmly press and release the "info/wireless" button on the back of the camera multiple times until you see "APP \& RC" on the camera status screen
+        \item Press the "shutter/select" button to confirm your selection
+            \begin{itemize}
+            \item The "wireless status" (blue) light will begin flashing. This 
+                indicates the camera is broadcasting a Wi-Fi signal 
+            \end{itemize}
+        \item Power on the tablet by holding down the power key (top, right side) until you see the
+            splash screen indicating the tablet is booting up
+        \item Once the tablet has booted, swipe to get to the home screen and 
+            select the "Settings" app
+        \item Select the Wi-Fi settings at the top of the list on the left side 
+            of the screen
+        \item Select the Wi-Fi network labelled "ait\_cam\_2016" then select 
+            "connect" on the message box that pops up (FYI: the wifi password is
+            "hotflame16")
+        \item Once the tablet has connected to the Wi-Fi, return to the home 
+            screen by pressing the home key
+        \item Open the GoPro Capture App (app is labelled "Capture" on the home 
+            screen) 
+        \item Select the connect box on the top left corner of the screen to connect to camera
+        \item Press the camera icon in the center of the screen
+            \begin{itemize}
+            \item The camera will make a beeping noise and the camera view will 
+                open on the tablet
+            \end{itemize}
+        \end{itemize}
+    
+    \subsubsection{Shutdown}
+        \begin{itemize}
+        \item To shutdown the camera:
+            \begin{itemize}
+            \item Press the "info/wireless" button 
+                until the camera status screen reads "Turn Wi-Fi Off"
+            \item Press the "shutter/select" button to confirm your selection
+                \begin{itemize}
+                \item The "wireless status" (blue) light will stop flashing
+                \end{itemize}
+            
+            \item Press the "info/wireless" button until the camera status 
+                screen reads "Exit"
+            \item Press the "shutter/select" button to confirm your selection
+                \begin{itemize}
+                \item The camera will shutdown 
+                \end{itemize}
+            
+            \end{itemize}
+        
+        \item To shutdown the tablet:
+            \begin{itemize}
+            \item Press the "Recent" button to bring up all opened programs and 
+                close all programs by swiping on them or pressing the 'X' in the
+                top right corner
+            \item Press and hold the Power key until the option to power of 
+                pops up then press power off
+                \begin{itemize}
+                \item The tablet will shutdown
+                \end{itemize}
+           
+            \end{itemize}
+        
+        \end{itemize}
+    
+    \subsubsection{Other Information}
+    	\begin{itemize}
+        \item Camera Operation
+        	\begin{itemize}
+        	\item All operations may be done remotely on the tablet via Wi-Fi or 
+            directly with the "info/wireless" and "shutter/select" buttons on 
+            the camera. For experimental purposes, only basic operations
+            will be covered. For more detail on camera 
+            operation please see the URLs above
+        	\item In the camera's off or normal modes the "shutter/select" button 
+            toggles recording or standby; the camera will automatically shut off
+            after a few seconds on standby
+        	\item If the camera is remotely controlled, the on screen red button 
+            toggles recording or standby
+        	\item During recording, the camera will not allow viewing via the 
+            tablet. This is due to the high frame rate of our experiments
+        	\item Captured video may be reviewed and managed remotely with the grid
+            button on the bottom left corner of the screen
+        	\item The camera may be powered on and off remotely with the power  
+            button on the top right corner of the screen. The camera should be 
+            powered off between experiments or when not in use
+        	\end{itemize}
+        
+        
+        
+    	\item Batteries:
+        	\begin{itemize}
+        	\item Recharging power supplies and USB cables are available for both
+            the tablet and camera
+        	\item Both the camera and the tablet may be charged while in use
+        	\item Do NOT charge tablet with the computer as it does not deliver 
+            enough current for effective charging
+        	\item Batteries should be allowed to discharge to between 10 - 20\%
+            before recharging
+        	\item Batteries should always be recharged to 100\% capacity before 
+            unplugging
+        	\item Do not overcharge any battery. Do not leave any battery 
+            charging overnight
+        	\end{itemize}
+        
+    	\end{itemize}
+
+\end{document}
