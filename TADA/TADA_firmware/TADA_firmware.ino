@@ -138,8 +138,8 @@ const int
 //Calibration fit line
 // R = 263.511; //ohm resistance across the 4-20 mA signal 
 const double 
-  m = 0.30021,   // torr/sig (slope of calibration fit line)
-  b = -64.786;     // torr (intercept of calibration line)
+  m = 0.299338,      // torr/sig (slope of calibration fit line)
+  b = -64.35767;     // torr (intercept of calibration line)
 
 //Function for torr
 double sigToTorr(int sig)

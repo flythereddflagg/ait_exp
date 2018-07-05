@@ -103,6 +103,8 @@ requirements of the method.
         %    \item Username: CHEME-R-2014-25\textbackslash AIT\_LAB
         %    \item Password: Explosionsinthesky16 (Explosions in the sky 16)
         %    \end{itemize}
+        %    Username: cheme-r-2014-25\AIT_LAB
+        %    Password: Explosionsinthesky16 (Explosions in the sky 16)
         
         \end{itemize}
     
@@ -116,8 +118,10 @@ requirements of the method.
 \label{fig:sd_card_reader}
 \end{figure}
         
-    \item Ensure the furnace thermocouples are connected to their corresponding connectors inside 
-		the vessel (see Figure \ref{fig:Thermocouples}) %%Connectors? Picture?
+    \item Ensure the furnace thermocouples are connected to their corresponding
+        connectors inside the vessel and ensure that the wires are tucked down 
+        between the side of the furnace and the wall of the vessel and are out 
+        of the way (see Figure \ref{fig:Thermocouples})
 		
 \begin{figure}[H]
 \centering
@@ -127,23 +131,23 @@ requirements of the method.
 \end{figure}		
 		
     \item Connect the TADA to the lab computer via the USB cable mounted 
-        under the edge of the hood (see Figure \ref{fig:TADA_USB})
+        under the edge of the hood (see Figure \ref{fig:tada_connect})
 
 		
-\begin{figure}%
+\begin{figure}[H]
     \centering
-	\subfloat[USB Connection]{{\includegraphics[height=5cm]{TADA_USB.jpg} }}%
+	\subfloat[USB Connection]{{\includegraphics[height=5cm]{TADA_USB.jpg} }}
     \qquad
-    \subfloat[24V Power Connection]{{\includegraphics[height=5cm]{24V_cable.jpg} }}%
-    \caption{TADA Connections}%
-    \label{fig:tada_connect}%
+    \subfloat[24V Power Connection]{{\includegraphics[height=5cm]{24V_cable.jpg} }}
+    \caption{TADA Connections}
+    \label{fig:tada_connect}
 \end{figure}
-
         
-    \item Plug in the 24 volt power supply to the TADA
+    \item Plug in the 24 volt power supply to the TADA (see Figure 
+        \ref{fig:tada_connect})
+    
+    \item Plug the air cylinder solenoid valve power into the 120V outlet on the hood
 
-
-		
     \item Open the TADA user interface program 
             \begin{itemize}
             \item Path: \textit{C:\textbackslash Users\textbackslash  
@@ -176,12 +180,12 @@ requirements of the method.
         \item Do not perform maintenance or change the flask unless the internal temperature of the 
 			furnace is below $40^\circ C$
         \end{itemize}
-    \item Ensure the ARIA lead screws are set such that the ARIA is in the 
-        shutdown position %Expand on this/ pictures?
+    \item Twist both of the ARIA lead screws by hand such that the mounting 
+        plate is touching the base plate and the push block is touching the 
+        horizontal stepper motor (this is the shutdown position) % SEE TRAINING
     \item Ensure the three molex cables are securely plugged in to the ARIA (see Figure \ref{fig:Molex_cables})
 		\begin{itemize}
-		\item There are three connection points shown in Figure \ref{fig:Molex_cables}
-		\item Regardless of the experiments to be performed, ensure all are plugged in and the 
+		\item Regardless of the experiments to be performed, ensure all three are plugged in and the 
 			corresponding cables are not strained
 		\end{itemize}
         
@@ -190,18 +194,16 @@ requirements of the method.
 \caption{Molex cables secured and out of the way}
 \label{fig:Molex_cables}
 \end{figure}
-        
-    \item Align the ARIA so that the needle or funnel is aligned to the center
-        of the injection hole in the top of the furnace
-        \begin{itemize}
-        \item You will need to install the appropriate setup for the compound
-            you intend to test that day
-        \item After alignment, remove any setup materials used to reach 
-            alignment
-        \end{itemize}
-    \item Plug in the ARIA control to the 5 volt power supply and wait for 
+    
+
+    \item Plug 5 volt power supply into the ARIA control and wait for 
         initial setup sequence to complete (The two button lights on the ARIA
-        control will come on when the sequence is complete) (See Figure \ref{fig:5V_cable})
+        control will come on when the sequence is complete) 
+        (See Figure \ref{fig:5V_cable})
+        \begin{itemize}
+        \item \textbf{WARNING: Do NOT plug the 24 V power supply into the ARIA 
+            Control. This WILL destroy the ARIA Control.}
+        \end{itemize}
 		
 \begin{figure}[H]
 \centering\includegraphics[width=.5\textwidth]{5V_cable.jpg}
@@ -218,7 +220,8 @@ requirements of the method.
          \item If the syringe or the funnel do not go directly into the flask, 
             adjust the placement and retest until properly positioned
          \end{itemize}
-    \item Ensure the furnace is plugged in
+    \item Ensure the furnace is plugged in to the 220 V outlet on the edge of 
+        the hood % SEE TRAINING
     \item Power on furnace and set furnace temperature between 20 - 30 degrees 
         above your initial target flask temperature 
     \item Reduce the set point temperature when the internal flask temperature 
@@ -362,12 +365,24 @@ will ensure consistent results with the lowest uncertainty possible.
 			
 		\item Solid Sample
 			\begin{itemize}
-			\item Carefully insert weigh boat onto holder on the ARIA servo
+			\item Carefully insert the weigh boat into the weigh boat holder and
+                press the weigh boat holder onto the servo shaft so the weigh 
+                boat is in a near-horizontal position
 			\end{itemize}
 			
 		\end{itemize}
 			
 	\item Remove gloves before proceeding
+    
+    \item Remove the snorkel from inside the vessel and place above the rupture disk
+        (see Figure \ref{fig:rupture_hood})
+        
+\begin{figure}[H]
+\centering\includegraphics[width=.3\textwidth]{rupture_hood.jpg}
+\caption{Snorkel location during operation}
+\label{fig:rupture_hood}
+\end{figure}
+
 	
 	\item Place lid on pressure vessel and secure in place with the 
         clamps and cable
@@ -392,25 +407,27 @@ will ensure consistent results with the lowest uncertainty possible.
 \label{fig:Top_of_lid}
 \end{figure}
          
-        \item Tighten each clamp again with the torque wrench, this time by going around
-			the circle, ensuring that torque is 60 inch pounds on each.
-        \item Loop the safety cable through both lid handles and through the handles on
-			both sides of the vessel and then up through the lid handles and secure the two ends 
-			together (See Figure \ref{fig:Cable})
+        \item Tighten each clamp again with the torque wrench, this time by 
+            going around the circle, ensuring that torque is 60 inch pounds on 
+            each.
+        \item Loop the safety cable through both lid handles and through the 
+            handles on both sides of the vessel and then back through the lid 
+            handles so the two ends meet then secure the two ends together 
+            (See Figure \ref{fig:Cable})
            
 \begin{figure}[H]
 \centering
 \includegraphics[width=.35\textwidth]{Cable.png}
-\caption{secure cable}
+\caption{Security Cable Installation}
 \label{fig:Cable}
 \end{figure}
 
 		\end{itemize}
-		
-	\item Pressurize vessel
+\newpage		
+	\item Pressurize the vessel
 		\begin{itemize}
-		\item Open the TADA\_UI in the ait\_exp folder. The absolute pressure in the vessel
-			is read at the bottom of the window highlighted in blue
+		\item The absolute pressure in the vessel can be read at the bottom of 
+            the TADA\_UI window
         \item Ensure the ball valve is closed
         \item Fully open the rotometer on the exhaust of the pressure vessel
         \item Slowly open the cylinder valve all the way and then turn back one 
@@ -427,6 +444,7 @@ will ensure consistent results with the lowest uncertainty possible.
 		\item Adjust pressure in vessel using low pressure regulator until the    
             absolute pressure reading in the TADA\_UI is highlighted green indicating that the 
 			pressure in the vessel is 1 atm (760 Torr)
+        
 		\end{itemize} 
 
 	\item Ensure the vessel is sufficiently dark to see any 
@@ -435,7 +453,8 @@ will ensure consistent results with the lowest uncertainty possible.
 	\item Begin data collection 
 		\begin{itemize}
 		\item In the TADA UI program, press the Enter key
-		\item A red LED in the TADA should begin blinking
+		\item A red LED in the TADA should begin blinking (See 
+            Figure \ref{fig:tada_leds})
 		\item The TADA UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
           to time the experiment
@@ -467,6 +486,9 @@ will ensure consistent results with the lowest uncertainty possible.
         
     \item Review the camera footage, looking for a flame corresponding to the 
         temperature spike
+        \begin{itemize}
+        \item This may be done on the capture app on the tablet
+        \end{itemize}
     
     \item Record pertinent data and observations in the lab book and the 
         TADA UI
@@ -515,29 +537,28 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Press the Enter key  again to stop data 
             collection (the red light on the TADA should stop blinking)
         \item Press the red button on the tablet screen to stop recording
-        \item Turn the lights back on
-        \item Video recording may be stopped as soon as a flame or glow
-            disappears
+        \item Video recording may be stopped 15 seconds after a temperature 
+            spike
         \end{itemize}
  
-    \item Wait about 20 minutes to allow for the pressure 
-        vessel to be purged of the combustion products
-    \item Extract, save and appropriately rename the video data between 
-            experiments
-    \item During the purge time, set furnace to next temperature
+    \item Set furnace to next temperature
         \begin{itemize}
             \item When changing temperature, always approach your target
                 temperature from 5 - 10 degrees Celsius above and then 
                 descending slowly to your target temperature
-        \end{itemize}	
-	\item After the purge time as ended, turn off the inlet air flow and wait 
+        \end{itemize}
+    \item Wait about 20 minutes to allow for the pressure 
+        vessel to be purged of the combustion products
+    \item Extract, save and appropriately rename the video data between 
+            experiments
+	\item After the purge time has ended, turn off the inlet air flow and wait 
         for pressure vessel to \textit{fully} depressurize (outflow rotometer reads zero)
 	\item Remove the pressure vessel lid 
 		\begin{itemize}
-		\item Loosen the clamps in the same way that they were tightened, this time 
-			using a regular wrench instead of a torque wrench
-		\item Remove the safety cable \textit{after} you remove the clamps
-		\item Lift off the lid and\textit{immediately} place snorkel inside the 
+		\item Loosen the clamps using a regular wrench instead of a 
+            torque wrench
+		\item Remove the safety cable \textbf{after} you remove the clamps
+		\item Lift off the lid and \textbf{immediately} place snorkel inside the 
 		pressure vessel approximately 6" over the furnace 
 		\end{itemize}
 		
@@ -558,24 +579,22 @@ will ensure consistent results with the lowest uncertainty possible.
     \begin{itemize}
     \item The following should be done before leaving the lab at the end of 
         every work day or any time the setup is not in use:
-        \begin{itemize}
+        \begin{enumerate}
         \item Power off the furnace
-        \item Unplug TADA from the computer
+        \item Unplug TADA USB connection
         \item Unplug the ARIA and TADA power supplies 
-        \item Remove and store the syringe or ring stand if applicable
+        \item Remove and store the any ARIA accesories used that day
         \item Rinse the funnel with acetone and dispose of the waste
         \item Tuck the end of the USB cord into the mounted section under the 
             edge of the hood so it does not present a tripping hazard
         \item Extract all data to the computer and appropriately rename them 
-            (Refer to section ........)
+            (Refer to Section \ref{sec:data})
         \item Shut down and unplug the tablet and the camera
-        \item Remove the camera from the tripod using the plastic quick-release 
-            lever and store the camera next to the lab computer
-        \item Put all chemicals and syringes away in their proper places
+        \item Store all chemicals in the appropriate cabinets
         \item Remove any organic solid residue from all working surfaces 
             (See Section \ref{sec:spill_solid})
         \item Close all programs and shut down the computer
-        \end{itemize}
+        \end{enumerate}
     
     \item A hot furnace may be left in the open pressure vessel with the snorkel 
         venting it without waiting for it to cool
@@ -584,7 +603,7 @@ will ensure consistent results with the lowest uncertainty possible.
         trash receptacle instead of solid chemical waste
     \end{itemize}
     
-\section{Data Extraction} 
+\section{Data Extraction} \label{sec:data}
 During experiments data are being recorded on the lab computer, the datalogger 
 and the camera. Both the camera and the datalogger on the TADA have SD cards 
 with a 32 GB storage capacity that allows multiple runs to be recorded without 
@@ -723,8 +742,9 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         following protocol should be followed:
         \begin{itemize}
         \item If the spill occurs in the hood, use absorbent clay that can be 
-            found in the lab to soak up the bulk of the liquid and wipe up the 
-            rest with a paper towel
+            found under the counter on the left-hand side of the lab sink to 
+            soak up the bulk of the liquid and wipe up the rest with a paper 
+            towel
         \item Dispose of the clay, any disposable gloves and towels in the solid 
             waste container
         \item If the spill occurs outside the hood or the spill is particularly 
@@ -740,14 +760,14 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     \end{itemize}
 
     \subsection{Solids} \label{sec:spill_solid}
-    We will generally work with organic solids that readily dissolve
-    in acetone. Researchers must always check chemical compatablity with acetone
-    before dissolving any compound in acetone.
+    We will generally work with organic solids that readily dissolve in simple
+    organic solvens (e.g. acetone). Researchers must always check chemical 
+    compatablity with solutes and solvents before dissolving any compound.
     \begin{itemize}
     \item Small amounts of organic solids may be dissolved in a small amount of 
-        acetone and put in organic liquid waste
+        solvent and put in organic liquid waste
     \item Larger amounts of solids should be transferred to solid waste and the
-        residue should be dissolved in acetone and discarded in liquid waste
+        residue should be dissolved in solvent and discarded in liquid waste
     \end{itemize}
 
 
@@ -758,12 +778,11 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         
         \begin{itemize}
         \item Close the air cylinder valve
-        \item Power off the furnace
+        \item Power off and unplug the furnace
         \item Fully open the rotometer exhaust
-        \item Unplug the furnace
+        \item Unplug all other electrical equipment
         \item Stop the camera recording (if applicable)
         \item Shutdown and unplug the camera and tablet
-        \item Unplug the ARIA and TADA
         \item Close all programs and shutdown the computer
         \end{itemize}
     
