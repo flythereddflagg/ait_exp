@@ -126,17 +126,7 @@ const int
 int safetySig = 0;    // signal from pressure transducer for solenoid open
 double pv_torr = 0;   // initialize value from pressure vessel
 
-// to easily remember which position is open and closed respectivly
-const size_t 
-  sol_open = HIGH, 
-  sol_close = LOW; 
-
-const int 
-  sigOn = 213, // signal lower limit saying the pressure transducer is NOT powered on 
-  sigHi = 700; // signal upper limit saying the pressure is too high
-
 //Calibration fit line
-// R = 263.511; //ohm resistance across the 4-20 mA signal 
 const double 
   m = 0.299338,      // torr/sig (slope of calibration fit line)
   b = -64.35767;     // torr (intercept of calibration line)
@@ -161,9 +151,6 @@ void setup(void)
   Serial.println("\tTA-DA ZUKO");
   Serial.println("Thermocouple Amplifier - Data Aquisition");
 
-  /************* SETUP SAFETY SOLENOID ***************************/
-  pinMode(solenoidPin, OUTPUT);
-  digitalWrite(solenoidPin, sol_close);
   
   /************* SETUP TEMPERATURE MEASUREMENT ***************************/
   // Start up the library
@@ -269,23 +256,6 @@ void setup(void)
 
 void loop(void)
 { 
-  safetySig = analogRead(pressurePin);
-  if (safetySig > sigOn && safetySig < sigHi){
-    /*
-     * if the pressure transducer is powered on and 
-     * is below the dangerous upper pressure limit then
-     * open the solenoid safety valve  
-    */
-    digitalWrite(solenoidPin, sol_open);
-  }
-  else{
-     /*
-     * if one of the above conditions is not met,
-     * close the solenoid saftey valve
-    */
-    digitalWrite(solenoidPin, sol_close);
-  }
-  
   if (sensors.isConversionAvailable(Thermometer0) &&\
       sensors.isConversionAvailable(Thermometer1) &&\
       sensors.isConversionAvailable(Thermometer2) &&\
