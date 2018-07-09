@@ -54,12 +54,13 @@ class DAQGUI(Frame):
         self.system_timestamp = ""
         self.rs232_port = 'COM1'
         self.rs232_baudrate = 19200
-        self.pemergency = 1000.0
+        self.pemergency = 206
         self.atm1 = 760.0
         self.plower = 758.0
         self.pupper = 762.0
         self.baro_press = 640.0 # barometric pressure in torr (nominal expected value
         self.pvessel = 640.0 # absolute pressure inside the vessel
+        self.gpress = 0 # gauge pressure inside the vessel
         self.initUI()
 
     def initUI(self):
@@ -354,12 +355,13 @@ class DAQGUI(Frame):
         pressure is within acceptable parameters. Makes a warning sound if 
         pressure far exceeds acceptable parameters.
         """
+        self.gpress = data[-1]
         try:
-            self.baro_press = float(self.rs232.readline().decode())
-            data[-1] += self.baro_press
-            self.pvessel = data[-1]
+            baro_press = float(self.rs232.readline().decode())
+            if baro_press < 1000: self.baro_press = baro_press
+            self.pvessel = self.gpress + self.baro_press
         except ValueError:
-             self.pvessel = data[-1] + self.baro_press
+             self.pvessel = self.gpress + self.baro_press
         
         if self.pvessel < self.plower:
             self.press['bg'] = 'blue'
@@ -376,9 +378,9 @@ class DAQGUI(Frame):
         
         self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
         
-        if self.pvessel > self.pemergency:
+        if self.gpress > self.pemergency:
             self.msg_str = self.msg1['text']
-            self.msg1['text'] = "WARNING! P > 1000 TORR! SHUTDOWN NOW!"
+            self.msg1['text'] = "WARNING! Gauge Pressure > 4 psi! SHUTDOWN NOW!"
             self.msg1['bg'] = '#cc0000'
             self.msg1['fg'] = 'white'
             winsound.Beep(880, 125)
