@@ -79,6 +79,7 @@ requirements of the method.
             been shut down for an extended period of time for maintenance 
             purposes
         \end{itemize}
+	\item Ensure the rupture disk is intact and positioned correctly
     \item Start up computer and log on
         \begin{itemize}
       
@@ -119,9 +120,14 @@ requirements of the method.
 \end{figure}
         
     \item Ensure the furnace thermocouples are connected to their corresponding
-        connectors inside the vessel and ensure that the wires are tucked down 
+		connectors inside the vessel and ensure that the wires are tucked down 
         between the side of the furnace and the wall of the vessel and are out 
         of the way (see Figure \ref{fig:Thermocouples})
+		\begin {itemize}
+		\item Thermocouple wires coming out of the furnace are numbered and
+			should connect to the corresponding brown wire connected to 
+			the TA-DA
+		\end{itemize}
 		
 \begin{figure}[H]
 \centering
@@ -131,7 +137,7 @@ requirements of the method.
 \end{figure}		
 		
     \item Connect the TADA to the lab computer via the USB cable mounted 
-        under the edge of the hood (see Figure \ref{fig:tada_connect})
+        under the edge of the hood (see Figure \ref{fig:tada_connect}a)
 
 		
 \begin{figure}[H]
@@ -144,9 +150,9 @@ requirements of the method.
 \end{figure}
         
     \item Plug in the 24 volt power supply to the TADA (see Figure 
-        \ref{fig:tada_connect})
+        \ref{fig:tada_connect}b)
     
-    \item Plug the air cylinder solenoid valve power into the 120V outlet on the hood
+    
 
     \item Open the TADA user interface program 
             \begin{itemize}
@@ -214,9 +220,10 @@ requirements of the method.
     \item Test the placement of the ARIA using a blank sample
          \begin{itemize}
          \item For liquids/gases, place the empty syringe in the ARIA, lined up 
-            over the flask, and run the Liquid program.
+            over the flask, and run the Liquid program (Press Liquid Button)
          \item For solids, place the ring stand in the ARIA, then secure the 
-            funnel in the ring stand, then run the solid program
+            funnel in the ring stand, then run the solid program (Press Solid 
+			Button)
          \item If the syringe or the funnel do not go directly into the flask, 
             adjust the placement and retest until properly positioned
          \end{itemize}
@@ -384,7 +391,7 @@ will ensure consistent results with the lowest uncertainty possible.
 \end{figure}
 
 	
-	\item Place lid on pressure vessel and secure in place with the 
+	\item With the help of a second person, place lid on pressure vessel and secure in place with the 
         clamps and cable
 		\begin{itemize}
         \item When placing the lid, hold the lid directly above the vessel and 
@@ -428,8 +435,9 @@ will ensure consistent results with the lowest uncertainty possible.
 		\begin{itemize}
 		\item The absolute pressure in the vessel can be read at the bottom of 
             the TADA\_UI window
-        \item Ensure the ball valve is closed
-        \item Fully open the rotometer on the exhaust of the pressure vessel
+        \item Ensure the ball valve on the inlet hose is closed
+        \item Fully open the rotometer on the exhaust of the pressure vessel by 
+			rotating the valve counterclockwise 
         \item Slowly open the cylinder valve all the way and then turn back one 
 			quarter turn
         \item Once the regulators are pressurized, slowly open the ball valve
@@ -439,8 +447,8 @@ will ensure consistent results with the lowest uncertainty possible.
                 fully vent to ambient pressure and check all seals
             \item Ensure that there are no leaks
             \end{itemize}
-        \item Slowly close the rotometer until the air flow reads 0.4 SCFM 
-            (the lowest graduation on the rotometer)
+        \item Slowly close the rotometer (rotate clockwise) until the air flow 
+			reads 0.4 SCFM (the lowest graduation on the rotometer)
 		\item Adjust pressure in vessel using low pressure regulator until the    
             absolute pressure reading in the TADA\_UI is highlighted green indicating that the 
 			pressure in the vessel is 1 atm (760 Torr)
@@ -467,7 +475,7 @@ will ensure consistent results with the lowest uncertainty possible.
         physical state of the sample
 		(green for solid, blue for liquid) to initiate ARIA sample injection.
             
-    \item Watch the TADA UI for a large temperature spike for 10 minutes
+    \item Watch the TADA UI grid plot for a large temperature spike for 10 minutes
         \begin{itemize}
         \item If a temperature spike is observed, allow enough time for the
             temperature to return to a steady state before stopping the camera 
@@ -483,18 +491,12 @@ will ensure consistent results with the lowest uncertainty possible.
             continue collecting temperature data until 600 seconds have passed 
             since injection
         \end{itemize}
-        
-    \item Review the camera footage, looking for a flame corresponding to the 
-        temperature spike
-        \begin{itemize}
-        \item This may be done on the capture app on the tablet
-        \end{itemize}
     
     \item Record pertinent data and observations in the lab book and the 
         TADA UI
         \begin{itemize}
-        \item The following data must be present on the same row, in the 
-            following order:
+        \item The following data must be present on the same row of the lab 
+			notebook, in the following order:
             \begin{itemize}
             \item Time of day that data collection began for that run
             \item Compound name 
@@ -531,7 +533,7 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Record the same data in the corresponding fields in the TADA UI
             \textbf{before} terminating temperature data collection
         \end{itemize}
-        
+		
     \item After the experiment ends, terminate data collection
         \begin{itemize}
         \item Press the Enter key  again to stop data 
@@ -540,7 +542,13 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Video recording may be stopped 15 seconds after a temperature 
             spike
         \end{itemize}
- 
+
+	\item Review the camera footage, looking for a flame corresponding to the 
+        temperature spike
+        \begin{itemize}
+        \item This may be done on the capture app on the tablet
+        \end{itemize}
+		
     \item Set furnace to next temperature
         \begin{itemize}
             \item When changing temperature, always approach your target
@@ -551,13 +559,14 @@ will ensure consistent results with the lowest uncertainty possible.
         vessel to be purged of the combustion products
     \item Extract, save and appropriately rename the video data between 
             experiments
-	\item After the purge time has ended, turn off the inlet air flow and wait 
-        for pressure vessel to \textit{fully} depressurize (outflow rotometer reads zero)
+	\item After the purge time has ended, turn off the inlet air flow using the 
+		ball valve and wait for pressure vessel to \textit{fully} depressurize 
+		(outflow rotometer reads zero)
 	\item Remove the pressure vessel lid 
 		\begin{itemize}
-		\item Loosen the clamps using a regular wrench instead of a 
+		\item Loosen the clamps using a 3/4" wrench instead of a 
             torque wrench
-		\item Remove the safety cable \textbf{after} you remove the clamps
+		\item Remove the safety cable \textbf{after} you remove the clamps for safety
 		\item Lift off the lid and \textbf{immediately} place snorkel inside the 
 		pressure vessel approximately 6" over the furnace 
 		\end{itemize}
@@ -1123,24 +1132,25 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
        
     \subsubsection{Connecting to the camera} 
         \begin{itemize}
-        \item Firmly press and release the "info/wireless" button on the back of the camera multiple times until you see "APP \& RC" on the camera status screen
-        \item Press the "shutter/select" button to confirm your selection
+        \item Firmly press and release the ``info/wireless" button on the back of
+			the camera (not the red circle) multiple times until you see ``APP \& RC" on the camera status screen
+        \item Press the ``shutter/select" button (the red circle) to confirm your selection
             \begin{itemize}
-            \item The "wireless status" (blue) light will begin flashing. This 
+            \item The ``wireless status" (blue) light will begin flashing. This 
                 indicates the camera is broadcasting a Wi-Fi signal 
             \end{itemize}
         \item Power on the tablet by holding down the power key (top, right side) until you see the
             splash screen indicating the tablet is booting up
         \item Once the tablet has booted, swipe to get to the home screen and 
-            select the "Settings" app
+            select the ``Settings" app
         \item Select the Wi-Fi settings at the top of the list on the left side 
             of the screen
-        \item Select the Wi-Fi network labelled "ait\_cam\_2016" then select 
-            "connect" on the message box that pops up (FYI: the wifi password is
-            "hotflame16")
+        \item Select the Wi-Fi network labelled ``ait\_cam\_2016" then select 
+            ``connect" on the message box that pops up (FYI: the wifi password is
+            ``hotflame16")
         \item Once the tablet has connected to the Wi-Fi, return to the home 
             screen by pressing the home key
-        \item Open the GoPro Capture App (app is labelled "Capture" on the home 
+        \item Open the GoPro Capture App (app is labelled ``Capture" on the home 
             screen) 
         \item Select the connect box on the top left corner of the screen to connect to camera
         \item Press the camera icon in the center of the screen
@@ -1154,16 +1164,16 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         \begin{itemize}
         \item To shutdown the camera:
             \begin{itemize}
-            \item Press the "info/wireless" button 
-                until the camera status screen reads "Turn Wi-Fi Off"
-            \item Press the "shutter/select" button to confirm your selection
+            \item Press the ``info/wireless" button 
+                until the camera status screen reads ``Turn Wi-Fi Off"
+            \item Press the ``shutter/select" button to confirm your selection
                 \begin{itemize}
-                \item The "wireless status" (blue) light will stop flashing
+                \item The ``wireless status" (blue) light will stop flashing
                 \end{itemize}
             
-            \item Press the "info/wireless" button until the camera status 
-                screen reads "Exit"
-            \item Press the "shutter/select" button to confirm your selection
+            \item Press the ``info/wireless" button until the camera status 
+                screen reads ``Exit"
+            \item Press the ``shutter/select" button to confirm your selection
                 \begin{itemize}
                 \item The camera will shutdown 
                 \end{itemize}
@@ -1172,7 +1182,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         
         \item To shutdown the tablet:
             \begin{itemize}
-            \item Press the "Recent" button to bring up all opened programs and 
+            \item Press the ``Recent" button to bring up all opened programs and 
                 close all programs by swiping on them or pressing the 'X' in the
                 top right corner
             \item Press and hold the Power key until the option to power of 
@@ -1190,11 +1200,11 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         \item Camera Operation
         	\begin{itemize}
         	\item All operations may be done remotely on the tablet via Wi-Fi or 
-            directly with the "info/wireless" and "shutter/select" buttons on 
+            directly with the ``info/wireless" and ``shutter/select" buttons on 
             the camera. For experimental purposes, only basic operations
             will be covered. For more detail on camera 
             operation please see the URLs above
-        	\item In the camera's off or normal modes the "shutter/select" button 
+        	\item In the camera's off or normal modes the ``shutter/select" button 
             toggles recording or standby; the camera will automatically shut off
             after a few seconds on standby
         	\item If the camera is remotely controlled, the on screen red button 
