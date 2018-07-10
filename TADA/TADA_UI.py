@@ -297,7 +297,7 @@ class DAQGUI(Frame):
                 data_out.append(pt2)
                 continue
             for j in i:
-                pt1.append("{.2f}".format(j))
+                pt1.append("{:.2f}".format(j))
             pt2 = ",".join(pt1)
             data_out.append(pt2)
         data_out.insert(0,"")
@@ -358,7 +358,7 @@ class DAQGUI(Frame):
         self.gpress = data[-1]
         try:
             baro_press = float(self.rs232.readline().decode())
-            if baro_press < 1000: self.baro_press = baro_press
+            if baro_press < 1000 or baro_press > 600: self.baro_press = baro_press
             self.pvessel = self.gpress + self.baro_press
         except ValueError:
              self.pvessel = self.gpress + self.baro_press
@@ -376,7 +376,7 @@ class DAQGUI(Frame):
             self.press['fg'] = 'black'
             state = ""
         
-        self.press['text'] = "P(abs): {:3.3f} torr{}".format(data[-1], state)
+        self.press['text'] = "P(abs): {:3.3f} torr{}".format(self.pvessel, state)
         
         if self.gpress > self.pemergency:
             self.msg_str = self.msg1['text']
