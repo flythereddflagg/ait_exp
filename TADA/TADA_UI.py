@@ -247,7 +247,7 @@ class DAQGUI(Frame):
             self.rs232 = serial.Serial(
                 self.rs232_port,
                 self.rs232_baudrate,
-				timeout=1.0)
+				timeout=0.1)
             assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
         except serial.serialutil.SerialException as detail:
