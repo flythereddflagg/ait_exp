@@ -515,16 +515,14 @@ class DAQGUI(Frame):
     def sync_time(self, event=None):
         if self.collect: return
         t1 = localtime()
-        tser = strftime("t%Y,%m,%d,%H,%M,%S", t1).encode()
+        serial_time = strftime("t%Y,%m,%d,%H,%M,%S", t1).encode()
         self.system_timestamp = "\nSystem start time is: "\
             "%s" % strftime("%Y/%m/%d %H:%M:%S", t1)
         
         #print tser
-        self.ser.write(tser)
-        
-        #self.parent.after(self.init_delay, self.ser.close())
+        self.ser.write(serial_time)
         self.clean_up()
-        #self.parent.after(self.init_delay, self.ser.open())
+        self.daq_loop()
     
     def serial_port(self):
         """
