@@ -500,6 +500,49 @@
             \end{itemize}
         
         \end{itemize}
+
+\subsection{Pressure Vessel}
+\subsubsection{Changing the rupture disk}
+We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has been shown to be 
+effecive in preventing catastrophic failure in the vessel. These sections outline how to change
+and test the rupture disk.
+
+    \begin{itemize}
+    \item Remove the O-ring and outlet ring from the pressure vessel by removing the TC clamp
+    \item place the O-ring on a piece of extra thin 1100 alloy aluminum foil
+        \begin{itemize}
+        \item Do \textbf{NOT} use the aluminum foil used for wrapping the flask, it is far too 
+            strong and may lead to a catastrophic failure of the vessel
+        \end{itemize}
+    \item Using your fingers, rip the foil around the O-ring so the piece is roughly the area of the
+        O-ring
+    \item Press the ripped foil in between the O-ring and the outlet ring
+    \item Place the combined rings and foil on the rupture outlet on the pressure vessel and 
+        fold any excess foil over the rupture outlet on the pressure vessel 
+    \item Secure the assembly on the pressure vessel using the TC clamp
+    \item The foil should appear smooth across the rupture surface without any folds or crumpled 
+        spots
+    \item The studded surface may still be apparent but this is normal
+    \end{itemize}
+
+\subsubsection{Testing the rupture disk}
+    \begin{itemize}
+    \item Put on safety glasses and use earplugs
+    \item Take the O’ring and place it on a piece of tin foil
+    \item Using your fingers, rip the tin foil around the O’ring
+    \item Take the piece of tin foil and place it in between the O’ring and the cap
+    \item Fold the excess tin foil over so that it is not in the way
+    \item Secure the cap on using the clamp
+    \item Open the air tank by screwing the cap counterclockwise
+    \item Plug in the pressure regulator (you will plug this in and unplug it for each experiment)
+    \item Slowly turn the pressure regulator clockwise so and observe the increase in pressure (PSI)
+    \item Observe at what pressure the tin foil failed
+    \item Turn the pressure regulator counterclockwise to decrease the pressure
+    \item Unplug the pressure regulator
+    \item Close the air Tank by screwing the cap clockwise
+    \item Record the Pressure at which it failed, whether the shiny or dull side was facing outwards, if the foil was original smooth or crumpled, and where the hole appeared
+    \end{itemize}
+
 \newpage
 \section{Measurement and Data Collection}
 This section enumerates the procedure for measuring AIT. Researchers 
@@ -613,15 +656,15 @@ requirements of the method.
             destroy the Arduino
         \end{itemize}
 
-    \item Open the TADA user interface program 
+    \item Open the TADA user interface program.
             \begin{itemize}
             \item Path: \textit{C:\textbackslash Users\textbackslash  
                 Public\textbackslash Public Documents\textbackslash AIT\textbackslash 
                 ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
-            \item Upon opening the program, a yellow LED in the TADA should 
-                begin flashing (See Figure \ref{fig:tada_leds}) %Check to see that you are getting data
+            \item The program will open two windows. Ensure both windows are visible while using 
+                the program
             \end{itemize}
 
     \item Return to the computer and press the "Sync Time" button on the bottom 
@@ -647,8 +690,15 @@ requirements of the method.
         \end{itemize}
     \item Twist both of the ARIA lead screws by hand such that the mounting 
         plate is all the way down and touching the base plate and the push block
-        all the way back and is touching the horizontal stepper motor (this is 
-        the shutdown position) % SEE TRAINING
+        all the way back and is touching the horizontal stepper motor. (This is 
+        the shutdown position. See Figure \ref{fig:shutdown_position})
+
+\begin{figure}[H]
+\centering\includegraphics[width=.3\textwidth]{shutdown_position.jpg}
+\caption{The shutdown position for the ARIA}
+\label{fig:shutdown_position}
+\end{figure}
+
     \item Ensure the three molex cables are securely plugged in to the ARIA (see Figure \ref{fig:Molex_cables})
         \begin{itemize}
         \item Regardless of the experiments to be performed, ensure all three are plugged in and the 
@@ -679,16 +729,21 @@ requirements of the method.
 
     \item Test the placement of the ARIA using a blank sample
          \begin{itemize}
-         \item For liquids/gases, place the empty syringe in the ARIA, lined up 
-            over the flask, and run the Liquid program (Press the blue Liquid 
-            button)
-         \item For solids, place the ring stand in the ARIA, then secure the 
+         \item Place the ring stand in the ARIA, then secure the 
             funnel in the ring stand, then run the solid program (Press Solid 
             Button)
-         \item If the syringe or the funnel do not go directly into the flask, 
-            adjust the placement and retest until properly positioned
+		 \item Note that the end of the ring stand rod must be nearly flush with the inside surface
+             of the ring stand mount block See Figure \ref{fig:flush_r_stand}
+         \item If the funnel does not go directly into the flask, adjust the placement and retest 
+            until properly positioned
          \end{itemize}
-    
+         
+\begin{figure}[H]
+\centering\includegraphics[width=.5\textwidth]{flush_r_stand.jpg}
+\caption{Place the ring stand so its end is flush with the inside surface of the mount block}
+\label{fig:flush_r_stand}
+\end{figure}
+         
     \item Test the placement of the mirror using the tablet and camera % SEE FIGURES
         \begin{itemize}
         \item Power on the tablet and connect it to the camera's Wi-Fi (See 
@@ -723,15 +778,15 @@ requirements of the method.
         \end{itemize}
     
     \item Ensure the furnace is plugged in to the 220 V outlet on the edge of 
-        the hood % SEE TRAINING
-    \item Power on furnace and set furnace temperature between 20 - 30 degrees 
+        the hood
+    \item Power on furnace and set furnace temperature between 10 - 20 degrees 
         above your initial target flask temperature 
-    \item Reduce the set point temperature when the internal flask temperature 
-        exceeds your initial target temperature by 5 - 10 degrees 
         \begin{itemize}
-        \item Wait a minimum of 90 minutes before changing the temperature
-        \item When powered on initially, the furnace may take up to 2 hours or   
+        \item When powered on initially, the furnace may take 2 hours or   
             more to reach a desired temperature and thermally equilibrate
+        \item Use the TADA\_UI to track the internal temperature of the flask
+        \item Once the internal temperature starts to reach equilibrium, you may adjust the set 
+            point temperature until the target temperature is reached
         \end{itemize}
     
     \item Once the target temperature is reached, allow 30 minutes for thermal 
@@ -803,18 +858,33 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Unless an SDS states otherwise, lab coats are recommended but 
                 not required when handling chemicals
             \item All chemical handling (except for injection into the furnace) 
-                should be done in the left hood to avoid a potential fire hazard 
+                should be done in the hood to avoid a potential fire hazard 
             \end{itemize}
     
     \item Measure out sample
         \begin{itemize}
         \item Liquids
             \begin{itemize}
+            \item Take 2 clean 100 ml beakers and put them in the hood (these will be your sample
+                    and waste beakers)
+            \item Place a small amount of compound into the sample beaker
+            \item Rinse the syringe of any extranous compounds 3 times
+                \begin{itemize}
+                \item Draw approximately 300 microliters into the syringe from the sample beaker and
+                    eject it into the waste beaker
+                \end{itemize}
             \item Draw sample amount into a right-angle syringe
                 \begin{itemize}
-                \item This should not exceed about 250 microliters
+                \item Begin by drawing an excess amount of compound into the syringe
+                \item Draw slowly to minimize air bubbles in the syringe
+                \item Hold syringe vertically to move air bubbles to the top, gently tapping the 
+                    syringe if necessary
+                \item Gently eject the syringe into the waste beaker to remove any air bubbles until
+                    the syringe reads the desired amount
+                \item The desired amount should not exceed 250 microliters
                 \end{itemize}
             \end{itemize}
+
         
         \item Solids
             \begin{itemize}
@@ -839,8 +909,9 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Liquid/Gases Sample
             \begin{itemize}
             \item Place the syringe securely into the syringe holder on the 
-                ARIA, making sure the tip of the syringe 
+                ARIA, making sure the tip of the syringe is aligning down the denter of the hole in the funnel
                 needle is aligned down the center of the hole in the furnace
+			\item Test placement one more time with the opposite program (for liquid sample use the solid button)
             \end{itemize}
             
         \item Solid Sample
@@ -848,11 +919,14 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Carefully insert the weigh boat into the weigh boat holder and
                 press the weigh boat holder onto the servo shaft so the weigh 
                 boat is in a near-horizontal position
+			\item Test placement one more time with the opposite program (for solid sample use the liquid button)
             \end{itemize}
             
         \end{itemize}
             
     \item Remove gloves before proceeding
+	\item Ensure the camera has sufficient battery and is powered on
+    \item Secure the camera to the side of the furnace
     
 \begin{figure}[H]
 \centering\includegraphics[width=.3\textwidth]{rupture_hood.jpg}
@@ -860,14 +934,14 @@ will ensure consistent results with the lowest uncertainty possible.
 \label{fig:rupture_hood}
 \end{figure}
     
-    \item Remove the snorkel from inside the vessel and place above the rupture 
-        disk (see Figure \ref{fig:rupture_hood}) then immediately place lid on 
+    \item \textbf{Simultaneously} remove the snorkel from inside the vessel and place above the rupture 
+        disk (see Figure \ref{fig:rupture_hood}) \textbf{and} place lid on 
         pressure vessel and secure in place with the clamps and cable
         \begin{itemize}
         \item Two people should perform this step. One to remove the snorkel
             and the other to place the lid
-        \item Open the sash on the hood and carefully pull out the vessel lid (do 
-            not pull it through the sliding doors)
+        \item Open the sash on the hood and carefully pull out the vessel lid ensuring the outlet 
+            hose does not catch on anything (do not pull it through the sliding doors)
         \item When placing the lid, hold the lid directly above the vessel and 
             carefully lower it straight down on the vessel to avoid hitting the
             ARIA with the lid. Make sure to avoid crimping the outlet hose and 
@@ -910,21 +984,22 @@ will ensure consistent results with the lowest uncertainty possible.
         \end{itemize}    
     \item Pressurize the vessel
         \begin{itemize}
+        \item \textbf{Safety glasses are required anytime the vessel is pressurized}
         \item The absolute pressure in the vessel can be read at the bottom of 
             the TADA\_UI window
         \item Ensure the ball valve connecting the regulators to the inlet hose
             is closed (valve handle perpedicular to the flow)
         \item Fully open the rotometer on the exhaust of the pressure vessel by 
-            gently rotating the rotometer knob counterclockwise 
+            \textbf{gently} rotating the rotometer knob counterclockwise 
         \item If it has not been done earlier in the day, slowly open the 
 			cylinder valve all the way and then turn back one quarter turn
         \item Once the regulators are pressurized, slowly open the ball valve
-            
         \item Slowly close the rotometer (rotate clockwise) until the air flow 
-            reads 25 SCFH.
+            reads 25 SCFH (The flow rate is read at the middle of the floating ball)
+        \item Allow a 1 - 2 minutes for equilibrium to be reached initially
         \item Adjust pressure in vessel using low pressure regulator until the    
             absolute pressure reading in the TADA\_UI is highlighted green 
-            indicating that the pressure in the vessel is 1 atm (760 Torr)
+            indicating that the pressure in the vessel is sufficiently close to 1 atm (760 torr)
         
         \begin{itemize}
             \item Do this with two people. One to read the pressure off the TADA\_UI and the other
@@ -934,7 +1009,7 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Note: If a loud, high pitched noise is heard, there is a 
                 leak. Immediately close the ball valve and allow the vessel to 
                 fully vent to ambient pressure and check all seals
-            \item Ensure that there are no leaks before proceeding
+            \item Ensure that there are no leaks around the lid before proceeding
 			\item Allow at least 20 secs for equilibration each time the pressure 
 				is changed
             \end{itemize}
@@ -946,39 +1021,36 @@ will ensure consistent results with the lowest uncertainty possible.
     \item Begin data collection 
         \begin{itemize}
         \item In the TADA UI program, press the Enter key
-        \item A red LED in the TADA should begin blinking (See 
-            Figure \ref{fig:tada_leds})
         \item The TADA UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
           to time the experiment
         \end{itemize}
     
-    \item Press the red button on the tablet 
-        screen to start recording
+    \item Press the red button on the tablet screen to start recording
         
     \item Press the LED button on the ARIA control box that corresponds to the 
         physical state of the sample
         (green for solid, blue for liquid) to initiate ARIA sample injection.
             
-    \item Watch the TADA UI grid plot for a large temperature spike for 10 minutes
+    \item Watch through the view port for an flame or a large temperature spike for 10 minutes
         \begin{itemize}
-        \item If a temperature spike is observed, allow enough time for the
-            temperature to return to a steady state before stopping the camera 
-            and terminating temperature data collection
+        \item A temperature rise or a visible flame indicates a combustion event has occured
+        \item If a combustion event is observed, allow enough time for the
+            temperature to return to a steady state before terminating temperature data collection
         
         \item The experiment ends when one of the following criteria is met:
             \begin{itemize} 
-            \item An ignition event is observed (i.e. a temperature spike) 
-                and the temperature returns to steady state
+            \item An ignition event is observed and the temperature returns to steady state
             \item 10 minutes pass with no ignition event observed
             \end{itemize}
+		\item Stop the camera at least 10 seconds after a large temperature spike is observed
+            or after a visible flame disappears
         \item If the UI is used to keep track of time and no flame is observed, 
             continue collecting temperature data until 600 seconds have passed 
             since injection
         \end{itemize}
     
-    \item Record pertinent data and observations in the lab book and the 
-        TADA UI
+    \item Record pertinent data and observations in the lab book and the TADA\_UI
         \begin{itemize}
         \item The following data must be present on the same row in the lab 
             notebook, in the following order:
@@ -1012,7 +1084,7 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Indicate if any sound was heard upon ignition (if applicable)
             \end{itemize}
         \item If any item is not applicable write down N/A in its place
-        \item If any item is unknown, leave a blank until it can be determined
+        \item If any item is unknown, leave it blank until it can be determined
         \item Optionally, leave any pertinent comments about the experiment
             next to or directly under this row of data
         \item Record the same data in the corresponding fields in the TADA UI
@@ -1023,9 +1095,7 @@ will ensure consistent results with the lowest uncertainty possible.
         \begin{itemize}
         \item Press the Enter key  again to stop data 
             collection (the red light on the TADA should stop blinking)
-        \item Press the red button on the tablet screen to stop recording
-        \item Video recording may be stopped 15 seconds after a temperature 
-            spike
+        \item If you haven't already, press the red button on the tablet screen to stop recording
         \end{itemize}
 
     \item Review the camera footage, looking for a flame corresponding to the 
@@ -1043,35 +1113,45 @@ will ensure consistent results with the lowest uncertainty possible.
     \item Wait about 20 minutes after ignition to allow for the pressure 
         vessel to be purged of the combustion products. If there was no ignition,
 		only wait 10 minutes for the pressure vessel to purge after the experiment ends 
-    \item Extract, save and appropriately rename the video data between 
-            experiments
-    \item After the purge time has ended, turn off the inlet air flow using the 
-        ball valve, fully open the rotometer by turning the knob counterclockwise
-		and wait for pressure vessel to \textbf{fully} depressurize 
-        (rotometer reads zero)
+    \item After the purge time has ended, depressurize the vessel
+        \begin{itemize}
+        \item Turn off the inlet air flow using the ball valve
+        \item Fully open the rotometer by gently turning the knob counterclockwise
+		\item Wait until the pressure vessel is \textbf{fully} depressurized (i.e. the rotometer 
+            reads zero)
+        \end{itemize}
     \item Remove the pressure vessel lid by \textbf{first} loosening and 
         disengaging the clamps and \textbf{secondly} removing the safety cable
         \begin{itemize}
         \item Loosen the clamps using a 3/4" wrench instead of a 
             torque wrench
-        \item Remove the safety cable \textbf{after} you remove the clamps
-        \item Lift off the lid and \textbf{immediately} place snorkel inside the 
-        pressure vessel between 6" and 10 " over the furnace
+		\item Break the seal on the lid by breifly lifting the lid with the safety cable still in 
+                place
+        \item Remove the safety cable from the vessel
+        \item \textbf{Simultaneously} Lift off the lid and place snorkel inside the pressure vessel 
+            between 6" and 10" over the furnace
             \begin{itemize}
             \item Two people should perform this step One to remove the lid and one
                 replace the snorkel inside the vessel
             \end{itemize}
         \end{itemize}
-        
+    
+	\item Remove the camera from the vessel
+    \item Remove any syringe or weigh boats used in the previous experiment
+        \begin{itemize}
+        \item Dispose of any weigh boats in the solid waste
+        \end{itemize}
     \item Clean out the flask between measurements by blowing hot air into
-            the flask for 5 minutes using the heat gun
-            \begin{itemize}
-            \item The heat gun should \textbf{only} be plugged in to the outlet 
-                when in use
-            \end{itemize}
-            
-        \item Wait a minimum of 30 minutes to reach the new temperature and 
-            allow the furnace and flask to thermally equilibrate
+            the flask for 5 minutes using the heat gun on the low setting
+        \begin{itemize}
+        \item The heat gun should \textbf{only} be plugged in to the outlet 
+            when in use
+        \item Do not point the heat gun towards the ARIA at any time
+        \end{itemize}
+    
+    \item Extract, save and appropriately rename the video data between experiments    
+    \item Wait a minimum of 30 minutes to reach the new temperature and 
+        allow the furnace and flask to thermally equilibrate
     \item Start this procedure over from step 1 (choose the target file)
     \end{enumerate}
 
@@ -1082,25 +1162,35 @@ will ensure consistent results with the lowest uncertainty possible.
         every work day or any time the setup is not in use:
         \begin{enumerate}
         \item Power off the furnace
+        \item Close the TADA\_UI program
         \item Unplug TADA USB connection
-        \item Unplug the ARIA and TADA power supplies 
-        \item Remove and store the any ARIA accesories used that day
-        \item Rinse the funnel with acetone and dispose of the waste
-        \item Tuck the end of the USB cord into the mounted section under the 
-            edge of the hood so it does not present a tripping hazard
+        \item Unplug the ARIA and TADA power supply cables
+        \item Shut down and unplug the tablet
+        \item Turn the camera Wi-Fi off then shut down and unplug the camera
         \item Extract all data to the computer and appropriately rename them 
             (Refer to Section \ref{sec:data})
-        \item Shut down and unplug the tablet 
-        \item Shut down and unplug the camera
-        \item Store all chemicals in the appropriate cabinets
-        \item Remove any organic solid residue from all working surfaces 
-            (See Section \ref{sec:spill_solid})
         \item Close all programs and shut down the computer
+        
+        \item Remove and store any ARIA accessories used that day
+        \item Clean the funnel with appropriate solvents and dispose of the waste
+        \item Discard the contents of both beakers and prepare them for dish washing
+        \item Discard any residual sample in syringes and store them in the syringe box in the AIT
+            drawer without rinsing %% Change POLICY for syringes
+        \item Store all chemicals in the appropriate cabinets
+        \item Remove any organic solid residue from working surfaces 
+            (See Section \ref{sec:spill_solid})
+		
+		\item Ensure all air systems are depressurized 
+			\begin{itemize}
+			\item Ensure the ball valve is closed (the handle should be perpendicular to the flow)
+			\item Slowly close the cylinder valve all the way
+			\item Open the ball valve by turning the handle parallel to the flow
+            \item Wait until both regulators depressurize
+			\end{itemize}
         \end{enumerate}
     
-    \item A hot furnace may be left in the open pressure vessel with the snorkel 
+    \item A hot furnace may be left with the pressure vessel open and the snorkel 
         venting it without waiting for it to cool
-    \item Do not rinse out needles %% add policy for needles !!!!!!!
     \item Under normal use, disposable gloves may be thrown into the normal 
         trash receptacle instead of solid chemical waste
     \end{itemize}
@@ -1274,7 +1364,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         residue should be dissolved in solvent and discarded in liquid waste
     \end{itemize}
 
-
+\newpage    
 \section{Emergency Shutdown} \label{sec:e_shtdn}
 
     \begin{itemize}
@@ -1292,11 +1382,8 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     
     \item If an emergency requires you to evacuate the lab, do only the first 
         2 steps
+    \item \textbf{DO NOT perform any steps that present a danger to you}
     \end{itemize}
-
-\newpage    
-
-
 
 
 \end{document}
