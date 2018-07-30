@@ -1,47 +1,48 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.6.14)  26 JUL 2018 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.2.17)  30 JUL 2018 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ait_sop
+**./ait_sop.tex
 (./ait_sop.tex
-LaTeX2e <2018-04-01> patch level 5
-(c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 12 language(s) loaded.
+(c:/texlive/2016/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(c:/texlive/2018/texmf-dist/tex/latex/base/size11.clo
+(c:/texlive/2016/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(c:/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
+(c:/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(c:/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+(c:/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(c:/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -52,7 +53,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 )
-(c:/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
+(c:/texlive/2016/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box26
 \beforetitleunit=\skip43
@@ -64,21 +65,17 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidthlast=\dimen114
 \titlewidthfirst=\dimen115
 )
-(c:/texlive/2018/texmf-dist/tex/latex/ms/ragged2e.sty
+(c:/texlive/2016/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 
-
-LaTeX Warning: Command \@arrayparboxrestore  has changed.
-               Check if current package is valid.
-
-(c:/texlive/2018/texmf-dist/tex/latex/ms/everysel.sty
+(c:/texlive/2016/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-(c:/texlive/2018/texmf-dist/tex/latex/footmisc/footmisc.sty
+(c:/texlive/2016/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
 \FN@temptoken=\toks17
 \footnotemargin=\dimen116
-\c@pp@next@reset=\count91
+\c@pp@next@reset=\count90
 Package footmisc Info: Declaring symbol style bringhurst on input line 855.
 Package footmisc Info: Declaring symbol style chicago on input line 863.
 Package footmisc Info: Declaring symbol style wiley on input line 872.
@@ -103,11 +100,11 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 \RaggedRightParindent=\skip57
 \JustifyingParindent=\skip58
 )
-(c:/texlive/2018/texmf-dist/tex/latex/was/gensymb.sty
+(c:/texlive/2016/texmf-dist/tex/latex/was/gensymb.sty
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
-(c:/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+(c:/texlive/2016/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/01/24 v2.0c Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -121,84 +118,9 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 
-(c:/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+(c:/texlive/2016/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(c:/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+FEFF (decimal 65279)
-))
+)
 LaTeX Info: Redefining \oldstylenums on input line 334.
 Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
 Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
@@ -263,35 +185,43 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(c:/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(c:/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
 
-(c:/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+(c:/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(c:/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(c:/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(c:/texlive/2016/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count91
 ))
 \Gin@req@height=\dimen117
 \Gin@req@width=\dimen118
 )
-(c:/texlive/2018/texmf-dist/tex/latex/subfig/subfig.sty
+(c:/texlive/2016/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
-(c:/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+(c:/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(c:/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
+(c:/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen119
 \captionmargin@=\dimen120
 \captionwidth=\dimen121
@@ -316,7 +246,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \sf@top=\skip62
 \sf@bottom=\skip63
 )
-(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
+(c:/texlive/2016/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count100
 \float@exts=\toks18
@@ -324,35 +254,38 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks19
 \@floatcapt=\box28
 )
-(c:/texlive/2018/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+(c:/texlive/2016/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen127
 \WF@size=\dimen128
 \c@WF@wrappedlines=\count101
 \WF@box=\box29
 \WF@everypar=\toks20
 Package: wrapfig 2003/01/31  v 3.6
+)
+(c:/texlive/2016/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
 ) (./ait_sop.aux)
 \openout1 = `ait_sop.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
 
-(c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+(c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    ... okay on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -388,22 +321,22 @@ LaTeX Font Info:    ... okay on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package ragged2e Info: ABD: executing \RaggedRight on input line 29.
+Package ragged2e Info: ABD: executing \RaggedRight on input line 30.
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 29.
+LaTeX Info: Redefining \selectfont on input line 30.
 \symgns@font=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 29.
-Package gensymb Info: Math companion symbols declared on input line 29.
-LaTeX Info: Redefining \degree on input line 29.
-LaTeX Info: Redefining \celsius on input line 29.
+(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 30.
+Package gensymb Info: Math companion symbols declared on input line 30.
+LaTeX Info: Redefining \degree on input line 30.
+LaTeX Info: Redefining \celsius on input line 30.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 29.
-LaTeX Info: Redefining \ohm on input line 29.
-Package gensymb Info: Using \textohm for \ohm on input line 29.
-Package gensymb Info: Using \textmu for \micro on input line 29.
+erthousand on input line 30.
+LaTeX Info: Redefining \ohm on input line 30.
+Package gensymb Info: Using \textohm for \ohm on input line 30.
+Package gensymb Info: Using \textmu for \micro on input line 30.
 
-(c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen129
@@ -416,54 +349,48 @@ Package gensymb Info: Using \textmu for \micro on input line 29.
 \MPnumerator=\count106
 \makeMPintoPDFobject=\count107
 \everyMPtoPDFconversion=\toks22
-) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (c:/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
 )
-(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
+(c:/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(c:/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(c:/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(c:/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.jpg,.JPG,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(c:/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -480,246 +407,279 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
- [1
-
-{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+)
 \tf@toc=\write3
 \openout3 = `ait_sop.toc'.
 
- [2] [3]
-<wrap.jpg, id=17, 912.40875pt x 670.75594pt>
-File: wrap.jpg Graphic file (type jpg)
-<use wrap.jpg>
-Package pdftex.def Info: wrap.jpg  used on input line 169.
-(pdftex.def)             Requested size: 505.89pt x 371.89525pt.
- [4]
-Overfull \hbox (0.97383pt too wide) in paragraph at lines 181--184
-[]\OT1/cmr/m/n/10.95 Slide the loose half of the ce-ramic back in to be snug ar
-ound the flask neck, re-place the spring, 
- []
+ [1
 
-<insert_in_lid_w_donut.jpg, id=22, 350.81062pt x 644.4075pt>
-File: insert_in_lid_w_donut.jpg Graphic file (type jpg)
-<use insert_in_lid_w_donut.jpg>
-Package pdftex.def Info: insert_in_lid_w_donut.jpg  used on input line 209.
-(pdftex.def)             Requested size: 227.64894pt x 418.18144pt.
-[5 <./wrap.jpg>]
-<top_of_furnace_w_wrench.jpg, id=26, 3035.34pt x 4047.12pt>
-File: top_of_furnace_w_wrench.jpg Graphic file (type jpg)
-<use top_of_furnace_w_wrench.jpg>
-Package pdftex.def Info: top_of_furnace_w_wrench.jpg  used on input line 240.
-(pdftex.def)             Requested size: 177.06458pt x 236.08554pt.
- [6 <./insert_in_lid_w_donut.jpg>]
-<Furnace_diagram_mod.jpg, id=30, 542.025pt x 462.22687pt>
-File: Furnace_diagram_mod.jpg Graphic file (type jpg)
-<use Furnace_diagram_mod.jpg>
-Package pdftex.def Info: Furnace_diagram_mod.jpg  used on input line 254.
-(pdftex.def)             Requested size: 328.82541pt x 280.42043pt.
- [7 <./top_of_furnace_w_wrench.jpg> <./Furnace_diagram_mod.jpg>]
-Overfull \hbox (10.25096pt too wide) in paragraph at lines 278--281
-[]\OT1/cmr/m/n/10.95 Once all stains have been erad-i-cated from the in-side of
- the flask and the flask has been scrubbed 
- []
-
-<clean_dirty_flask.jpg, id=35, 1880.02374pt x 2827.56375pt>
-File: clean_dirty_flask.jpg Graphic file (type jpg)
-<use clean_dirty_flask.jpg>
-Package pdftex.def Info: clean_dirty_flask.jpg  used on input line 300.
-(pdftex.def)             Requested size: 126.47249pt x 190.18356pt.
-[8 <./clean_dirty_flask.jpg>]
-<Furnace_pic_diagram.jpg, id=39, 493.845pt x 544.28343pt>
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <Furnace_pic_di
+agram.jpg, id=11, 493.845pt x 544.28343pt>
 File: Furnace_pic_diagram.jpg Graphic file (type jpg)
+
 <use Furnace_pic_diagram.jpg>
-Package pdftex.def Info: Furnace_pic_diagram.jpg  used on input line 326.
+Package pdftex.def Info: Furnace_pic_diagram.jpg used on input line 78.
 (pdftex.def)             Requested size: 227.64894pt x 250.89664pt.
- [9 <./Furnace_pic_diagram.jpg>]
-Overfull \hbox (34.21355pt too wide) in paragraph at lines 366--367
+ [2 <./Furnace_pic_diagram.jpg>]
+Overfull \hbox (34.21355pt too wide) in paragraph at lines 119--120
 []\OT1/cmtt/m/n/10.95 https://gopro.com/help/articles/Block/How-to-Pair-the-Cam
 era-with-the-GoPro-App#HERO4 
  []
 
-<Camera_diagram.jpg, id=43, 508.90125pt x 301.8778pt>
+<Camera_diagram.jpg, id=15, 508.90125pt x 301.8778pt>
 File: Camera_diagram.jpg Graphic file (type jpg)
-<use Camera_diagram.jpg>
-Package pdftex.def Info: Camera_diagram.jpg  used on input line 374.
+ <use Camera_diagram.jpg>
+Package pdftex.def Info: Camera_diagram.jpg used on input line 127.
 (pdftex.def)             Requested size: 303.53708pt x 180.06403pt.
-<tablet.jpg, id=44, 1039.63406pt x 443.40656pt>
+
+<tablet.jpg, id=16, 1039.63406pt x 443.40656pt>
 File: tablet.jpg Graphic file (type jpg)
-<use tablet.jpg>
-Package pdftex.def Info: tablet.jpg  used on input line 382.
+ <use tablet.jpg>
+Package pdftex.def Info: tablet.jpg used on input line 135.
 (pdftex.def)             Requested size: 505.89pt x 215.76233pt.
-[10 <./Camera_diagram.jpg>] [11 <./tablet.jpg>]
-Overfull \hbox (10.52478pt too wide) in paragraph at lines 466--471
+ [3 <./Camera_diagram.jpg>] [4 <./tablet.jpg>]
+Overfull \hbox (10.52478pt too wide) in paragraph at lines 219--224
 []\OT1/cmr/m/n/10.95 All op-er-a-tions may be done re-motely on the tablet via 
 Wi-Fi or di-rectly with the ``info/wireless" 
  []
 
-[12] [13]
-<rupture_disk.jpg, id=60, 3022.29124pt x 2851.65375pt>
-File: rupture_disk.jpg Graphic file (type jpg)
-<use rupture_disk.jpg>
-Package pdftex.def Info: rupture_disk.jpg  used on input line 576.
-(pdftex.def)             Requested size: 126.47249pt x 119.31175pt.
+[5] <o_ring_on_foil.jpg, id=29, 321.2pt x 240.9pt>
+File: o_ring_on_foil.jpg Graphic file (type jpg)
+ <use o_ring_on_foil.jpg>
+Package pdftex.def Info: o_ring_on_foil.jpg used on input line 266.
+(pdftex.def)             Requested size: 151.7482pt x 113.81102pt.
 
-Overfull \hbox (10.31172pt too wide) in paragraph at lines 592--594
+<cap_and_o_ring.jpg, id=30, 321.2pt x 240.9pt>
+File: cap_and_o_ring.jpg Graphic file (type jpg)
+ <use cap_and_o_ring.jpg>
+Package pdftex.def Info: cap_and_o_ring.jpg used on input line 269.
+(pdftex.def)             Requested size: 151.7482pt x 113.81102pt.
+
+<fold_foil.jpg, id=31, 321.2pt x 240.9pt>
+File: fold_foil.jpg Graphic file (type jpg)
+ <use fold_foil.jpg>
+Package pdftex.def Info: fold_foil.jpg used on input line 270.
+(pdftex.def)             Requested size: 151.7482pt x 113.81102pt.
+ [6 <./o_ring_on_foil.jpg> <./cap_and_o_ring.jpg> <./fold_foil.jpg>] [7]
+<wrap.jpg, id=40, 912.40875pt x 670.75594pt>
+File: wrap.jpg Graphic file (type jpg)
+ <use wrap.jpg>
+Package pdftex.def Info: wrap.jpg used on input line 428.
+(pdftex.def)             Requested size: 505.89pt x 371.89525pt.
+ [8]
+Overfull \hbox (0.97383pt too wide) in paragraph at lines 440--443
+[]\OT1/cmr/m/n/10.95 Slide the loose half of the ce-ramic back in to be snug ar
+ound the flask neck, re-place the spring, 
+ []
+
+<insert_in_lid_w_donut.jpg, id=44, 350.81062pt x 644.4075pt>
+File: insert_in_lid_w_donut.jpg Graphic file (type jpg)
+
+<use insert_in_lid_w_donut.jpg>
+Package pdftex.def Info: insert_in_lid_w_donut.jpg used on input line 468.
+(pdftex.def)             Requested size: 227.64894pt x 418.18144pt.
+ [9 <./wrap.jpg>]
+<top_of_furnace_w_wrench.jpg, id=48, 3035.34pt x 4047.12pt>
+File: top_of_furnace_w_wrench.jpg Graphic file (type jpg)
+
+<use top_of_furnace_w_wrench.jpg>
+Package pdftex.def Info: top_of_furnace_w_wrench.jpg used on input line 499.
+(pdftex.def)             Requested size: 177.06458pt x 236.08554pt.
+ [10 <./insert_in_lid_w_donut.jpg>]
+<Furnace_diagram_mod.jpg, id=52, 542.025pt x 462.22687pt>
+File: Furnace_diagram_mod.jpg Graphic file (type jpg)
+
+<use Furnace_diagram_mod.jpg>
+Package pdftex.def Info: Furnace_diagram_mod.jpg used on input line 513.
+(pdftex.def)             Requested size: 328.82541pt x 280.42043pt.
+ [11 <./top_of_furnace_w_wrench.jpg> <./Furnace_diagram_mod.jpg>]
+Overfull \hbox (10.25096pt too wide) in paragraph at lines 537--540
+[]\OT1/cmr/m/n/10.95 Once all stains have been erad-i-cated from the in-side of
+ the flask and the flask has been scrubbed 
+ []
+
+<clean_dirty_flask.jpg, id=56, 1880.02374pt x 2827.56375pt>
+File: clean_dirty_flask.jpg Graphic file (type jpg)
+
+<use clean_dirty_flask.jpg>
+Package pdftex.def Info: clean_dirty_flask.jpg used on input line 559.
+(pdftex.def)             Requested size: 126.47249pt x 190.18356pt.
+ [12 <./clean_dirty_flask.jpg>]
+<rupture_disk.jpg, id=60, 2163.08125pt x 1919.17pt>
+File: rupture_disk.jpg Graphic file (type jpg)
+ <use rupture_disk.jpg>
+Package pdftex.def Info: rupture_disk.jpg used on input line 596.
+(pdftex.def)             Requested size: 126.47249pt x 112.18753pt.
+
+Overfull \hbox (10.31172pt too wide) in paragraph at lines 612--614
 []\OT1/cmr/m/n/10.95 You may need to spec-ify the do-main you are log-ging into
 . If that is the case en-ter your CAEDM 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 595.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 615.
 
-(c:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+(c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 595.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 615.
+
 <sd_card_reader.jpg, id=61, 3035.34pt x 4047.12pt>
 File: sd_card_reader.jpg Graphic file (type jpg)
-<use sd_card_reader.jpg>
-Package pdftex.def Info: sd_card_reader.jpg  used on input line 615.
+ <use sd_card_reader.jpg>
+Package pdftex.def Info: sd_card_reader.jpg used on input line 635.
 (pdftex.def)             Requested size: 151.76854pt x 202.30609pt.
- [14 <./rupture_disk.jpg>]
-<Thermocouples.jpg, id=67, 4047.12pt x 3035.34pt>
-File: Thermocouples.jpg Graphic file (type jpg)
-<use Thermocouples.jpg>
-Package pdftex.def Info: Thermocouples.jpg  used on input line 632.
-(pdftex.def)             Requested size: 202.3529pt x 151.72957pt.
-<TADA_USB.jpg, id=68, 2496.32625pt x 3092.55376pt>
-File: TADA_USB.jpg Graphic file (type jpg)
-<use TADA_USB.jpg>
-Package pdftex.def Info: TADA_USB.jpg  used on input line 643.
-(pdftex.def)             Requested size: 114.80574pt x 142.26378pt.
-<24V_cable.jpg, id=69, 2194.1975pt x 2415.0225pt>
-File: 24V_cable.jpg Graphic file (type jpg)
-<use 24V_cable.jpg>
-Package pdftex.def Info: 24V_cable.jpg  used on input line 645.
-(pdftex.def)             Requested size: 129.23555pt x 142.26378pt.
-<24v_powersupply.jpg, id=70, 3135.715pt x 1458.44875pt>
-File: 24v_powersupply.jpg Graphic file (type jpg)
-<use 24v_powersupply.jpg>
-Package pdftex.def Info: 24v_powersupply.jpg  used on input line 646.
-(pdftex.def)             Requested size: 305.83864pt x 142.26378pt.
-[15 <./sd_card_reader.JPG> <./Thermocouples.JPG>]
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 663.
 
-Overfull \hbox (13.58464pt too wide) in paragraph at lines 670--673
+[13 <./rupture_disk.jpg>] <Thermocouples.jpg, id=68, 4047.12pt x 3035.34pt>
+File: Thermocouples.jpg Graphic file (type jpg)
+
+<use Thermocouples.jpg>
+Package pdftex.def Info: Thermocouples.jpg used on input line 652.
+(pdftex.def)             Requested size: 202.3529pt x 151.72957pt.
+ <TADA_USB.jpg, id=69, 2496.32625pt x 3092.55376pt>
+File: TADA_USB.jpg Graphic file (type jpg)
+
+<use TADA_USB.jpg>
+Package pdftex.def Info: TADA_USB.jpg used on input line 663.
+(pdftex.def)             Requested size: 114.80574pt x 142.26378pt.
+ <24V_cable.jpg, id=70, 2194.1975pt x 2415.0225pt>
+File: 24V_cable.jpg Graphic file (type jpg)
+
+<use 24V_cable.jpg>
+Package pdftex.def Info: 24V_cable.jpg used on input line 665.
+(pdftex.def)             Requested size: 129.23555pt x 142.26378pt.
+ <24v_powersupply.jpg, id=71, 3135.715pt x 1458.44875pt>
+File: 24v_powersupply.jpg Graphic file (type jpg)
+
+<use 24v_powersupply.jpg>
+Package pdftex.def Info: 24v_powersupply.jpg used on input line 666.
+(pdftex.def)             Requested size: 305.83864pt x 142.26378pt.
+ [14 <./sd_card_reader.jpg> <./Thermocouples.jpg>]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 683.
+
+Overfull \hbox (13.58464pt too wide) in paragraph at lines 690--693
 []\OT1/cmr/m/n/10.95 Return to the com-puter and press the "Sync Time" but-ton 
 on the bot-tom left cor-ner of the TADA[]UI 
  []
 
-<led_red_yellow.jpg, id=74, 1164.60094pt x 459.21562pt>
+<led_red_yellow.jpg, id=75, 1164.60094pt x 459.21562pt>
 File: led_red_yellow.jpg Graphic file (type jpg)
+
 <use led_red_yellow.jpg>
-Package pdftex.def Info: led_red_yellow.jpg  used on input line 679.
+Package pdftex.def Info: led_red_yellow.jpg used on input line 699.
 (pdftex.def)             Requested size: 379.4175pt x 149.60767pt.
-[16 <./TADA_USB.JPG> <./24V_cable.JPG> <./24v_powersupply.jpg>]
-<shutdown_position.jpg, id=79, 2299.59125pt x 3540.22626pt>
+ [15 <./TADA_USB.jpg> <./24V_cable.jpg> <./24v_powersupply.jpg>] <shutdown_posi
+tion.jpg, id=79, 2299.59125pt x 3540.22626pt>
 File: shutdown_position.jpg Graphic file (type jpg)
+
 <use shutdown_position.jpg>
-Package pdftex.def Info: shutdown_position.jpg  used on input line 697.
+Package pdftex.def Info: shutdown_position.jpg used on input line 717.
 (pdftex.def)             Requested size: 151.76854pt x 233.63405pt.
+
 <Molex_cables.jpg, id=80, 2679.00874pt x 2539.4875pt>
 File: Molex_cables.jpg Graphic file (type jpg)
-<use Molex_cables.jpg>
-Package pdftex.def Info: Molex_cables.jpg  used on input line 709.
+ <use Molex_cables.jpg>
+Package pdftex.def Info: Molex_cables.jpg used on input line 729.
 (pdftex.def)             Requested size: 252.94499pt x 239.7426pt.
- [17 <./led_red_yellow.jpg> <./shutdown_position.JPG>]
+
+[16 <./led_red_yellow.jpg> <./shutdown_position.jpg>]
 <5V_cable.jpg, id=86, 2731.20375pt x 2836.5975pt>
 File: 5V_cable.jpg Graphic file (type jpg)
-<use 5V_cable.jpg>
-Package pdftex.def Info: 5V_cable.jpg  used on input line 725.
+ <use 5V_cable.jpg>
+Package pdftex.def Info: 5V_cable.jpg used on input line 745.
 (pdftex.def)             Requested size: 252.94499pt x 262.68414pt.
- [18 <./Molex_cables.JPG> <./5V_cable.JPG>]
+ [17 <./Molex_cables.jpg> <./5V_cable.jpg>]
 <flush_r_stand.jpg, id=90, 1479.27657pt x 946.28531pt>
 File: flush_r_stand.jpg Graphic file (type jpg)
-<use flush_r_stand.jpg>
-Package pdftex.def Info: flush_r_stand.jpg  used on input line 742.
+ <use flush_r_stand.jpg>
+Package pdftex.def Info: flush_r_stand.jpg used on input line 762.
 (pdftex.def)             Requested size: 252.94499pt x 161.80492pt.
 
-Overfull \hbox (5.99858pt too wide) in paragraph at lines 775--777
+Overfull \hbox (5.99858pt too wide) in paragraph at lines 795--797
 []\OT1/cmr/m/n/10.95 Squeeze the two catches on the cam-era buckle and pull the
  buckle out of the cam-era mount  
  []
 
-[19 <./flush_r_stand.jpg>]
-Overfull \hbox (0.79741pt too wide) in paragraph at lines 847--856
+[18 <./flush_r_stand.jpg>]
+Overfull \hbox (0.79741pt too wide) in paragraph at lines 867--876
 []\OT1/cmr/m/n/10.95 NOTE: Some SDS's will rec-om-mend us-ing a face shield in 
 ad-di-tion to splash gog-gles when 
  []
 
-[20]
-Overfull \hbox (2.86572pt too wide) in paragraph at lines 919--922
+[19]
+Overfull \hbox (2.86572pt too wide) in paragraph at lines 941--944
 []\OT1/cmr/m/n/10.95 Carefully in-sert the weigh boat into the weigh boat holde
 r and press the weigh boat holder 
  []
 
 <rupture_hood.jpg, id=98, 2887.78876pt x 2371.86125pt>
 File: rupture_hood.jpg Graphic file (type jpg)
-<use rupture_hood.jpg>
-Package pdftex.def Info: rupture_hood.jpg  used on input line 932.
+ <use rupture_hood.jpg>
+Package pdftex.def Info: rupture_hood.jpg used on input line 955.
 (pdftex.def)             Requested size: 151.76854pt x 124.64401pt.
-[21]
-<Top_of_lid.jpg, id=102, 537.6888pt x 541.5432pt>
+
+[20] <Top_of_lid.jpg, id=102, 537.6888pt x 541.5432pt>
 File: Top_of_lid.jpg Graphic file (type jpg)
-<use Top_of_lid.jpg>
-Package pdftex.def Info: Top_of_lid.jpg  used on input line 964.
+ <use Top_of_lid.jpg>
+Package pdftex.def Info: Top_of_lid.jpg used on input line 990.
 (pdftex.def)             Requested size: 177.06458pt x 178.33795pt.
+
 <Cable.png, id=103, 410.2828pt x 456.95718pt>
 File: Cable.png Graphic file (type png)
-<use Cable.png>
-Package pdftex.def Info: Cable.png  used on input line 979.
+ <use Cable.png>
+Package pdftex.def Info: Cable.png used on input line 1005.
 (pdftex.def)             Requested size: 177.06458pt x 197.20593pt.
- [22 <./rupture_hood.jpg> <./Top_of_lid.jpg>] [23 <./Cable.png>]
-Overfull \hbox (1.03468pt too wide) in paragraph at lines 1038--1040
+ [21 <./rupture_hood.jpg> <./Top_of_lid.jpg>] [22 <./Cable.png>]
+Overfull \hbox (1.03468pt too wide) in paragraph at lines 1064--1066
 []\OT1/cmr/m/n/10.95 If a com-bus-tion event is ob-served, al-low enough time f
 or the tem-per-a-ture to re-turn to a steady 
  []
 
-[24] [25] [26]
-Overfull \hbox (0.28036pt too wide) in paragraph at lines 1224--1226
+[23] [24] [25]
+Overfull \hbox (0.28036pt too wide) in paragraph at lines 1250--1252
 []\OT1/cmr/m/n/10.95 Time of day that data col-lec-tion be-gan for that run us-
 ing a 24 hour clock for-mat "hhmm"  
  []
 
-[27]
-Overfull \hbox (60.21039pt too wide) in paragraph at lines 1296--1300
-[]\OT1/cmr/m/n/10.95 Pull out the SD card from the dat-a-log-ger and use the US
-B SD card adapter to copy the"DATALOG.CSV" 
+[26]
+Overfull \hbox (63.86038pt too wide) in paragraph at lines 1322--1326
+[]\OT1/cmr/m/n/10.95 Pull out the SD card from the data log-ger and use the USB
+ SD card adapter to copy the"DATALOG.CSV" 
  []
 
-[28]
-Overfull \hbox (6.78342pt too wide) in paragraph at lines 1329--1332
+[27]
+Overfull \hbox (6.78342pt too wide) in paragraph at lines 1355--1358
 []\OT1/cmr/m/n/10.95 If the spill oc-curs in or out of the hood, use ab-sorbent
  clay that can be found un-der the counter 
  []
 
-[29] [30] (./ait_sop.aux) ) 
+[28] [29] (./ait_sop.aux) ) 
 Here is how much of TeX's memory you used:
- 4450 strings out of 494484
- 68943 string characters out of 6175102
- 135048 words of memory out of 5000000
- 8017 multiletter control sequences out of 15000+600000
+ 4467 strings out of 494769
+ 69661 string characters out of 6176752
+ 131764 words of memory out of 5000000
+ 7695 multiletter control sequences out of 15000+600000
  9743 words of font info for 34 fonts, out of 8000000 for 9000
- 62 hyphenation exceptions out of 8191
- 44i,9n,49p,270b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super
-/cm-super-ts1.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-b10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texliv
-e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texli
-ve/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2018/te
+ 107 hyphenation exceptions out of 8191
+ 44i,9n,49p,240b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super
+/cm-super-ts1.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+b10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr9.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texli
+ve/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2016/te
 xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on ait_sop.pdf (30 pages, 22371445 bytes).
+Output written on ait_sop.pdf (29 pages, 21702739 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

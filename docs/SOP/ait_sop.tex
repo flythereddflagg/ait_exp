@@ -10,6 +10,7 @@
 \usepackage{subfig}
 \usepackage{float}
 \usepackage{wrapfig}
+\usepackage{setspace}
 
 \setlength{\parskip}{1em}
 
@@ -17,7 +18,7 @@
 
 \newcommand*{\TitleFont}{
       \usefont{\encodingdefault}{\rmdefault}{b}{n}
-      \fontsize{12}{20}
+      \fontsize{12}{5}
       \selectfont}
 
 \newcommand\blankpage{%
@@ -27,9 +28,6 @@
     \newpage}
       
 \begin{document}
-
-% generates the title
-%\maketitle
 \begin{center}
 \TitleFont AIT Measurement Standard Operating Procedure\newline
 \TitleFont Last modified on: \today \hspace{1mm} by Mark Redd \newline
@@ -50,15 +48,276 @@
     \item Sign and Date the AIT SOP Signatures Sheet}
     \end {itemize}
 \end{itemize}
-\renewcommand{\baselinestretch}{.75}\normalsize
+\renewcommand{\baselinestretch}{.4}\normalsize
 \tableofcontents    % insert the table of contents
 \renewcommand{\baselinestretch}{1.0}\normalsize
-%\tableofcontents 
 
 
 \newpage
 \section{Experimental Setup and Maintenance}
-    \subsection{Flask and Lid}
+    \subsection{Furnace}
+        \subsubsection{Overview}
+    \begin{itemize}
+    \item The furnace, shown in Figure \ref{fig:furnace_pic}, is an encased 
+        stack of ceramic insulation with cavities 
+        cut out to allow space for the heating elements and the test flask
+        (see Figure \ref{fig:in_furnace} for an internal diagram of the 
+        furnace). The furnace is controlled with measurements taken at the 
+        insulated furnace wall. This design causes the furnace to have
+        large temperature gradients while in operation. As a result, the 
+        set point temperature and the flask temperature will almost always 
+        differ significantly (as much as 25 K in some cases). Therefore, 
+        set points must be chosen between approximately 10 - 20 K above the 
+        desired temperature to reach that temperature inside the flask.
+        \textbf{The reported AIT must be taken from the internal flask 
+        temperature (Thermocouple 4) and NOT the control thermocouple inside
+        the furnace}
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.45\textwidth]{Furnace_pic_diagram.jpg}
+    \caption{AIT Furnace}
+    \label{fig:furnace_pic}
+    \end{figure}
+    
+    \item When powered on initially, the furnace may take up to 2 hours or more  
+        to reach a desired temperature and thermally equilibrate
+    \item Any time a desired temperature is reached, allow at least 30 
+        minutes for thorough thermal equilibration in the flask; allow extra 
+        time during initial start up
+     
+     \end{itemize}
+
+\subsubsection{Furnace Operation}
+See Figure \ref{fig:furnace_pic} for reference on how to operate the furnace
+      \begin{itemize}
+      \item Power on the furnace with the power switch and use the temperature
+            controller to choose a set point temperature
+        \begin{itemize}
+            \item To change the set point, press the up or down     arrows until 
+                the desired temperature is reached
+            \item The lower (green) display is the set point and     the upper 
+                (red) display is the control thermocouple temperature
+        \end{itemize}
+        
+        \item When shutting down, turn off the power switch and unplug the furnace
+        \end{itemize}
+
+        
+    \subsection{Camera and Tablet} \label{sec:cam_tab}
+    \subsubsection{Overview}
+        \begin{itemize}
+        \item Prior to using the experimental setup, all researchers must become 
+        familiar with basic use and operation of the 
+        GoPro\textsuperscript{\textcopyright} HERO4
+        Session\textsuperscript{TM} camera and the Samsung Galaxy Tab A Tablet. 
+        
+        More detailed instructions on how to do basic tasks may be found at the 
+        following URLs:
+        \begin{itemize}
+        \item \texttt{https://shop.gopro.com/softwareandapp}
+        \item \texttt{https://gopro.com/help/articles/Block/How-to-Pair-the-Camera-with-the-GoPro-App\#HERO4 Session}
+        \item \texttt{https://gopro.com/help/articles/Block/Getting-Started-with-the-GoPro-App}
+        \item \texttt{http://www.samsung.com/us/support/owners/product/galaxy-tab-a-8-0-wi-fi}
+        \end{itemize}
+    
+    
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Camera_diagram.jpg}
+\caption{GoPro\textsuperscript{\textcopyright} HERO4
+        Session\textsuperscript{TM} Camera Parts}
+\label{fig:cam_diag}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{tablet.jpg}
+\caption{Samsung Galaxy Tab A}
+\label{fig:tablet}
+\end{figure}
+    
+    \item Refer to Figures \ref{fig:cam_diag} and \ref{fig:tablet} for camera 
+        and tablet setup
+        
+     \end{itemize}
+        
+       
+    \subsubsection{Connecting to the camera} 
+        \begin{itemize}
+        \item Firmly press and release the ``info/wireless" button on the back of
+            the camera (not the red circle) multiple times until you see \
+            ``APP \& RC" on the camera status screen
+        \item Press the ``shutter/select" button (the button with the red 
+            circle) to confirm your selection
+            \begin{itemize}
+            \item The ``wireless status" (blue) light will begin flashing. This 
+                indicates the camera is broadcasting a Wi-Fi signal 
+            \end{itemize}
+        \item Power on the tablet by holding down the power key (top, right side) until you see the
+            splash screen indicating the tablet is booting up
+        \item When first powering on both devices ensure they both are 
+            sufficiently charged. If not, immediately plug them in
+        \item Once the tablet has booted, swipe to get to the home screen and 
+            select the ``Settings" app
+        \item Select the Wi-Fi settings at the top of the list on the left side 
+            of the screen
+        \item Select the Wi-Fi network labeled ``ait\_cam\_2016" then select 
+            ``connect" on the message box that pops up (FYI: the wifi password is
+            ``hotflame16")
+        \item Once the tablet has connected to the Wi-Fi, return to the home 
+            screen by pressing the home key
+        \item Open the GoPro Capture App (app is labeled ``Capture" on the home 
+            screen) 
+        \item Select the connect box on the top left corner of the screen to connect to camera
+        \item Press the camera icon in the center of the screen
+            \begin{itemize}
+            \item The camera will make a beeping noise and the camera view will 
+                open on the tablet
+            \end{itemize}
+        \end{itemize}
+    
+    \subsubsection{Shutdown}
+        \begin{itemize}
+        \item To shutdown the camera:
+            \begin{itemize}
+            \item Press the ``info/wireless" button 
+                until the camera status screen reads ``Turn Wi-Fi Off"
+            \item Press the ``shutter/select" button to confirm your selection
+                \begin{itemize}
+                \item The ``wireless status" (blue) light will stop flashing
+                \end{itemize}
+            
+            \item Press the ``info/wireless" button until the camera status 
+                screen reads ``Exit"
+            \item Press the ``shutter/select" button to confirm your selection
+                \begin{itemize}
+                \item The camera will shutdown 
+                \end{itemize}
+            
+            \end{itemize}
+        
+        \item To shutdown the tablet:
+            \begin{itemize}
+            \item Press the ``Recent" button to bring up all opened programs and 
+                close all programs by swiping on them or pressing the 'X' in the
+                top right corner
+            \item Press and hold the Power key until the option to power of 
+                pops up then press power off
+                \begin{itemize}
+                \item The tablet will shutdown
+                \end{itemize}
+           
+            \end{itemize}
+        
+        \end{itemize}
+    
+    \subsubsection{Other Information}
+        \begin{itemize}
+        \item Camera Operation
+            \begin{itemize}
+            \item All operations may be done remotely on the tablet via Wi-Fi or 
+            directly with the ``info/wireless" and ``shutter/select" buttons on 
+            the camera. For experimental purposes, only basic operations
+            will be covered. For more detail on camera 
+            operation please see the URLs above
+            \item In the camera's off or normal modes the ``shutter/select" button 
+            toggles recording or standby; the camera will automatically shut off
+            after a few seconds on standby
+            \item If the camera is remotely controlled, the on screen red button 
+            toggles recording or standby
+            \item During recording, the camera will not allow viewing via the 
+            tablet. This is due to the high frame rate of our experiments
+            \item Captured video may be reviewed and managed remotely with the grid
+            button on the bottom left corner of the screen
+            \item The camera may be powered on and off remotely with the power  
+            button on the top right corner of the screen. The camera should be 
+            powered off between experiments or when not in use
+            \end{itemize}
+        
+        
+        
+        \item Batteries:
+            \begin{itemize}
+            \item Recharging power supplies and USB cables are available for both
+            the tablet and camera
+            \item Both the camera and the tablet may be charged while in use
+            \item Do NOT charge tablet with the computer as it does not deliver 
+            enough current for effective charging
+            \item Batteries should be allowed to discharge to between 10 - 20\%
+            before recharging
+            \item Batteries should always be recharged to 100\% capacity before 
+            unplugging
+            \item Do not overcharge any battery. Do not leave any battery 
+            charging overnight
+            \end{itemize}
+        
+        \end{itemize}
+
+\subsection{Pressure Vessel}
+\subsubsection{Changing the rupture disk}
+We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
+been shown to be effective in preventing catastrophic failure in the vessel. 
+These sections outline how to change and test the rupture disk. (See Figures 
+\ref{fig:rupture disk_assemble} and \ref{fig:rupture_disk} for reference)
+
+\begin{figure}[H]
+    \centering
+    \subfloat[O-ring on Foil]{{\includegraphics[height=4cm]{o_ring_on_foil.jpg} }}
+    %\qquad
+    \subfloat[Sandwich the foil between O-ring and TC outlet 
+        ring]{{\includegraphics[height=4cm]{cap_and_o_ring.jpg} }}
+    \subfloat[Fold the foil back] {{\includegraphics[height=4cm]{fold_foil.jpg} }}
+    \caption{Installing a new rupture disk}
+    \label{fig:rupture disk_assemble}
+\end{figure}
+
+    \begin{enumerate}
+    \item Remove the O-ring and the TC outlet ring from the pressure vessel by 
+        removing the TC clamp (See Figure \ref{fig:rupture_disk})
+    \item place the O-ring on a piece of extra thin 1100 alloy aluminum foil
+        \begin{itemize}
+        \item \textbf{Do NOT use the aluminum foil used for wrapping the flask,
+            it is far too strong and may lead to a catastrophic failure of the 
+            vessel}
+        \end{itemize}
+    \item Rip the foil around the O-ring so it roughly matches the area of 
+        the O-ring
+    \item Sandwich the ripped foil in between the O-ring and the outlet ring
+    \item Place the combined rings and foil on the rupture outlet on the 
+        pressure vessel and fold any excess foil over the rupture outlet on the 
+        pressure vessel 
+    \item Secure the assembly on the pressure vessel using the TC clamp
+        \begin{itemize}
+        \item The foil should appear smooth across the rupture surface without any 
+            folds or crumpled spots
+        \item The studded surface may still be apparent; this is normal
+        \end{itemize}
+    \end{enumerate}
+
+% \subsubsection{Testing the rupture disk}
+    % \begin{itemize}
+    % \item Securely attach the rupture disk testing device to the low pressure
+        % regulator
+    % \item Put on safety glasses and use earplugs
+    % \item Take the O-ring and place it on a piece of tin foil
+    % \item Using your fingers, rip the tin foil around the O-ring
+    % \item Take the piece of tin foil and place it in between the O-ring and the cap
+    % \item Fold the excess tin foil over so that it is not in the way
+    % \item Secure the cap on using the clamp
+    % \item Open the air tank by screwing the cap counterclockwise
+    % \item Slowly turn the pressure regulator clockwise so and observe the increase in pressure (PSI)
+    % \item Observe at what pressure the tin foil failed
+    % \item Turn the pressure regulator counterclockwise to decrease the pressure
+    % \item Unplug the pressure regulator
+    % \item Close the air Tank by screwing the cap clockwise
+    % \item Record the Pressure at which it failed, whether the shiny or dull 
+        % side was facing outwards, if the foil was original smooth or crumpled, 
+        % and where the hole appeared
+    % \end{itemize}
+
+
+\subsection{Flask and Lid}
     \begin{itemize}
     \item \textbf{Latex or nitrile gloves and safety glasses are 
             required while working with the flask/lid assembly}
@@ -301,249 +560,10 @@
 \caption{A clean flask (dirty flask in the background)}
 \label{fig:clean_dirty}
 \end{figure}  
-
-\newpage 
-    \subsection{Furnace}
-        \subsubsection{Overview}
-    \begin{itemize}
-    \item The furnace, shown in Figure \ref{fig:furnace_pic}, is an encased 
-        stack of ceramic insulation with cavities 
-        cut out to allow space for the heating elements and the test flask
-        (see Figure \ref{fig:in_furnace} for an internal diagram of the 
-        furnace). The furnace is controlled with measurements taken at the 
-        insulated furnace wall. This design causes the furnace to have
-        large temperature gradients while in operation. As a result, the 
-        setpoint temperature and the flask temperature will almost always 
-        differ significantly (as much as 25 K in some cases). Therefore, 
-        setpoints must be chosen between approximately 10 - 20 K above the 
-        desired temperature to reach that temperature inside the flask.
-        \textbf{The reported AIT must be taken from the internal flask 
-        temperature (Thermocouple 4) and NOT the control thermocouple inside
-        the furnace}
-    
-    \begin{figure}[H]
-    \centering
-    \includegraphics[width=.45\textwidth]{Furnace_pic_diagram.jpg}
-    \caption{AIT Furnace}
-    \label{fig:furnace_pic}
-    \end{figure}
-    
-    \item When powered on initially, the furnace may take up to 2 hours or more  
-        to reach a desired temperature and thermally equilibrate
-    \item Any time a desired temperature is reached, allow at least 30 
-        minutes for thorough thermal equilibration in the flask; allow extra 
-        time during initial start up
-     
-     \end{itemize}
-
-\subsubsection{Furnace Operation (See Figure \ref{fig:furnace_pic})}
-      \begin{itemize}
-      \item Power on the furnace with the power switch and use the temperature
-            controller to choose a setpoint temperature
-        \begin{itemize}
-            \item To change the set point, press the up or down     arrows until 
-                the desired temperature is reached
-            \item The lower (green) display is the setpoint and     the upper 
-                (red) display is the control thermocouple temperature
-        \end{itemize}
         
-        \item When shutting down, turn off the power switch and unplug the furnace
-        \end{itemize}
-
-        
-    \subsection{Camera and Tablet} \label{sec:cam_tab}
-    \subsubsection{Overview}
-        \begin{itemize}
-        \item Prior to using the experimental setup, all researchers must become 
-        familiar with basic use and operation of the 
-        GoPro\textsuperscript{\textcopyright} HERO4
-        Session\textsuperscript{TM} camera and the Samsung Galaxy Tab A Tablet. 
-        
-        More detailed instructions on how to do basic tasks may be found at the 
-        following URLs:
-        \begin{itemize}
-        \item \texttt{https://shop.gopro.com/softwareandapp}
-        \item \texttt{https://gopro.com/help/articles/Block/How-to-Pair-the-Camera-with-the-GoPro-App\#HERO4 Session}
-        \item \texttt{https://gopro.com/help/articles/Block/Getting-Started-with-the-GoPro-App}
-        \item \texttt{http://www.samsung.com/us/support/owners/product/galaxy-tab-a-8-0-wi-fi}
-        \end{itemize}
-    
-    
-\begin{figure}[H]
-\centering
-\includegraphics[width=.6\textwidth]{Camera_diagram.jpg}
-\caption{GoPro\textsuperscript{\textcopyright} HERO4
-        Session\textsuperscript{TM} Camera Parts}
-\label{fig:cam_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{tablet.jpg}
-\caption{Samsung Galaxy Tab A}
-\label{fig:tablet}
-\end{figure}
-    
-    \item Refer to Figures \ref{fig:cam_diag} and \ref{fig:tablet} for camera 
-        and tablet setup
-        
-     \end{itemize}
-        
-       
-    \subsubsection{Connecting to the camera} 
-        \begin{itemize}
-        \item Firmly press and release the ``info/wireless" button on the back of
-            the camera (not the red circle) multiple times until you see \
-            ``APP \& RC" on the camera status screen
-        \item Press the ``shutter/select" button (the button with the red 
-            circle) to confirm your selection
-            \begin{itemize}
-            \item The ``wireless status" (blue) light will begin flashing. This 
-                indicates the camera is broadcasting a Wi-Fi signal 
-            \end{itemize}
-        \item Power on the tablet by holding down the power key (top, right side) until you see the
-            splash screen indicating the tablet is booting up
-        \item When first powering on both devices ensure they both are 
-            sufficiently charged. If not, immediately plug them in
-        \item Once the tablet has booted, swipe to get to the home screen and 
-            select the ``Settings" app
-        \item Select the Wi-Fi settings at the top of the list on the left side 
-            of the screen
-        \item Select the Wi-Fi network labelled ``ait\_cam\_2016" then select 
-            ``connect" on the message box that pops up (FYI: the wifi password is
-            ``hotflame16")
-        \item Once the tablet has connected to the Wi-Fi, return to the home 
-            screen by pressing the home key
-        \item Open the GoPro Capture App (app is labelled ``Capture" on the home 
-            screen) 
-        \item Select the connect box on the top left corner of the screen to connect to camera
-        \item Press the camera icon in the center of the screen
-            \begin{itemize}
-            \item The camera will make a beeping noise and the camera view will 
-                open on the tablet
-            \end{itemize}
-        \end{itemize}
-    
-    \subsubsection{Shutdown}
-        \begin{itemize}
-        \item To shutdown the camera:
-            \begin{itemize}
-            \item Press the ``info/wireless" button 
-                until the camera status screen reads ``Turn Wi-Fi Off"
-            \item Press the ``shutter/select" button to confirm your selection
-                \begin{itemize}
-                \item The ``wireless status" (blue) light will stop flashing
-                \end{itemize}
-            
-            \item Press the ``info/wireless" button until the camera status 
-                screen reads ``Exit"
-            \item Press the ``shutter/select" button to confirm your selection
-                \begin{itemize}
-                \item The camera will shutdown 
-                \end{itemize}
-            
-            \end{itemize}
-        
-        \item To shutdown the tablet:
-            \begin{itemize}
-            \item Press the ``Recent" button to bring up all opened programs and 
-                close all programs by swiping on them or pressing the 'X' in the
-                top right corner
-            \item Press and hold the Power key until the option to power of 
-                pops up then press power off
-                \begin{itemize}
-                \item The tablet will shutdown
-                \end{itemize}
-           
-            \end{itemize}
-        
-        \end{itemize}
-    
-    \subsubsection{Other Information}
-        \begin{itemize}
-        \item Camera Operation
-            \begin{itemize}
-            \item All operations may be done remotely on the tablet via Wi-Fi or 
-            directly with the ``info/wireless" and ``shutter/select" buttons on 
-            the camera. For experimental purposes, only basic operations
-            will be covered. For more detail on camera 
-            operation please see the URLs above
-            \item In the camera's off or normal modes the ``shutter/select" button 
-            toggles recording or standby; the camera will automatically shut off
-            after a few seconds on standby
-            \item If the camera is remotely controlled, the on screen red button 
-            toggles recording or standby
-            \item During recording, the camera will not allow viewing via the 
-            tablet. This is due to the high frame rate of our experiments
-            \item Captured video may be reviewed and managed remotely with the grid
-            button on the bottom left corner of the screen
-            \item The camera may be powered on and off remotely with the power  
-            button on the top right corner of the screen. The camera should be 
-            powered off between experiments or when not in use
-            \end{itemize}
-        
-        
-        
-        \item Batteries:
-            \begin{itemize}
-            \item Recharging power supplies and USB cables are available for both
-            the tablet and camera
-            \item Both the camera and the tablet may be charged while in use
-            \item Do NOT charge tablet with the computer as it does not deliver 
-            enough current for effective charging
-            \item Batteries should be allowed to discharge to between 10 - 20\%
-            before recharging
-            \item Batteries should always be recharged to 100\% capacity before 
-            unplugging
-            \item Do not overcharge any battery. Do not leave any battery 
-            charging overnight
-            \end{itemize}
-        
-        \end{itemize}
-
-\subsection{Pressure Vessel}
-\subsubsection{Changing the rupture disk}
-We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has been shown to be 
-effecive in preventing catastrophic failure in the vessel. These sections outline how to change
-and test the rupture disk.
-
-    \begin{itemize}
-    \item Remove the O-ring and outlet ring from the pressure vessel by removing the TC clamp
-    \item place the O-ring on a piece of extra thin 1100 alloy aluminum foil
-        \begin{itemize}
-        \item Do \textbf{NOT} use the aluminum foil used for wrapping the flask, it is far too 
-            strong and may lead to a catastrophic failure of the vessel
-        \end{itemize}
-    \item Using your fingers, rip the foil around the O-ring so the piece is roughly the area of the
-        O-ring
-    \item Press the ripped foil in between the O-ring and the outlet ring
-    \item Place the combined rings and foil on the rupture outlet on the pressure vessel and 
-        fold any excess foil over the rupture outlet on the pressure vessel 
-    \item Secure the assembly on the pressure vessel using the TC clamp
-    \item The foil should appear smooth across the rupture surface without any folds or crumpled 
-        spots
-    \item The studded surface may still be apparent but this is normal
-    \end{itemize}
-
-\subsubsection{Testing the rupture disk}
-    \begin{itemize}
-    \item Put on safety glasses and use earplugs
-    \item Take the O’ring and place it on a piece of tin foil
-    \item Using your fingers, rip the tin foil around the O’ring
-    \item Take the piece of tin foil and place it in between the O’ring and the cap
-    \item Fold the excess tin foil over so that it is not in the way
-    \item Secure the cap on using the clamp
-    \item Open the air tank by screwing the cap counterclockwise
-    \item Plug in the pressure regulator (you will plug this in and unplug it for each experiment)
-    \item Slowly turn the pressure regulator clockwise so and observe the increase in pressure (PSI)
-    \item Observe at what pressure the tin foil failed
-    \item Turn the pressure regulator counterclockwise to decrease the pressure
-    \item Unplug the pressure regulator
-    \item Close the air Tank by screwing the cap clockwise
-    \item Record the Pressure at which it failed, whether the shiny or dull side was facing outwards, if the foil was original smooth or crumpled, and where the hole appeared
-    \end{itemize}
 
 \newpage
+
 \section{Measurement and Data Collection}
 This section enumerates the procedure for measuring AIT. Researchers 
 should follow these procedures every day and for every experiment performed to 
@@ -868,7 +888,7 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Take 2 clean 100 ml beakers and put them in the hood (these will be your sample
                     and waste beakers)
             \item Place a small amount of compound into the sample beaker
-            \item Rinse the syringe of any extranous compounds 3 times
+            \item Rinse the syringe of any extraneous compounds 3 times
                 \begin{itemize}
                 \item Draw approximately 300 microliters into the syringe from the sample beaker and
                     eject it into the waste beaker
@@ -909,9 +929,11 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Liquid/Gases Sample
             \begin{itemize}
             \item Place the syringe securely into the syringe holder on the 
-                ARIA, making sure the tip of the syringe is aligning down the denter of the hole in the funnel
+                ARIA, making sure the tip of the syringe is aligning down the 
+                center of the hole in the funnel
                 needle is aligned down the center of the hole in the furnace
-			\item Test placement one more time with the opposite program (for liquid sample use the solid button)
+			\item Test placement one more time with the opposite program (for 
+                liquid sample use the solid button)
             \end{itemize}
             
         \item Solid Sample
@@ -919,7 +941,8 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Carefully insert the weigh boat into the weigh boat holder and
                 press the weigh boat holder onto the servo shaft so the weigh 
                 boat is in a near-horizontal position
-			\item Test placement one more time with the opposite program (for solid sample use the liquid button)
+			\item Test placement one more time with the opposite program (for 
+                solid sample use the liquid button)
             \end{itemize}
             
         \end{itemize}
@@ -934,14 +957,17 @@ will ensure consistent results with the lowest uncertainty possible.
 \label{fig:rupture_hood}
 \end{figure}
     
-    \item \textbf{Simultaneously} remove the snorkel from inside the vessel and place above the rupture 
+    \item \textbf{Simultaneously} remove the snorkel from inside the vessel and 
+        place above the rupture 
         disk (see Figure \ref{fig:rupture_hood}) \textbf{and} place lid on 
         pressure vessel and secure in place with the clamps and cable
         \begin{itemize}
         \item Two people should perform this step. One to remove the snorkel
             and the other to place the lid
-        \item Open the sash on the hood and carefully pull out the vessel lid ensuring the outlet 
-            hose does not catch on anything (do not pull it through the sliding doors)
+        \item Open the sash on the hood and carefully pull out the vessel lid 
+            ensuring the outlet 
+            hose does not catch on anything (do not pull it through the 
+            sliding doors)
         \item When placing the lid, hold the lid directly above the vessel and 
             carefully lower it straight down on the vessel to avoid hitting the
             ARIA with the lid. Make sure to avoid crimping the outlet hose and 
@@ -951,8 +977,8 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Ensure the lid is centered on the vessel by running your fingers
             around the edge to ensure the edge of the vessel and the lid are
             flush 
-        \item Hand tighten all the pressure vessel clamps on the lip of the lid so 
-            the slack is taken out
+        \item Hand tighten all the pressure vessel clamps on the lip of the lid 
+            so the slack is taken out
         \item Using your other hand to keep the pressure vessel from rotating, 
 			tighten the clamps in opposing pairs following the numbering on 
             the back of each clamp (see Figure \ref{fig:Top_of_lid}) using a 
@@ -977,7 +1003,7 @@ will ensure consistent results with the lowest uncertainty possible.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.35\textwidth]{Cable.png}
-\caption{Security Cable Installation}
+\caption{Safety Cable Installation}
 \label{fig:Cable}
 \end{figure}
 
@@ -988,7 +1014,7 @@ will ensure consistent results with the lowest uncertainty possible.
         \item The absolute pressure in the vessel can be read at the bottom of 
             the TADA\_UI window
         \item Ensure the ball valve connecting the regulators to the inlet hose
-            is closed (valve handle perpedicular to the flow)
+            is closed (valve handle perpendicular to the flow)
         \item Fully open the rotometer on the exhaust of the pressure vessel by 
             \textbf{gently} rotating the rotometer knob counterclockwise 
         \item If it has not been done earlier in the day, slowly open the 
@@ -1125,7 +1151,7 @@ will ensure consistent results with the lowest uncertainty possible.
         \begin{itemize}
         \item Loosen the clamps using a 3/4" wrench instead of a 
             torque wrench
-		\item Break the seal on the lid by breifly lifting the lid with the safety cable still in 
+		\item Break the seal on the lid by briefly lifting the lid with the safety cable still in 
                 place
         \item Remove the safety cable from the vessel
         \item \textbf{Simultaneously} Lift off the lid and place snorkel inside the pressure vessel 
@@ -1198,8 +1224,8 @@ will ensure consistent results with the lowest uncertainty possible.
 \newpage    
 
 \section{Data Extraction} \label{sec:data}
-During experiments data are being recorded on the lab computer, the datalogger 
-and the camera. Both the camera and the datalogger on the TADA have SD cards 
+During experiments data are being recorded on the lab computer, the data logger 
+and the camera. Both the camera and the data logger on the TADA have SD cards 
 with a 32 GB storage capacity that allows multiple runs to be recorded without 
 extraction. The following policies are in place to ensure ease of use, 
 efficiency and avoid common mistakes.
@@ -1235,9 +1261,9 @@ efficiency and avoid common mistakes.
             "hexane\_l\_130319\_1625\_100\_450.csv"
         \end{itemize}
 
-    \item Video and datalogger data must be processed (i.e. parsed, edited, 
+    \item Video and data logger data must be processed (i.e. parsed, edited, 
         timestamped etc.) before being organized and therefore will be saved to 
-        a different path initially
+        the same path initially
 
     \item After processing, all data should be organized according to the 
         following path convention:
@@ -1268,8 +1294,8 @@ efficiency and avoid common mistakes.
             Figure \ref{fig:cam_diag})
         \item Press the "info/wireless" button on the camera to connect the 
             camera to the computer
-        \item Quik should be configured to open automatically extract video and 
-            erase the microSD card when the camera connects to the computer
+        \item Quik should be configured to open automatically extract video 
+            when the camera connects to the computer
         \item Video files should be extracted to the DIPPR legacy server and 
             organized by date:
             \begin{itemize}
@@ -1290,10 +1316,10 @@ efficiency and avoid common mistakes.
             timestamped and converted to .avi format on the server
         \end{itemize}
         
-    \item To extract data from the datalogger
+    \item To extract data from the data logger
         \begin{itemize}
         \item Unplug the TADA from the computer
-        \item Pull out the SD card from the datalogger and use the USB SD card 
+        \item Pull out the SD card from the data logger and use the USB SD card 
             adapter to copy the"DATALOG.CSV" file into the "raw\_data" path and 
             rename it to the original filename with the date 
             tagged on in "YYMMMDD" format (e.g. "DATALOG\_130319.CSV")
@@ -1310,11 +1336,11 @@ efficiency and avoid common mistakes.
         \item Pull out the SD card without ejecting the unit from the computer
         \end{itemize}
     
-    \item Ensure all files from the camera and datalogger are deleted after they
+    \item Ensure all files from the camera and data logger are deleted after they
         have been properly saved in the data folder 
             
     \end{itemize}
-
+    
 \newpage
 \section{Spill Clean-up}
 In the event of any spill, appropriate PPE specified in the corresponding SDS 
@@ -1356,7 +1382,7 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
     \subsection{Solids} \label{sec:spill_solid}
     We will generally work with organic solids that readily dissolve in simple
     organic solvents (e.g. acetone). Researchers must always check chemical 
-    compatablity with solutes and solvents before dissolving any compound.
+    compatibility with solutes and solvents before dissolving any compound.
     \begin{itemize}
     \item Small amounts of organic solids may be dissolved in a small amount of 
         solvent and put in organic liquid waste
@@ -1384,6 +1410,5 @@ In the event of any spill, appropriate PPE specified in the corresponding SDS
         2 steps
     \item \textbf{DO NOT perform any steps that present a danger to you}
     \end{itemize}
-
 
 \end{document}
