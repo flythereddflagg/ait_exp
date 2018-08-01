@@ -60,6 +60,8 @@ void setup_temperature_measurement()
  * sets up the thermocouple amplifiers for temperature measurement
  * and reports a bunch of information about the setup
  */
+ //Serial.print("VERSION "); // print the version
+ //Serial.println(DALLASTEMPLIBVERSION);
   // Start up the library
   Serial.println("Starting Thermocouple Amplifiers...");
   sensors.begin();
@@ -371,10 +373,9 @@ void setup(void)
   setup_temperature_measurement();
   setup_sdcard();
   setup_rtc();
-  
+
   sensors.requestTemperatures(); // get the first temp reading
   now1 = millis(); // get the time of that first reading
-  
   Serial.println("--- SETUP FINISHED ---");
 }
 
@@ -382,11 +383,10 @@ void setup(void)
 void loop(void)
 {
 /**
- * period of collection is determined roughly by the following relationship
- * on larger time scales this is accurate to +/- 2 ms
- * *** period = delay + 101 ms *** 
- * Max sampling speed is ~ 5.7 Hz
+ * delay time - 101  (ms) will determine the maximum sample rate. For instance the default 
+ * delay_time is 149 (ms) which translates to about 4 Hz.
  */
+  if (millis() - now1 < delay_time) return; // slow down data collection
   if (temp_read_ready()){ // check that all TC Amps are ready to return a temperature
     
     update_datastring(); // put the temperature and pressure data into the datastring variable
@@ -409,10 +409,8 @@ void loop(void)
         // otherwise throw an error
         Serial.println("|,err,err,err,err,err");
     }
-    
     sensors.requestTemperatures(); // request temperature from all devices
     now1 = millis(); // get the current time
-    delay(delay_time); // slow down the data collection
     
   }
   else { // if you get a missed temperature re-request the temperatures
