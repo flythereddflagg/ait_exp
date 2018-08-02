@@ -25,5 +25,8 @@ def plot_data(data_path):
 
 input_path = input("Data path or q to quit\n ---> ")
 while input_path != 'q':
-    plot_data(input_path)
+    try:
+        plot_data(input_path)
+    except:
+        print("Plot Data failed. Please try again.")
     input_path = input("Data path or q to quit\n ---> ")
