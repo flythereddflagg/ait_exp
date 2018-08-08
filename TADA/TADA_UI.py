@@ -346,6 +346,7 @@ class DAQGUI(Frame):
             except ValueError:  #replace non-number data with zeros
                 data[i] = 0.0
         self.update_baro(data)
+        data[-1] = self.pvessel
         return data
     
     def update_baro(self,data):
