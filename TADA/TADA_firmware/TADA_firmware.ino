@@ -108,7 +108,7 @@ void setup_temperature_measurement()
   sensors.setResolution(Thermometer3, TEMPERATURE_PRECISION);
 
   // do not wait for conversion (speeds up thermocouples)
-  sensors.setWaitForConversion(false); 
+  //sensors.setWaitForConversion(false); 
 
   Serial.print("Device 0 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer0), DEC); 
@@ -307,7 +307,7 @@ void set_RTC_time()
   }
   tindex = 0;
   time_string = "";  // reset time string
-  incomingByte = 48; // Do not write to datafile
+  incomingByte = 48; // or '0': Do not write to datafile
   set_write_time();  // reset clocks
 }
 
@@ -343,18 +343,18 @@ void update_datastring()
 void write_to_datafile()
 {
 /**
- * Writes datastring to file on the SD card and prints to serial
+ * Writes datastring to file on the SD card
+ * If the dataFile fails to open it throws an error to Serial
  */
   dataFile = SD.open("datalog.csv", FILE_WRITE);
   // if the file is available, write to it:
   if (dataFile) {
     dataFile.println(dataString);
     dataFile.close();
-    Serial.println(dataString); // print to the serial port too:
   }
   // if the file isn't open, pop up an error:
   else {
-    Serial.println("error opening datalog.csv");
+    Serial.println("Error: datalog.csv open failed");
   }
 }
 
@@ -383,23 +383,26 @@ void setup(void)
 void loop(void)
 {
 /**
- * delay time - 101  (ms) will determine the maximum sample rate. For instance the default 
- * delay_time is 149 (ms) which translates to about 4 Hz.
+ * The following relationship:
+ *    sample period = delay time - 101 (ms)
+ * will determine the maximum sample rate. For instance the default delay_time is 149 (ms) 
+ * which translates to about 4 Hz or a sample every 0.25 seconds.
  */
-  if (millis() - now1 < delay_time) return; // slow down data collection
+  //if (millis() - now1 < delay_time) return; // slow down data collection
   if (temp_read_ready()){ // check that all TC Amps are ready to return a temperature
+    // check if the WaitForConversion flag is set to true the reset it to false if it is.
+    //if (sensors.getWaitForConversion()) sensors.setWaitForConversion(false);
     
     update_datastring(); // put the temperature and pressure data into the datastring variable
     
     if(Serial.available() > 0) incomingByte = Serial.read(); // Check for communication over serial
     switch (incomingByte) {
-      case '0':
-        // ASCII '0' is the default state and just prints the data to serial
-        Serial.println(dataString);
-        break;
       case '1':
-        // an ASCII '1' means write data to file on SD card and to serial
-        write_to_datafile(); 
+        // an ASCII one (i.e. '1') means write data to file on SD card and to serial
+        write_to_datafile();
+      case '0':
+        // ASCII zero (i.e. '0') is the default state and only prints the data to serial
+        Serial.println(dataString);
         break;
       case 't':
         // a 't' means to sync the time
@@ -408,13 +411,19 @@ void loop(void)
       default:
         // otherwise throw an error
         Serial.println("|,err,err,err,err,err");
+        break;
     }
     sensors.requestTemperatures(); // request temperature from all devices
     now1 = millis(); // get the current time
     
   }
-  else { // if you get a missed temperature re-request the temperatures
+  else { 
+    // if you get a missed temperature,
+    // set the WaitForConversion flag to true and 
+    // re-request the temperatures
+    //sensors.setWaitForConversion(true); 
     sensors.requestTemperatures();
     now1 = millis();
   }
-}  
+}
+
