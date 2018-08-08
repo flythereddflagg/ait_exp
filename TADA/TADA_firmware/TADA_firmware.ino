@@ -108,7 +108,7 @@ void setup_temperature_measurement()
   sensors.setResolution(Thermometer3, TEMPERATURE_PRECISION);
 
   // do not wait for conversion (speeds up thermocouples)
-  //sensors.setWaitForConversion(false); 
+  sensors.setWaitForConversion(false); 
 
   Serial.print("Device 0 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer0), DEC); 
@@ -388,15 +388,9 @@ void loop(void)
  * will determine the maximum sample rate. For instance the default delay_time is 149 (ms) 
  * which translates to about 4 Hz or a sample every 0.25 seconds.
  */
-  //if (millis() - now1 < delay_time) return; // slow down data collection
+  if (millis() - now1 < delay_time) return; // slow down data collection
   if (temp_read_ready()){ // check that all TC Amps are ready to return a temperature
-    // check if the WaitForConversion flag is set to true the reset it to false if it is.
-<<<<<<< HEAD
-    //if (sensors.getWaitForConversion()) sensors.setWaitForConversion(false);
-=======
-    if (sensors.getWaitForConversion()) sensors.setWaitForConversion(false);
->>>>>>> cf44c2bbb4c7c6a0b822b3d76ae1f22582bd41f2
-    
+    // check if the WaitForConversion flag is set to true the reset it to false if it is.    
     update_datastring(); // put the temperature and pressure data into the datastring variable
     
     if(Serial.available() > 0) incomingByte = Serial.read(); // Check for communication over serial
@@ -425,11 +419,6 @@ void loop(void)
     // if you get a missed temperature,
     // set the WaitForConversion flag to true and 
     // re-request the temperatures
-<<<<<<< HEAD
-    //sensors.setWaitForConversion(true); 
-=======
-    sensors.setWaitForConversion(true); 
->>>>>>> cf44c2bbb4c7c6a0b822b3d76ae1f22582bd41f2
     sensors.requestTemperatures();
     now1 = millis();
   }
