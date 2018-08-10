@@ -263,6 +263,12 @@ bool temp_read_ready()
  *  all are ready to be read it returns true.
  *  Returns false otherwise
  */
+  //Serial.print(sensors.isConversionAvailable(Thermometer0));
+  //Serial.print(sensors.isConversionAvailable(Thermometer1));
+  //Serial.print(sensors.isConversionAvailable(Thermometer2));
+  //Serial.print(sensors.isConversionAvailable(Thermometer3));
+  //Serial.println("");
+
   if (sensors.isConversionAvailable(Thermometer0) &&\
       sensors.isConversionAvailable(Thermometer1) &&\
       sensors.isConversionAvailable(Thermometer2) &&\
@@ -388,8 +394,9 @@ void loop(void)
  * will determine the maximum sample rate. For instance the default delay_time is 149 (ms) 
  * which translates to about 4 Hz or a sample every 0.25 seconds.
  */
-  if (millis() - now1 < delay_time) return; // slow down data collection
+   
   if (temp_read_ready()){ // check that all TC Amps are ready to return a temperature
+    if (millis() - now1 < delay_time) return; // slow down data collection
     // check if the WaitForConversion flag is set to true the reset it to false if it is.    
     update_datastring(); // put the temperature and pressure data into the datastring variable
     

@@ -7,8 +7,6 @@ name: Thermocouple Amplifier-Data Aquisition User Interface (TA-DA UI)
 author: Mark Redd
 email: redddogjr@gmail.com
 
-python version: 3.6.3
-
 Description:
 A GUI for collecting time dependent data and storing the data in comma separated
 values files (.csv). Originally designed to collect 4 temperature data vs. time 
@@ -67,7 +65,7 @@ class DAQGUI(Frame):
         """ Initialize the UI Interface with all widgets. """
         
         ## Start GUI and bind keys
-        self.parent.title("TA-DA UI 0.4 - ALPHA")
+        self.parent.title("TA-DA UI 0.5 - BETA")
         self.parent.bind("<Escape>", self.quit_it)
         self.parent.bind("<Return>", self.start_stop)
         self.parent.bind("<Control-s>", self.file_save_as)
@@ -90,7 +88,6 @@ class DAQGUI(Frame):
         self.parent.columnconfigure(8, weight=1)
         self.parent.columnconfigure(9, weight=1)
         self.parent.columnconfigure(10, weight=1)
-        self.parent.columnconfigure(11, weight=1)
         
         
         ## Set up interactive plot
@@ -120,14 +117,10 @@ class DAQGUI(Frame):
         ion() # Turn on interactive mode
         
         ## Embed save and path
-        self.sv_btn = Button(master=self.parent, text='Choose Target File',
+        self.button_save = Button(master=self.parent, text='Choose Target File',
             command=self.file_save_as, bg='black', fg='white',padx=5,pady=5)
         self.path_text = Label(master=self.parent, text=self.path1,bg='black',
             fg='white',pady=5)
-        ## Embed plot in tk window
-        graph1 = FigureCanvasTkAgg(self.figure, master=self.parent)
-        graph1.get_tk_widget().configure(bg='black',
-            highlightcolor='black', highlightbackground='black')
         
         # info labels
         self.lexp_time   = Label(master=self.parent,text="Time of Exp",
@@ -142,12 +135,10 @@ class DAQGUI(Frame):
             fg='white',padx=3)
         self.ltest_temp  = Label(master=self.parent,text="Test Temp",bg='black',
             fg='white',padx=3)
-        self.lignition   = Label(master=self.parent,text="Ignition?",bg='black',
-            fg='white',padx=3)
-        self.lhot_cold   = Label(master=self.parent,text="Hot/Cold?",bg='black', 
-            fg='white',padx=3)
-        self.lsound      = Label(master=self.parent,text="Sound?",bg='black', 
-            fg='white',padx=3)
+        self.lhot_cold   = Label(master=self.parent,
+            text="Ignition\nHot/Cold/No",bg='black', fg='white',padx=3)
+        self.lsound      = Label(master=self.parent,
+            text="Sound? (y/n)",bg='black', fg='white',padx=3)
         self.lrel_hum = Label(master=self.parent,text="rh%/ext temp",
             bg='black', fg='white',padx=3)
         self.lnotes = Label(master=self.parent,text="Notes",
@@ -166,8 +157,6 @@ class DAQGUI(Frame):
             justify='center',insertbackground='white')
         self.test_temp  = Entry(master=self.parent,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.ignition   = Entry(master=self.parent,bg='black', fg='white',
-            justify='center',insertbackground='white')
         self.hot_cold   = Entry(master=self.parent,bg='black', fg='white',
             justify='center',insertbackground='white')
         self.sound      = Entry(master=self.parent,bg='black', fg='white',
@@ -177,54 +166,58 @@ class DAQGUI(Frame):
         self.notes = Entry(master=self.parent,bg='black', fg='white',
             justify='center',insertbackground='white')
         
+        ## Embed plot in tk window
+        graph1 = FigureCanvasTkAgg(self.figure, master=self.parent)
+        graph1.get_tk_widget().configure(bg='black',
+            highlightcolor='black', highlightbackground='black')
+        
         ## Embed buttons and messages in window
-        self.button1 = Button(master=self.parent, text='Quit',
+        self.button_quit = Button(master=self.parent, text='Quit',
             command=self.quit_it, bg='black', fg='white',padx=5,pady=5)
         self.button_sync = Button(master=self.parent, text='Sync Time',
             command=self.sync_time, bg='black', fg='white',padx=5,pady=5)
-        self.button2 = Button(master=self.parent, text='Collect Data',
-            command=self.start_stop, bg='green',padx=5,pady=5)
-        self.msg1 = Label(master=self.parent, text="Data Collection Ready", 
-            bg='black', fg='white',padx=5,pady=5)
         self.press = Label(master=self.parent, text="P(abs): 0 torr", 
             bg='black', fg='white',padx=5,pady=5,relief='groove')
+        self.msg1 = Label(master=self.parent, text="Data Collection Ready", 
+            bg='black', fg='white',padx=5,pady=5)
+        self.button_collect_data = Button(master=self.parent, text='Collect Data',
+            command=self.start_stop, bg='green',padx=5,pady=5)
         
         # grid set
-        self.sv_btn.grid(row=0,column=0,columnspan=13)
-        self.path_text.grid(row=1,column=0,columnspan=13)
+        self.button_save.grid(row=0,column=0,columnspan=11)
+        self.path_text.grid(row=1,column=0,columnspan=11)
         
-        self.lexp_time.grid(row=2,column=0,columnspan=2)
-        self.lcompound.grid(row=2,column=2)
-        self.lphase.grid(row=2,column=3)    
-        self.lsamp_size.grid(row=2,column=4)
-        self.lset_pt.grid(row=2,column=5)
-        self.ltest_temp.grid(row=2,column=6)
-        self.lignition.grid(row=2,column=7)
-        self.lhot_cold.grid(row=2,column=8) 
-        self.lsound.grid(row=2,column=9)   
-        self.lrel_hum.grid(row=2,column=11)
-        self.lnotes.grid(row=2,column=12)
+        self.lexp_time.grid(  row=2,column=0,columnspan=2)
+        self.lcompound.grid(  row=2,column=2)
+        self.lphase.grid(     row=2,column=3)    
+        self.lsamp_size.grid( row=2,column=4)
+        self.lset_pt.grid(    row=2,column=5)
+        self.ltest_temp.grid( row=2,column=6)
+        self.lhot_cold.grid(  row=2,column=7) 
+        self.lsound.grid(     row=2,column=8)   
+        self.lrel_hum.grid(   row=2,column=9)
+        self.lnotes.grid(     row=2,column=10)
         
-        self.exp_time.grid(row=3,column=0,columnspan=2)
-        self.compound.grid(row=3,column=2)
-        self.phase.grid(row=3,column=3)    
-        self.samp_size.grid(row=3,column=4)
-        self.set_pt.grid(row=3,column=5)
-        self.test_temp.grid(row=3,column=6)
-        self.ignition.grid(row=3,column=7)
-        self.hot_cold.grid(row=3,column=8) 
-        self.sound.grid(row=3,column=9)
-        self.rel_hum.grid(row=3,column=11)
-        self.notes.grid(row=3,column=12)
+        self.exp_time.grid(   row=3,column=0,columnspan=2)
+        self.compound.grid(   row=3,column=2)
+        self.phase.grid(      row=3,column=3)    
+        self.samp_size.grid(  row=3,column=4)
+        self.set_pt.grid(     row=3,column=5)
+        self.test_temp.grid(  row=3,column=6)
+        self.hot_cold.grid(   row=3,column=7) 
+        self.sound.grid(      row=3,column=8)
+        self.rel_hum.grid(    row=3,column=9)
+        self.notes.grid(      row=3,column=10)
         
-        graph1.get_tk_widget().grid(row=4,column=0,columnspan=13,sticky=W+E+N+S)
-        graph1._tkcanvas.grid(row=4,column=0,columnspan=13,sticky=W+E+N+S)
+        graph1.get_tk_widget().grid(row=4,column=0,columnspan=11,sticky=W+E+N+S)
+        graph1._tkcanvas.grid(row=4,column=0,columnspan=11,sticky=W+E+N+S)
         
-        self.button1.grid(row=5,column=0)
+        self.button_quit.grid(row=5,column=0)
         self.button_sync.grid(row=5,column=1,sticky=W)
-        self.msg1.grid(row=5,column=6,columnspan=5)
-        self.button2.grid(row=5,column=12)
-        self.press.grid(row=5,column=2,columnspan=5)
+        self.press.grid(row=5,column=2,columnspan=3)
+        self.msg1.grid(row=5,column=5,columnspan=5)
+        self.button_collect_data.grid(row=5,column=10)
+        
         
         print("GUI Set up complete.\nAttempting to connect to TA-DA...")
         ## Start the DAQ
@@ -263,12 +256,14 @@ class DAQGUI(Frame):
     def clean_up(self):
         """ Re-initializes the parameters for data collection and clears the 
             console screen."""
+        self.ser.close()
         system('cls' if osname == 'nt' else 'clear')
 
         self.xdata = []
         self.ydata = []
         self.data = [
             ['time','t1','t2','t3','t4','pressure']]
+        self.parent.after(self.init_delay, self.ser.open())
     
     def file_save_as(self, event=None):
         """ Run save as dialog to choose target file. If an existing file is
@@ -280,9 +275,8 @@ class DAQGUI(Frame):
         self.path1 = f.name
         f.close()
         self.path_text['text'] = self.path1
-        self.ser.close()
         self.clean_up()
-        self.parent.after(self.init_delay, self.ser.open())
+        
         return self.path1
     
     def format_data(self, data):
@@ -468,9 +462,9 @@ class DAQGUI(Frame):
             self.clean_up()
             self.collect = True
             self.msg1['text'] = "Collecting Data..."
-            self.button2['bg'] = 'red'
-            self.button2['fg'] = 'white'
-            self.button2['text'] = "Stop Collection"
+            self.button_collect_data['bg'] = 'red'
+            self.button_collect_data['fg'] = 'white'
+            self.button_collect_data['text'] = "Stop Collection"
 
         else:
             try:
@@ -492,7 +486,7 @@ class DAQGUI(Frame):
             text_out = self.format_data(self.data)
             data_name_out = self.get_data_name()
             f.write("Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test "\
-            "Temp,Ignition?,Hot/Cold?,Sound?,Relative Humidity,"\
+            "Temp,Hot/Cold?,Sound?,Relative Humidity,"\
             "Notes\n")
             f.write(data_name_out)
             f.write('\n')
@@ -507,9 +501,9 @@ class DAQGUI(Frame):
         # tell the Arduino to stop writing its data to the SD card
         self.ser.write(b'0')
         self.collect = False
-        self.button2['bg'] = 'green'
-        self.button2['fg'] = 'black'
-        self.button2['text'] = 'Collect Data'
+        self.button_collect_data['bg'] = 'green'
+        self.button_collect_data['fg'] = 'black'
+        self.button_collect_data['text'] = 'Collect Data'
         self.msg1['text'] = "Data Collection Ready"
         print("\n\t--- Data Collection Stopped. Press ENTER to continue ---\n")
     
@@ -519,10 +513,9 @@ class DAQGUI(Frame):
         serial_time = strftime("t%Y,%m,%d,%H,%M,%S", t1).encode()
         self.system_timestamp = "\nSystem start time is: "\
             "%s" % strftime("%Y/%m/%d %H:%M:%S", t1)
-        
-        #print tser
+
         self.ser.write(serial_time)
-        self.clean_up()
+        self.parent.after(self.init_delay, self.clean_up())
         self.daq_loop()
     
     def serial_port(self):
@@ -557,7 +550,6 @@ class DAQGUI(Frame):
             self.samp_size.get(),
             self.set_pt.get(),
             self.test_temp.get(),
-            self.ignition.get(),
             self.hot_cold.get(),
             self.sound.get(),
             self.rel_hum.get(),
@@ -569,7 +561,6 @@ class DAQGUI(Frame):
         self.samp_size.delete(0, END)
         self.set_pt.delete(0, END)
         self.test_temp.delete(0, END)
-        self.ignition.delete(0, END)
         self.hot_cold.delete(0, END)
         self.sound.delete(0, END)
         self.rel_hum.delete(0, END)
