@@ -237,11 +237,8 @@ void setup_rtc()
 }
 
 /************* PRESSURE MEASUREMENT DEFINITIONS *******************/
-const int 
-  pressurePin = A8, // input pin for pressure transducer
-  solenoidPin = 7;  // pin to open solenoid
-int safetySig = 0;    // signal from pressure transducer for solenoid open
-double pv_torr = 0;   // initialize value from pressure vessel
+const int pressurePin = A0; // input pin for pressure transducer
+double pv_torr = 0;   // initialize pressure value from pressure vessel
 
 //Calibration fit line
 const double 
@@ -263,11 +260,11 @@ bool temp_read_ready()
  *  all are ready to be read it returns true.
  *  Returns false otherwise
  */
-  //Serial.print(sensors.isConversionAvailable(Thermometer0));
-  //Serial.print(sensors.isConversionAvailable(Thermometer1));
-  //Serial.print(sensors.isConversionAvailable(Thermometer2));
-  //Serial.print(sensors.isConversionAvailable(Thermometer3));
-  //Serial.println("");
+  /*Serial.print(sensors.isConversionAvailable(Thermometer0));
+  Serial.print(sensors.isConversionAvailable(Thermometer1));
+  Serial.print(sensors.isConversionAvailable(Thermometer2));
+  Serial.print(sensors.isConversionAvailable(Thermometer3));
+  Serial.println("");/**/
 
   if (sensors.isConversionAvailable(Thermometer0) &&\
       sensors.isConversionAvailable(Thermometer1) &&\
@@ -396,7 +393,7 @@ void loop(void)
  */
    
   if (temp_read_ready()){ // check that all TC Amps are ready to return a temperature
-    if (millis() - now1 < delay_time) return; // slow down data collection
+    //if (millis() - now1 < delay_time) return; // slow down data collection
     // check if the WaitForConversion flag is set to true the reset it to false if it is.    
     update_datastring(); // put the temperature and pressure data into the datastring variable
     
