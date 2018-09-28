@@ -257,7 +257,7 @@ class DAQGUI(Frame):
         """ Re-initializes the parameters for data collection and clears the 
             console screen."""
         self.ser.close()
-        system('cls' if osname == 'nt' else 'clear')
+        #system('cls' if osname == 'nt' else 'clear')
 
         self.xdata = []
         self.ydata = []
@@ -511,11 +511,13 @@ class DAQGUI(Frame):
         if self.collect: return
         t1 = localtime()
         serial_time = strftime("t%Y,%m,%d,%H,%M,%S", t1).encode()
+        print(serial_time)
         self.system_timestamp = "\nSystem start time is: "\
             "%s" % strftime("%Y/%m/%d %H:%M:%S", t1)
 
         self.ser.write(serial_time)
-        self.parent.after(self.init_delay, self.clean_up())
+        self.clean_up()
+        #self.parent.after(self.init_delay, self.clean_up())
         self.daq_loop()
     
     def serial_port(self):
