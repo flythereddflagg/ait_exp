@@ -14,6 +14,9 @@ class Serial():
     
     def isOpen(self):
         return True
+    
+    def write(self, *args, **kwargs):
+        pass
 
     
     def open(self):

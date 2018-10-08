@@ -58,6 +58,12 @@ class DAQGUI(Tk):
         self.pvessel = 640.0 # absolute pressure inside the vessel
         self.gpress = 0 # gauge pressure inside the vessel
         self.initUI()
+        self.init_plot()
+        self.init_widgets()
+        self.grid_widgets()
+        self.init_serial()
+        self.clean_up()
+        self.daq_loop()
 
     def initUI(self):
         """ Initialize the UI Interface with all widgets. """
@@ -87,7 +93,9 @@ class DAQGUI(Tk):
         self.columnconfigure(9, weight=1)
         self.columnconfigure(10, weight=1)
         
-        ### Build GRAPH
+        
+    def init_plot(self):
+        ### Build plot
         ## Set up interactive plot
         self.figure, self.ax = subplots(facecolor='black')
         self.ax.set_facecolor('black')
@@ -116,6 +124,14 @@ class DAQGUI(Tk):
        
         ion() # Turn on interactive mode
         
+                ## Embed plot in tk window
+        self.graph1 = FigureCanvasTkAgg(self.figure, master=self)
+        self.graph1.get_tk_widget().configure(bg='black',
+            highlightcolor='black', highlightbackground='black')
+            
+            
+        
+    def init_widgets(self):
         ## Embed save and path
         self.button_save = Button(master=self, text='Choose Target File',
             command=self.file_save_as, bg='black', fg='white',padx=5,pady=5)
@@ -178,12 +194,9 @@ class DAQGUI(Tk):
         self.button_collect_data = Button(master=self, text='Collect Data',
             command=self.start_stop, bg='green',padx=5,pady=5)
         
-        ## Embed plot in tk window
-        graph1 = FigureCanvasTkAgg(self.figure, master=self)
-        graph1.get_tk_widget().configure(bg='black',
-            highlightcolor='black', highlightbackground='black')
-        
-        
+    
+    
+    def grid_widgets(self):
         # grid set
         self.button_save.grid(row=0,column=0,columnspan=11)
         self.path_text.grid(row=1,column=0,columnspan=11)
@@ -210,8 +223,11 @@ class DAQGUI(Tk):
         self.rel_hum.grid(    row=3,column=9)
         self.notes.grid(      row=3,column=10)
         
-        graph1.get_tk_widget().grid(row=4,column=0,columnspan=11,sticky=W+E+N+S)
-        graph1._tkcanvas.grid(row=4,column=0,columnspan=11,sticky=W+E+N+S)
+        
+        self.graph1.get_tk_widget().grid( 
+                    row=4,column=0,
+                    columnspan=11,sticky=W+E+N+S)
+        self.graph1._tkcanvas.grid(row=4,column=0,columnspan=11,sticky=W+E+N+S)
         
         self.button_quit.grid(row=5,column=0)
         self.button_sync.grid(row=5,column=1,sticky=W)
@@ -219,18 +235,22 @@ class DAQGUI(Tk):
         self.msg1.grid(row=5,column=5,columnspan=5)
         self.button_collect_data.grid(row=5,column=10)
         
-        
+    
+    
+    def init_serial(self):
         print("GUI Set up complete.\nAttempting to connect to TA-DA...")
         ## Start the DAQ
         while not self.connect():
-            x = input("Could not connect to TA-DA.\n Please fix the above issues and press "\
-                "ENTER to continue \n OR\n Enter q and press ENTER to quit ")
+            x = input("Could not connect to TA-DA.\n Please fix the above"\
+                " issues and press ENTER to continue \n OR\n Enter q and"\
+                " press ENTER to quit ")
             if len(x) > 0 and x[0] == 'q': self.quit_app()
 
         print("Arduino is connected.")
-        self.clean_up()
-        self.daq_loop()
+
         
+    
+    
     def connect(self):
         try:
             self.com_port = self.serial_port()
@@ -251,17 +271,21 @@ class DAQGUI(Tk):
             return False
            
         
+    
+    
     def clean_up(self):
         """ Re-initializes the parameters for data collection and clears the 
             console screen."""
         self.ser.close()
-        #system('cls' if osname == 'nt' else 'clear')
 
         self.xdata = []
         self.ydata = []
         self.data = [
             ['time','t1','t2','t3','t4','pressure']]
         self.after(self.init_delay, self.ser.open())
+    
+    
+    
     
     def file_save_as(self, event=None):
         """ Run save as dialog to choose target file. If an existing file is
@@ -277,6 +301,8 @@ class DAQGUI(Tk):
         
         return self.path1
     
+    
+    
     def format_data(self, data):
         """ Converts the data from a lists of lists to a string with a newline 
             character between data points and a space between data point 
@@ -284,7 +310,7 @@ class DAQGUI(Tk):
         data_out = []
         for i in data:
             pt1 = []
-            if i == ['time','t1','t2','t3','t4','pressure']:# or list(str(i[0]))[0] == '+':
+            if i == ['time','t1','t2','t3','t4','pressure']:
                 pt2 = ",".join(i)
                 data_out.append(pt2)
                 continue
@@ -295,6 +321,8 @@ class DAQGUI(Tk):
         data_out.insert(0,"")
         out = "\n".join(data_out)
         return out
+    
+    
     
     def get_data(self):
         """ 
@@ -321,8 +349,8 @@ class DAQGUI(Tk):
                 self.arduino_timestamp = data_string
                 self.arduino_timestamp = self.arduino_timestamp.strip(
                     "\r\n")
-            self.after(0, self.get_data)
-            return
+            return self.get_data()
+            
         elif data_chars[-1] != '\n':
             #Check if incomplete data string
             return None
@@ -340,6 +368,8 @@ class DAQGUI(Tk):
         self.update_baro(data)
         data[-1] = self.pvessel
         return data
+    
+    
     
     def update_baro(self,data):
         """
@@ -390,6 +420,8 @@ class DAQGUI(Tk):
         self.ydata.append(data1[4])
         self.plt_update(self.xdata, self.ydata)
     
+    
+    
     def daq_loop(self):
         """ 
             Part of the mainloop. This funtion will run every 0.5 seconds. If
@@ -423,6 +455,8 @@ class DAQGUI(Tk):
         self.after(250, self.daq_loop) # loop
             
 
+    
+    
     def plt_update(self, xdata, ydata):
         """ Update the plot with xdata and ydata """
         #Update data (with the new _and_ the old points)
@@ -437,6 +471,8 @@ class DAQGUI(Tk):
         self.figure.canvas.draw()
         self.figure.canvas.flush_events()
 
+    
+    
     def quit_app(self, event=None):
         """ Safely Exit Program """
         if self.collect == True:
@@ -447,6 +483,8 @@ class DAQGUI(Tk):
         self.destroy()
         exit()
 
+    
+    
     
     def start_stop(self, event=None):
         """ The Start Stop proceedure. Once stopped the program will ask you 
