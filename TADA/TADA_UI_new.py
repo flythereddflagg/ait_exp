@@ -15,8 +15,7 @@ use with Arduino.
 """
 
 ## Tkinter imports
-from tkinter import Tk, Frame, BOTH, TOP, RIGHT, LEFT, Label, Button, Entry,\
-    W, E, N, S, END
+from tkinter import Tk, Label, Button, Entry, W, E, N, S, END
 from tkinter.filedialog import asksaveasfile
 from tkinter.messagebox import askyesno
 
@@ -31,14 +30,13 @@ from os import system, name as osname
 from sys import exit
 import serialq as serial
 from time import localtime, strftime
-import winsound
+#import winsound
 
 
-class DAQGUI(Frame):
+class DAQGUI(Tk):
   
-    def __init__(self, parent):
-        Frame.__init__(self, parent)   
-        self.parent = parent
+    def __init__(self):
+        super().__init__()
         self.path1 = 'C:\\Users\\Public\\Documents\\AIT\\data\\dump.csv'
         self.collect = False
         self.vis_data = 100     #Number of visible data points
@@ -56,7 +54,7 @@ class DAQGUI(Frame):
         self.atm1 = 760.0
         self.plower = 758.0
         self.pupper = 762.0
-        self.baro_press = 640.0 # barometric pressure in torr (nominal expected value
+        self.baro_press = 640.0 # barometric pressure in torr (default value)
         self.pvessel = 640.0 # absolute pressure inside the vessel
         self.gpress = 0 # gauge pressure inside the vessel
         self.initUI()
@@ -65,31 +63,31 @@ class DAQGUI(Frame):
         """ Initialize the UI Interface with all widgets. """
         
         ## Start GUI and bind keys
-        self.parent.title("TA-DA UI 0.5 - BETA")
-        self.parent.bind("<Escape>", self.quit_it)
-        self.parent.bind("<Return>", self.start_stop)
-        self.parent.bind("<Control-s>", self.file_save_as)
-        self.parent.bind("<Control-t>", self.sync_time)
-        self.parent.config(bg='black')
+        self.title("TA-DA UI 0.5 - BETA")
+        self.bind("<Escape>", self.quit_app)
+        self.bind("<Return>", self.start_stop)
+        self.bind("<Control-s>", self.file_save_as)
+        self.bind("<Control-t>", self.sync_time)
+        self.config(bg='black')
         
-        self.parent.rowconfigure(0, pad=5)
-        self.parent.rowconfigure(1, pad=5)
-        self.parent.rowconfigure(4, weight=2)
-        self.parent.rowconfigure(5, pad=5)
+        self.rowconfigure(0, pad=5)
+        self.rowconfigure(1, pad=5)
+        self.rowconfigure(4, weight=2)
+        self.rowconfigure(5, pad=5)
         
-        self.parent.columnconfigure(0, weight=1)
-        self.parent.columnconfigure(1, weight=1)
-        self.parent.columnconfigure(2, weight=1)
-        self.parent.columnconfigure(3, weight=1)
-        self.parent.columnconfigure(4, weight=1)
-        self.parent.columnconfigure(5, weight=1)
-        self.parent.columnconfigure(6, weight=1)
-        self.parent.columnconfigure(7, weight=1)
-        self.parent.columnconfigure(8, weight=1)
-        self.parent.columnconfigure(9, weight=1)
-        self.parent.columnconfigure(10, weight=1)
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.columnconfigure(2, weight=1)
+        self.columnconfigure(3, weight=1)
+        self.columnconfigure(4, weight=1)
+        self.columnconfigure(5, weight=1)
+        self.columnconfigure(6, weight=1)
+        self.columnconfigure(7, weight=1)
+        self.columnconfigure(8, weight=1)
+        self.columnconfigure(9, weight=1)
+        self.columnconfigure(10, weight=1)
         
-        
+        ### Build GRAPH
         ## Set up interactive plot
         self.figure, self.ax = subplots(facecolor='black')
         self.ax.set_facecolor('black')
@@ -109,79 +107,82 @@ class DAQGUI(Frame):
         self.ax.yaxis.label.set_color('white')
         self.ax.xaxis.label.set_color('white')
         
+        self.ax.grid(color='white') # give the plot a grid 
+        tight_layout()
+        
         # Autoscale axis
         self.ax.set_autoscaley_on(True)
         self.ax.set_autoscalex_on(True)
-        self.ax.grid(color='white') # give the plot a grid 
-        tight_layout()
+       
         ion() # Turn on interactive mode
         
         ## Embed save and path
-        self.button_save = Button(master=self.parent, text='Choose Target File',
+        self.button_save = Button(master=self, text='Choose Target File',
             command=self.file_save_as, bg='black', fg='white',padx=5,pady=5)
-        self.path_text = Label(master=self.parent, text=self.path1,bg='black',
+        self.path_text = Label(master=self, text=self.path1,bg='black',
             fg='white',pady=5)
         
         # info labels
-        self.lexp_time   = Label(master=self.parent,text="Time of Exp",
+        self.lexp_time   = Label(master=self,text="Time of Exp",
             bg='black', fg='white',padx=3)
-        self.lcompound   = Label(master=self.parent,text="Compound Name",
+        self.lcompound   = Label(master=self,text="Compound Name",
             bg='black', fg='white',padx=3)
-        self.lphase      = Label(master=self.parent,text="Phase",bg='black', 
+        self.lphase      = Label(master=self,text="Phase",bg='black', 
             fg='white',padx=3)
-        self.lsamp_size  = Label(master=self.parent,text="Samp Size",bg='black',
+        self.lsamp_size  = Label(master=self,text="Samp Size",bg='black',
             fg='white',padx=3)
-        self.lset_pt     = Label(master=self.parent,text="Set Pt",bg='black', 
+        self.lset_pt     = Label(master=self,text="Set Pt",bg='black', 
             fg='white',padx=3)
-        self.ltest_temp  = Label(master=self.parent,text="Test Temp",bg='black',
+        self.ltest_temp  = Label(master=self,text="Test Temp",bg='black',
             fg='white',padx=3)
-        self.lhot_cold   = Label(master=self.parent,
+        self.lhot_cold   = Label(master=self,
             text="Ignition\nHot/Cold/No",bg='black', fg='white',padx=3)
-        self.lsound      = Label(master=self.parent,
+        self.lsound      = Label(master=self,
             text="Sound? (y/n)",bg='black', fg='white',padx=3)
-        self.lrel_hum = Label(master=self.parent,text="rh%/ext temp",
+        self.lrel_hum = Label(master=self,text="rh%/ext temp",
             bg='black', fg='white',padx=3)
-        self.lnotes = Label(master=self.parent,text="Notes",
+        self.lnotes = Label(master=self,text="Notes",
             bg='black', fg='white',padx=3)
         
         # info fields
-        self.exp_time   = Entry(master=self.parent,bg='black', fg='white',
+        self.exp_time   = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.compound   = Entry(master=self.parent,bg='black', fg='white',
+        self.compound   = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.phase      = Entry(master=self.parent,bg='black', fg='white',
+        self.phase      = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.samp_size  = Entry(master=self.parent,bg='black', fg='white',
+        self.samp_size  = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.set_pt     = Entry(master=self.parent,bg='black', fg='white',
+        self.set_pt     = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.test_temp  = Entry(master=self.parent,bg='black', fg='white',
+        self.test_temp  = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.hot_cold   = Entry(master=self.parent,bg='black', fg='white',
+        self.hot_cold   = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.sound      = Entry(master=self.parent,bg='black', fg='white',
+        self.sound      = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.rel_hum = Entry(master=self.parent,bg='black', fg='white',
+        self.rel_hum = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
-        self.notes = Entry(master=self.parent,bg='black', fg='white',
+        self.notes = Entry(master=self,bg='black', fg='white',
             justify='center',insertbackground='white')
         
+        ## Embed buttons and messages in window
+        self.button_quit = Button(master=self, text='Quit',
+            command=self.quit_app, bg='black', fg='white',padx=5,pady=5)
+        self.button_sync = Button(master=self, text='Sync Time',
+            command=self.sync_time, bg='black', fg='white',padx=5,pady=5)
+        self.press = Label(master=self, text="P(abs): 0 torr", 
+            bg='black', fg='white',padx=5,pady=5,relief='groove')
+        self.msg1 = Label(master=self, text="Data Collection Ready", 
+            bg='black', fg='white',padx=5,pady=5)
+        self.button_collect_data = Button(master=self, text='Collect Data',
+            command=self.start_stop, bg='green',padx=5,pady=5)
+        
         ## Embed plot in tk window
-        graph1 = FigureCanvasTkAgg(self.figure, master=self.parent)
+        graph1 = FigureCanvasTkAgg(self.figure, master=self)
         graph1.get_tk_widget().configure(bg='black',
             highlightcolor='black', highlightbackground='black')
         
-        ## Embed buttons and messages in window
-        self.button_quit = Button(master=self.parent, text='Quit',
-            command=self.quit_it, bg='black', fg='white',padx=5,pady=5)
-        self.button_sync = Button(master=self.parent, text='Sync Time',
-            command=self.sync_time, bg='black', fg='white',padx=5,pady=5)
-        self.press = Label(master=self.parent, text="P(abs): 0 torr", 
-            bg='black', fg='white',padx=5,pady=5,relief='groove')
-        self.msg1 = Label(master=self.parent, text="Data Collection Ready", 
-            bg='black', fg='white',padx=5,pady=5)
-        self.button_collect_data = Button(master=self.parent, text='Collect Data',
-            command=self.start_stop, bg='green',padx=5,pady=5)
         
         # grid set
         self.button_save.grid(row=0,column=0,columnspan=11)
@@ -224,7 +225,7 @@ class DAQGUI(Frame):
         while not self.connect():
             x = input("Could not connect to TA-DA.\n Please fix the above issues and press "\
                 "ENTER to continue \n OR\n Enter q and press ENTER to quit ")
-            if len(x) > 0 and x[0] == 'q': self.quit_it()
+            if len(x) > 0 and x[0] == 'q': self.quit_app()
 
         print("Arduino is connected.")
         self.clean_up()
@@ -234,24 +235,21 @@ class DAQGUI(Frame):
         try:
             self.com_port = self.serial_port()
             self.ser = serial.Serial(
-                self.serial_port(), 
+                "TADA Serial Port", 
                 self.baud_rate,
                 timeout=1.0)
             self.rs232 = serial.Serial(
-                self.rs232_port,
+                "Barometer Serial Port",
                 self.rs232_baudrate,
 				timeout=0.1)
             assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
-        except serial.serialutil.SerialException as detail:
-            print("\nSerialException: \n{}\n".format(detail))
-            return False
         except AssertionError:
             print("\nAssertionError:\n TA-DA port '{}' and"\
                 " Vaisala Barometer Port '{}' are not open.\n".format(
                 self.com_port, self.rs232_port))
             return False
-            
+           
         
     def clean_up(self):
         """ Re-initializes the parameters for data collection and clears the 
@@ -263,7 +261,7 @@ class DAQGUI(Frame):
         self.ydata = []
         self.data = [
             ['time','t1','t2','t3','t4','pressure']]
-        self.parent.after(self.init_delay, self.ser.open())
+        self.after(self.init_delay, self.ser.open())
     
     def file_save_as(self, event=None):
         """ Run save as dialog to choose target file. If an existing file is
@@ -323,7 +321,7 @@ class DAQGUI(Frame):
                 self.arduino_timestamp = data_string
                 self.arduino_timestamp = self.arduino_timestamp.strip(
                     "\r\n")
-            self.parent.after(0, self.get_data)
+            self.after(0, self.get_data)
             return
         elif data_chars[-1] != '\n':
             #Check if incomplete data string
@@ -378,11 +376,11 @@ class DAQGUI(Frame):
             self.msg1['text'] = "WARNING! Gauge Pressure > 4 psi! SHUTDOWN NOW!"
             self.msg1['bg'] = '#cc0000'
             self.msg1['fg'] = 'white'
-            winsound.Beep(880, 125)
+            #winsound.Beep(880, 125)
 
             
     
-    def graph_it(self, data1):
+    def graph_data(self, data1):
         """ Reset the data to be graphed and then update the graph """
         if len(self.xdata) > self.vis_data and len(self.xdata) > self.vis_data:
             self.xdata.pop(0)
@@ -393,7 +391,8 @@ class DAQGUI(Frame):
         self.plt_update(self.xdata, self.ydata)
     
     def daq_loop(self):
-        """ Part of the mainloop. This funtion will run every 0.5 seconds. If
+        """ 
+            Part of the mainloop. This funtion will run every 0.5 seconds. If
             the "collect" parameter is set to True it will append the data it 
             collects to an array to be saved to the output file.
             
@@ -403,12 +402,11 @@ class DAQGUI(Frame):
                 - Update the graph with the latest data point
                 - Loop
             This will execute on startup and continue doing while mainloop is 
-            still running."""
-        
-        self.recurse_counter += 1         # count recursions
+            still running.
+        """
         data1 = self.get_data()           # get data
         if data1 == None:
-            return self.parent.after(0, self.daq_loop)
+            return self.after(0, self.daq_loop)
         self.time = data1[0]
         if self.collect == True:
             #print data1,
@@ -420,9 +418,9 @@ class DAQGUI(Frame):
         else:
             self.msg1['text'] = "Data Collection Ready"
             self.msg1['bg'] = 'black'
-        self.graph_it(data1)              # put the data on a graph
+        self.graph_data(data1)              # put the data on a graph
         
-        self.parent.after(0, self.daq_loop) # loop
+        self.after(250, self.daq_loop) # loop
             
 
     def plt_update(self, xdata, ydata):
@@ -439,14 +437,14 @@ class DAQGUI(Frame):
         self.figure.canvas.draw()
         self.figure.canvas.flush_events()
 
-    def quit_it(self, event=None):
+    def quit_app(self, event=None):
         """ Safely Exit Program """
         if self.collect == True:
             if not askyesno("Quit Warning", \
                 "DAQ is still running!\nAre you sure you want to quit?"):
                 return
-        self.parent.quit()
-        self.parent.destroy()
+        self.quit()
+        self.destroy()
         exit()
 
     
@@ -517,7 +515,7 @@ class DAQGUI(Frame):
 
         self.ser.write(serial_time)
         self.clean_up()
-        #self.parent.after(self.init_delay, self.clean_up())
+        #self.after(self.init_delay, self.clean_up())
         self.daq_loop()
     
     def serial_port(self):
@@ -536,13 +534,11 @@ class DAQGUI(Frame):
                 except serial.SerialException:
                     pass
         else:
+            pass
             # unix
-            for port in list_ports.comports():
-                return port[0]
-    
-    def trigger_check(self, trigger):
-        if trigger:
-            self.start_stop()
+            #for port in list_ports.comports():
+            #    return port[0]
+
     
     def get_data_name(self):
         data_exp = [
@@ -573,12 +569,12 @@ class DAQGUI(Frame):
 
         
 def main():
-    root = Tk()
-    root.geometry("1200x600+50+50")
-    root.iconbitmap(r'flame.ico')
-    app = DAQGUI(root)
-    root.protocol("WM_DELETE_WINDOW", app.quit_it)
-    root.mainloop()    
+    
+    #app.iconbitmap(r'flame.ico')
+    app = DAQGUI()
+    app.geometry("1200x600+50+50")
+    app.protocol("WM_DELETE_WINDOW", app.quit_app)
+    app.mainloop()    
 
 
 if __name__ == '__main__':
