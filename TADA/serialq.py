@@ -8,7 +8,7 @@ from random import random, uniform
 from time import clock
 
 class Serial():
-    def __init__(self, port, baud_rate, timeout=0):
+    def __init__(self, port, baud_rate=0, timeout=0):
         self.time = clock()
         self.port = port
     
@@ -27,10 +27,10 @@ class Serial():
         
     def readline(self):
     
-        if self.port == "TADA Serial Port":
+        if self.port != "COM1":
         
             out = "|,{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f}\n".format(
-                clock() - self.time,
+                (clock() - self.time) * 1000,
                 random(),
                 random(),
                 random(),
@@ -39,3 +39,9 @@ class Serial():
         else:
             out = "{:.3f}".format(uniform(645.0, 650.0))
         return out.encode("ASCII")
+
+        
+        
+class SerialException(Exception):
+    def __init__(self, message):
+        self.message = message
