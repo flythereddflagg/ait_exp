@@ -256,6 +256,10 @@ class DAQGUI(Tk):
     
     
     def connect(self):
+        """
+        Attempts to connect with Arduino using pyserial or equivalent object
+        Returns True if successful False otherwise.
+        """
         try:
             self.com_port = self.serial_port()
             self.ser = serial.Serial(
