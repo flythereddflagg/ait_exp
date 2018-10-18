@@ -81,7 +81,6 @@ class DAQGUI(Tk):
         self.bind("<Escape>", self.quit_app)
         self.bind("<Return>", self.start_stop)
         self.bind("<Control-s>", self.file_save_as)
-        #self.bind("<Control-t>", self.sync_time)
         self.config(bg='black')
         
         # Configure rows
@@ -91,7 +90,7 @@ class DAQGUI(Tk):
         self.rowconfigure(5, pad=5)
         
         # Configure columns
-        for i in range(11):
+        for i in range(10):
             self.columnconfigure(i, weight=1)
         
         # Set up all widgets in the UI
@@ -188,8 +187,6 @@ class DAQGUI(Tk):
         # Setup buttons and messages at bottom
         self.button_quit = Button(text='Quit', command=self.quit_app, 
                                     **button_options)
-        #self.button_sync = Button(text='Sync Time', command=self.sync_time, 
-        #                            **button_options)
         self.press = Label(master=self,text="P(abs): 0 torr", 
             bg='black', fg='white',padx=5,pady=5,relief='groove')
         self.msg1 = Label(text="Data Collection Ready", **label_options)
@@ -206,40 +203,38 @@ class DAQGUI(Tk):
         """
         Places all widgets in the grid.
         """
-        self.button_save.grid(          row=0, column=0, columnspan=11)
-        self.path_text.grid(            row=1, column=0, columnspan=11)
+        self.button_save.grid(          row=0, column=0, columnspan=10)
+        self.path_text.grid(            row=1, column=0, columnspan=10)
                     
-        self.lexp_time.grid(            row=2, column=0, columnspan=2)
-        self.lcompound.grid(            row=2, column=2)
-        self.lphase.grid(               row=2, column=3)    
-        self.lsamp_size.grid(           row=2, column=4)
-        self.lset_pt.grid(              row=2, column=5)
-        self.ltest_temp.grid(           row=2, column=6)
-        self.lhot_cold.grid(            row=2, column=7) 
-        self.lsound.grid(               row=2, column=8)   
-        self.lrel_hum.grid(             row=2, column=9)
-        self.lnotes.grid(               row=2, column=10)
+        self.lexp_time.grid(            row=2, column=0)
+        self.lcompound.grid(            row=2, column=1)
+        self.lphase.grid(               row=2, column=2)    
+        self.lsamp_size.grid(           row=2, column=3)
+        self.lset_pt.grid(              row=2, column=4)
+        self.ltest_temp.grid(           row=2, column=5)
+        self.lhot_cold.grid(            row=2, column=6) 
+        self.lsound.grid(               row=2, column=7)   
+        self.lrel_hum.grid(             row=2, column=8)
+        self.lnotes.grid(               row=2, column=9)
                                                 
-        self.exp_time.grid(             row=3, column=0, columnspan=2,
-                                                         sticky=E+W)
-        self.compound.grid(             row=3, column=2, sticky=E+W)
-        self.phase.grid(                row=3, column=3, sticky=E+W)    
-        self.samp_size.grid(            row=3, column=4, sticky=E+W)
-        self.set_pt.grid(               row=3, column=5, sticky=E+W)
-        self.test_temp.grid(            row=3, column=6, sticky=E+W)
-        self.hot_cold.grid(             row=3, column=7, sticky=E+W) 
-        self.sound.grid(                row=3, column=8, sticky=E+W)
-        self.rel_hum.grid(              row=3, column=9, sticky=E+W)
-        self.notes.grid(                row=3, column=10, sticky=E+W)
+        self.exp_time.grid(             row=3, column=0, sticky=E+W)
+        self.compound.grid(             row=3, column=1, sticky=E+W)
+        self.phase.grid(                row=3, column=2, sticky=E+W)    
+        self.samp_size.grid(            row=3, column=3, sticky=E+W)
+        self.set_pt.grid(               row=3, column=4, sticky=E+W)
+        self.test_temp.grid(            row=3, column=5, sticky=E+W)
+        self.hot_cold.grid(             row=3, column=6, sticky=E+W) 
+        self.sound.grid(                row=3, column=7, sticky=E+W)
+        self.rel_hum.grid(              row=3, column=8, sticky=E+W)
+        self.notes.grid(                row=3, column=9, sticky=E+W)
         
         self.data_plot.grid(            row=4, column=0, columnspan=11, 
                                         sticky=W+E+N+S)
         
-        self.button_quit.grid(          row=5, column=0)
-        #self.button_sync.grid(          row=5, column=1, sticky=W)
-        self.press.grid(                row=5, column=2, columnspan=3)
-        self.msg1.grid(                 row=5, column=5, columnspan=5)
-        self.button_collect_data.grid(  row=5, column=10)
+        self.button_quit.grid(          row=5, column=0, sticky=E+W)
+        self.press.grid(                row=5, column=1, columnspan=3)
+        self.msg1.grid(                 row=5, column=4, columnspan=5)
+        self.button_collect_data.grid(  row=5, column=9, sticky=E+W)
         
     
     
@@ -505,7 +500,6 @@ class DAQGUI(Tk):
             will be lost."""
         if self.collect == False: # this is the start branch
             # tell the Arduino to start writing its data to the SD card
-            #self.clean_up()
             self.start_time = self.current_time
             self.ser.write(b'1')
             self.collect = True
@@ -513,7 +507,6 @@ class DAQGUI(Tk):
             self.button_collect_data['bg']   = 'red'
             self.button_collect_data['fg']   = 'white'
             self.button_collect_data['text'] = "Stop Collection"
-            #self.button_sync['state'] = 'disabled'
 
         else: # this is the stop branch
             try:
@@ -528,7 +521,7 @@ class DAQGUI(Tk):
             data_name_out = self.get_data_fields()
             
             ### TODO: decide how to implement write as append or as truncate
-            ### TODO: figure out how to make it so loss of data probability is minimized
+            ### TODO: figure how to make loss of data probability is minimized
             with open(self.target_data_path,'a') as f:
                 f.write("Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test "\
                 "Temp,Hot/Cold?,Sound?,Relative Humidity,"\
@@ -553,7 +546,6 @@ class DAQGUI(Tk):
         self.button_collect_data['fg'] = 'black'
         self.button_collect_data['text'] = 'Collect Data'
         self.msg1['text'] = "Data Collection Ready"
-        #self.button_sync['state'] = 'normal'
         print("\n\t--- Data Collection Stopped. Press ENTER to continue ---\n")
     
     
@@ -566,7 +558,6 @@ class DAQGUI(Tk):
         self.system_timestamp = "\nSystem start time is: {}".format(serial_time)
         print(serial_time.encode(encoding="ascii"))
         self.ser.write(serial_time.encode(encoding="ascii"))
-        #self.after(self.init_delay, self.clean_up)
 
     
     
