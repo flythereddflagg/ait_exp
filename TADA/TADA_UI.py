@@ -28,9 +28,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 ## Other misc. imports
 from os import system, name as osname
 #from sys import exit
-import serial
+import serialq as serial
 from time import localtime, strftime
-import winsound
+import w_sound as winsound
 
 
 class DAQGUI(Tk):
@@ -81,7 +81,7 @@ class DAQGUI(Tk):
         self.bind("<Escape>", self.quit_app)
         self.bind("<Return>", self.start_stop)
         self.bind("<Control-s>", self.file_save_as)
-        self.bind("<Control-t>", self.sync_time)
+        #self.bind("<Control-t>", self.sync_time)
         self.config(bg='black')
         
         # Configure rows
@@ -100,7 +100,7 @@ class DAQGUI(Tk):
         self.grid_widgets()
         
         # Setup window preferences
-        self.iconbitmap(r'flame.ico')
+        #self.iconbitmap(r'flame.ico')
         self.geometry("1200x600+50+50")
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
         
@@ -188,8 +188,8 @@ class DAQGUI(Tk):
         # Setup buttons and messages at bottom
         self.button_quit = Button(text='Quit', command=self.quit_app, 
                                     **button_options)
-        self.button_sync = Button(text='Sync Time', command=self.sync_time, 
-                                    **button_options)
+        #self.button_sync = Button(text='Sync Time', command=self.sync_time, 
+        #                            **button_options)
         self.press = Label(master=self,text="P(abs): 0 torr", 
             bg='black', fg='white',padx=5,pady=5,relief='groove')
         self.msg1 = Label(text="Data Collection Ready", **label_options)
@@ -236,7 +236,7 @@ class DAQGUI(Tk):
                                         sticky=W+E+N+S)
         
         self.button_quit.grid(          row=5, column=0)
-        self.button_sync.grid(          row=5, column=1, sticky=W)
+        #self.button_sync.grid(          row=5, column=1, sticky=W)
         self.press.grid(                row=5, column=2, columnspan=3)
         self.msg1.grid(                 row=5, column=5, columnspan=5)
         self.button_collect_data.grid(  row=5, column=10)
@@ -293,8 +293,9 @@ class DAQGUI(Tk):
         self.ydata = []
         # formatted as [['time','t1','t2','t3','t4','pressure']]
         self.data = []
-        #self.after(self.init_delay, self.ser.open())
+       
         self.ser.open()
+        self.after(self.init_delay, self.sync_time)
     
     
     
@@ -512,7 +513,7 @@ class DAQGUI(Tk):
             self.button_collect_data['bg']   = 'red'
             self.button_collect_data['fg']   = 'white'
             self.button_collect_data['text'] = "Stop Collection"
-            self.button_sync['state'] = 'disabled'
+            #self.button_sync['state'] = 'disabled'
 
         else: # this is the stop branch
             try:
@@ -552,7 +553,7 @@ class DAQGUI(Tk):
         self.button_collect_data['fg'] = 'black'
         self.button_collect_data['text'] = 'Collect Data'
         self.msg1['text'] = "Data Collection Ready"
-        self.button_sync['state'] = 'normal'
+        #self.button_sync['state'] = 'normal'
         print("\n\t--- Data Collection Stopped. Press ENTER to continue ---\n")
     
     
@@ -565,7 +566,7 @@ class DAQGUI(Tk):
         self.system_timestamp = "\nSystem start time is: {}".format(serial_time)
         print(serial_time.encode(encoding="ascii"))
         self.ser.write(serial_time.encode(encoding="ascii"))
-        self.after(self.init_delay, self.clean_up)
+        #self.after(self.init_delay, self.clean_up)
 
     
     
