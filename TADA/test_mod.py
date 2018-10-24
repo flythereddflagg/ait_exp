@@ -1,11 +1,11 @@
 
 
-# Serial(
-# self.serial_port(), 
-# self.baud_rate,
-# timeout=1.0)
+
 from random import random, uniform
 from time import clock
+
+def beep(*args):
+    pass
 
 class Serial():
     def __init__(self, port, baud_rate=0, timeout=0):

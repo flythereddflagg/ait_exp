@@ -28,9 +28,20 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 ## Other misc. imports
 from os import system, name as osname
 #from sys import exit
-import serialq as serial
 from time import localtime, strftime
-import w_sound as winsound
+
+testing = False
+
+if testing:
+	import test_mod as serial
+else:
+	import serial
+
+if osname == 'nt':
+	import winsound
+else:
+	import w_sound as winsound
+
 
 
 class DAQGUI(Tk):
