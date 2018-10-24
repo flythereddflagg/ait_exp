@@ -40,7 +40,7 @@ else:
 if osname == 'nt':
 	import winsound
 else:
-	import w_sound as winsound
+	import test_mod as winsound
 
 
 
