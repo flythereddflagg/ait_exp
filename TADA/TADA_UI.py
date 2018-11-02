@@ -27,10 +27,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 ## Other misc. imports
 from os import system, name as osname
+from math import fabs, fsum
 #from sys import exit
 from time import localtime, strftime
 
-testing = False
+testing = True
 
 if testing:
 	import test_mod as serial
@@ -51,12 +52,14 @@ class DAQGUI(Tk):
         # constants
         self.plower         =   758.0
         self.pupper         =   762.0
-        self.vis_data       =   100   # Number of visible data points
+        self.vis_data       =   100    # Number of visible data points
         self.tada_baudrate  =  9600 
-        self.init_delay     =  1000   # Wait time before interface restart (ms)
+        self.init_delay     =  1000    # Wait time before interface restart (ms)
         self.rs232_port     = 'COM1'
         self.rs232_baudrate = 19200
         self.pemergency     =   206
+        self.eq_tol         =     0.02 # maximum AAD% in temp to be ready to run
+        self.log_path       = "./experimental_log.csv"
           
         # initial/default values
         self.target_data_path   = './dump.csv'
@@ -173,7 +176,6 @@ class DAQGUI(Tk):
         # Setup info labels
         self.lexp_time  = Label(**label_options, text="Time of Exp")
         self.lcompound  = Label(**label_options, text="Compound Name")
-        self.lphase     = Label(**label_options, text="Phase")
         self.lsamp_size = Label(**label_options, text="Samp Size")
         self.lset_pt    = Label(**label_options, text="Set Pt",)
         self.ltest_temp = Label(**label_options, text="Test Temp")
@@ -186,7 +188,6 @@ class DAQGUI(Tk):
         # Setup info fields                            
         self.exp_time   = Entry(**entry_options)
         self.compound   = Entry(**entry_options)
-        self.phase      = Entry(**entry_options)
         self.samp_size  = Entry(**entry_options)
         self.set_pt     = Entry(**entry_options)
         self.test_temp  = Entry(**entry_options)
@@ -198,8 +199,10 @@ class DAQGUI(Tk):
         # Setup buttons and messages at bottom
         self.button_quit = Button(text='Quit', command=self.quit_app, 
                                     **button_options)
-        self.press = Label(master=self,text="P(abs): 0 torr", 
-            bg='black', fg='white',padx=5,pady=5,relief='groove')
+        self.press = Label(master=self, text="P(abs): 0 torr", 
+            bg='black', fg='white', padx=5, pady=5, relief='groove')
+        self.eq_msg = Label(master=self, text="Temp Ready",
+            bg='#80ff00', fg='black', padx=5, pady=5, relief='groove')
         self.msg1 = Label(text="Data Collection Ready", **label_options)
         self.button_collect_data = Button(  master=self, 
                                             text='Collect Data',
@@ -218,32 +221,32 @@ class DAQGUI(Tk):
         self.path_text.grid(            row=1, column=0, columnspan=10)
                     
         self.lexp_time.grid(            row=2, column=0)
-        self.lcompound.grid(            row=2, column=1)
-        self.lphase.grid(               row=2, column=2)    
-        self.lsamp_size.grid(           row=2, column=3)
-        self.lset_pt.grid(              row=2, column=4)
-        self.ltest_temp.grid(           row=2, column=5)
-        self.lhot_cold.grid(            row=2, column=6) 
-        self.lsound.grid(               row=2, column=7)   
-        self.lrel_hum.grid(             row=2, column=8)
-        self.lnotes.grid(               row=2, column=9)
+        self.lcompound.grid(            row=2, column=1)   
+        self.lsamp_size.grid(           row=2, column=2)
+        self.lset_pt.grid(              row=2, column=3)
+        self.ltest_temp.grid(           row=2, column=4)
+        self.lhot_cold.grid(            row=2, column=5) 
+        self.lsound.grid(               row=2, column=6)   
+        self.lrel_hum.grid(             row=2, column=7)
+        self.lnotes.grid(               row=2, column=8, columnspan=2)
                                                 
         self.exp_time.grid(             row=3, column=0, sticky=E+W)
         self.compound.grid(             row=3, column=1, sticky=E+W)
-        self.phase.grid(                row=3, column=2, sticky=E+W)    
-        self.samp_size.grid(            row=3, column=3, sticky=E+W)
-        self.set_pt.grid(               row=3, column=4, sticky=E+W)
-        self.test_temp.grid(            row=3, column=5, sticky=E+W)
-        self.hot_cold.grid(             row=3, column=6, sticky=E+W) 
-        self.sound.grid(                row=3, column=7, sticky=E+W)
-        self.rel_hum.grid(              row=3, column=8, sticky=E+W)
-        self.notes.grid(                row=3, column=9, sticky=E+W)
+        self.samp_size.grid(            row=3, column=2, sticky=E+W)
+        self.set_pt.grid(               row=3, column=3, sticky=E+W)
+        self.test_temp.grid(            row=3, column=4, sticky=E+W)
+        self.hot_cold.grid(             row=3, column=5, sticky=E+W) 
+        self.sound.grid(                row=3, column=6, sticky=E+W)
+        self.rel_hum.grid(              row=3, column=7, sticky=E+W)
+        self.notes.grid(                row=3, column=8, columnspan=2,
+                                        sticky=E+W)
         
         self.data_plot.grid(            row=4, column=0, columnspan=11, 
                                         sticky=W+E+N+S)
         
         self.button_quit.grid(          row=5, column=0, sticky=E+W)
-        self.press.grid(                row=5, column=1, columnspan=3)
+        self.press.grid(                row=5, column=1, columnspan=2)
+        self.eq_msg.grid(               row=5, column=3, sticky=E+W)
         self.msg1.grid(                 row=5, column=4, columnspan=5)
         self.button_collect_data.grid(  row=5, column=9, sticky=E+W)
         
@@ -365,6 +368,7 @@ class DAQGUI(Tk):
                     data[i] = -1003.14159265359
                 
             self.update_baro(data[-1])
+            self.update_temp_equilbrium(data)
             print(data_string, '-', self.baro_press)
                 
             data[-1] = self.pvessel
@@ -423,7 +427,29 @@ class DAQGUI(Tk):
             self.msg1['fg'] = 'white'
             winsound.Beep(880, 125)
 
-            
+       
+       
+    def update_temp_equilbrium(self, data):
+        """
+        Calculates the absolute average deviation (AAD) fraction from t4 of 
+        all other temperatures and, if that AAD% is < the equilibrium tolerance 
+        (self.eq_tol) then it marks the temperatures as ready. Not ready
+        otherwise
+        """
+        t4 = data[4]
+        try:
+            aad_pct = fsum([fabs(t4 - temp) for temp in data[1:-2]]) /4 /t4
+        except ZeroDivisionError as detail:
+            print(detail)
+            aad_pct = self.eq_tol + 2
+        
+        if aad_pct < self.eq_tol:
+            self.eq_msg['bg']   = '#80ff00'
+            self.eq_msg['text'] = 'Temp Ready'
+        else:
+            self.eq_msg['bg']   = '#FFFF00'
+            self.eq_msg['text'] = 'Temp NOT Ready'
+    
     
     def graph_data(self, data1):
         """ Reset the data to be graphed and then update the graph """
@@ -457,9 +483,6 @@ class DAQGUI(Tk):
             if self.collect == True:
                 self.data.append(data_point)# save data to array
                 print("Data collected.")
-                
-                ### TODO: Figure out how the start time interacts with the rest 
-                ##      of the system
                 
                 display_time = float(data_point[0] - self.start_time)/1000
                 self.msg1['text'] = "Collecting Data...\tTime"\
@@ -528,11 +551,25 @@ class DAQGUI(Tk):
                 f = open(self.target_data_path, 'w')
                 f.close()
             
+            # check the experiment log
+            try:
+                f = open(self.log_path, 'r') # see if the file exists
+                f.close()
+            except FileNotFoundError:
+                # if file not found, create it
+                f = open(self.log_path, 'w')
+                f.write("Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
+                "Temp,Ignition State,Sound?,Relative Humidity,"\
+                "Notes\n")
+                f.close()
+            
             text_out = self.format_data(self.data)
             data_name_out = self.get_data_fields()
             
-            ### TODO: decide how to implement write as append or as truncate
-            ### TODO: figure how to make loss of data probability is minimized
+            with open(self.log_path, 'a') as f:
+                f.write(data_name_out)
+
+
             with open(self.target_data_path,'a') as f:
                 f.write("Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test "\
                 "Temp,Hot/Cold?,Sound?,Relative Humidity,"\
@@ -570,10 +607,8 @@ class DAQGUI(Tk):
         print(serial_time.encode(encoding="ascii"))
         self.ser.write(serial_time.encode(encoding="ascii"))
 
-    
-    
-    
-    
+
+        
     def serial_port(self):
         """
         returns a string of the first available port that is not COM 1
@@ -602,7 +637,6 @@ class DAQGUI(Tk):
         data_exp = [
             self.exp_time.get(),
             self.compound.get(),
-            self.phase.get(),
             self.samp_size.get(),
             self.set_pt.get(),
             self.test_temp.get(),
@@ -613,7 +647,6 @@ class DAQGUI(Tk):
         
         self.exp_time.delete(0, END)
         self.compound.delete(0, END)
-        self.phase.delete(0, END)
         self.samp_size.delete(0, END)
         self.set_pt.delete(0, END)
         self.test_temp.delete(0, END)

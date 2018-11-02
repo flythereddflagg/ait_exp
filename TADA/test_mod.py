@@ -2,7 +2,7 @@
 
 
 from random import random, uniform
-from time import clock
+from time import clock, sleep
 
 def beep(*args):
     pass
@@ -26,7 +26,9 @@ class Serial():
         print("SERIAL: Port is closing...")
         
     def readline(self):
-    
+        
+        sleep(0.25)
+        
         if self.port != "COM1":
         
             out = "|,{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f}\n".format(
