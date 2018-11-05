@@ -31,7 +31,7 @@ from math import fabs, fsum
 #from sys import exit
 from time import localtime, strftime
 
-testing = True
+testing = False
 
 if testing:
 	import test_mod as serial
@@ -443,7 +443,11 @@ class DAQGUI(Tk):
             print(detail)
             aad_pct = self.eq_tol + 2
         
-        if aad_pct < self.eq_tol:
+		# absolute average deviation < tolerance and t4 has
+		# changed less than 0.75 over the last bit of time,
+		# you are ready to run
+        if aad_pct < self.eq_tol and \
+				fabs(self.ydata[0] - self.ydata[-1]) < 0.75:
             self.eq_msg['bg']   = '#80ff00'
             self.eq_msg['text'] = 'Temp Ready'
         else:
