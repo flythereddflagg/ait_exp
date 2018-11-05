@@ -58,7 +58,8 @@ class DAQGUI(Tk):
         self.rs232_port     = 'COM1'
         self.rs232_baudrate = 19200
         self.pemergency     =   206
-        self.eq_tol         =     0.02 # maximum AAD% in temp to be ready to run
+        self.eq_tol         =     0.0105 # maximum allowable AAD% in temperature
+        self.delta_t_tol    =     0.51 # maximum allowable ΔT over 25 seconds
         self.log_path       = "./experimental_log.csv"
           
         # initial/default values
@@ -449,9 +450,9 @@ class DAQGUI(Tk):
             delta_temp = 10
         
         # absolute average deviation < tolerance and t4 has
-        # changed less than 0.75 over the last bit of time,
+        # changed less than ΔT_tol over the last bit of time,
         # you are ready to run
-        if aad_pct < self.eq_tol and delta_temp < 0.75:
+        if aad_pct < self.eq_tol and delta_temp < self.delta_t_tol:
             self.eq_msg['bg']   = '#80ff00'
             self.eq_msg['text'] = 'Temp Ready'
         else:
@@ -575,6 +576,7 @@ class DAQGUI(Tk):
             data_name_out = self.get_data_fields()
             
             with open(self.log_path, 'a') as f:
+                f.write("\n")
                 f.write(data_name_out)
 
 
