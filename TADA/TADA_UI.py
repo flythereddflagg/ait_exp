@@ -34,14 +34,14 @@ from time import localtime, strftime
 testing = False
 
 if testing:
-	import test_mod as serial
+    import test_mod as serial
 else:
-	import serial
+    import serial
 
 if osname == 'nt':
-	import winsound
+    import winsound
 else:
-	import test_mod as winsound
+    import test_mod as winsound
 
 
 
@@ -279,7 +279,7 @@ class DAQGUI(Tk):
             self.rs232 = serial.Serial(
                 self.rs232_port,
                 self.rs232_baudrate,
-				timeout=0.1)
+                timeout=0.1)
             assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
         except AssertionError:
@@ -443,11 +443,15 @@ class DAQGUI(Tk):
             print(detail)
             aad_pct = self.eq_tol + 2
         
-		# absolute average deviation < tolerance and t4 has
-		# changed less than 0.75 over the last bit of time,
-		# you are ready to run
-        if aad_pct < self.eq_tol and \
-				fabs(self.ydata[0] - self.ydata[-1]) < 0.75:
+        try:
+            delta_temp = fabs(self.ydata[0] - self.ydata[-1])
+        except IndexError:
+            delta_temp = 10
+        
+        # absolute average deviation < tolerance and t4 has
+        # changed less than 0.75 over the last bit of time,
+        # you are ready to run
+        if aad_pct < self.eq_tol and delta_temp < 0.75:
             self.eq_msg['bg']   = '#80ff00'
             self.eq_msg['text'] = 'Temp Ready'
         else:
