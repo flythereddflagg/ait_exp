@@ -77,6 +77,23 @@ requirements of the method.
             been shut down for an extended period of time for maintenance 
             purposes
         \end{itemize}
+    
+    \item Ensure the furnace is plugged in to the 220 V outlet on the edge of 
+        the hood
+    \item Power on the furnace and set furnace temperature between 10 - 20 
+        degrees above your initial target flask temperature 
+        \begin{itemize}
+        \item When powered on initially, the furnace may take 2 hours or   
+            more to reach a desired temperature and thermally equilibrate
+        \item Use the TADA\_UI to track the internal temperature of the flask
+        \item Once the internal temperature starts to reach equilibrium, you 
+            may adjust the set point temperature until the target 
+            temperature is reached
+        \item \textbf{CAUTION: The furnace may be hot during the start up 
+            sequence. Avoid touching anything inside the area enclosed by 
+            the aluminum ring atop the furnace including the ring itself.}
+        \end{itemize}
+    
     \item Ensure the vessel rupture disk is intact and positioned correctly 
         (See Figure \ref{fig:rupture_disk})
         \begin{itemize}
@@ -129,10 +146,10 @@ requirements of the method.
 \label{fig:sd_card_reader}
 \end{figure}
         
-    \item Ensure the furnace thermocouples are connected to their corresponding
-        connectors inside the vessel and ensure that the wires are tucked down 
-        between the side of the furnace and the wall of the vessel and are out 
-        of the way (see Figure \ref{fig:Thermocouples})
+    \item Ensure the 4 furnace thermocouples are connected to their 
+        corresponding connectors inside the vessel and ensure that the wires are
+        tucked down between the side of the furnace and the wall of the vessel 
+        and are out of the way (see Figure \ref{fig:Thermocouples})
         \begin {itemize}
         \item Thermocouple wires coming out of the furnace are numbered and
             should connect to the corresponding brown wire connected to 
@@ -153,20 +170,13 @@ requirements of the method.
 \begin{figure}[H]
     \centering
     \subfloat[USB Connection]{{\includegraphics[height=5cm]{TADA_USB.jpg} }}
-    \qquad
-    \subfloat[24V Power Connection]{{\includegraphics[height=5cm]{24V_cable.jpg} }}
     \subfloat[24V Power Supply] {{\includegraphics[height=5cm]{24v_powersupply.jpg} }}
     \caption{TADA Connections}
     \label{fig:tada_connect}
 \end{figure}
         
-    \item Plug in the 24 volt power supply to the TADA (see Figure 
+    \item Plug in the wall power to the TADA 24-volt power supply (see Figure 
         \ref{fig:tada_connect})
-		\begin{itemize}
-        \item The connection is on the bottom right hand side of the box
-        \item Do NOT plug the 24 volt power supply into the Arduino as this will
-            destroy the Arduino
-        \end{itemize}
 
     \item Open the TADA user interface program
             \begin{itemize}
@@ -175,16 +185,10 @@ requirements of the method.
                 ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
-            \item The program will open two windows. Ensure both windows are visible while using 
-                the program
+            \item The program will open two windows. Ensure both windows are 
+                visible while using the program
+            \item The serial communication LED in the TADA will start flashing
             \end{itemize}
-
-    \item Return to the computer and press the "Sync Time" button on the bottom 
-        left corner of the TADA\_UI
-        window to synchronize the Arduino clock to the computer time
-        \begin{itemize}
-        \item This must be done at least once every work day
-        \end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -193,13 +197,6 @@ requirements of the method.
     \label{fig:tada_leds}
 \end{figure}
 
-    \item Using the TADA\_UI, check the temperature of the furnace to ensure safe handling for 
-        startup
-        \begin{itemize}
-        \item The temperature should be close to ambient lab temperature
-        \item Do not perform maintenance or change the flask unless the internal temperature of the 
-            furnace is below $40^\circ C$
-        \end{itemize}
     \item Twist both of the ARIA lead screws by hand such that the mounting 
         plate is all the way down and touching the base plate and the push block
         all the way back and is touching the horizontal stepper motor. (This is 
@@ -211,10 +208,11 @@ requirements of the method.
 \label{fig:shutdown_position}
 \end{figure}
 
-    \item Ensure the three molex cables are securely plugged in to the ARIA (see Figure \ref{fig:Molex_cables})
+    \item Ensure the three molex cables are securely plugged in to the ARIA 
+        (see Figure \ref{fig:Molex_cables})
         \begin{itemize}
-        \item Regardless of the experiments to be performed, ensure all three are plugged in and the 
-            corresponding cables are not strained
+        \item Regardless of the experiments to be performed, ensure all three 
+            are plugged in and the corresponding cables are not strained
         \end{itemize}
         
 \begin{figure}[H]
@@ -228,10 +226,6 @@ requirements of the method.
         initial setup sequence to complete (The two button lights on the ARIA
         control will come on when the sequence is complete) 
         (See Figure \ref{fig:5V_cable})
-        \begin{itemize}
-        \item \textbf{WARNING: Do NOT plug the 24 V power supply into the ARIA 
-            Control. This WILL destroy the ARIA Control.}
-        \end{itemize}
         
 \begin{figure}[H]
 \centering\includegraphics[width=.5\textwidth]{5V_cable.jpg}
@@ -241,11 +235,11 @@ requirements of the method.
 
     \item Test the placement of the ARIA using the funnel and ring stand
          \begin{itemize}
-         \item Place the ring stand in the ARIA, then secure the 
-            funnel in the ring stand, then run the solid program (Press Solid 
-            Button)
+         \item Ensure the ring stand is secure in the ARIA, place the 
+            funnel in the ring stand and run the solid program (Press the  
+            "Solid" Button)
 		 \item Note that the end of the ring stand rod must be nearly flush with the inside surface
-             of the ring stand mount block See Figure \ref{fig:flush_r_stand}
+             of the ring stand mount block (See Figure \ref{fig:flush_r_stand})
          \item If the funnel does not go directly into the flask, adjust the placement and retest 
             until properly positioned
          \end{itemize}
@@ -260,17 +254,10 @@ requirements of the method.
         \begin{itemize}
         \item Power on the tablet and connect it to the camera's Wi-Fi (See 
             Section \ref{sec:cam_tab} on how to do this)
-        \item Open the Capture app to view the camera's view finder
-        \item Mount the camera on the side of the furnace 
-            \begin{itemize}
-            \item Lift the rubber flap on the base of the camera buckle 
-                out of the way to allow the buckle to slide into the camera 
-                mount 
-            \item Insert the plastic buckle into the camera mount on the side 
-                of the furnace until it snaps securely into place
-            \item Press the rubber flap back into place to lock the camera 
-                buckle into the camera mount 
-            \end{itemize}
+        \item Open the Capture app to use the camera's view finder
+        \item Mount the camera on the side of the furnace (See Section 
+            \ref{sec:cam_on_furn})
+           
         \item Using the camera's view finder on the tablet, adjust the
             position of the mirror on the furnace to align the camera's view to 
             see directly down the center of the flask
@@ -278,100 +265,55 @@ requirements of the method.
             \item The camera should be positioned so that the hole in the 
                 furnace and the mirror are visible 
             \end{itemize}
-        \item Once you have aligned the mirror, remove the camera for initial
-            furnace heating
-            \begin{itemize}
-            \item Lift the rubber flap on the base of the camera buckle 
-                out of the way to allow the buckle to slide out of the camera 
-                mount
-            \item Squeeze the two catches on the camera buckle and pull the 
-                buckle out of the camera mount
-            \end{itemize}
+        \item Once you have aligned the mirror, remove and shutdown the camera 
+            for initial furnace heating
         \end{itemize}
-    
-    \item Ensure the furnace is plugged in to the 220 V outlet on the edge of 
-        the hood
-    \item Power on furnace and set furnace temperature between 10 - 20 degrees 
-        above your initial target flask temperature 
+
+    \item Once the target temperature is reached, allow the system to come to 
+        equilibrium
         \begin{itemize}
-        \item When powered on initially, the furnace may take 2 hours or   
-            more to reach a desired temperature and thermally equilibrate
-        \item Use the TADA\_UI to track the internal temperature of the flask
-        \item Once the internal temperature starts to reach equilibrium, you may adjust the set 
-            point temperature until the target temperature is reached
+        \item The "Temp Ready" indicator in the TADA\_UI window should turn 
+            green when the system has come to an acceptable equilibrated state
         \end{itemize}
-    
-    \item Once the target temperature is reached, allow 30 minutes for thermal 
-        equilibration, then begin experiments
     \end{enumerate}
+
     
 \subsection{Experimental}
 This section outlines the steps for experimental runs. Each experiment should be
 performed following these steps exactly (insofar as that is possible). Doing so
 will ensure consistent results with the lowest uncertainty possible.
-    \begin{enumerate}
-  
-    \item In the TADA\_UI program, press the "Choose Target File" button and 
-        choose where to save your file
-        \begin{itemize}
-        \item Save all temperature data files in comma separated values (.csv) 
-            format
-        \item Path: \textit{C:\textbackslash Users\textbackslash 
-            Public\textbackslash Documents\textbackslash AIT\textbackslash 
-            data\textbackslash compound\_name\textbackslash filename.csv}
-        \item File naming convention: 
-            \begin{itemize}
-            \item Filenames will be organized by the following values in order 
-                separated by underscores ("\_")
-                    \begin{itemize}
-                    \item Compound name
-                    \item Phase of the compound ('g' for gases, 'l' for liquids,
-                        's' for solids)
-                    \item Date of experiment with the format "YYMMDD"
-                    \item Time of day that data collection began for that run
-                        using a 24 hour clock format "hhmm"
-                    \item Sample size in microliters (for liquids) or milligrams
-                        (for solids and gases)
-                    \item Test temperature in degrees Celsius (rounded to the 
-                        nearest integer)
-                    \end{itemize}
-                    
-            \item For example: The file name of an AIT experiment where 100 
-                microliters of liquid hexane were tested at 450 \degree C on 
-                March 19, 2013 at 4:25 pm would be: \newline
-                "hexane\_l\_130319\_1625\_100\_450\_.csv"
-            \end{itemize}    
-        \item This action will reset the TADA for the next measurement        
-        \end{itemize}
+
+\textbf{
+Before beginning experiments, ALL operators ensure they are using
+appropriate PPE for handling chemicals (e.g. nitrile gloves and splash goggles)
+and have minimized laboratory hazards}
+
+\begin{itemize}
+\item Ensure your workspace, the area around the computer and 
+    both hoods are free of clutter, tripping hazards or any object 
+    which could present a hazard to you or anyone else in the lab
+\item Refer to the SDS for the chemical you are working 
+    with when determining appropriate PPE
+    \begin{itemize}
+    \item NOTE: Some SDS's will recommend using a face shield in 
+        addition to splash goggles when handing their respective 
+        chemicals. In our lab we will use ventilation hoods which, 
+        when used properly, serve as better protection than face 
+        shields. Therefore, any time an SDS recommends using a 
+        face shield you may safely ignore that recommendation 
+        provided you are using the hood properly by positioning the 
+        sash between your face and the work being performed in 
+        the hood.
+    \end{itemize}
     
-    \item \textbf{Safety: Ensure you are using proper PPE and have minimized 
-        hazards in the lab environment before continuing}
-            
-            \begin{itemize}
-            \item Ensure your workspace, the area around the computer and 
-                both hoods are free of clutter, tripping hazards or any object 
-                which could present a hazard to you or anyone else in the lab
-            \item Appropriate PPE (e.g. nitrile gloves and splash goggles) are 
-                required when handling chemicals
-            \item Refer to the SDS for the chemical you are working 
-                with when determining appropriate PPE
-                \begin{itemize}
-                \item NOTE: Some SDS's will recommend using a face shield in 
-                    addition to splash goggles when handing their respective 
-                    chemicals. In our lab we will use ventilation hoods which, 
-                    when used properly, serve as better protection than face 
-                    shields. Therefore, any time an SDS recommends using a 
-                    face shield you may safely ignore that recommendation 
-                    provided you are using the hood properly by positioning the 
-                    sash between your face and the work being performed in 
-                    the hood.
-                \end{itemize}
-                
-            \item Unless an SDS states otherwise, lab coats are recommended but 
-                not required when handling chemicals
-            \item All chemical handling (except for injection into the furnace) 
-                should be done in the hood to avoid a potential fire hazard 
-            \end{itemize}
+\item Unless an SDS states otherwise, lab coats are recommended but 
+    not required when handling chemicals
+\item All chemical handling (except for injection into the furnace) 
+    should be done in the hood to avoid a potential fire hazard 
+\end{itemize}
+
+
+    \begin{enumerate}
     
     \item Measure out sample
         \begin{itemize}
@@ -382,8 +324,10 @@ will ensure consistent results with the lowest uncertainty possible.
             \item Place a small amount of compound into the sample beaker
             \item Rinse the syringe of any extraneous compounds 3 times
                 \begin{itemize}
-                \item Draw approximately 300 microliters into the syringe from the sample beaker and
+                \item Draw approximately 300 microliters into the syringe from 
+                    the sample beaker and
                     eject it into the waste beaker
+                \item This only needs to be done once a day
                 \end{itemize}
             \item Draw sample amount into a right-angle syringe
                 \begin{itemize}
@@ -441,18 +385,24 @@ will ensure consistent results with the lowest uncertainty possible.
             
     \item Remove gloves before proceeding
 	\item Ensure the camera has sufficient battery and is powered on
+        \begin{itemize}
+        \item Reconnect the camera to the tablet if necessary
+        \end{itemize}
     \item Secure the camera to the side of the furnace
-    
-\begin{figure}[H]
-\centering\includegraphics[width=.3\textwidth]{rupture_hood.jpg}
-\caption{Snorkel placement during operation}
-\label{fig:rupture_hood}
-\end{figure}
+
+
     
     \item \textbf{Simultaneously} remove the snorkel from inside the vessel and 
         place above the rupture 
         disk (see Figure \ref{fig:rupture_hood}) \textbf{and} place lid on 
         pressure vessel and secure in place with the clamps and cable
+
+\begin{figure}[H]
+\centering\includegraphics[width=.3\textwidth]{rupture_hood.jpg}
+\caption{Snorkel placement during operation}
+\label{fig:rupture_hood}
+\end{figure} 
+
         \begin{itemize}
         \item Two people should perform this step. One to remove the snorkel
             and the other to place the lid
@@ -469,40 +419,36 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Ensure the lid is centered on the vessel by running your fingers
             around the edge to ensure the edge of the vessel and the lid are
             flush 
+        \item Check that the lid lies flat on the O-ring and no wires or debris 
+            will break the seal
         \item Hand tighten all the pressure vessel clamps on the lip of the lid 
             so the slack is taken out
         \item Using your other hand to keep the pressure vessel from rotating, 
 			tighten the clamps in opposing pairs following the numbering on 
-            the back of each clamp (see Figure \ref{fig:Top_of_lid}) using a 
+            the back of each clamp (See Figure \ref{fig:sec_lid}) using a 
             torque wrench, tightening each clamp until the torque reads 
             60 inch pounds
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.35\textwidth]{Top_of_lid.jpg}
-\caption{Clamp numbering}
-\label{fig:Top_of_lid}
-\end{figure}
-         
-        \item Tighten each clamp again with the torque wrench, this time by 
+            \item Tighten each clamp again with the torque wrench, this time by 
             going around the circle, ensuring that torque is 60 inch pounds on 
             each.
         \item Loop the safety cable through both lid handles and through the 
             handles on both sides of the vessel and then back through the lid 
             handles so the two ends meet then secure the two ends together 
-            (See Figure \ref{fig:Cable})
-           
+            (See Figure \ref{fig:sec_lid})
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=.35\textwidth]{Cable.png}
-\caption{Safety Cable Installation}
-\label{fig:Cable}
+    \centering
+    \subfloat[Clamp numbering]{{\includegraphics[height=8cm]{Top_of_lid.jpg} }}
+    \subfloat[Safety Cable Installation] {{\includegraphics[height=8cm]{Cable.png} }}
+    \caption{Securing the pressure vessel lid}
+    \label{fig:sec_lid}
 \end{figure}
 
         \end{itemize}    
     \item Pressurize the vessel
         \begin{itemize}
-        \item \textbf{Safety glasses are required anytime the vessel is pressurized}
+        \item \textbf{Safety glasses are required for everyone in the lab 
+            anytime the vessel is pressurized}
         \item The absolute pressure in the vessel can be read at the bottom of 
             the TADA\_UI window
         \item Ensure the ball valve connecting the regulators to the inlet hose
@@ -514,27 +460,77 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Once the regulators are pressurized, slowly open the ball valve
         \item Slowly close the rotometer (rotate clockwise) until the air flow 
             reads 25 SCFH (The flow rate is read at the middle of the floating ball)
-        \item Allow a 1 - 2 minutes for equilibrium to be reached initially
+        \item Allow 1 - 2 minutes for equilibrium to be reached initially
         \item Adjust pressure in vessel using low pressure regulator until the    
             absolute pressure reading in the TADA\_UI is highlighted green 
-            indicating that the pressure in the vessel is sufficiently close to 1 atm (760 torr)
+            indicating that the pressure in the vessel is sufficiently close 
+            to 1 atm (760 torr)
         
         \begin{itemize}
-            \item Do this with two people. One to read the pressure off the TADA\_UI and the other
-                adjust the regulator
+            \item This is easier with two people. One to read the pressure off 
+                the TADA\_UI and the other adjust the regulator
             \item While pressurizing, make sure that the rotometer reads about 
                 25 SCFH. This may take some adjusting back and forth.
-            \item Note: If a loud, high pitched noise is heard, there is a 
-                leak. Immediately close the ball valve and allow the vessel to 
-                fully vent to ambient pressure and check all seals
             \item Ensure that there are no leaks around the lid before proceeding
 			\item Allow at least 20 secs for equilibration each time the pressure 
 				is changed
+            \item \textbf{Leak protocol:} If a loud, high pitched noise is heard 
+                or the pressure read on the TADA\_UI fails to rise, there is a 
+                leak. If this occurs, do the following:
+                \begin{itemize}
+                \item Identify where the leak is happening (using the sound or
+                    snoop A.K.A. Soapy water)
+                \item If the leak is happening anywhere besides the O-ring,
+                    immediately close the ball valve and allow the vessel to 
+                    fully vent to ambient pressure to fix the leak
+                \item If the leak is happening somewhere along the O-ring,
+                    verify that there is no debris or wires breaking the seal.
+                    If a seal break from debris or wires is found, immediately 
+                    close the ball valve and allow the vessel to 
+                    fully vent to ambient pressure to fix the leak
+                \item If there is no debris or wires breaking the seal, use the
+                    wrench to slowly tighten the clamp nuts around the leak 
+                    until it stops
+                \item If this does not work or you suspect a different problem,
+                    immediately close the ball valve and allow the vessel to 
+                    fully vent to ambient pressure to fix the leak
+                \end{itemize}
             \end{itemize}
         \end{itemize} 
 
     \item Ensure the vessel is sufficiently dark to see any 
         flame from the mirror on top of the furnace
+    
+    \item In the TADA\_UI program, press the "Choose Target File" button and 
+        choose where to save your file
+        \begin{itemize}
+        \item Save all temperature data files in comma separated values (.csv) 
+            format
+        \item Path: \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            data\textbackslash compound\_name\textbackslash filename.csv}
+        \item File naming convention: 
+            \begin{itemize}
+            \item Filenames will be organized by the following values in order 
+                separated by underscores ("\_")
+                    \begin{itemize}
+                    \item Compound name
+                    \item Date of experiment with the format "YYMMDD"
+                    \item Time of day that data collection began for that run
+                        using a 24 hour clock format "hhmm"
+                    \item Sample size in microliters (for liquids) or milligrams
+                        (for solids and gases)
+                    \item Test temperature in degrees Celsius (rounded to the 
+                        nearest integer)
+                    \end{itemize}
+                    
+            \item For example: The file name of an AIT experiment where 100 
+                microliters of hexane were tested at 450 \degree C on 
+                March 19, 2013 at 4:25 pm would be: \newline
+                "hexane\_130319\_1625\_100\_450.csv"
+            \end{itemize}    
+        \item This action will reset the TADA for measurement        
+        \end{itemize}
     
     \item Begin data collection 
         \begin{itemize}
@@ -546,40 +542,60 @@ will ensure consistent results with the lowest uncertainty possible.
     
     \item Press the red button on the tablet screen to start recording
         
-    \item Press the LED button on the ARIA control box that corresponds to the 
-        physical state of the sample
+    \item Press the green or blue button on the ARIA control box that 
+        corresponds to the physical state of the sample
         (green for solid, blue for liquid) to initiate ARIA sample injection.
-            
-    \item Watch through the view port for an flame or a large temperature spike for 10 minutes
         \begin{itemize}
-        \item A temperature rise or a visible flame indicates a combustion event has occured
-        \item If a combustion event is observed, allow enough time for the
-            temperature to return to a steady state before terminating temperature data collection
-        
-        \item The experiment ends when one of the following criteria is met:
-            \begin{itemize} 
-            \item An ignition event is observed and the temperature returns to steady state
-            \item 10 minutes pass with no ignition event observed
-            \end{itemize}
-		\item Stop the camera at least 10 seconds after a large temperature spike is observed
-            or after a visible flame disappears
-        \item If the UI is used to keep track of time and no flame is observed, 
-            continue collecting temperature data until 600 seconds have passed 
-            since injection
+        \item \textbf{NOTICE:} If you need to abort the injection before
+            it completes, immediately unplug the AIRA power.
+        \item If you mistakenly press the wrong button, do NOT abort the 
+            injection. A button mis-press is inconsequential. Simply allow the 
+            injection to complete then press the correct button.
         \end{itemize}
     
-    \item Record pertinent data and observations in the lab book and the TADA\_UI
+    \item Watch for an ignition event for 10 minutes
+        \begin{itemize}
+        \item Upon injection, a small temperature drop is always observed. This
+            is the start of the 10 minutes
+        \item A temperature rise above the initial temperature indicates an 
+            exothermic reaction has occurred
+        \item An ignition event is defined by the presence of a visible flame
+            (visible to either the camera or the operator)
+        \item An ignition event is characterized by a large, sharp temperature 
+            rise exceeding $15 \frac{K}{s}$. This is referred to as
+            a temperature spike
+        \item The experiment ends when one of the following criteria is met:
+            \begin{itemize} 
+            \item An ignition event is observed and the temperature returns to 
+                a steady state
+            \item 10 minutes pass with no ignition event observed
+            \end{itemize}
+        \item Stop and power off the camera with the Capture app about 10 
+            seconds after a temperature spike occurs or after a visible flame 
+            disappears
+        \item If temperature spike is observed, allow enough time for the
+            temperature to return to a steady state before terminating 
+            temperature data collection
+		\item If no ignition event is observed nor expected, after a 
+            temperature rise reaches a maximum the camera may be stopped 
+            before 10 minutes have elapsed
+        \item The TADA\_UI may be used to keep track of time
+        \end{itemize}
+    
+    \item If necessary, review the camera footage, looking for a flame 
+        corresponding to the temperature spike
+        \begin{itemize}
+        \item This may be done on the Capture app on the tablet
+        \end{itemize}
+    
+    \item Record pertinent data and observations in the lab book and 
+        the TADA\_UI \textbf{BEFORE} terminating temperature data collection
         \begin{itemize}
         \item The following data must be present on the same row in the lab 
             notebook, in the following order:
             \begin{itemize}
-            \item Time of day that data collection began for that run
+            \item Time of day that data collection began
             \item Compound name 
-            \item The lot number and/or sample number of the 
-                container (This only needs to be recorded in the lab book  and 
-                only once for every compound container)
-            \item Phase of the compound upon injection ('g' for gases, 'l' for 
-                liquids, 's' for solids)
             \item Sample size in microliters (for liquids) or milligrams
                 (for solids and gases)
             \item Set-point temperature of the furnace
@@ -589,10 +605,8 @@ will ensure consistent results with the lowest uncertainty possible.
                 \item This should be the internal flask temperature 
                     (Thermocouple 4) prior to injection
                 \end{itemize}
-            \item Indicate whether an ignition event was observed (i.e. Did 
-                the camera see a flame?)
-            \item Indicate whether a hot flame or cold flame was observed (if 
-                applicable)
+            \item Indicate the type event that took place ("h" for hot-flame 
+                ignition, "c" for cool-flame ignition and "n" for no ignition)
                 \begin{itemize}
                 \item If the flame is bright yellow/orange, this is considered a 
                     hot-flame autoignition
@@ -601,33 +615,30 @@ will ensure consistent results with the lowest uncertainty possible.
                 \end{itemize}
             \item Indicate if any sound was heard upon ignition (if applicable)
             \end{itemize}
+       
         \item If any item is not applicable write down N/A in its place
         \item If any item is unknown, leave it blank until it can be determined
         \item Optionally, leave any pertinent comments about the experiment
             next to or directly under this row of data
         \item Record the same data in the corresponding fields in the TADA UI
             \textbf{before} terminating temperature data collection
+        \item The lot number and/or sample number of the container with the 
+            supplier and any other pertinent information related to the source
+            of the compound should be recorded at least once in the lab 
+            notebook. Ensure that these data are present
         \end{itemize}
         
     \item After the experiment ends, terminate data collection
         \begin{itemize}
         \item Press the Enter key  again to stop data 
             collection (the red light on the TADA should stop blinking)
-        \item If you haven't already, press the red button on the tablet screen to stop recording
-        \end{itemize}
-
-    \item Review the camera footage, looking for a flame corresponding to the 
-        temperature spike
-        \begin{itemize}
-        \item This may be done on the capture app on the tablet
+        \item If you haven't already, press the red button on the tablet screen 
+        to stop recording
+        \item Shut down the camera from the tablet
         \end{itemize}
         
     \item Set furnace to next temperature
-        \begin{itemize}
-            \item When changing temperature, always approach your target
-                temperature from 5 - 10 degrees Celsius above and then 
-                descend slowly to your target temperature
-        \end{itemize}
+
     \item Wait about 20 minutes after ignition to allow for the pressure 
         vessel to be purged of the combustion products. If there was no ignition,
 		only wait 10 minutes for the pressure vessel to purge after the experiment ends 
@@ -646,17 +657,17 @@ will ensure consistent results with the lowest uncertainty possible.
 		\item Break the seal on the lid by briefly lifting the lid with the safety cable still in 
                 place
         \item Remove the safety cable from the vessel
-        \item \textbf{Simultaneously} Lift off the lid and place snorkel inside the pressure vessel 
-            between 6" and 10" over the furnace
-            \begin{itemize}
-            \item Two people should perform this step One to remove the lid and one
-                replace the snorkel inside the vessel
-            \end{itemize}
         \end{itemize}
-    
+    \item \textbf{Simultaneously} Lift off the lid and place snorkel inside the pressure vessel 
+        between 6" and 10" over the furnace
+        \begin{itemize}
+        \item Two people should perform this step. One to remove the lid and one
+            replace the snorkel inside the vessel
+        \end{itemize}
 	\item Remove the camera from the vessel
     \item Remove any syringe or weigh boats used in the previous experiment
         \begin{itemize}
+        \item \textbf{Use gloves when doing this}
         \item Dispose of any weigh boats in the solid waste
         \end{itemize}
     \item Clean out the flask between measurements by blowing hot air into
@@ -668,9 +679,15 @@ will ensure consistent results with the lowest uncertainty possible.
         \end{itemize}
     
     \item Extract, save and appropriately rename the video data between experiments    
-    \item Wait a minimum of 30 minutes to reach the new temperature and 
-        allow the furnace and flask to thermally equilibrate
-    \item Start this procedure over from step 1 (choose the target file)
+    \item Once the next temperature is reached, allow the system to come to 
+        equilibrium
+        \begin{itemize}
+        \item The "Temp Ready" indicator in the TADA\_UI window should turn 
+            green when the system has come to an acceptable equilibrated state
+        \item Once the system is at equilibrium, begin experiments
+        \end{itemize}
+    \item Once the system is at equilibrium, start this procedure over from 
+        step 1 (Measure Out Sample)
     \end{enumerate}
 
     
@@ -682,14 +699,16 @@ will ensure consistent results with the lowest uncertainty possible.
         \item Power off the furnace
         \item Close the TADA\_UI program
         \item Unplug TADA USB connection
-        \item Unplug the ARIA and TADA power supply cables
+        \item Unplug the wall power from the TADA power supply
+        \item Unplug the ARIA power supply cable
         \item Shut down and unplug the tablet
         \item Turn the camera Wi-Fi off then shut down and unplug the camera
         \item Extract all data to the computer and appropriately rename them 
             (Refer to Section \ref{sec:data})
         \item Close all programs and shut down the computer
         
-        \item Remove and store any ARIA accessories used that day
+        \item Remove and store any ARIA accessories used that day (leave the 
+            ring stand in place)
         \item Clean the funnel with appropriate solvents and dispose of the waste
         \item Discard the contents of both beakers and prepare them for dish washing
         \item Discard any residual sample in syringes and store them in the syringe box in the AIT
@@ -1062,6 +1081,28 @@ See Figure \ref{fig:furnace_pic} for reference on how to operate the furnace
         
         \end{itemize}
     
+    \subsubsection(Camera Placement and Removal)  \label{sec:cam_on_furn}
+        \begin{itemize}
+        \item To mount the camera on the furnace:
+            \begin{itemize}
+            \item Lift the rubber flap on the base of the camera buckle 
+                out of the way to allow the buckle to slide into the camera 
+                mount 
+            \item Insert the plastic buckle into the camera mount on the side 
+                of the furnace until it snaps securely into place
+            \item Press the rubber flap back into place to lock the camera 
+                buckle into the camera mount 
+            \end{itemize}
+        \item To remove the camera from the furnace:
+            \begin{itemize}
+            \item Lift the rubber flap on the base of the camera buckle 
+                out of the way to allow the buckle to slide out of the camera 
+                mount
+            \item Squeeze the two catches on the camera buckle and pull the 
+                buckle out of the camera mount
+            \end{itemize}
+        \end{itemize}
+    
     \subsubsection{Other Information}
         \begin{itemize}
         \item Camera Operation
@@ -1171,6 +1212,15 @@ These sections outline how to change and test the rupture disk. (See Figures
     \begin{itemize}
     \item \textbf{Latex or nitrile gloves and safety glasses are 
             required while working with the flask/lid assembly}
+    
+    \item Using the TADA\_UI, check the temperature of the furnace to ensure 
+        safe handling before changing the flask
+        \begin{itemize}
+        \item The temperature should be close to ambient lab temperature
+        \item Do not perform maintenance or change the flask unless the 
+            internal temperature of the furnace is below $40^\circ C$
+        \end{itemize}
+    
     \item The flask in the furnace must be exchanged for a clean flask in the 
         following situations:
         \begin{itemize}
