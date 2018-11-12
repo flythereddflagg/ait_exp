@@ -1,4 +1,3 @@
-
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage[letterpaper, margin=0.75in]{geometry}
@@ -11,15 +10,14 @@
 \usepackage{float}
 \usepackage{wrapfig}
 \usepackage{setspace}
+\usepackage{tabu}
 
 \setlength{\parskip}{1em}
 
 \DeclareGraphicsExtensions{.jpg,.JPG}
 
-\newcommand*{\TitleFont}{
-      \usefont{\encodingdefault}{\rmdefault}{b}{n}
-      \fontsize{12}{5}
-      \selectfont}
+\title{\textbf{AIT Measurement Standard Operating Procedure}}
+\date{\textbf{Last modified on: \today \hspace{1mm} by Mark Redd}}
 
 \newcommand\blankpage{%
     \null
@@ -28,13 +26,7 @@
     \newpage}
       
 \begin{document}
-\begin{center}
-\TitleFont AIT Measurement Standard Operating Procedure\newline
-\TitleFont Last modified on: \today \hspace{1mm} by Mark Redd \newline
-\end{center}
-
-\titleformat{\section}
-  {\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+\maketitle
 
 \begin{itemize}
 \item \textbf{NOTICE: Lab policy requires that any person performing 
@@ -44,10 +36,36 @@
     \begin{itemize}
     \item \textbf{Complete pertinent laboratory safety training 
     \item Read this SOP in its entirety
-    \item Become familiar with all the experimental steps outlined in this SOP
-    \item Sign and Date the AIT SOP Signatures Sheet}
+    \item Become familiar with all the experimental steps and safety protocols 
+        outlined in this SOP (This includes everything in Sections 
+        \ref{sec:experiments}, \ref{sec:data}, \ref{sec:spills} and 
+        \ref{sec:e_shtdn})
+    \item Sign and date this page}
     \end {itemize}
 \end{itemize}
+
+By signing this, I assert that I have completed the above steps and have 
+sufficient competence to carry out these experiments safely. 
+\begin{center}
+\begin{tabu} to 0.9\textwidth {X[c]|X[c]|X[c]}
+ Full Name (Please Print) & Signature & Date  \\ 
+ \hline
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+
+ 
+\end{tabu}
+\end{center}
+
+\newpage
 \renewcommand{\baselinestretch}{.4}\normalsize
 \tableofcontents    % insert the table of contents
 \renewcommand{\baselinestretch}{1.0}\normalsize
@@ -56,7 +74,7 @@
 
 \newpage
 
-\section{Measurement and Data Collection}
+\section{Measurement and Data Collection} \label{sec:experiments}
 This section enumerates the procedure for measuring AIT. Researchers 
 should follow these procedures every day and for every experiment performed to 
 ensure consistent results. The first priority should always be safety. 
@@ -309,7 +327,7 @@ and have minimized laboratory hazards}
 \item Unless an SDS states otherwise, lab coats are recommended but 
     not required when handling chemicals
 \item All chemical handling (except for injection into the furnace) 
-    should be done in the hood to avoid a potential fire hazard 
+    should be done in the hood to avoid potential fire hazards
 \end{itemize}
 
 
@@ -365,11 +383,10 @@ and have minimized laboratory hazards}
         \item Liquid/Gases Sample
             \begin{itemize}
             \item Place the syringe securely into the syringe holder on the 
-                ARIA, making sure the tip of the syringe is aligning down the 
-                center of the hole in the funnel
-                needle is aligned down the center of the hole in the furnace
-			\item Test placement one more time with the opposite program (for 
-                liquid sample use the solid button)
+                ARIA, making sure the needle is in the funnel
+			\item Test placement one more time to ensure the funnel is guided 
+                into the injection hole (for a liquid sample use the 
+                solid button)
             \end{itemize}
             
         \item Solid Sample
@@ -377,8 +394,9 @@ and have minimized laboratory hazards}
             \item Carefully insert the weigh boat into the weigh boat holder and
                 press the weigh boat holder onto the servo shaft so the weigh 
                 boat is in a near-horizontal position
-			\item Test placement one more time with the opposite program (for 
-                solid sample use the liquid button)
+			\item Test placement one more time to ensure the funnel is guided 
+                into the injection hole (for a solid sample use the 
+                liquid button)
             \end{itemize}
             
         \end{itemize}
@@ -591,6 +609,7 @@ and have minimized laboratory hazards}
     \item Record pertinent data and observations in the lab book and 
         the TADA\_UI \textbf{BEFORE} terminating temperature data collection
         \begin{itemize}
+        \item The date of the experiment must be recorded once in the notebook
         \item The following data must be present on the same row in the lab 
             notebook, in the following order:
             \begin{itemize}
@@ -740,23 +759,44 @@ and the camera. Both the camera and the data logger on the TADA have SD cards
 with a 32 GB storage capacity that allows multiple runs to be recorded without 
 extraction. The following policies are in place to ensure ease of use, 
 efficiency and avoid common mistakes.
+
+\subsection{General Policies}
     \begin{itemize} 
-    \item For the AIT setup, do not exceed 10 runs without extracting 
-        temperature data to the computer and deleting the data from the SD  
-        cards.
-    \item All data should be extracted at least \textit{daily}
+    \item All data, including video and raw temperature data should be 
+        extracted at least \textit{daily}
     \item Video data should be extracted and properly renamed as often as  
         possible (i.e. between every run or every other run) to ensure the 
         correct filenames are assigned to their corresponding video files
-    
-    \item File naming convention: 
+    \item The datalogger data is there as a redundant backup to the UI data in 
+        case of data loss. Therefore it will be mainly archived and used only
+        when the original data cannot be found
+    \item After processing, all data should be organized according to the 
+        following conventions:
+        \begin{itemize}
+        \item Path: \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            data\textbackslash compound\_name\textbackslash filename.ext}
+        \item All data from the same run should have the same
+            filename but different extensions
+        \item The corresponding data from the datalogger will be archived and
+            accessed as needed
+        \item When processing is finished all runs should have the following 
+            3 files with the same name preceding them
+            \begin{itemize}
+            \item A .png/jpg file (for temperature data with graphs and analysis)
+            \item A .csv file (TADA\_UI generated)
+            \item A .avi/.mp4 file stored on the DIPPR Legacy Server
+                (this video file will have a different path and extension but 
+                the same filename)
+            \end{itemize}
+        \end{itemize}
+
+    \item File naming convention:
         \begin{itemize}
         \item Filenames will be organized by the following values in order 
             separated by underscores ("\_")
                 \begin{itemize}
                 \item Compound name
-                \item Phase of the compound ('g' for gases, 'l' for liquids,
-                    's' for solids)
                 \item Date of experiment with the format "YYMMDD"
                 \item Time of day that data collection began for that run
                     using a 24 hour clock format "hhmm"
@@ -765,95 +805,81 @@ efficiency and avoid common mistakes.
                 \item Test temperature in degrees Celsius (rounded to the 
                     nearest integer)
                 \end{itemize}
-                
+        
         \item For example: The filename for temperatures from an AIT experiment  
-            where 100 microliters of liquid hexane were tested at 450
-             \degree C on March 19, 2013 at 4:25 pm would be: \newline 
-            "hexane\_l\_130319\_1625\_100\_450.csv"
+            where 100 microliters of hexane were tested at 450
+            \degree C on March 19, 2013 at 4:25 pm would be: \newline 
+            "hexane\_130319\_1625\_100\_450.csv" \newline
+        \item The corresponding video file would be named:\newline
+            "hexane\_130319\_1625\_100\_450.MP4" 
         \end{itemize}
+    \end{itemize}
 
-    \item Video and data logger data must be processed (i.e. parsed, edited, 
-        timestamped etc.) before being organized and therefore will be saved to 
-        the same path initially
+\subsection{Video Extraction} 
+Extract video data by plugging in the camera via USB and using 
+GoPro\textsuperscript{\textcopyright} Quik software
+    \begin{itemize}
+    \item Connect the camera to the computer via a micro USB cable (See 
+        Figure \ref{fig:cam_diag})
+    \item Press the "info/wireless" button on the camera to connect the 
+        camera to the computer
+    \item Quik should be configured to open automatically extract video 
+        when the camera connects to the computer. If Quik is not configured 
+        to do this, refer to the Quik manual for how to configure this 
+        (or ask me and I will configure it)
+        \begin{itemize}
+        \item \textit{C:\textbackslash Users\textbackslash 
+            Public\textbackslash Documents\textbackslash AIT\textbackslash 
+            docs\textbackslash GoPro\_App\_for\_Desktop\_User\_Manual.pdf}
+        \item Quik login:
+            \begin{itemize}
+            \item username/email: dipprlab.ait@gmail.com
+            \item password: hotflame16
+            \end{itemize}
+        \end{itemize}
+    \item Video files should automatically be extracted to the DIPPR  
+        Legacy Server (a.k.a. The Properties of Gases and Liquids  
+        6\textsuperscript{th} Edition Server) and organized by date
+        \begin{itemize}
+        \item Path: \textit{\textbackslash \textbackslash 
+           pgl6ed.byu.edu\textbackslash aitra\textbackslash 
+           video\_import}
+        \item Username: dipprleg\textbackslash aitra
+        \item Password: hotflame16
+        \end{itemize}
+    \item Do NOT configure video files to be automatically deleted after 
+        import
+    \item Once you have ensured all video data have been have been properly
+        saved in the appropriate data folder, delete all files from the 
+        camera using the Quik "delete all" button
+    \end{itemize}
 
-    \item After processing, all data should be organized according to the 
-        following path convention:
+    
+    
+\subsection{Datalogger Extraction}
+To extract data from the datalogger:
+    \begin{itemize}
+    \item Unplug the TADA from the computer
+    \item Pull out the SD card from the data logger and use the USB SD card 
+        adapter to copy the "DATALOG.CSV" file into the "raw\_data" path and 
+        rename it to the original filename with the date 
+        tagged on in "YYMMMDD" format (e.g. "DATALOG\_130319.CSV")
         \begin{itemize}
         \item Path: \textit{C:\textbackslash Users\textbackslash 
             Public\textbackslash Documents\textbackslash AIT\textbackslash 
-            data\textbackslash compound\_name\textbackslash filename.ext}
-        \item All data, including videos, from the same run should have the same
-            filename and path but different extensions except data from the 
-            datalogger
-        \item The datalogger filename convention should also have '\_dlog' at 
-            the end of the name to distinguish it from the UI generated file 
-            (e.g. "hexane\_l\_130319\_1625\_100\_450\_dlog.csv")
-        \item When processing is finished all runs should have the following 
-            4 files with the same name preceding them
-            \begin{itemize}
-            \item A .xlsx file (for temperature data with graphs and analysis)
-            \item A .csv file (UI generated)
-            \item A \_dlog.csv file (datalogger)
-            \item A .avi/.mp4 file (video)
-            \end{itemize}
-        \end{itemize}
-
-    \item The camera may be plugged in via USB and video extracted with
-        GoPro\textsuperscript{\textcopyright} Quik software
-        \begin{itemize}
-        \item Connect the camera to the computer via a micro USB cable (See 
-            Figure \ref{fig:cam_diag})
-        \item Press the "info/wireless" button on the camera to connect the 
-            camera to the computer
-        \item Quik should be configured to open automatically extract video 
-            when the camera connects to the computer
-        \item Video files should be extracted to the DIPPR legacy server and 
-            organized by date:
-            \begin{itemize}
-            \item Path: \textit{\textbackslash \textbackslash 
-               dipprlegacy.et.byu.edu\textbackslash aitra\textbackslash 
-               video\_import}
-            \item Username: dipprleg\textbackslash aitra
-            \item Password: hotflame16
-            \end{itemize}
-        \item If Quik is not configured to do this refer to the Quik manual for
-            how to configure this (or ask me and I will configure it)
-            \begin{itemize}
-            \item \textit{C:\textbackslash Users\textbackslash 
-            Public\textbackslash Documents\textbackslash AIT\textbackslash 
-            docs\textbackslash GoPro\_App\_for\_Desktop\_User\_Manual.pdf}
-            \end{itemize}
-        \item Once extracted to the DIPPR legacy server, video data may be 
-            timestamped and converted to .avi format on the server
-        \end{itemize}
-        
-    \item To extract data from the data logger
-        \begin{itemize}
-        \item Unplug the TADA from the computer
-        \item Pull out the SD card from the data logger and use the USB SD card 
-            adapter to copy the"DATALOG.CSV" file into the "raw\_data" path and 
-            rename it to the original filename with the date 
-            tagged on in "YYMMMDD" format (e.g. "DATALOG\_130319.CSV")
-            \begin{itemize}
-            \item Path: \textit{C:\textbackslash Users\textbackslash 
-            Public\textbackslash Documents\textbackslash AIT\textbackslash 
             data\textbackslash raw\_data}
-            \end{itemize}
-        \item Open the "DATALOG.CSV" file on the SD card, erase all data from
-            it and save it, making sure to not change its name, extension or 
-            file path
-        \item Close all windows with the USB SD card adapter open (i.e. Excel 
-            files, Windows Explorer etc.)
-        \item Pull out the SD card without ejecting the unit from the computer
         \end{itemize}
-    
-    \item Ensure all files from the camera and data logger are deleted after they
-        have been properly saved in the data folder 
-            
+    \item Once you have ensured the data log file has been copied and 
+        renamed successfully, delete the "DATALOG.CSV" file on the SD card
+        (the SD card should be empty)
+    \item Close all windows with the USB SD card adapter open 
+        (i.e. Windows Explorer etc.)
+    \item Pull out the SD card without ejecting the unit from the computer
     \end{itemize}
+
     
 \newpage
-\section{Spill Clean-up}
+\section{Spill Clean-up} \label{sec:spills}
 In the event of any spill, appropriate PPE specified in the corresponding SDS 
     should be used in clean-up. Always check the SDS for special considerations
     when cleaning up any compound.
@@ -1081,7 +1107,7 @@ See Figure \ref{fig:furnace_pic} for reference on how to operate the furnace
         
         \end{itemize}
     
-    \subsubsection(Camera Placement and Removal)  \label{sec:cam_on_furn}
+    \subsubsection{Camera Placement and Removal}  \label{sec:cam_on_furn}
         \begin{itemize}
         \item To mount the camera on the furnace:
             \begin{itemize}
@@ -1149,7 +1175,7 @@ See Figure \ref{fig:furnace_pic} for reference on how to operate the furnace
 \subsubsection{Changing the rupture disk}
 We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
 been shown to be effective in preventing catastrophic failure in the vessel. 
-These sections outline how to change and test the rupture disk. (See Figures 
+This section outlines how to change and test the rupture disk. (See Figures 
 \ref{fig:rupture disk_assemble} and \ref{fig:rupture_disk} for reference)
 
 \begin{figure}[H]
@@ -1460,5 +1486,6 @@ These sections outline how to change and test the rupture disk. (See Figures
 \caption{A clean flask (dirty flask in the background)}
 \label{fig:clean_dirty}
 \end{figure}      
+
 
 \end{document}

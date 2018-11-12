@@ -31,7 +31,7 @@ from math import fabs, fsum
 #from sys import exit
 from time import localtime, strftime
 
-testing = False
+testing = True
 
 if testing:
     import test_mod as serial
@@ -567,9 +567,9 @@ class DAQGUI(Tk):
             except FileNotFoundError:
                 # if file not found, create it
                 f = open(self.log_path, 'w')
-                f.write("Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
+                f.write("file,Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
                 "Temp,Ignition State,Sound?,Relative Humidity,"\
-                "Notes\n")
+                "Notes")
                 f.close()
             
             text_out = self.format_data(self.data)
@@ -577,6 +577,8 @@ class DAQGUI(Tk):
             
             with open(self.log_path, 'a') as f:
                 f.write("\n")
+                f.write(self.target_data_path.split('/')[-1])
+                f.write(',')
                 f.write(data_name_out)
 
 
