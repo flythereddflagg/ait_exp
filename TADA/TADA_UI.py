@@ -31,7 +31,7 @@ from math import fabs, fsum
 #from sys import exit
 from time import localtime, strftime
 
-testing = True
+testing = False
 
 if testing:
     import test_mod as serial
@@ -590,6 +590,7 @@ class DAQGUI(Tk):
                 f.write('\n')
                 f.write(self.arduino_timestamp)
                 f.write(self.system_timestamp)
+                f.write('\n')
                 f.write('time,t1,t2,t3,t4,pressure\n')
                 f.write(text_out)
             

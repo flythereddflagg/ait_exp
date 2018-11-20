@@ -13,7 +13,7 @@ def plot_data(data_path):
     with open(data_path, 'r') as f:
         data = pd.read_csv(f, header=4)
     
-    ignition_status = run_info.split(',')[7]
+    ignition_status = run_info.split(',')[5]
     if "N/A" in ignition_status: ignition_status = "No"
     elif ignition_status == "": ignition_status = "Unknown"
     

@@ -1,2 +1,4 @@
-# ignore the following extentions
+# ignore the following extentions and files
 *.pyc
+./TADA/experimental_log.csv
+./TADA/dump.csv
