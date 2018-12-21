@@ -58,7 +58,7 @@ class DAQGUI(Tk):
         self.rs232_port     = 'COM1'
         self.rs232_baudrate = 19200
         self.pemergency     =   206
-        self.eq_tol         =     0.0105 # maximum allowable AAD% in temperature
+        self.eq_tol         =     0.0155 # maximum allowable AAD% in temperature
         self.delta_t_tol    =     0.51 # maximum allowable ΔT over 25 seconds
         self.log_path       = "./experimental_log.csv"
           
