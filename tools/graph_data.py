@@ -49,10 +49,14 @@ def find_test_temp(time_data, temp_data):
 def recurse_plot(path):
     for root, dirs, filenames in os.walk(path):
         for filename in filenames:
-            if filename[-4:] != ".csv": continue
+            if not filename.endswith(".csv"): continue
             print("Processing {}...".format(root + '\\' + filename))
-            plot_data(root + '\\' + filename)
-            plt.savefig(root + '\\' + filename[:-4] + '.png')
+            try:
+                plot_data(root + '\\' + filename)
+                plt.savefig(root + '\\' + filename[:-4] + '.png')
+            except Exception as e:
+                print("Plot failed because:")
+                print(e)
 
 
 
