@@ -583,7 +583,7 @@ class DAQGUI(Tk):
 
 
             with open(self.target_data_path,'a') as f:
-                f.write("Time of Exp,Compound Name,Phase,Samp Size,Set Pt,Test "\
+                f.write("Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
                 "Temp,Hot/Cold?,Sound?,Relative Humidity,"\
                 "Notes\n")
                 f.write(data_name_out)
@@ -635,8 +635,8 @@ class DAQGUI(Tk):
                     s = serial.Serial('COM'+ str(i + 1))
                     s.close()
                     return 'COM' + str(i + 1)
-                except serial.SerialException:
-                    pass
+                except serial.SerialException as e:
+                    print(e)
         else:
             pass
             # unix
