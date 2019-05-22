@@ -79,9 +79,9 @@ This section enumerates the procedure for measuring AIT. Researchers
 should follow these procedures every day and for every experiment performed to 
 ensure consistent results. The first priority should always be safety. 
 Therefore, if any step of this process is found to be unsafe or pose an 
-unacceptable risk it should be changed. Furthermore, changes should be made if 
-any step of the process violates the ASTM E659 Method to conform to the 
-requirements of the method.
+unacceptable risk it should be changed. This method is designed to conform to
+the ASTM E659 Method. Therefore, any policies and procedures violate standards
+set forth in ASTM E659 should be rectified to maintain conformity.
     
     \subsection{Startup}
     
@@ -96,6 +96,9 @@ requirements of the method.
             purposes
         \end{itemize}
     
+    \item Check the lab book to see if the flask needs to be changed  
+        \textbf{before} turning on the furnace. 
+        If needed, change the flask (See Section \ref{sec:flask_lid}).
     \item Ensure the furnace is plugged in to the 220 V outlet on the edge of 
         the hood
     \item Power on the furnace and set furnace temperature between 10 - 20 
@@ -128,20 +131,14 @@ requirements of the method.
     \item Start up computer and log on
         \begin{itemize}
       
-        \item Use your CAEDM account to log in
+        \item Use the "aitra" account to log in
             \begin{itemize}
+            \item Username: cheme-r-2014-25\textbackslash aitra
+            \item Password: hotflame16
             \item You should be able to access all the needed tools and 
                 programs from your account
             \item If you cannot access a program or file from your account, let 
                 Mark know and he will give you administrator access as needed
-            \end{itemize}
-        
-        \item You may need to specify the domain you are logging into. If that 
-            is the case enter your CAEDM credentials in as follows:
-            \begin{itemize}
-            \item Username: CAEDM\_AD\textbackslash
-            \textit{your\_caedm\_username}
-            \item Password: \textit{your\_caedm\_password}
             \end{itemize}
         
         %\item Using the administrator account:
@@ -203,8 +200,8 @@ requirements of the method.
                 ait\_exp\textbackslash TADA\textbackslash TADA\_UI.py}
             \item You may wish to make a shortcut to this location and put it on 
                 your CAEDM desktop.
-            \item The program will open two windows. Ensure both windows are 
-                visible while using the program
+            \item The program will open two windows. \textbf{Ensure both 
+                windows are visible while using the program.}
             \item The serial communication LED in the TADA will start flashing
             \end{itemize}
 
@@ -292,6 +289,21 @@ requirements of the method.
         \begin{itemize}
         \item The "Temp Ready" indicator in the TADA\_UI window should turn 
             green when the system has come to an acceptable equilibrated state
+        \item Sometimes the "Temp Ready" indicator may not turn green
+            if the flask was not installed correctly (See Section
+            \ref{sec:flask_lid}) or there are problems with the thermocouples 
+            even when the flask has reached thermal equilibrium. Therefore,
+            while heating up or changing temperatures, check the temperatures
+            that are displayed in the command line window of the TADA\_UI. If 
+            the temperatures are not within about 20 K of each other the 
+            thermocouples may not be placed properly. If this is the case 
+            experiments may proceed as normal but thermal equilibrium must be 
+            verified manually by using the data on the command line window 
+            and neglecting the misplaced thermocouple.
+        \item If any of the thermocouples in the command line window of the 
+            TADA\_UI read "NAN" (i.e. "not a number") then that thermocouple is 
+            not connected. Check all thermocouple connections and reconnect the 
+            thermocouple if possible.
         \end{itemize}
     \end{enumerate}
 
@@ -406,10 +418,15 @@ and have minimized laboratory hazards}
         \begin{itemize}
         \item Reconnect the camera to the tablet if necessary
         \end{itemize}
+\newpage
     \item Secure the camera to the side of the furnace
+        \begin{itemize}
+        \item \textbf{Note for unpressurized experiments:} If you are performing
+            unpressurized experiments (i.e. experiments with the lid off) you
+            may safely skip the next \textbf{three} steps. Ensure before 
+            proceeding that the vessel is being vented by the snorkel.
+        \end{itemize}
 
-
-    
     \item \textbf{Simultaneously} remove the snorkel from inside the vessel and 
         place above the rupture 
         disk (see Figure \ref{fig:rupture_hood}) \textbf{and} place lid on 
@@ -422,12 +439,22 @@ and have minimized laboratory hazards}
 \end{figure} 
 
         \begin{itemize}
-        \item Two people should perform this step. One to remove the snorkel
-            and the other to place the lid
-        \item Open the sash on the hood and carefully pull out the vessel lid 
-            ensuring the outlet 
-            hose does not catch on anything (do not pull it through the 
-            sliding doors)
+        \item Two people are required to perform this step. One to remove the 
+            snorkel (Person B) and the other to place the lid (Person A)            
+        \item Person A: open the sash on the hood vertically and carefully  
+            pull out the vessel lid ensuring the outlet hose does not catch  
+            on anything (do not pull it through the sliding doors)
+            \begin{itemize}
+            \item Use caution when handling the lid; the lid is heavy
+            \end{itemize}
+        \item Person B: Lift up the bell on the snorkel so it can swing away
+            from the open pressure vessel
+        \item Person A and B: Simultaneously, place the lid on the vessel and
+            swing the snorkel away from the vessel. This should be done in one
+            simultaneous motion.
+        \item Person B: Place the snorkel over the rupture disk as seen in 
+            Figure \ref{fig:rupture_hood}.
+        \item The rest of the procedure requires only 1 person
         \item When placing the lid, hold the lid directly above the vessel and 
             carefully lower it straight down on the vessel to avoid hitting the
             ARIA with the lid. Make sure to avoid crimping the outlet hose and 
@@ -547,13 +574,22 @@ and have minimized laboratory hazards}
                 March 19, 2013 at 4:25 pm would be: \newline
                 "hexane\_130319\_1625\_100\_450.csv"
             \end{itemize}    
-        \item This action will reset the TADA for measurement        
+        \item This action will reset the TADA for measurement
         \end{itemize}
+    
+    \item Write down everything you know in the TADA\_UI and the lab book 
+        (i.e. date, time, sample size, temperatures etc.).
     
     \item Begin data collection 
         \begin{itemize}
-        \item In the TADA UI program, press the Enter key
-        \item The TADA UI will keep track of the elapsed time since data 
+        \item \textbf{Note for unpressurized experiments:} If you are performing
+            unpressurized experiments (i.e. experiments with the lid off)
+            turn off the lights and ensure the laboratory is sufficiently dark 
+            to see any flame from the mirror on top of the furnace 
+            \textbf{before beginning data collection.}
+        \item In the TADA\_UI program, press the Enter key or click the 
+            "Collect Data" button on the TADA\_UI
+        \item The TADA\_UI will keep track of the elapsed time since data 
           collection began at the bottom of the window. This may be used
           to time the experiment
         \end{itemize}
@@ -618,8 +654,7 @@ and have minimized laboratory hazards}
             \item Sample size in microliters (for liquids) or milligrams
                 (for solids and gases)
             \item Set-point temperature of the furnace
-            \item Test temperature in degrees Celsius (rounded to the 
-                nearest integer)
+            \item Test temperature in degrees Celsius (NOT rounded)
                 \begin{itemize}
                 \item This should be the internal flask temperature 
                     (Thermocouple 4) prior to injection
@@ -657,6 +692,12 @@ and have minimized laboratory hazards}
         \end{itemize}
         
     \item Set furnace to next temperature
+        \begin{itemize}
+        \item \textbf{Note for unpressurized experiments:} If you are performing
+            unpressurized experiments (i.e. experiments with the lid off) you
+            may safely skip the next \textbf{four} steps. Ensure before 
+            proceeding that the vessel is being vented by the snorkel.
+        \end{itemize}
 
     \item Wait about 20 minutes after ignition to allow for the pressure 
         vessel to be purged of the combustion products. If there was no ignition,
@@ -665,8 +706,8 @@ and have minimized laboratory hazards}
         \begin{itemize}
         \item Turn off the inlet air flow using the ball valve
         \item Fully open the rotometer by gently turning the knob counterclockwise
-		\item Wait until the pressure vessel is \textbf{fully} depressurized (i.e. the rotometer 
-            reads zero)
+		\item Wait until the pressure vessel is \textbf{fully} depressurized 
+            (i.e. the rotometer reads zero)
         \end{itemize}
     \item Remove the pressure vessel lid by \textbf{first} loosening and 
         disengaging the clamps and \textbf{secondly} removing the safety cable
@@ -678,12 +719,25 @@ and have minimized laboratory hazards}
         \item Remove the safety cable from the vessel
         \end{itemize}
     \item \textbf{Simultaneously} Lift off the lid and place snorkel inside the pressure vessel 
-        between 6" and 10" over the furnace
+        between 6" and 10" over the furnace (this may be done with 1 person)
         \begin{itemize}
-        \item Two people should perform this step. One to remove the lid and one
-            replace the snorkel inside the vessel
+        \item Lift the hood sash to allow the lid to be placed back inside
+        \item Pull the bell of the snorkel up to allow the snorkel to swing 
+        \item Swing the snorkel to a position above the vessel
+        \item Pull the bell back down to the end of the snorkel and let it fall
+            on top of the lid
+        \item Ensure the snorkel is loose enough to fall down into the vessel
+            upon removing the lid
+        \item Remove the lid by pulling directly upward before moving laterally
+            and allow the snorkel to fall down into the venting
+            position inside the vessel
+        \item Place the lid carefully back in the hood and close the sash, 
+            running the lid outlet hose through the small opening in the corner
+            of the sash
+        \item Ensure the snorkel is placed properly and is venting the vessel
         \end{itemize}
-	\item Remove the camera from the vessel
+	\item Remove the camera from the vessel and connect it to the computer to
+        begin video extraction
     \item Remove any syringe or weigh boats used in the previous experiment
         \begin{itemize}
         \item \textbf{Use gloves when doing this}
@@ -697,7 +751,9 @@ and have minimized laboratory hazards}
         \item Do not point the heat gun towards the ARIA at any time
         \end{itemize}
     
-    \item Extract, save and appropriately rename the video data between experiments    
+    \item Extract, save and appropriately rename the video data between 
+        experiments (See Section \ref{sec:vid_ex}). Remember to delete the video
+        off the camera once you have made sure that it is saved to the computer.
     \item Once the next temperature is reached, allow the system to come to 
         equilibrium
         \begin{itemize}
@@ -815,7 +871,7 @@ efficiency and avoid common mistakes.
         \end{itemize}
     \end{itemize}
 
-\subsection{Video Extraction} 
+\subsection{Video Extraction} \label{sec:vid_ex}
 Extract video data by plugging in the camera via USB and using 
 GoPro\textsuperscript{\textcopyright} Quik software
     \begin{itemize}
@@ -843,7 +899,7 @@ GoPro\textsuperscript{\textcopyright} Quik software
         \begin{itemize}
         \item Path: \textit{\textbackslash \textbackslash 
            pgl6ed.byu.edu\textbackslash aitra\textbackslash 
-           video\_import}
+           video}
         \item Username: dipprleg\textbackslash aitra
         \item Password: hotflame16
         \end{itemize}
@@ -1237,7 +1293,7 @@ This section outlines how to change and test the rupture disk. (See Figures
     % \end{itemize}
 
 \newpage
-\subsection{Flask and Lid}
+\subsection{Flask and Lid} \label{sec:flask_lid}
     \begin{itemize}
     \item \textbf{Latex or nitrile gloves and safety glasses are 
             required while working with the flask/lid assembly}
@@ -1300,8 +1356,13 @@ This section outlines how to change and test the rupture disk. (See Figures
             or appropriately secured to a ring stand} (see "Flask Cleaning"
              section)
         \end{itemize}
+    
+    \item \textbf{NOTICE:} Every time the flask and lid are disassembled, check 
+        the thermocouples and thermocouple wiring for damage or fraying that 
+        may affect thermocouple performance. If needed, replace the 
+        thermocouples before assembling the flask and lid.
 
-\newpage      
+
     \item Assembling the Flask and Lid 
         \begin{itemize}
         \item Use the figures in this section as a reference when putting 
@@ -1339,8 +1400,9 @@ This section outlines how to change and test the rupture disk. (See Figures
                     ensuring the thermocouple wires run parallel up the side of 
                     the flask (3)
                 \item Place thermocouple 1 at the top of the bulb of the flask 
-                    (not on the neck of the flask) and use a third piece of foil
-                     to wrap around the top starting at the middle (4)
+                    (\textbf{NOT} on the neck of the flask) and use a third 
+                    piece of foil to wrap around the top starting at the 
+                    middle (4)
                 \item Add an additional layer of foil around  the flask so the 
                     wires are covered and run parallel when wrapping is finished
                     (5)
