@@ -1,4 +1,7 @@
 # ignore the following extentions and files
 *.pyc
-./TADA/experimental_log.csv
-./TADA/dump.csv
+experimental_log.csv
+dump.csv
+
+# ignore the following folders
+__pycache__/

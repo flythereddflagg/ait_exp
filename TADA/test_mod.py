@@ -17,7 +17,6 @@ class Serial():
     
     def write(self, *args, **kwargs):
         pass
-
     
     def open(self):
         print("SERIAL: Port is opening...")

@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """
 file: TADA_UI.py
 name: Thermocouple Amplifier-Data Aquisition User Interface (TA-DA UI)
@@ -28,7 +25,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 ## Other misc. imports
 from os import system, name as osname
 from math import fabs, fsum
-#from sys import exit
 from time import localtime, strftime
 
 testing = False
@@ -73,6 +69,17 @@ class DAQGUI(Tk):
         self.baro_press         = 640.0 # barometric pressure in torr 
         self.pvessel            = 640.0 # absolute pressure inside the vessel
         self.gpress             = 0     # gauge pressure inside the vessel
+        
+        
+        self.data_labels = [
+            "Time of Exp",
+            "Compound Name",
+            "Samp Size",
+            "Set Pt",
+            "Test Temp",
+            "Ignition",
+            "Notes",
+        ]
 
         # setup commands
         self.initUI()
@@ -105,7 +112,7 @@ class DAQGUI(Tk):
         self.rowconfigure(5, pad=5)
         
         # Configure columns
-        for i in range(10):
+        for i in range(8):
             self.columnconfigure(i, weight=1)
         
         # Set up all widgets in the UI
@@ -114,7 +121,7 @@ class DAQGUI(Tk):
         self.grid_widgets()
         
         # Setup window preferences
-        #self.iconbitmap(r'flame.ico')
+        self.iconbitmap(r'flame.ico')
         self.geometry("1200x600+50+50")
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
         
@@ -161,8 +168,7 @@ class DAQGUI(Tk):
     def init_widgets(self):
         """
         Sets up all widgets except the plot
-        """
-        
+        """        
         button_options  = {'master':self, 'bg':'black', 'fg':'white', 'padx':5,
                             'pady':5}
         label_options   = {'master':self, 'bg':'black', 'fg':'white', 'padx':3}
@@ -174,28 +180,13 @@ class DAQGUI(Tk):
                                 command=self.file_save_as, **button_options)
         self.path_text   = Label(**label_options, text=self.target_data_path)
         
-        # Setup info labels
-        self.lexp_time  = Label(**label_options, text="Time of Exp")
-        self.lcompound  = Label(**label_options, text="Compound Name")
-        self.lsamp_size = Label(**label_options, text="Samp Size")
-        self.lset_pt    = Label(**label_options, text="Set Pt",)
-        self.ltest_temp = Label(**label_options, text="Test Temp")
-        self.lhot_cold  = Label(**label_options, text="Ignition\nHot/Cold/No")
-        self.lsound     = Label(**label_options, text="Sound? (y/n)",)
-        self.lrel_hum   = Label(**label_options, text="rh%/ext temp")
-        self.lnotes     = Label(**label_options, text="Notes")
-        
-        
-        # Setup info fields                            
-        self.exp_time   = Entry(**entry_options)
-        self.compound   = Entry(**entry_options)
-        self.samp_size  = Entry(**entry_options)
-        self.set_pt     = Entry(**entry_options)
-        self.test_temp  = Entry(**entry_options)
-        self.hot_cold   = Entry(**entry_options)
-        self.sound      = Entry(**entry_options)
-        self.rel_hum    = Entry(**entry_options)
-        self.notes      = Entry(**entry_options)
+        # Setup info labels and fields
+        self.data_fields = {}
+        for label in self.data_labels:
+            self.data_fields[label] = [
+                Label(**label_options, text=label),
+                Entry(**entry_options)
+                ]
         
         # Setup buttons and messages at bottom
         self.button_quit = Button(text='Quit', command=self.quit_app, 
@@ -205,51 +196,38 @@ class DAQGUI(Tk):
         self.eq_msg = Label(master=self, text="Temp Ready",
             bg='#80ff00', fg='black', padx=5, pady=5, relief='groove')
         self.msg1 = Label(text="Data Collection Ready", **label_options)
-        self.button_collect_data = Button(  master=self, 
-                                            text='Collect Data',
-                                            command=self.start_stop, 
-                                            bg='green',
-                                            padx=5,
-                                            pady=5)
-        
+        self.button_collect_data = Button(  
+                                        master=self, 
+                                        text='Collect Data',
+                                        command=self.start_stop, 
+                                        bg='green',
+                                        padx=5,
+                                        pady=5)
     
     
     def grid_widgets(self):
         """
         Places all widgets in the grid.
         """
+        
         self.button_save.grid(          row=0, column=0, columnspan=10)
         self.path_text.grid(            row=1, column=0, columnspan=10)
-                    
-        self.lexp_time.grid(            row=2, column=0)
-        self.lcompound.grid(            row=2, column=1)   
-        self.lsamp_size.grid(           row=2, column=2)
-        self.lset_pt.grid(              row=2, column=3)
-        self.ltest_temp.grid(           row=2, column=4)
-        self.lhot_cold.grid(            row=2, column=5) 
-        self.lsound.grid(               row=2, column=6)   
-        self.lrel_hum.grid(             row=2, column=7)
-        self.lnotes.grid(               row=2, column=8, columnspan=2)
-                                                
-        self.exp_time.grid(             row=3, column=0, sticky=E+W)
-        self.compound.grid(             row=3, column=1, sticky=E+W)
-        self.samp_size.grid(            row=3, column=2, sticky=E+W)
-        self.set_pt.grid(               row=3, column=3, sticky=E+W)
-        self.test_temp.grid(            row=3, column=4, sticky=E+W)
-        self.hot_cold.grid(             row=3, column=5, sticky=E+W) 
-        self.sound.grid(                row=3, column=6, sticky=E+W)
-        self.rel_hum.grid(              row=3, column=7, sticky=E+W)
-        self.notes.grid(                row=3, column=8, columnspan=2,
-                                        sticky=E+W)
+                
+        for i, label in enumerate(self.data_labels):
+            self.data_fields[label][0].grid(row=2, column=i)
+            self.data_fields[label][1].grid(row=3, column=i, sticky=E+W)
+            
+        self.data_fields[self.data_labels[-1]][0].grid_configure(columnspan=2)
+        self.data_fields[self.data_labels[-1]][1].grid_configure(columnspan=2)
         
-        self.data_plot.grid(            row=4, column=0, columnspan=11, 
+        self.data_plot.grid(            row=4, column=0, columnspan=8, 
                                         sticky=W+E+N+S)
         
         self.button_quit.grid(          row=5, column=0, sticky=E+W)
-        self.press.grid(                row=5, column=1, columnspan=2)
-        self.eq_msg.grid(               row=5, column=3, sticky=E+W)
-        self.msg1.grid(                 row=5, column=4, columnspan=5)
-        self.button_collect_data.grid(  row=5, column=9, sticky=E+W)
+        self.press.grid(                row=5, column=1, sticky=E+W)
+        self.eq_msg.grid(               row=5, column=2, sticky=E+W)
+        self.msg1.grid(                 row=5, column=3, columnspan=3)
+        self.button_collect_data.grid(  row=5, column=7, sticky=E+W)
         
     
     
@@ -408,7 +386,7 @@ class DAQGUI(Tk):
         if self.pvessel < self.plower:
             self.press['bg'] = 'blue'
             self.press['fg'] = 'white'
-            state = " (low)"
+            state = " (low) "
         elif self.pvessel > self.pupper:
             self.press['bg'] = '#cc0000'
             self.press['fg'] = 'white'
@@ -460,6 +438,7 @@ class DAQGUI(Tk):
             self.eq_msg['text'] = 'Temp NOT Ready'
     
     
+    
     def graph_data(self, data1):
         """ Reset the data to be graphed and then update the graph """
         if len(self.xdata) > self.vis_data and len(self.ydata) > self.vis_data:
@@ -498,9 +477,7 @@ class DAQGUI(Tk):
                                     " (sec): {:.1f}".format(display_time)
 
             self.graph_data(data_point)     # put the data on a graph
-
-            
-
+    
     
     
     def plt_update(self, xdata, ydata):
@@ -537,10 +514,12 @@ class DAQGUI(Tk):
     
     
     def start_stop(self, event=None):
-        """ The Start/Stop procedure. Once stopped the program will ask you 
-            to choose a file to save to if you haven't already. Then it saves
-            the file and resets the DAQ. If you cancel the save all your data 
-            will be lost."""
+        """ 
+        The Start/Stop procedure. Once stopped the program will ask you 
+        to choose a file to save to if you haven't already. Then it saves
+        the file and resets the DAQ. If you cancel the save all your data 
+        will be lost.
+        """
         if self.collect == False: # this is the start branch
             # tell the Arduino to start writing its data to the SD card
             self.start_time = self.current_time
@@ -552,50 +531,56 @@ class DAQGUI(Tk):
             self.button_collect_data['text'] = "Stop Collection"
 
         else: # this is the stop branch
-            try:
-                f = open(self.target_data_path, 'r') # see if the file exists
-                f.close()
-            except FileNotFoundError:
-                # if file not found, create it
-                f = open(self.target_data_path, 'w')
-                f.close()
-            
-            # check the experiment log
-            try:
-                f = open(self.log_path, 'r') # see if the file exists
-                f.close()
-            except FileNotFoundError:
-                # if file not found, create it
-                f = open(self.log_path, 'w')
-                f.write("file,Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
-                "Temp,Ignition State,Sound?,Relative Humidity,"\
-                "Notes")
-                f.close()
-            
-            text_out = self.format_data(self.data)
-            data_name_out = self.get_data_fields()
-            
-            with open(self.log_path, 'a') as f:
-                f.write("\n")
-                f.write(self.target_data_path.split('/')[-1])
-                f.write(',')
-                f.write(data_name_out)
-
-
-            with open(self.target_data_path,'a') as f:
-                f.write("Time of Exp,Compound Name,Samp Size,Set Pt,Test "\
-                "Temp,Hot/Cold?,Sound?,Relative Humidity,"\
-                "Notes\n")
-                f.write(data_name_out)
-                f.write('\n')
-                f.write(self.arduino_timestamp)
-                f.write(self.system_timestamp)
-                f.write('\n')
-                f.write('time,t1,t2,t3,t4,pressure\n')
-                f.write(text_out)
-            
+            self.save_data()
             self.stop_reset()
 
+    
+    
+    def save_data(self):
+        """ 
+        The save data part of Start/Stop procedure. Once stopped the program 
+        will ask you  to choose a file to save to if you haven't already. 
+        Then it saves the file and resets the DAQ. If you cancel the save 
+        all your data will be lost.
+        """
+        try:
+            f = open(self.target_data_path, 'r') # see if the file exists
+            f.close()
+        except FileNotFoundError:
+            # if file not found, create it
+            f = open(self.target_data_path, 'w')
+            f.close()
+        
+        # check the experiment log
+        try:
+            f = open(self.log_path, 'r') # see if the file exists
+            f.close()
+        except FileNotFoundError:
+            # if file not found, create it
+            f = open(self.log_path, 'w')
+            f.write("file," + ','.join(self.data_labels) + '\n')
+            f.close()
+        
+        text_out = self.format_data(self.data)
+        data_name_out = self.get_data_fields()
+        
+        with open(self.log_path, 'a') as f:
+            f.write("\n")
+            f.write(self.target_data_path.split('/')[-1])
+            f.write(',')
+            f.write(data_name_out)
+
+
+        with open(self.target_data_path,'a') as f:
+            f.write(','.join(self.data_labels) + '\n')
+            f.write(data_name_out)
+            f.write('\n')
+            f.write(self.arduino_timestamp)
+            f.write(self.system_timestamp)
+            f.write('\n')
+            f.write('time,t1,t2,t3,t4,pressure\n')
+            f.write(text_out)    
+    
     
     
     def stop_reset(self):
@@ -612,6 +597,9 @@ class DAQGUI(Tk):
     
     
     def sync_time(self, event=None):
+        """
+        Synchronizes computer time with the arduino.
+        """
         if self.collect: return
         time_obj= localtime()
         serial_time = strftime("t%Y,%m,%d,%H,%M,%S", time_obj)
@@ -647,26 +635,15 @@ class DAQGUI(Tk):
     
     
     def get_data_fields(self):
+        """
+        Returns the data from all data fields
+        """
         data_exp = [
-            self.exp_time.get(),
-            self.compound.get(),
-            self.samp_size.get(),
-            self.set_pt.get(),
-            self.test_temp.get(),
-            self.hot_cold.get(),
-            self.sound.get(),
-            self.rel_hum.get(),
-            self.notes.get()]
+            self.data_fields[label][1].get() for label in self.data_labels
+        ]
         
-        self.exp_time.delete(0, END)
-        self.compound.delete(0, END)
-        self.samp_size.delete(0, END)
-        self.set_pt.delete(0, END)
-        self.test_temp.delete(0, END)
-        self.hot_cold.delete(0, END)
-        self.sound.delete(0, END)
-        self.rel_hum.delete(0, END)
-        self.notes.delete(0, END)
+        for label in self.data_labels:
+            self.data_fields[label][1].delete(0, END)
         
         datastring = ','.join(data_exp)
         return datastring
