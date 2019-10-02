@@ -33,6 +33,7 @@ if testing:
     import test_mod as serial
 else:
     import serial
+    from serial.tools import list_ports
 
 if osname == 'nt':
     import winsound
@@ -51,7 +52,7 @@ class DAQGUI(Tk):
         self.vis_data       =   100    # Number of visible data points
         self.tada_baudrate  =  9600 
         self.init_delay     =  1000    # Wait time before interface restart (ms)
-        self.rs232_port     = 'COM1'
+        self.rs232_port     = '/dev/ttyS0'
         self.rs232_baudrate = 19200
         self.pemergency     =   206
         self.eq_tol         =     0.0155 # maximum allowable AAD% in temperature
@@ -121,7 +122,7 @@ class DAQGUI(Tk):
         self.grid_widgets()
         
         # Setup window preferences
-        self.iconbitmap(r'flame.ico')
+        #self.iconbitmap(r'flame.ico')
         self.geometry("1200x600+50+50")
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
         
@@ -250,7 +251,8 @@ class DAQGUI(Tk):
         Returns True if successful False otherwise.
         """
         try:
-            self.com_port = self.serial_port()
+            self.com_port = "/dev/ttyACM0"
+            
             self.ser = serial.Serial(
                 self.com_port, 
                 self.tada_baudrate,
@@ -261,10 +263,11 @@ class DAQGUI(Tk):
                 timeout=0.1)
             assert(self.ser.isOpen() and self.rs232.isOpen())
             return True
-        except AssertionError:
-            print("\nAssertionError:\n TA-DA port '{}' and"\
-                " Vaisala Barometer Port '{}' are not open.\n".format(
-                self.com_port, self.rs232_port))
+        except AssertionError as e1:
+            print(e1)
+            return False
+        except serial.serialutil.SerialException as e2:
+            print(e2)
             return False
            
         
@@ -626,10 +629,9 @@ class DAQGUI(Tk):
                 except serial.SerialException as e:
                     print(e)
         else:
-            pass
             # unix
-            #for port in list_ports.comports():
-            #    return port[0]
+            for port in list_ports.comports():
+                return port[0]
 
     
     
