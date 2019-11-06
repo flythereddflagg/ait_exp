@@ -63,7 +63,7 @@ def recurse_plot(path):
 def main():            
     prompt = "\nEnter a '.csv' data path, r "\
         "with a directory or q to quit\n ---> "
-    input_path = input(prompt)
+    input_path = input(prompt).replace("'", "").strip()
     while input_path != 'q':
         try:
             if input_path.split()[0] == 'r':
