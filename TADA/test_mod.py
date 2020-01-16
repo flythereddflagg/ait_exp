@@ -2,7 +2,9 @@
 
 
 from random import random, uniform
-from time import clock, sleep
+from time import sleep
+
+def clock(): return 1
 
 def beep(*args):
     pass

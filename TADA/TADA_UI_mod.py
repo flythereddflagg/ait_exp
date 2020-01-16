@@ -52,8 +52,8 @@ class DAQGUI(Tk):
         self.vis_data       =   100    # Number of visible data points
         self.tada_baudrate  =  9600 
         self.init_delay     =  1000    # Wait time before interface restart (ms)
-        self.rs232_port     = '/dev/ttyS0'
-        self.rs232_baudrate = 19200
+        #self.rs232_port     = '/dev/ttyS0'
+        #self.rs232_baudrate = 19200
         self.pemergency     =   206
         self.eq_tol         =     0.0155 # maximum allowable AAD% in temperature
         self.delta_t_tol    =     0.51 # maximum allowable ΔT over 25 seconds
@@ -67,7 +67,7 @@ class DAQGUI(Tk):
         self.current_time       = 0
         self.arduino_timestamp  = ""
         self.system_timestamp   = ""
-        self.baro_press         = 640.0 # barometric pressure in torr 
+        # self.baro_press         = 640.0 # barometric pressure in torr 
         self.pvessel            = 640.0 # absolute pressure inside the vessel
         self.gpress             = 0     # gauge pressure inside the vessel
         
@@ -257,11 +257,7 @@ class DAQGUI(Tk):
                 self.com_port, 
                 self.tada_baudrate,
                 timeout=1.0)
-            self.rs232 = serial.Serial(
-                self.rs232_port,
-                self.rs232_baudrate,
-                timeout=0.1)
-            assert(self.ser.isOpen() and self.rs232.isOpen())
+            assert (self.ser.isOpen())
             return True
         except AssertionError as e1:
             print("ASSERTION ERROR", e1)
@@ -349,7 +345,7 @@ class DAQGUI(Tk):
                 except ValueError:  # replace non-number with -1000 - pi
                     data[i] = -1003.14159265359
                 
-            self.update_baro(data[-1])
+            # self.update_baro(data[-1])
             self.update_temp_equilbrium(data)
             print(data_string, '-', self.baro_press)
                 
@@ -379,7 +375,7 @@ class DAQGUI(Tk):
         """
         self.gpress = p_gauge
         try:
-            baro_press = float(self.rs232.readline().decode())
+            baro_press = float(#self.rs232.readline().decode())
             if baro_press < 1000 or baro_press > 600: 
                     self.baro_press = baro_press
             self.pvessel = self.gpress + self.baro_press
