@@ -2,7 +2,7 @@
 *    TA-DA ZUKO
 * Thermocouple Amplifier - Data Aquisition 
 * Version 1 codename: ZUKO
-* Firmware version: 0.5.2 (Minimal Edition)
+* Firmware version: 0.5.3 (Minimal Edition)
 * by Mark Redd 
 */
 
@@ -56,41 +56,41 @@ void setup_temperature_measurement()
  //Serial.print("VERSION "); // print the version
  //Serial.println(DALLASTEMPLIBVERSION);
   // Start up the library
-  Serial.println("Starting Thermocouple Amplifiers...");
+  Serial.println("/Starting Thermocouple Amplifiers...");
   sensors.begin();
 
   // locate devices on the bus
-  Serial.print("Locating devices...");
+  Serial.print("/Locating devices...");
   Serial.print("Found ");
   Serial.print(sensors.getDeviceCount(), DEC);
   Serial.println(" devices.");
 
   // report parasite power requirements
-  Serial.print("Parasite power is: "); 
+  Serial.print("/Parasite power is: "); 
   if (sensors.isParasitePowerMode()) Serial.println("ON");
   else Serial.println("OFF");
 
   // Index Thermocouples: Thermometer0, Thermometer1, Thermometer2, Thermometer3
-  Serial.println("Indexing Thermocouples");
-  if (!sensors.getAddress(Thermometer0, 0)) Serial.println("Unable to find address for Device 0"); 
-  if (!sensors.getAddress(Thermometer1, 1)) Serial.println("Unable to find address for Device 1"); 
-  if (!sensors.getAddress(Thermometer2, 2)) Serial.println("Unable to find address for Device 2"); 
-  if (!sensors.getAddress(Thermometer3, 3)) Serial.println("Unable to find address for Device 3");
+  Serial.println("/Indexing Thermocouples");
+  if (!sensors.getAddress(Thermometer0, 0)) Serial.println("/Unable to find address for Device 0"); 
+  if (!sensors.getAddress(Thermometer1, 1)) Serial.println("/Unable to find address for Device 1"); 
+  if (!sensors.getAddress(Thermometer2, 2)) Serial.println("/Unable to find address for Device 2"); 
+  if (!sensors.getAddress(Thermometer3, 3)) Serial.println("/Unable to find address for Device 3");
   
   // show the addresses we found on the bus Thermometer0, Thermometer1, Thermometer2, Thermometer3
-  Serial.print("Device 0 Address: ");
+  Serial.print("/Device 0 Address: ");
   printAddress(Thermometer0);
   Serial.println();
 
-  Serial.print("Device 1 Address: ");
+  Serial.print("/Device 1 Address: ");
   printAddress(Thermometer1);
   Serial.println();
 
-  Serial.print("Device 2 Address: ");
+  Serial.print("/Device 2 Address: ");
   printAddress(Thermometer1);
   Serial.println();
 
-  Serial.print("Device 3 Address: ");
+  Serial.print("/Device 3 Address: ");
   printAddress(Thermometer3);
   Serial.println();
   
@@ -103,19 +103,19 @@ void setup_temperature_measurement()
   // do not wait for conversion (speeds up thermocouples)
   sensors.setWaitForConversion(false); 
 
-  Serial.print("Device 0 Resolution: ");
+  Serial.print("/Device 0 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer0), DEC); 
   Serial.println();
 
-  Serial.print("Device 1 Resolution: ");
+  Serial.print("/Device 1 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer1), DEC); 
   Serial.println();
   
-  Serial.print("Device 2 Resolution: ");
+  Serial.print("/Device 2 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer2), DEC); 
   Serial.println();
 
-  Serial.print("Device 3 Resolution: ");
+  Serial.print("/Device 3 Resolution: ");
   Serial.print(sensors.getResolution(Thermometer3), DEC); 
   Serial.println();
 }
@@ -180,14 +180,14 @@ void setup(void)
     ; // wait for serial port to connect
   }
 
-  Serial.println("\tTA-DA ZUKO");
-  Serial.println("Thermocouple Amplifier - Data Aquisition");
+  Serial.println("/\tTA-DA ZUKO");
+  Serial.println("/Thermocouple Amplifier - Data Aquisition");
 
   setup_temperature_measurement();
 
   sensors.requestTemperatures(); // get the first temp reading
   now1 = millis(); // get the time of that first reading
-  Serial.println("--- SETUP FINISHED ---");
+  Serial.println("/--- SETUP FINISHED ---");
 }
 
 

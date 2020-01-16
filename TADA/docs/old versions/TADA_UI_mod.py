@@ -27,7 +27,7 @@ from os import system, name as osname
 from math import fabs, fsum
 from time import localtime, strftime
 
-testing = False
+testing = True
 
 if testing:
     import test_mod as serial
@@ -375,10 +375,11 @@ class DAQGUI(Tk):
         """
         self.gpress = p_gauge
         try:
-            baro_press = float(#self.rs232.readline().decode())
-            if baro_press < 1000 or baro_press > 600: 
-                    self.baro_press = baro_press
-            self.pvessel = self.gpress + self.baro_press
+            raise ValueError("")
+            # baro_press = float(#self.rs232.readline().decode())
+            # if baro_press < 1000 or baro_press > 600: 
+            #         self.baro_press = baro_press
+            # self.pvessel = self.gpress + self.baro_press
         except ValueError:
             self.pvessel = self.gpress + self.baro_press
         
