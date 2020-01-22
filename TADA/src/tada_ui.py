@@ -27,6 +27,8 @@ from os import system, name as osname
 from math import fabs, fsum
 from time import localtime, strftime
 
+from tada_serial import TADASerial
+
 testing = True
 
 
@@ -41,10 +43,17 @@ class TadaUi(Tk):
   
     def __init__(self):
         super().__init__()
+        self.ser = TADASerial()
         self.target_data_path   = './dump.csv'
         self.init_delay =  1000    # Wait time before interface restart (ms)
         self.running = True
         self.collect = False
+        self.current_time = 0.0
+        self.log_path = './cheese.csv'
+        self.arduino_timestamp = "NO TIME STAMP"
+        self.system_timestamp = "NO TIME STAMP"
+        self.vis_data = 100
+
         self.data_labels = [
             "Time of Exp",
             "Compound Name",
@@ -252,38 +261,39 @@ class TadaUi(Tk):
         pressure is within acceptable parameters. Makes a warning sound if 
         pressure far exceeds acceptable parameters.
         """
-        self.gpress = p_gauge
-        try:
-            raise ValueError("")
-            # baro_press = float(#self.rs232.readline().decode())
-            # if baro_press < 1000 or baro_press > 600: 
-            #         self.baro_press = baro_press
-            # self.pvessel = self.gpress + self.baro_press
-        except ValueError:
-            self.pvessel = self.gpress + self.baro_press
+        pass
+        # self.gpress = p_gauge
+        # # try:
+        # #     raise ValueError("")
+        # #     # baro_press = float(#self.rs232.readline().decode())
+        # #     # if baro_press < 1000 or baro_press > 600: 
+        # #     #         self.baro_press = baro_pressclear
+        # #     # self.pvessel = self.gpress + self.baro_press
+        # # except ValueError:
+        # #     self.pvessel = self.gpress + self.baro_press
         
-        if self.pvessel < self.plower:
-            self.press['bg'] = 'blue'
-            self.press['fg'] = 'white'
-            state = " (low) "
-        elif self.pvessel > self.pupper:
-            self.press['bg'] = '#cc0000'
-            self.press['fg'] = 'white'
-            state = " (high)"
-        else:
-            self.press['bg'] = '#80ff00'
-            self.press['fg'] = 'black'
-            state = ""
+        # if self.pvessel < self.plower:
+        #     self.press['bg'] = 'blue'
+        #     self.press['fg'] = 'white'
+        #     state = " (low) "
+        # elif self.pvessel > self.pupper:
+        #     self.press['bg'] = '#cc0000'
+        #     self.press['fg'] = 'white'
+        #     state = " (high)"
+        # else:
+        #     self.press['bg'] = '#80ff00'
+        #     self.press['fg'] = 'black'
+        #     state = ""
         
-        self.press['text'] = "P(abs): {:3.3f} torr{}".format(
-                                                        self.pvessel, state)
+        # self.press['text'] = "P(abs): {:3.3f} torr{}".format(
+        #                                                 self.pvessel, state)
         
-        if self.gpress > self.pemergency:
-            self.msg_str = self.msg1['text']
-            self.msg1['text'] = "WARNING! Gauge Pressure > 4 psi! SHUTDOWN NOW!"
-            self.msg1['bg'] = '#cc0000'
-            self.msg1['fg'] = 'white'
-            winsound.Beep(880, 125)
+        # if self.gpress > self.pemergency:
+        #     self.msg_str = self.msg1['text']
+        #     self.msg1['text'] = "WARNING! Gauge Pressure > 4 psi! SHUTDOWN NOW!"
+        #     self.msg1['bg'] = '#cc0000'
+        #     self.msg1['fg'] = 'white'
+        #     winsound.Beep(880, 125)
 
        
        
@@ -344,20 +354,22 @@ class TadaUi(Tk):
             This will execute on startup and continue doing while mainloop is 
             still running.
         """
-        pass
-        # while self.running:
-        #     pass
-            # data_point = self.get_data()    # get data
-            # self.current_time = data_point[0]
-            # if self.collect == True:
-            #     self.data.append(data_point)# save data to array
-            #     print("Data collected.")
-                
-            #     display_time = float(data_point[0] - self.start_time)/1000
-            #     self.msg1['text'] = "Collecting Data...\tTime"\
-            #                         " (sec): {:.1f}".format(display_time)
 
-            # self.graph_data(data_point)     # put the data on a graph
+        while self.running:
+            data_point = self.ser.get_data()    # get data
+            print(data_point)
+            if type(data_point) == type('') and data_point[0] == '/':
+                continue
+            self.current_time = data_point[0]
+            if self.collect == True:
+                self.data.append(data_point)# save data to array
+                print("Data collected.")
+                
+                display_time = float(data_point[0] - self.start_time)/1000
+                self.msg1['text'] = "Collecting Data...\tTime"\
+                                    " (sec): {:.1f}".format(display_time)
+
+            self.graph_data(data_point)     # put the data on a graph
     
     
     
