@@ -3,7 +3,7 @@ from sys import exit
 
 testing = False
 if testing:
-    from test_mod import Serial, SerialException
+    from .test_mod import Serial, SerialException
 else:
     import serial
     from serial.tools import list_ports
@@ -17,7 +17,8 @@ class TADASerial():
     def __init__(self):
         self.tada_baudrate = 9600
         self.serial_timeout = 1.0
-        if not self.connect(): raise Exception("Connection Failed")
+        if not self.connect(): raise Exception(
+            "Unable to connect to Arduino")
     
 
     def collect_data(self):
