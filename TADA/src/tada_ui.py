@@ -29,8 +29,6 @@ from time import localtime, strftime
 
 from .tada_serial import TADASerial
 
-testing = True
-
 
 if osname == 'nt':
     import winsound
@@ -139,9 +137,7 @@ class TadaUi(Tk):
         self.data_plot = FigureCanvasTkAgg(self.figure, 
                                             master=self).get_tk_widget()
         # Color the canvas black
-        self.data_plot.configure(   bg='black',
-                                    highlightcolor='black', 
-                                    highlightbackground='black')
+        self.data_plot.configure(   bg='black')
         
     
     
@@ -210,35 +206,21 @@ class TadaUi(Tk):
         Re-initializes the parameters for data collection and clears the 
         console screen.
         """
-        # self.ser.close()
-
         self.xdata = []
         self.ydata = []
-        # formatted as [['time','t1','t2','t3','t4','pressure']]
         self.data = []
-       
-        # self.ser.open()
-        # self.after(self.init_delay, self.sync_time)
     
-    
-    
-    
+
     def file_save_as(self, event=None):
         """ 
         Run save as dialog to choose target file. If an existing file is
         chosen the file is truncated and overwritten.
         """
-        f = asksaveasfile(mode='w', defaultextension=".csv")
-        # asksaveasfile return `None` if dialog closed with "cancel".
-        if f is None: 
+        self.target_data_path = asksaveasfilename(defaultextension=".csv")
+        if self.target_data_path is None: 
             return None
-        self.target_data_path = f.name
-        f.close()
         self.path_text['text'] = self.target_data_path
         self.clean_up()
-        
-        return self.target_data_path
-    
     
     
     def format_data(self, data):

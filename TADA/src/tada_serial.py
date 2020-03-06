@@ -1,12 +1,15 @@
 from os import name as osname
 from sys import exit
 
-testing = False
+testing = True
 if testing:
-    from .test_mod import Serial, SerialException
+    if __name__ == '__main__':
+        from test_mod import Serial, SerialException, comports
+    else:
+        from .test_mod import Serial, SerialException, comports
 else:
     import serial
-    from serial.tools import list_ports
+    from serial.tools.list_ports import comports
     Serial = serial.Serial
     SerialException = serial.SerialException
 
@@ -14,20 +17,13 @@ else:
 
 class TADASerial():
 
-    def __init__(self):
-        self.tada_baudrate = 9600
-        self.serial_timeout = 1.0
-        if not self.connect(): raise Exception(
-            "Unable to connect to Arduino")
+    def __init__(self, comport=None, baudrate=9600, timeout=1.0):
+        self.baudrate = baudrate
+        self.timeout = timeout
+        self.comport = self.serial_port() if comport is None else comport
+        if not self.connect(): 
+            raise Exception("Unable to connect to Arduino")
     
-
-    def collect_data(self):
-        self.ser.write(b'1')
-    
-
-    def stop_collecting_data(self):
-        self.ser.write(b'0')
-
 
     def connect(self):
         """
@@ -35,11 +31,10 @@ class TADASerial():
         Returns True if successful False otherwise.
         """
         try:
-            self.com_port = self.serial_port()
             self.ser = Serial(
-                self.com_port, 
-                self.tada_baudrate,
-                timeout=self.serial_timeout)
+                self.comport, 
+                self.baudrate,
+                timeout=self.timeout)
             assert self.ser.isOpen(), "Main serial port is not open."
             return True
         except AssertionError as e1:
@@ -56,24 +51,21 @@ class TADASerial():
         excludes 'COM 1' because that is generally reserved for the 
         RS 232 interface from the barometer
         """
-        if osname == 'nt':
-            # windows
-            for i in range(1,256):
-                try:
-                    s = Serial('COM'+ str(i + 1))
-                    s.close()
-                    return 'COM' + str(i + 1)
-                except SerialException as e:
-                    continue
-        else:
-            # unix
-            for port in list_ports.comports():
-                try:
-                    s = Serial(port[0])
-                    s.close()
-                    return port[0]
-                except SerialException as e:
-                    continue
+        for port in comports():
+            try:
+                s = Serial(port[0])
+                s.close()
+                return port[0]
+            except SerialException as e:
+                continue
+
+
+    def collect_data(self):
+        self.ser.write(b'1')
+    
+
+    def stop_collecting_data(self):
+        self.ser.write(b'0')
 
 
     def sync_time(self, event=None):
