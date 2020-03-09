@@ -260,11 +260,13 @@ bool temp_read_ready()
  *  all are ready to be read it returns true.
  *  Returns false otherwise
  */
-  /*Serial.print(sensors.isConversionAvailable(Thermometer0));
-  Serial.print(sensors.isConversionAvailable(Thermometer1));
-  Serial.print(sensors.isConversionAvailable(Thermometer2));
-  Serial.print(sensors.isConversionAvailable(Thermometer3));
-  Serial.println("");/**/
+ sensors.isConversionAvailable(Thermometer0); // I do not know why this is needed
+//  Serial.print(sensors.isConversionAvailable(Thermometer0));
+//  Serial.print(sensors.isConversionAvailable(Thermometer1));
+//  Serial.print(sensors.isConversionAvailable(Thermometer2));
+//  Serial.print(sensors.isConversionAvailable(Thermometer3));
+//  Serial.println("");
+//  Serial.print("");
 
   if (sensors.isConversionAvailable(Thermometer0) &&\
       sensors.isConversionAvailable(Thermometer1) &&\
@@ -427,4 +429,3 @@ void loop(void)
     now1 = millis();
   }
 }
-

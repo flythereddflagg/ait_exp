@@ -251,8 +251,8 @@ class DAQGUI(Tk):
         Returns True if successful False otherwise.
         """
         try:
-            #self.com_port = "/dev/ttyACM0"
-            self.com_port = self.serial_port()
+            self.com_port = "/dev/ttyACM0"
+            # self.com_port = self.serial_port()
             self.ser = serial.Serial(
                 self.com_port, 
                 self.tada_baudrate,
