@@ -6,7 +6,7 @@ if testing:
     if __name__ == '__main__':
         from test_mod import Serial, SerialException, comports
     else:
-        from .test_mod import Serial, SerialException, comports
+        from test_mod import Serial, SerialException, comports
 else:
     import serial
     from serial.tools.list_ports import comports
