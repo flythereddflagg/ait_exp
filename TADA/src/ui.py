@@ -6,19 +6,40 @@ class UserInterface(tk.Tk):
   
     def __init__(self, layout_path):
         super().__init__()
-        self.layout = self.dict_from_jsonfile(layout_path)
+        self.ui_config = self.dict_from_jsonfile(layout_path)
+        self.config_keys = self.ui_config.keys()
+        self.theme = {} \
+            if 'theme config' not in self.config_keys \
+            else self.ui_config['theme config']
         self.init_ui()
         self.init_widgets()
 
+
     def init_ui(self):
-        """ It would be good to have similar code to the one below"""
-        pass
+        if 'window title' in self.config_keys:
+            self.title(self.ui_config['window title'])
+        
+        if 'window geometry' in self.config_keys:
+            self.geometry(self.ui_config['window geometry'])
+        
+        if 'ui config' in self.config_keys:
+            self.config(self.ui_config['ui config'])
+        
+        if 'grid config' in self.config_keys:
+            for kw in self.ui_config['grid config']['row']:
+                self.rowconfigure(**kw)
+            
+            for kw in self.ui_config['grid config']['column']:
+                self.columnconfigure(**kw)  
+
 
     def init_widgets(self):
         self.widgets = {}
-        for key, value in self.layout['main'].items():
-            self.widgets[key] = tk.__dict__[value['type']](master=self, **value['init'])
-            self.widgets[key].grid(**value['grid'])
+        for name, setup in self.ui_config['layout'].items():
+            self.widgets[name] = tk.Widget(self, setup['type'].lower())
+            self.widgets[name].config(self.theme)
+            self.widgets[name].config(setup['init'])
+            self.widgets[name].grid(setup['grid'])
 
 
     def dict_from_jsonfile(self, path, **kwargs):
@@ -29,6 +50,4 @@ class UserInterface(tk.Tk):
 
 
 if __name__ == '__main__':
-    UserInterface("./ui_layout.json").mainloop()
-
-
+    UserInterface("./tada_ui.json").mainloop()

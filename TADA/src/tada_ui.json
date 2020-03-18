@@ -1,0 +1,287 @@
+{
+    "window title" : "Thermocouple Amplifier - Data Aquisition (Version 1.0.0)",
+    "window geometry" : "800x500+500+300",
+    "ui config":{
+        "bg": "black",
+        "borderwidth" : 5
+    },
+    "theme config" : {
+        "bg":"black", 
+        "fg":"white"
+    },
+    "grid config" : {
+        "row" : [
+            {"index":0, "pad":5},
+            {"index":1, "pad":5},
+            {"index":4, "weight":5},
+            {"index":5, "pad":5}
+        ],
+        "column" : [
+            {"index":0, "weight":1},
+            {"index":1, "weight":1},
+            {"index":2, "weight":1},
+            {"index":3, "weight":1},
+            {"index":4, "weight":1},
+            {"index":5, "weight":1},
+            {"index":6, "weight":1},
+            {"index":7, "weight":1}
+        ]
+    },
+    "layout": {
+        "target file button" : {
+            "type" : "Button",
+            "init" : {
+                "text": "Choose Target File",
+                "padx":5,
+                "pady":5
+            },
+            "grid" : {
+                "row" : 0,
+                "column": 0,
+                "columnspan": 10,
+                "sticky" : "ns"
+            }
+        },
+        "file path" : {
+            "type" : "Label",
+            "init" : {
+                "text": "dump.csv"
+            },
+            "grid" : {
+                "row" : 1,
+                "column": 0,
+                "columnspan": 10
+            }
+        },
+        "label time of exp" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Time of exp"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 0
+            }
+        },
+        "label compound name" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Compound Name"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 1
+            }
+        },
+        "label sample size" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Sample Size"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 2
+            }
+        },
+        "label set pt" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Set Point"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 3
+            }
+        },
+        "label test temp" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Test Temp"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 4
+            }
+        },
+        "label ignition" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Ignition"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 5
+            }
+        },
+        "label notes" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Notes"
+            },
+            "grid" : {
+                "row" : 2,
+                "column": 6,
+                "columnspan":2
+            }
+        },
+        "entry time of exp" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Time of exp",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 0,
+                "sticky": "ew"
+            }
+        },
+        "entry compound name" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Compound Name",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 1,
+                "sticky": "ew"
+            }
+        },
+        "entry sample size" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Sample Size",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 2,
+                "sticky": "ew"
+            }
+        },
+        "entry set pt" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Set Point",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 3,
+                "sticky": "ew"
+            }
+        },
+        "entry test temp" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Test Temp",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 4,
+                "sticky": "ew"
+            }
+        },
+        "entry ignition" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Ignition",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 5,
+                "sticky": "ew"
+            }
+        },
+        "entry notes" : {
+            "type" : "entry",
+            "init" : {
+                "text": "Notes",
+                "justify":"center", 
+                "insertbackground":"white"
+            },
+            "grid" : {
+                "row" : 3,
+                "column": 6,
+                "columnspan":2,
+                "sticky": "ew"
+            }
+        },
+        "quit button" : {
+            "type" : "Button",
+            "init" : {
+                "text": "Quit"
+            },
+            "grid" : {
+                "row" : 5,
+                "column": 0,
+                "sticky": "nsew"
+            }
+        },
+        "pressure indicator" : {
+            "type" : "Label",
+            "init" : {
+                "text": "P(abs): 0 Torr",
+                "padx":5, 
+                "pady":5, 
+                "relief":"groove"
+            },
+            "grid" : {
+                "row" : 5,
+                "column": 1,
+                "sticky": "ew"
+            }
+        },
+        "temp indicator" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Temp Ready",
+                "bg":"#80ff00", 
+                "fg":"black", 
+                "padx":5, 
+                "pady":5, 
+                "relief":"groove"
+            },
+            "grid" : {
+                "row" : 5,
+                "column": 2,
+                "sticky": "ew"
+            }
+        },
+        "message" : {
+            "type" : "Label",
+            "init" : {
+                "text": "Initializing..."
+            },
+            "grid" : {
+                "row" : 5,
+                "column": 3,
+                "columnspan":4,
+                "sticky": "ew"
+            }
+        },
+        "collect button" : {
+            "type" : "Button",
+            "init" : {
+                "text": "Collect Data",
+                "bg":"green", 
+                "padx":5, 
+                "pady":5
+            },
+            "grid" : {
+                "row" : 5,
+                "column": 7,
+                "sticky": "nsew"
+            }
+        }
+    }
+}

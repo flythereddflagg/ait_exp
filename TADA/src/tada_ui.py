@@ -27,7 +27,7 @@ from os import system, name as osname
 from math import fabs, fsum
 from time import localtime, strftime
 
-from .tada_serial import TADASerial
+from tada_serial import TADASerial
 
 
 if osname == 'nt':
