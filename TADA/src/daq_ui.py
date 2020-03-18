@@ -1,7 +1,7 @@
 from ui import UserInterface
-from matplotlib import use
+from matplotlib import use, lines as mlplines
 use('TkAgg')
-from matplotlib.pyplot import subplots, ion, tight_layout, xlabel, ylabel
+from matplotlib.pyplot import subplots, ion, tight_layout
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from random import random, uniform
@@ -10,26 +10,20 @@ from time import sleep, time
 
 
 class DataAquisitionUI(UserInterface):
-    def __init__(self, layout_path):
+    def __init__(self, layout_path, plt_path):
         super().__init__(layout_path)
+        # setup constants
         self.running=True
         self.collect = False
         self.vis_data = 100
+        self.plt_config = self.dict_from_jsonfile(plt_path)
         self.time = time()
-        # run the main loop program
+
+
         self.init_plot()
         self.clean_up()
         self.daq_loop()
 
-    def clean_up(self):
-        """ 
-        Re-initializes the parameters for data collection and clears the 
-        console screen.
-        """
-        self.xdata = []
-        self.ydata = []
-        self.data = []
-    
 
     def init_plot(self):
         """
@@ -37,35 +31,76 @@ class DataAquisitionUI(UserInterface):
         """
         # color the background black
         self.figure, self.ax = subplots(facecolor='black')
-        self.ax.set_facecolor('black')
-        # color the foreground white
-        self.ax.spines['bottom'].set_color('white')
-        self.ax.spines['top'].set_color('white') 
-        self.ax.spines['right'].set_color('white')
-        self.ax.spines['left'].set_color('white')
-        self.ax.tick_params(axis='x', colors='white')
-        self.ax.tick_params(axis='y', colors='white')
-        self.ax.yaxis.label.set_color('white')
-        self.ax.xaxis.label.set_color('white')
-        self.ax.grid(color='white')
-        # color the plot line lime green
-        self.lines, = self.ax.plot([],[],'lime')
-        # label the axes
-        xlabel('Time (ms)')
-        ylabel('Temperature (deg C)')
-        # set up the interactive plot
+        self.lines = [
+            self.ax.add_line(
+                mlplines.Line2D(
+                    [], [], 
+                    label=label,
+                    **vals
+                )
+            ) for label, vals in self.plt_config['lines'].items() \
+                if label != "Pressure"
+        ]
+        self.pax = self.ax.twinx()        
+        self.lines.append(
+            self.pax.add_line(
+                mlplines.Line2D(
+                    [], [], 
+                    label="Pressure",
+                    **self.plt_config['lines']["Pressure"]
+                )
+            )
+        )
+        for line in self.lines:
+            line.xdata = []
+            line.ydata = []
+        self.ax.legend(self.lines, [l.get_label() for l in self.lines], loc='upper right')
+        self.ax.set_ylabel("Temperature (°C)")
+        self.pax.set_ylabel('Pressure (torr)')
+        self.ax.set_xlabel("Time (ms)")
+
+        for ax in [self.ax, self.pax]:
+            ax.set_facecolor('black')
+            # color the foreground white
+            for side in ['bottom', 'top', 'right', 'left']:
+                ax.spines[side].set_color('white')
+            
+            ax.tick_params(axis='x', colors='white')
+            ax.tick_params(axis='y', colors='white')
+            ax.yaxis.label.set_color('white')
+            ax.xaxis.label.set_color('white')
+            ax.grid(color='white')
+            
+            
+            # set up the interactive plot
+            ax.set_autoscaley_on(True)
+            ax.set_autoscalex_on(True)
+        # Get rid of extra space and turn on interactive mode
         tight_layout()
-        self.ax.set_autoscaley_on(True)
-        self.ax.set_autoscalex_on(True)
-        # Turn on interactive mode
-        ion() 
+        ion()
         # Embed plot in a canvas to be placed in the window
-        self.data_plot = FigureCanvasTkAgg(self.figure, 
-                                            master=self).get_tk_widget()
+        self.data_plot = FigureCanvasTkAgg(
+                            self.figure, 
+                            master=self
+                        ).get_tk_widget()
         # Color the canvas black
         self.data_plot.configure(bg='black')
-
+        # place plot on grid
         self.data_plot.grid(row=4, column=0, columnspan=8, sticky="nsew")
+
+        
+
+
+
+    def clean_up(self):
+        """ 
+        Re-initializes the parameters for data collection and clears the 
+        console screen.
+        """
+        for line in self.lines:
+            line.xdata = []
+            line.ydata = []
+        self.data = []
 
 
     def update_temp_equilbrium(self, data):
@@ -101,13 +136,25 @@ class DataAquisitionUI(UserInterface):
     
     def graph_data(self, data1):
         """ Reset the data to be graphed and then update the graph """
-        if len(self.xdata) > self.vis_data and len(self.ydata) > self.vis_data:
-            self.xdata.pop(0)
-            self.ydata.pop(0)
+        for i, line in enumerate(self.lines):
+            if len(line.xdata) > self.vis_data and len(line.ydata) > self.vis_data:
+                line.xdata.pop(0)
+                line.ydata.pop(0)
+                
+            line.xdata.append(data1[0])
+            line.ydata.append(data1[i+1])
+            # Update data (with the new and the old points)
+            line.set_xdata(line.xdata)
+            line.set_ydata(line.ydata)
             
-        self.xdata.append(data1[0])
-        self.ydata.append(data1[4])
-        self.plt_update(self.xdata, self.ydata)
+        # Need both of these in order to rescale
+        self.ax.relim()
+        self.ax.autoscale_view()
+        self.pax.relim()
+        self.pax.autoscale_view()
+        # We need to draw *and* flush
+        self.figure.canvas.draw()
+        self.figure.canvas.flush_events()
     
     
     def daq_loop(self):
@@ -127,7 +174,7 @@ class DataAquisitionUI(UserInterface):
         while self.running:
             # data_point = self.ser.get_data()    # get data
             data_point = [(time() - self.time) * 1000,
-                random()*1000,
+                random(),
                 random(),
                 random(),
                 random(),
@@ -146,27 +193,10 @@ class DataAquisitionUI(UserInterface):
                                     " (sec): {:.1f}".format(display_time)
 
             self.graph_data(data_point)     # put the data on a graph
-    
-    
-    
-    def plt_update(self, xdata, ydata):
-        """
-        Updates the plot with @param xdata and @param ydata 
-        """
-        # Update data (with the new _and_ the old points)
-        self.lines.set_xdata(xdata)
-        self.lines.set_ydata(ydata)
         
-        # Need both of these in order to rescale
-        self.ax.relim()
-        self.ax.autoscale_view()
-        
-        # We need to draw *and* flush
-        self.figure.canvas.draw()
-        self.figure.canvas.flush_events()
 
 
 
 
 if __name__ == "__main__":
-    DataAquisitionUI("./tada_ui.json").mainloop()
+    DataAquisitionUI("./tada_ui.json", "./plot_config.json").mainloop()

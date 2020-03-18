@@ -1,0 +1,20 @@
+{
+    "lines" : {
+        "Temp 1":{
+            "color": "aqua"
+        },
+        "Temp 2":{
+            "color": "gold"
+        },
+        "Temp 3":{
+            "color": "darkorange"
+        },
+        "Temp 4":{
+            "color": "lime"
+        },
+        "Pressure":{
+            "color": "crimson"
+        }
+
+    }
+}
