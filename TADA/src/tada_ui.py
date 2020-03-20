@@ -1,4 +1,6 @@
 from daq_ui import DataAquisitionUI, DummyDataSource
+from tkinter.filedialog import asksaveasfilename
+from tkinter.messagebox import askyesno
 
 
 class TaDaUI(DataAquisitionUI):
@@ -14,14 +16,18 @@ class TaDaUI(DataAquisitionUI):
         self.start_time = 0
 
         self.setup_commands()
-        
+        self.daq_loop()
+
 
 
     def setup_commands(self):
-    
+        """Binds commands to keyboard and buttons."""
         self.bind("<Escape>", self.quit_app)
         self.bind("<Return>", self.start_stop)
         self.bind("<Control-s>", self.file_save_as)
+        
+        self.widgets["quit button"]['command'] = self.quit_app
+        self.widgets["collect button"]['command'] = self.start_stop
         self.widgets["target file button"]['command'] = self.file_save_as
 
 
@@ -41,7 +47,7 @@ class TaDaUI(DataAquisitionUI):
             return True
 
     
-    def process_data(data_point):
+    def process_data(self, data_point):
         """
         Do any processing needed before data collection and graphing.
         """
@@ -90,16 +96,17 @@ class TaDaUI(DataAquisitionUI):
         Run save as dialog to choose target file. If an existing file is
         chosen the file is truncated and overwritten.
         """
-        f = asksaveasfile(mode='w', defaultextension=".csv")
-        # asksaveasfile return `None` if dialog closed with "cancel".
-        if f is None: 
-            return None
-        self.target_data_path = f.name
-        f.close()
+        f = asksaveasfilename(
+                        initialdir = "../",
+                        title = "Select Target File",
+                        filetypes = (("csv files","*.csv"),("all files","*.*"))
+                    )
+        if not f: return
+
+        self.target_data_path = f
         self.path_text['text'] = self.target_data_path
         self.clean_up()
-        return self.target_data_path
-    
+
     
     def format_data(self, data):
         """ 
@@ -143,8 +150,7 @@ class TaDaUI(DataAquisitionUI):
             self.press['fg'] = 'black'
             state = ""
         
-        self.press['text'] = "P(abs): {:3.3f} torr{}".format(
-                                                        self.pvessel, state)
+        self.press['text'] = f"P(abs): {self.pvessel:3.3f} torr{state}"
         
         if self.gpress > self.pemergency:
             self.msg_str = self.msg1['text']
@@ -185,22 +191,20 @@ class TaDaUI(DataAquisitionUI):
         all your data will be lost.
         """
         try:
-            f = open(self.target_data_path, 'r') # see if the file exists
-            f.close()
+            # see if the file exists
+            open(self.target_data_path, 'r').close()
         except FileNotFoundError:
             # if file not found, create it
-            f = open(self.target_data_path, 'w')
-            f.close()
+            open(self.target_data_path, 'w').close()
         
         # check the experiment log
         try:
-            f = open(self.log_path, 'r') # see if the file exists
-            f.close()
+            # see if the file exists
+            open(self.log_path, 'r').close()
         except FileNotFoundError:
             # if file not found, create it
-            f = open(self.log_path, 'w')
-            f.write("file," + ','.join(self.data_labels) + '\n')
-            f.close()
+            with open(self.log_path, 'w') as f:
+                f.write("file," + ','.join(self.data_labels) + '\n')
         
         text_out = self.format_data(self.data)
         data_name_out = self.get_data_fields()
@@ -235,9 +239,7 @@ class TaDaUI(DataAquisitionUI):
 
     
     def get_data_fields(self):
-        """
-        Returns the data from all data fields
-        """
+        """Returns the data from all data fields."""
         data_exp = [
             self.data_fields[label][1].get() for label in self.data_labels
         ]

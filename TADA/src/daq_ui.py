@@ -40,10 +40,8 @@ class DataAquisitionUI(UserInterface):
         self.data_src = data_src
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
 
-
         self.init_plot()
         self.clean_up()
-
 
 
     def init_plot(self):
@@ -120,16 +118,20 @@ class DataAquisitionUI(UserInterface):
             This will execute on startup and continue doing while mainloop is 
             still running.
         """
-        self.mainloop()
-        while self.running:
-            data_point = []
-            for src in self.data_src:
-                data_point += src.get_data()
+        data_point = []
+        for src in self.data_src:
+            data_point += src.get_data()
 
-            if not self.valid_data(data_point): continue
-            if self.collect: self.data_collect(data_point)
+        if not self.valid_data(data_point): 
+            self.after(0, self.daq_loop)
+            return
 
-            self.graph_data(data_point)
+        self.process_data(data_point)
+        
+        if self.collect: self.data_collect(data_point)
+
+        self.graph_data(data_point)
+        if self.running: self.after(0, self.daq_loop)
 
 
     def graph_data(self, data1):
@@ -159,10 +161,10 @@ class DataAquisitionUI(UserInterface):
         Must return True or False.
         """
         print(data_point)
-        return False 
+        return True 
 
     
-    def process_data(data_point):
+    def process_data(self, data_point):
         """
         Do any processing needed before data collection and graphing.
         """
@@ -176,14 +178,15 @@ class DataAquisitionUI(UserInterface):
         pass
 
 
-    def quit_app(self):
+    def quit_app(self, event=None):
+        """Safely exits the program."""
         self.running = False
         self.destroy()
         raise SystemExit
 
 
 
-
-
 if __name__ == "__main__":
-    ui = DataAquisitionUI("./tada_ui.json").daq_loop()
+    ui = DataAquisitionUI("./tada_ui.json")
+    ui.daq_loop()
+    ui.mainloop()
