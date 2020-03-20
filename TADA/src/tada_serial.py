@@ -1,7 +1,7 @@
 from os import name as osname
 from sys import exit
 
-testing = True
+testing = False
 if testing:
     if __name__ == '__main__':
         from test_mod import Serial, SerialException, comports
@@ -48,8 +48,6 @@ class TADASerial():
     def serial_port(self):
         """
         returns a string of the first available port that is not COM 1
-        excludes 'COM 1' because that is generally reserved for the 
-        RS 232 interface from the barometer
         """
         for port in comports():
             try:
@@ -117,7 +115,7 @@ class TADASerial():
 
 
 if __name__ == '__main__':
-    ts = TADASerial()
+    ts = TADASerial(comport='COM4', baudrate=9600)
     while True:
         try:
             print(ts.get_data())

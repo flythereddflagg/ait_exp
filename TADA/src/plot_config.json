@@ -1,19 +1,39 @@
 {
-    "lines" : {
-        "Temp 1":{
-            "color": "aqua"
+    "global config":{
+        "bg" : "black",
+        "fg" : "white",
+        "grid" : {
+            "row" : 4, 
+            "column" : 0, 
+            "columnspan" : 8, 
+            "sticky" : "nsew"
         },
-        "Temp 2":{
-            "color": "gold"
+        "x label" : "Time (ms)",
+        "y1 label" : "Temperature (\u00B0C)",
+        "y2 label" : "Pressure (torr)"
+    },
+    "lines axis 1" : {
+        "Temp 1" : {
+            "color" : "salmon",
+            "linestyle" : ":"
         },
-        "Temp 3":{
-            "color": "darkorange"
+        "Temp 2" : {
+            "color" : "gold",
+            "linestyle" : "-."
         },
-        "Temp 4":{
-            "color": "lime"
+        "Temp 3" : {
+            "color" : "darkorange",
+            "linestyle" : "--"
         },
-        "Pressure":{
-            "color": "crimson"
+        "Temp 4" : {
+            "color" : "lime",
+            "linestyle" : "-"
+        }
+    },
+    "lines axis 2" : {
+        "Pressure" : {
+            "color" : "crimson",
+            "linestyle" : "--"
         }
 
     }

@@ -9,15 +9,36 @@ from time import sleep, time
 
 
 
+class DummyDataSource():
+    def __init__(self):
+        self.time = time()
+
+
+    def get_data(self):
+        return [(time() - self.time) * 1000,
+            random(),
+            random(),
+            random(),
+            random(),
+            uniform(0, 200)
+        ]
+
+
+
 class DataAquisitionUI(UserInterface):
-    def __init__(self, layout_path, plt_path):
+    def __init__(
+                self, 
+                layout_path, 
+                plt_path, 
+                data_src=[DummyDataSource()],
+                vis_data=100):
         super().__init__(layout_path)
-        # setup constants
+        self.plt_config = self.dict_from_jsonfile(plt_path)
         self.running=True
         self.collect = False
-        self.vis_data = 100
-        self.plt_config = self.dict_from_jsonfile(plt_path)
-        self.time = time()
+        self.vis_data = vis_data
+        self.data_src = data_src
+        self.protocol("WM_DELETE_WINDOW", self.quit_app)
 
 
         self.init_plot()
@@ -27,69 +48,67 @@ class DataAquisitionUI(UserInterface):
 
     def init_plot(self):
         """
-        Sets up plot with colors and sizing formats.
+        Sets up plot with colors and formats. Turns on
+        interactive mode and places the plot in the 
+        grid of the parent.
         """
-        # color the background black
-        self.figure, self.ax = subplots(facecolor='black')
+        pltconf = self.plt_config["global config"]
+        bg_color = pltconf['bg']
+        fg_color = pltconf['fg']
+
+        self.figure, self.ax1 = subplots(facecolor=bg_color)
+        self.ax2 = self.ax1.twinx()
+        self.ax1.set_xlabel(pltconf['x label'])
+        self.ax1.set_ylabel(pltconf['y1 label'])
+        self.ax2.set_ylabel(pltconf['y2 label'])
+
         self.lines = [
-            self.ax.add_line(
+            self.ax1.add_line(
                 mlplines.Line2D(
                     [], [], 
                     label=label,
                     **vals
                 )
-            ) for label, vals in self.plt_config['lines'].items() \
-                if label != "Pressure"
+            ) for label, vals in self.plt_config['lines axis 1'].items()
         ]
-        self.pax = self.ax.twinx()        
-        self.lines.append(
-            self.pax.add_line(
+        self.lines += [
+            self.ax2.add_line(
                 mlplines.Line2D(
                     [], [], 
-                    label="Pressure",
-                    **self.plt_config['lines']["Pressure"]
+                    label=label,
+                    **vals
                 )
-            )
-        )
+            ) for label, vals in self.plt_config['lines axis 2'].items()
+        ]
         for line in self.lines:
             line.xdata = []
             line.ydata = []
-        self.ax.legend(self.lines, [l.get_label() for l in self.lines], loc='upper right')
-        self.ax.set_ylabel("Temperature (°C)")
-        self.pax.set_ylabel('Pressure (torr)')
-        self.ax.set_xlabel("Time (ms)")
-
-        for ax in [self.ax, self.pax]:
-            ax.set_facecolor('black')
-            # color the foreground white
+        self.ax1.legend(
+                        self.lines, 
+                        [l.get_label() for l in self.lines], 
+                        loc='upper right'
+                    )
+        
+        for axis in [self.ax1, self.ax2]:
+            axis.set_facecolor(bg_color)
             for side in ['bottom', 'top', 'right', 'left']:
-                ax.spines[side].set_color('white')
+                axis.spines[side].set_color(fg_color)
             
-            ax.tick_params(axis='x', colors='white')
-            ax.tick_params(axis='y', colors='white')
-            ax.yaxis.label.set_color('white')
-            ax.xaxis.label.set_color('white')
-            ax.grid(color='white')
-            
-            
-            # set up the interactive plot
-            ax.set_autoscaley_on(True)
-            ax.set_autoscalex_on(True)
-        # Get rid of extra space and turn on interactive mode
+            axis.tick_params(axis='x', colors=fg_color)
+            axis.tick_params(axis='y', colors=fg_color)
+            axis.yaxis.label.set_color(fg_color)
+            axis.xaxis.label.set_color(fg_color)
+            axis.grid(color=fg_color)
+            axis.set_autoscaley_on(True)
+            axis.set_autoscalex_on(True)
+
         tight_layout()
         ion()
-        # Embed plot in a canvas to be placed in the window
         self.data_plot = FigureCanvasTkAgg(
-                            self.figure, 
-                            master=self
-                        ).get_tk_widget()
-        # Color the canvas black
-        self.data_plot.configure(bg='black')
-        # place plot on grid
-        self.data_plot.grid(row=4, column=0, columnspan=8, sticky="nsew")
-
-        
-
+                                        self.figure, 
+                                        master=self
+                                    ).get_tk_widget()
+        self.data_plot.grid(**pltconf['grid'])
 
 
     def clean_up(self):
@@ -106,9 +125,9 @@ class DataAquisitionUI(UserInterface):
     def update_temp_equilbrium(self, data):
         """
         Calculates the absolute average deviation (AAD) fraction from t4 of 
-        all other temperatures and, if that AAD% is < the equilibrium tolerance 
-        (self.eq_tol) then it marks the temperatures as ready. Not ready
-        otherwise
+        all other temperatures and, if that AAD% is < the equilibrium 
+        tolerance (self.eq_tol) then it marks the temperatures as 
+        ready. Not ready otherwise
         """
         t4 = data[4]
         try:
@@ -137,7 +156,8 @@ class DataAquisitionUI(UserInterface):
     def graph_data(self, data1):
         """ Reset the data to be graphed and then update the graph """
         for i, line in enumerate(self.lines):
-            if len(line.xdata) > self.vis_data and len(line.ydata) > self.vis_data:
+            if len(line.xdata) > self.vis_data and \
+                    len(line.ydata) > self.vis_data:
                 line.xdata.pop(0)
                 line.ydata.pop(0)
                 
@@ -148,10 +168,10 @@ class DataAquisitionUI(UserInterface):
             line.set_ydata(line.ydata)
             
         # Need both of these in order to rescale
-        self.ax.relim()
-        self.ax.autoscale_view()
-        self.pax.relim()
-        self.pax.autoscale_view()
+        self.ax1.relim()
+        self.ax2.relim()
+        self.ax1.autoscale_view()
+        self.ax2.autoscale_view()
         # We need to draw *and* flush
         self.figure.canvas.draw()
         self.figure.canvas.flush_events()
@@ -172,17 +192,14 @@ class DataAquisitionUI(UserInterface):
             still running.
         """
         while self.running:
-            # data_point = self.ser.get_data()    # get data
-            data_point = [(time() - self.time) * 1000,
-                random(),
-                random(),
-                random(),
-                random(),
-                uniform(0, 200)
-            ]
+            data_point = []    # get data
+            for src in self.data_src:
+                data_point += src.get_data()
+
             print(data_point)
-            if type(data_point) == type('') and data_point[0] == '/':
-                continue
+            if type(data_point) == type('') and\
+                data_point[0] == '/': continue
+            
             self.current_time = data_point[0]
             if self.collect == True:
                 self.data.append(data_point)# save data to array
@@ -193,7 +210,13 @@ class DataAquisitionUI(UserInterface):
                                     " (sec): {:.1f}".format(display_time)
 
             self.graph_data(data_point)     # put the data on a graph
-        
+
+
+    def quit_app(self):
+        self.running = False
+        self.destroy()
+        raise SystemExit
+
 
 
 
