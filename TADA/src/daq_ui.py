@@ -2,7 +2,7 @@ from ui import UserInterface
 from matplotlib import use, lines as mlplines
 use('TkAgg')
 from matplotlib.pyplot import subplots, ion, tight_layout
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg as PltCanvas
 
 from random import random, uniform
 from time import sleep, time
@@ -15,7 +15,7 @@ class DummyDataSource():
 
 
     def get_data(self):
-        return [(time() - self.time) * 1000,
+        return [(time() - self.time),
             random(),
             random(),
             random(),
@@ -29,11 +29,11 @@ class DataAquisitionUI(UserInterface):
     def __init__(
                 self, 
                 layout_path, 
-                plt_path, 
                 data_src=[DummyDataSource()],
-                vis_data=100):
+                vis_data=100
+            ):
         super().__init__(layout_path)
-        self.plt_config = self.dict_from_jsonfile(plt_path)
+        self.plt_config = self.ui_config['plot config']
         self.running=True
         self.collect = False
         self.vis_data = vis_data
@@ -43,7 +43,7 @@ class DataAquisitionUI(UserInterface):
 
         self.init_plot()
         self.clean_up()
-        self.daq_loop()
+
 
 
     def init_plot(self):
@@ -53,8 +53,7 @@ class DataAquisitionUI(UserInterface):
         grid of the parent.
         """
         pltconf = self.plt_config["global config"]
-        bg_color = pltconf['bg']
-        fg_color = pltconf['fg']
+        bg_color, fg_color = pltconf['bg'], pltconf['fg']
 
         self.figure, self.ax1 = subplots(facecolor=bg_color)
         self.ax2 = self.ax1.twinx()
@@ -62,32 +61,20 @@ class DataAquisitionUI(UserInterface):
         self.ax1.set_ylabel(pltconf['y1 label'])
         self.ax2.set_ylabel(pltconf['y2 label'])
 
-        self.lines = [
-            self.ax1.add_line(
-                mlplines.Line2D(
-                    [], [], 
-                    label=label,
-                    **vals
-                )
+        self.lines = [self.ax1.add_line(
+                mlplines.Line2D([], [], label=label, **vals)
             ) for label, vals in self.plt_config['lines axis 1'].items()
         ]
-        self.lines += [
-            self.ax2.add_line(
-                mlplines.Line2D(
-                    [], [], 
-                    label=label,
-                    **vals
-                )
+        self.lines += [self.ax2.add_line(
+                mlplines.Line2D([], [], label=label, **vals)
             ) for label, vals in self.plt_config['lines axis 2'].items()
         ]
+
         for line in self.lines:
-            line.xdata = []
-            line.ydata = []
-        self.ax1.legend(
-                        self.lines, 
-                        [l.get_label() for l in self.lines], 
-                        loc='upper right'
-                    )
+            line.xdata, line.ydata = [], []
+        
+        labels = [l.get_label() for l in self.lines]
+        self.ax1.legend(self.lines, labels, loc='upper right')
         
         for axis in [self.ax1, self.ax2]:
             axis.set_facecolor(bg_color)
@@ -104,10 +91,7 @@ class DataAquisitionUI(UserInterface):
 
         tight_layout()
         ion()
-        self.data_plot = FigureCanvasTkAgg(
-                                        self.figure, 
-                                        master=self
-                                    ).get_tk_widget()
+        self.data_plot = PltCanvas(self.figure, master=self).get_tk_widget()
         self.data_plot.grid(**pltconf['grid'])
 
 
@@ -120,61 +104,6 @@ class DataAquisitionUI(UserInterface):
             line.xdata = []
             line.ydata = []
         self.data = []
-
-
-    def update_temp_equilbrium(self, data):
-        """
-        Calculates the absolute average deviation (AAD) fraction from t4 of 
-        all other temperatures and, if that AAD% is < the equilibrium 
-        tolerance (self.eq_tol) then it marks the temperatures as 
-        ready. Not ready otherwise
-        """
-        t4 = data[4]
-        try:
-            aad_pct = fsum([fabs(t4 - temp) for temp in data[1:-2]]) /4 /t4
-        except ZeroDivisionError as detail:
-            print(detail)
-            aad_pct = self.eq_tol + 2
-        
-        try:
-            delta_temp = fabs(self.ydata[0] - self.ydata[-1])
-        except IndexError:
-            delta_temp = 10
-        
-        # absolute average deviation < tolerance and t4 has
-        # changed less than ΔT_tol over the last bit of time,
-        # you are ready to run
-        if aad_pct < self.eq_tol and delta_temp < self.delta_t_tol:
-            self.eq_msg['bg']   = '#80ff00'
-            self.eq_msg['text'] = 'Temp Ready'
-        else:
-            self.eq_msg['bg']   = '#FFFF00'
-            self.eq_msg['text'] = 'Temp NOT Ready'
-    
-    
-    
-    def graph_data(self, data1):
-        """ Reset the data to be graphed and then update the graph """
-        for i, line in enumerate(self.lines):
-            if len(line.xdata) > self.vis_data and \
-                    len(line.ydata) > self.vis_data:
-                line.xdata.pop(0)
-                line.ydata.pop(0)
-                
-            line.xdata.append(data1[0])
-            line.ydata.append(data1[i+1])
-            # Update data (with the new and the old points)
-            line.set_xdata(line.xdata)
-            line.set_ydata(line.ydata)
-            
-        # Need both of these in order to rescale
-        self.ax1.relim()
-        self.ax2.relim()
-        self.ax1.autoscale_view()
-        self.ax2.autoscale_view()
-        # We need to draw *and* flush
-        self.figure.canvas.draw()
-        self.figure.canvas.flush_events()
     
     
     def daq_loop(self):
@@ -191,25 +120,60 @@ class DataAquisitionUI(UserInterface):
             This will execute on startup and continue doing while mainloop is 
             still running.
         """
+        self.mainloop()
         while self.running:
-            data_point = []    # get data
+            data_point = []
             for src in self.data_src:
                 data_point += src.get_data()
 
-            print(data_point)
-            if type(data_point) == type('') and\
-                data_point[0] == '/': continue
-            
-            self.current_time = data_point[0]
-            if self.collect == True:
-                self.data.append(data_point)# save data to array
-                print("Data collected.")
-                
-                display_time = float(data_point[0] - self.start_time)/1000
-                self.msg1['text'] = "Collecting Data...\tTime"\
-                                    " (sec): {:.1f}".format(display_time)
+            if not self.valid_data(data_point): continue
+            if self.collect: self.data_collect(data_point)
 
-            self.graph_data(data_point)     # put the data on a graph
+            self.graph_data(data_point)
+
+
+    def graph_data(self, data1):
+        """ Update the data to be graphed and then update the graph """
+        for i, line in enumerate(self.lines):
+            assert len(line.xdata) == len(line.ydata)
+            if len(line.xdata) > self.vis_data:
+                line.xdata.pop(0)
+                line.ydata.pop(0)
+                
+            line.xdata.append(data1[0])
+            line.ydata.append(data1[i+1])
+            line.set_xdata(line.xdata)
+            line.set_ydata(line.ydata)
+            
+        self.ax1.relim()
+        self.ax2.relim()
+        self.ax1.autoscale_view()
+        self.ax2.autoscale_view()
+        self.figure.canvas.draw()
+        self.figure.canvas.flush_events()
+
+
+    def valid_data(self, data_point):
+        """
+        Check that data is valid and do any preprocessing on the data.
+        Must return True or False.
+        """
+        print(data_point)
+        return False 
+
+    
+    def process_data(data_point):
+        """
+        Do any processing needed before data collection and graphing.
+        """
+        pass
+
+
+    def data_collect(data_point):
+        """
+        Processing for data collection.
+        """
+        pass
 
 
     def quit_app(self):
@@ -222,4 +186,4 @@ class DataAquisitionUI(UserInterface):
 
 
 if __name__ == "__main__":
-    DataAquisitionUI("./tada_ui.json", "./plot_config.json").mainloop()
+    ui = DataAquisitionUI("./tada_ui.json").daq_loop()

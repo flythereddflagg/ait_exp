@@ -35,7 +35,7 @@ class UserInterface(tk.Tk):
 
     def init_widgets(self):
         self.widgets = {}
-        for name, setup in self.ui_config['layout'].items():
+        for name, setup in self.ui_config['widgets'].items():
             self.widgets[name] = tk.Widget(self, setup['type'].lower())
             self.widgets[name].config(self.theme)
             self.widgets[name].config(setup['init'])
