@@ -1,4 +1,5 @@
 from daq_ui import DataAquisitionUI, DummyDataSource
+import tkinter as tk
 from tkinter.filedialog import asksaveasfilename
 from tkinter.messagebox import askyesno
 from random import uniform
@@ -27,8 +28,18 @@ class TaDaUI(DataAquisitionUI):
         self.eq_tol = 0.2
         self.p_lower_limit = 758 # torr
         self.p_upper_limit = 762 # torr
-        self.target_data_path = "./dump.csv"
-
+        self.target_data_path = ""
+        self.log_path = "../../experimental_log.csv"
+        self.arduino_timestamp = ""
+        self.system_timestamp = ""
+        self.data_labels = [
+            key for key in self.ui_config['widgets'] \
+            if 'label' in key
+            ]
+        self.data_fields = [
+            self.widgets[key] for key in self.ui_config['widgets'] \
+            if 'entry' in key
+            ]
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
         self.daq_loop()
@@ -74,7 +85,7 @@ class TaDaUI(DataAquisitionUI):
         self.update_pressure()
 
 
-    def data_collect(data_point):
+    def data_collect(self, data_point):
         self.data.append(data_point)
         print("Data collected.")
 
@@ -174,6 +185,12 @@ class TaDaUI(DataAquisitionUI):
         Then it saves the file and resets the DAQ. If you cancel the save 
         all your data will be lost.
         """
+        header_str = ','.join([
+            self.ui_config['widgets'][key]['init']['text'] \
+            for key in self.data_labels
+        ])
+        if not self.target_data_path:
+            self.file_save_as()
         try:
             # see if the file exists
             open(self.target_data_path, 'r').close()
@@ -188,7 +205,7 @@ class TaDaUI(DataAquisitionUI):
         except FileNotFoundError:
             # if file not found, create it
             with open(self.log_path, 'w') as f:
-                f.write("file," + ','.join(self.data_labels) + '\n')
+                f.write("file,{header_str}\n")
         
         text_out = self.format_data(self.data)
         data_name_out = self.get_data_fields()
@@ -200,7 +217,7 @@ class TaDaUI(DataAquisitionUI):
             f.write(data_name_out)
 
         with open(self.target_data_path,'a') as f:
-            f.write(','.join(self.data_labels) + '\n')
+            f.write(header_str + '\n')
             f.write(data_name_out)
             f.write('\n')
             f.write(self.arduino_timestamp)
@@ -226,11 +243,11 @@ class TaDaUI(DataAquisitionUI):
     def get_data_fields(self):
         """Returns the data from all data fields."""
         data_exp = [
-            self.data_fields[label][1].get() for label in self.data_labels
+            entry.get() for entry in self.data_fields
         ]
         
-        for label in self.data_labels:
-            self.data_fields[label][1].delete(0, END)
+        for entry in self.data_fields:
+            entry.delete(0, tk.END)
         
         datastring = ','.join(data_exp)
         return datastring
