@@ -13,6 +13,17 @@ class DummyDataSource():
     def __init__(self):
         self.time = time()
 
+    def collect_data(self):
+        pass
+    
+
+    def stop_collecting_data(self):
+        pass
+
+
+    def sync_time(self, event=None):
+        pass
+
 
     def get_data(self):
         return [(time() - self.time),

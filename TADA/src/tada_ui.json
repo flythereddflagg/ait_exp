@@ -45,7 +45,7 @@
         "file path" : {
             "type" : "Label",
             "init" : {
-                "text": "dump.csv"
+                "text": "<No Filename Chosen>"
             },
             "grid" : {
                 "row" : 1,
