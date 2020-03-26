@@ -125,8 +125,10 @@ class TADASerial():
         else:
             # if the data_string is invalid, print it, and try again
             return self.get_data()
-    
 
+
+    def reset(self):
+        pass
 
 
 if __name__ == '__main__':

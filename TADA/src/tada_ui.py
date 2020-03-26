@@ -35,11 +35,11 @@ class TaDaUI(DataAquisitionUI):
         self.data_labels = [
             key for key in self.ui_config['widgets'] \
             if 'label' in key
-            ]
+        ]
         self.data_fields = [
             self.widgets[key] for key in self.ui_config['widgets'] \
             if 'entry' in key
-            ]
+        ]
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
         self.daq_loop()
@@ -59,6 +59,7 @@ class TaDaUI(DataAquisitionUI):
 
     def valid_data(self, data_point):
         """
+        OVERRIDDEN FROM PARENT
         Check that data is valid and do any preprocessing on the data.
         Must return True or False.
         """
@@ -68,13 +69,14 @@ class TaDaUI(DataAquisitionUI):
         else:
             print_out = ""
             for datum in data_point:
-                print_out += f"{datum:6.2f}, "
+                print_out += f"{datum:9.2f}  "
             print(print_out[:-2])
             return True
 
     
     def process_data(self, data_point):
         """
+        OVERRIDDEN FROM PARENT
         Do any processing needed before data collection and graphing.
         """
         self.current_time = data_point[0]
@@ -86,6 +88,10 @@ class TaDaUI(DataAquisitionUI):
 
 
     def data_collect(self, data_point):
+        """
+        OVERRIDDEN FROM PARENT
+        Processing for data collection.
+        """
         self.data.append(data_point)
         print("Data collected.")
 
@@ -205,18 +211,18 @@ class TaDaUI(DataAquisitionUI):
         except FileNotFoundError:
             # if file not found, create it
             with open(self.log_path, 'w') as f:
-                f.write("file,{header_str}\n")
+                f.write(f"file,{header_str}\n")
         
         text_out = self.format_data(self.data)
         data_name_out = self.get_data_fields()
         
         with open(self.log_path, 'a') as f:
-            f.write("\n")
             f.write(self.target_data_path.split('/')[-1])
             f.write(',')
             f.write(data_name_out)
+            f.write("\n")
 
-        with open(self.target_data_path,'a') as f:
+        with open(self.target_data_path, 'a') as f:
             f.write(header_str + '\n')
             f.write(data_name_out)
             f.write('\n')
@@ -224,7 +230,9 @@ class TaDaUI(DataAquisitionUI):
             f.write(self.system_timestamp)
             f.write('\n')
             f.write('time,t1,t2,t3,t4,pressure\n')
-            f.write(text_out)    
+            f.write(text_out)
+        
+        self.clean_up()  
     
     
     def stop_reset(self):
@@ -267,7 +275,7 @@ class TaDaUI(DataAquisitionUI):
         if not f.endswith('.csv'): f += ".csv"
         self.target_data_path = f
         self.widgets["file path"]['text'] = self.target_data_path
-        self.clean_up()
+
 
     
     def format_data(self, data):
