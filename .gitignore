@@ -1,0 +1,7 @@
+# ignore the following extentions and files
+*.pyc
+experimental_log.csv
+dump.csv
+
+# ignore the following folders
+__pycache__/
