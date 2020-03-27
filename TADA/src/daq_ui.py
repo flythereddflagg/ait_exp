@@ -199,5 +199,5 @@ class DataAquisitionUI(UserInterface):
 
 if __name__ == "__main__":
     ui = DataAquisitionUI("./tada_ui.json")
-    ui.daq_loop()
+    ui.after(0, ui.daq_loop)
     ui.mainloop()

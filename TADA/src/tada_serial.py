@@ -15,18 +15,17 @@ else:
 
 
     
-    # def sync_time(self, event=None):
-    #     """
-    #     Synchronizes computer time with the arduino.
-    #     """
-    #     if self.collect: return
-    #     time_obj= localtime()
-    #     serial_time = strftime("t%Y,%m,%d,%H,%M,%S", time_obj)
-    #     print(serial_time)
-    #     self.system_timestamp = "\nSystem start time is: {}".format(serial_time)
-    #     print(serial_time.encode(encoding="ascii"))
-    #     self.ser.write(serial_time.encode(encoding="ascii"))
-
+# def sync_time(self, event=None):
+#     """
+#     Synchronizes computer time with the arduino.
+#     """
+#     if self.collect: return
+#     time_obj= localtime()
+#     serial_time = strftime("t%Y,%m,%d,%H,%M,%S", time_obj)
+#     print(serial_time)
+#     self.system_timestamp = "\nSystem start time is: {}".format(serial_time)
+#     print(serial_time.encode(encoding="ascii"))
+#     self.ser.write(serial_time.encode(encoding="ascii"))
 
 
 

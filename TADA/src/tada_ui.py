@@ -5,6 +5,7 @@ from tkinter.messagebox import askyesno
 from random import uniform
 
 
+
 class DummyBarometer(DummyDataSource):
 
     def get_data(self):
@@ -15,9 +16,10 @@ class DummyBarometer(DummyDataSource):
 class TaDaUI(DataAquisitionUI):
     def __init__(
                 self, 
-                layout_path, 
-                data_src=[DummyDataSource(), DummyBarometer()],
-                vis_data=100
+                layout_path,
+                data_src = [DummyDataSource(), DummyBarometer()],
+                vis_data = 100,
+                log_path = "../experimental_log.csv"
             ):
         super().__init__(layout_path, data_src, vis_data)
         self.data = []
@@ -29,7 +31,7 @@ class TaDaUI(DataAquisitionUI):
         self.p_lower_limit = 758 # torr
         self.p_upper_limit = 762 # torr
         self.target_data_path = ""
-        self.log_path = "../../experimental_log.csv"
+        self.log_path = log_path
         self.arduino_timestamp = ""
         self.system_timestamp = ""
         self.data_labels = [
@@ -42,8 +44,7 @@ class TaDaUI(DataAquisitionUI):
         ]
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
-        self.daq_loop()
-
+        self.after(0, self.daq_loop)
 
 
     def setup_commands(self):
@@ -54,7 +55,7 @@ class TaDaUI(DataAquisitionUI):
         
         self.widgets["quit button"]['command'] = self.quit_app
         self.widgets["collect button"]['command'] = self.start_stop
-        self.widgets["target file button"]['command'] = self.file_save_as
+        self.widgets["target file button"]['command'] = self.file_save_as     
 
 
     def valid_data(self, data_point):
@@ -69,7 +70,7 @@ class TaDaUI(DataAquisitionUI):
         else:
             print_out = ""
             for datum in data_point:
-                print_out += f"{datum:9.2f}  "
+                print_out += f"{datum:7.2f}  "
             print(print_out[:-2])
             return True
 
@@ -133,8 +134,7 @@ class TaDaUI(DataAquisitionUI):
 
     def update_pressure(self):
         """
-        Pulls barometric pressure data in and adds it to the gauge pressure
-        Also updates the state of the pressure label to indicate if the 
+        Updates the state of the pressure label to indicate if the 
         pressure is within acceptable parameters. Makes a warning sound if 
         pressure far exceeds acceptable parameters.
         """
@@ -267,15 +267,17 @@ class TaDaUI(DataAquisitionUI):
         chosen the file is truncated and overwritten.
         """
         f = asksaveasfilename(
-                        initialdir = "../",
-                        title = "Select Target File",
-                        filetypes = (("csv files","*.csv"),("all files","*.*"))
-                    )
+                initialdir = "../",
+                title = "Select Target File",
+                filetypes = (
+                    ("csv files","*.csv"),
+                    ("all files","*.*")
+                )
+            )
         if not f: return
         if not f.endswith('.csv'): f += ".csv"
         self.target_data_path = f
         self.widgets["file path"]['text'] = self.target_data_path
-
 
     
     def format_data(self, data):
@@ -289,6 +291,7 @@ class TaDaUI(DataAquisitionUI):
             out_string += ','.join([format(field, ".2f") for field in point])
             out_string += '\n'
         return out_string
+
 
 
 if __name__ == '__main__':
