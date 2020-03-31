@@ -44,7 +44,28 @@ class TaDaUI(DataAquisitionUI):
         ]
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
-        self.after(0, self.daq_loop)
+
+
+    def mainloop(self):
+        while self.running:
+            self.update()
+            self.daq_loop()
+
+
+    def daq_loop(self):
+        data_point = []
+        for src in self.data_src:
+            data_point += src.get_data()
+
+        if not self.valid_data(data_point): 
+            self.after(0, self.daq_loop)
+            return
+
+        self.process_data(data_point)
+        
+        if self.collect: self.data_collect(data_point)
+
+        self.graph_data(data_point)
 
 
     def setup_commands(self):

@@ -117,17 +117,17 @@ class DataAquisitionUI(UserInterface):
     
     def daq_loop(self):
         """ 
-            Part of the mainloop. This function will run every 0.5 seconds. If
-            the "collect" parameter is set to True it will append the data it 
-            collects to an array to be saved to the output file.
-            
-            The loop functions with these instructions:
-                - Get data as a list from some source
-                - Save the data to an array if self.collect == True
-                - Update the graph with the latest data point
-                - Loop
-            This will execute on startup and continue doing while mainloop is 
-            still running.
+        Part of the mainloop. This function will run every 0.5 seconds. If
+        the "collect" parameter is set to True it will append the data it 
+        collects to an array to be saved to the output file.
+        
+        The loop functions with these instructions:
+            - Get data as a list from some source
+            - Save the data to an array if self.collect == True
+            - Update the graph with the latest data point
+            - Loop
+        This will execute on startup and continue doing while mainloop is 
+        still running.
         """
         data_point = []
         for src in self.data_src:
