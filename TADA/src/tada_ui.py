@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter.filedialog import asksaveasfilename
 from tkinter.messagebox import askyesno
 from random import uniform
-
+import concurrent.futures as cof
 
 
 class DummyBarometer(DummyDataSource):
@@ -44,10 +44,24 @@ class TaDaUI(DataAquisitionUI):
         ]
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
+        self.save_as = False
 
 
     def mainloop(self):
+        save_as_task = None
         while self.running:
+            if self.save_as:
+                if not save_as_task:
+                    save_as_exec = cof.ThreadPoolExecutor()
+                    save_as_task = save_as_exec.submit(self.file_save_as)
+                if save_as_task.done():
+                    self.target_data_path = save_as_task.result()
+                    save_as_exec.shutdown()
+                    save_as_task = False
+                    self.widgets["file path"]['text'] = self.target_data_path
+                    self.save_as = False
+                    
+
             self.update()
             self.daq_loop()
 
@@ -72,11 +86,16 @@ class TaDaUI(DataAquisitionUI):
         """Binds commands to keyboard and buttons."""
         self.bind("<Escape>", self.quit_app)
         self.bind("<Return>", self.start_stop)
-        self.bind("<Control-s>", self.file_save_as)
+        self.bind("<Control-s>", self.set_save_as)
         
         self.widgets["quit button"]['command'] = self.quit_app
         self.widgets["collect button"]['command'] = self.start_stop
-        self.widgets["target file button"]['command'] = self.file_save_as     
+        # self.widgets["target file button"]['command'] = self.file_save_as  
+        self.widgets["target file button"]['command'] = self.set_save_as
+
+
+    def set_save_as(self, event=None):
+        self.save_as = True
 
 
     def valid_data(self, data_point):
@@ -217,7 +236,9 @@ class TaDaUI(DataAquisitionUI):
             for key in self.data_labels
         ])
         if not self.target_data_path:
-            self.file_save_as()
+            self.target_data_path = self.file_save_as()
+            self.widgets["file path"]['text'] = self.target_data_path
+            
         try:
             # see if the file exists
             open(self.target_data_path, 'r').close()
@@ -287,7 +308,10 @@ class TaDaUI(DataAquisitionUI):
         Run save as dialog to choose target file. If an existing file is
         chosen the file is truncated and overwritten.
         """
+        temp_root = tk.Tk()
+        temp_root.withdraw()
         f = asksaveasfilename(
+                parent = temp_root,
                 initialdir = "../",
                 title = "Select Target File",
                 filetypes = (
@@ -297,8 +321,7 @@ class TaDaUI(DataAquisitionUI):
             )
         if not f: return
         if not f.endswith('.csv'): f += ".csv"
-        self.target_data_path = f
-        self.widgets["file path"]['text'] = self.target_data_path
+        return f
 
     
     def format_data(self, data):
