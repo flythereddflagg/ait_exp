@@ -1,8 +1,9 @@
 from ui import UserInterface
+from tkinter.messagebox import askyesno
 from matplotlib import use, lines as mlplines
-use('TkAgg')
 from matplotlib.pyplot import subplots, ion, tight_layout
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg as PltCanvas
+use('TkAgg')
 
 from random import random, uniform
 from time import sleep, time
@@ -12,17 +13,6 @@ from time import sleep, time
 class DummyDataSource():
     def __init__(self):
         self.time = time()
-
-    def collect_data(self):
-        pass
-    
-
-    def stop_collecting_data(self):
-        pass
-
-
-    def sync_time(self, event=None):
-        pass
 
 
     def get_data(self):
@@ -191,6 +181,12 @@ class DataAquisitionUI(UserInterface):
 
     def quit_app(self, event=None):
         """Safely exits the program."""
+        if self.collect:
+            if not askyesno(
+                    "Quit Warning",
+                    "DAQ is still running!\nAre you sure you want to quit?"
+                ):
+                return
         self.running = False
         self.destroy()
         raise SystemExit

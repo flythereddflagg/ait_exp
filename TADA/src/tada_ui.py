@@ -1,10 +1,8 @@
 from daq_ui import DataAquisitionUI, DummyDataSource
 import tkinter as tk
 from tkinter.filedialog import asksaveasfilename
-from tkinter.messagebox import askyesno
 from random import uniform
 from concurrent.futures import ThreadPoolExecutor
-import sys
 import traceback
 
 
@@ -19,6 +17,7 @@ class TaDaUI(DataAquisitionUI):
     def __init__(
                 self, 
                 layout_path,
+                save_as_exec,
                 data_src = [DummyDataSource(), DummyBarometer()],
                 vis_data = 100,
                 log_path = "../experimental_log.csv"
@@ -47,7 +46,7 @@ class TaDaUI(DataAquisitionUI):
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
         self.save_as = False
-        self.save_as_exec = ThreadPoolExecutor()
+        self.save_as_exec = save_as_exec
         self.save_as_task = None
 
 
@@ -345,11 +344,9 @@ class TaDaUI(DataAquisitionUI):
 
 
 if __name__ == '__main__':
-    try:
-        ui = TaDaUI("./tada_ui.json")
-        ui.mainloop()
-    except:
-        track = traceback.format_exc()
-        print(track)
-    finally:
-        ui.save_as_exec.shutdown()
+    with ThreadPoolExecutor() as _exec:
+        try:
+            TaDaUI("./tada_ui.json", _exec).mainloop()
+        except:
+            track = traceback.format_exc()
+            print(track)

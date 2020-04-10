@@ -49,7 +49,7 @@ class TADASerial():
                 self.comport, 
                 self.baudrate,
                 timeout=self.timeout)
-            assert self.ser.isOpen(), "Main serial port is not open."
+            assert self.ser.isOpen(), "Port is not open."
             return True
         except AssertionError as e1:
             print("Error:", e1)
@@ -61,7 +61,8 @@ class TADASerial():
 
     def serial_port(self):
         """
-        returns a string of the first available port that is not COM 1
+        returns a string of the first 
+        available port that is not the RS232 interface
         """
         for port in comports():
             try:
