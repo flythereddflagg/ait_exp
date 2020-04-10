@@ -16,5 +16,5 @@ upload:
 	$(UC) $(UFLAGS) $(SRC)
 
 clean:
-	rm -f $(SRC)/*.hex
-	rm -f $(SRC)/*.elf
+	rm -f ./$(SRC)/*.hex
+	rm -f ./$(SRC)/*.elf

@@ -1,42 +1,17 @@
 from os import name as osname
 from sys import exit
-
-testing = False
-if testing:
-    if __name__ == '__main__':
-        from test_mod import Serial, SerialException, comports
-    else:
-        from test_mod import Serial, SerialException, comports
-else:
-    import serial
-    from serial.tools.list_ports import comports
-    Serial = serial.Serial
-    SerialException = serial.SerialException
+from serial import Serial, SerialException
+from serial.tools.list_ports import comports
 
 
-    
-# def sync_time(self, event=None):
-#     """
-#     Synchronizes computer time with the arduino.
-#     """
-#     if self.collect: return
-#     time_obj= localtime()
-#     serial_time = strftime("t%Y,%m,%d,%H,%M,%S", time_obj)
-#     print(serial_time)
-#     self.system_timestamp = "\nSystem start time is: {}".format(serial_time)
-#     print(serial_time.encode(encoding="ascii"))
-#     self.ser.write(serial_time.encode(encoding="ascii"))
-
-
-
-class TADASerial():
+class SerialDataSource():
 
     def __init__(self, comport=None, baudrate=9600, timeout=1.0):
-        self.baudrate = baudrate
-        self.timeout = timeout
-        self.comport = self.serial_port() if comport is None else comport
-        if not self.connect(): 
-            raise Exception("Unable to connect to Arduino")
+            self.baudrate = baudrate
+            self.timeout = timeout
+            self.comport = self.serial_port() if comport is None else comport
+            if not self.connect(): 
+                raise Exception("Unable to connect to Serial Port")
     
 
     def connect(self):
@@ -61,8 +36,7 @@ class TADASerial():
 
     def serial_port(self):
         """
-        returns a string of the first 
-        available port
+        returns a string of the first available port
         """
         for port in comports():
             try:
@@ -72,6 +46,27 @@ class TADASerial():
             except SerialException as e:
                 continue
 
+
+    def get_data(self):
+        """ 
+        Get Data from the serial source and return it as a list.
+        """
+        data_string = self.ser.readline().decode().strip()
+        return [float(element) for element in data_string.split()]
+
+
+    def reset(self):
+        """Resets the serial port by closing it then opening it"""
+        self.ser.close()
+        self.ser.open()
+
+
+
+class TADADataSource(SerialDataSource):
+
+    def __init__(self, comport=None, baudrate=9600, timeout=1.0):
+        super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
+    
 
     def collect_data(self):
         self.ser.write(b'1')
@@ -127,15 +122,12 @@ class TADASerial():
             return self.get_data()
 
 
-    def reset(self):
-        pass
-
 
 if __name__ == '__main__':
     print("Setting up arduino...")
-    ts = TADASerial(comport='/dev/ttyACM0', baudrate=9600)
+    ts = TADADataSource(comport='/dev/ttyACM0', baudrate=9600)
     print("setting up baro...")
-    baro = TADASerial(comport="/dev/ttyS0", baudrate=19200)
+    baro = SerialDataSource(comport="/dev/ttyS0", baudrate=19200)
     print("starting loop.")
     while True:
         try:
