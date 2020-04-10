@@ -62,7 +62,7 @@ class TADASerial():
     def serial_port(self):
         """
         returns a string of the first 
-        available port that is not the RS232 interface
+        available port
         """
         for port in comports():
             try:
@@ -132,9 +132,13 @@ class TADASerial():
 
 
 if __name__ == '__main__':
-    ts = TADASerial(comport='COM4', baudrate=9600)
+    print("Setting up arduino...")
+    ts = TADASerial(comport='/dev/ttyACM0', baudrate=9600)
+    print("setting up baro...")
+    baro = TADASerial(comport="/dev/ttyS0", baudrate=19200)
+    print("starting loop.")
     while True:
         try:
-            print(ts.get_data())
+            print(ts.get_data(), baro.get_data())
         except KeyboardInterrupt:
             break
