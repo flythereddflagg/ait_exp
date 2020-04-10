@@ -3,7 +3,9 @@ import tkinter as tk
 from tkinter.filedialog import asksaveasfilename
 from tkinter.messagebox import askyesno
 from random import uniform
-import concurrent.futures as cof
+from concurrent.futures import ThreadPoolExecutor
+import sys
+import traceback
 
 
 class DummyBarometer(DummyDataSource):
@@ -45,25 +47,42 @@ class TaDaUI(DataAquisitionUI):
         self.setup_commands()
         self.widgets["message"]['text'] = "Data Collection Ready"
         self.save_as = False
+        self.save_as_exec = ThreadPoolExecutor()
+        self.save_as_task = None
 
 
+    def setup_commands(self):
+        """Binds commands to keyboard and buttons."""
+        self.bind("<Escape>", self.quit_app)
+        self.bind("<Return>", self.start_stop)
+        self.bind("<Control-s>", self.set_save_as)
+        
+        self.widgets["quit button"]['command'] = self.quit_app
+        self.widgets["collect button"]['command'] = self.start_stop
+        self.widgets["target file button"]['command'] = self.set_save_as
+    
+    
     def mainloop(self):
-        save_as_task = None
+        """
+        OVERRIDDEN FROM Tk
+        Runs the mainloop for Tk with some modifications to allow
+        concurrent running of the daq_loop and file_save_as methods.
+        """
         while self.running:
-            if self.save_as:
-                if not save_as_task:
-                    save_as_exec = cof.ThreadPoolExecutor()
-                    save_as_task = save_as_exec.submit(self.file_save_as)
-                if save_as_task.done():
-                    self.target_data_path = save_as_task.result()
-                    save_as_exec.shutdown()
-                    save_as_task = False
-                    self.widgets["file path"]['text'] = self.target_data_path
-                    self.save_as = False
-                    
-
+            if self.save_as: self.run_save_as()
             self.update()
             self.daq_loop()
+
+
+    def run_save_as(self):
+        if not self.save_as_task:
+            self.save_as_task = self.save_as_exec.submit(self.file_save_as)
+        if self.save_as_task.done():
+            self.target_data_path = self.save_as_task.result()
+            self.widgets["file path"]['text'] = self.target_data_path
+            self.save_as_task = None
+            self.save_as = False
+                    
 
 
     def daq_loop(self):
@@ -80,19 +99,6 @@ class TaDaUI(DataAquisitionUI):
         if self.collect: self.data_collect(data_point)
 
         self.graph_data(data_point)
-
-
-    def setup_commands(self):
-        """Binds commands to keyboard and buttons."""
-        self.bind("<Escape>", self.quit_app)
-        self.bind("<Return>", self.start_stop)
-        self.bind("<Control-s>", self.set_save_as)
-        
-        self.widgets["quit button"]['command'] = self.quit_app
-        self.widgets["collect button"]['command'] = self.start_stop
-        # self.widgets["target file button"]['command'] = self.file_save_as  
-        self.widgets["target file button"]['command'] = self.set_save_as
-
 
     def set_save_as(self, event=None):
         self.save_as = True
@@ -339,4 +345,11 @@ class TaDaUI(DataAquisitionUI):
 
 
 if __name__ == '__main__':
-    TaDaUI("./tada_ui.json").mainloop()
+    try:
+        ui = TaDaUI("./tada_ui.json")
+        ui.mainloop()
+    except:
+        track = traceback.format_exc()
+        print(track)
+    finally:
+        ui.save_as_exec.shutdown()
