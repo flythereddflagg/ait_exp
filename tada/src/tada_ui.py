@@ -1,4 +1,4 @@
-from daq_ui import DataAquisitionUI, DummyDataSource
+from .daq_ui import DataAquisitionUI, DummyDataSource
 import tkinter as tk
 from tkinter.filedialog import asksaveasfilename
 from random import uniform

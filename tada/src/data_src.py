@@ -1,6 +1,4 @@
-from os import name as osname
-from sys import exit
-from serial import Serial, SerialException
+from serial import Serial, SerialException, SerialTimeoutException
 from serial.tools.list_ports import comports
 
 
@@ -62,6 +60,25 @@ class SerialDataSource():
 
 
 
+class BaroDataSource(SerialDataSource):
+
+    def __init__(self, comport=None, baudrate=9600, timeout=0.0):
+            super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
+            self.data = [0]
+
+
+    def get_data(self):
+        """ 
+        Get Data from the serial source and return it as a list.
+        """
+        if self.ser.in_waiting:
+            data_string = self.ser.readline().decode().strip()
+            self.data = [
+                float(element) for element in data_string.split()
+            ]
+        return self.data
+
+
 class TADADataSource(SerialDataSource):
 
     def __init__(self, comport=None, baudrate=9600, timeout=1.0):
@@ -103,20 +120,23 @@ class TADADataSource(SerialDataSource):
             data_string = data_string.strip()            
             data = data_string.split(',')            
             data = [float(val) for val in data[1:]]
+            data[0] /= 1000
                 
             return data
 
         elif data_string[0] == '+' and data_string[-1] == '\n':
             # if the data_string is a valid time stamp, process it
-            self.system_timestamp = "\nSystem start time is: "\
-                "%s" % strftime("%Y/%m/%d %H:%M:%S", localtime())
+            # self.system_timestamp = "\nSystem start time is: "\
+            #     "%s" % strftime("%Y/%m/%d %H:%M:%S", localtime())
             self.arduino_timestamp = data_string.strip()
-            return self.arduino_timestamp
+            print(self.arduino_timestamp)
+            return self.get_data()
         
         elif data_string[0] == '/' and data_string[-1] == '\n':
             # if string begins with / then it is a debug message and should
             # just be returned
-            return data_string.strip()
+            print(data_string.strip())
+            return self.get_data()
         else:
             # if the data_string is invalid, print it, and try again
             return self.get_data()
@@ -133,4 +153,5 @@ if __name__ == '__main__':
         try:
             print(ts.get_data(), baro.get_data())
         except KeyboardInterrupt:
+            
             break

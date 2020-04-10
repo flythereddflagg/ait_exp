@@ -1,4 +1,4 @@
-from ui import UserInterface
+from .ui import UserInterface
 from tkinter.messagebox import askyesno
 from matplotlib import use, lines as mlplines
 from matplotlib.pyplot import subplots, ion, tight_layout
