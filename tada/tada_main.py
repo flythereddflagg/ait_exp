@@ -18,7 +18,7 @@ if __name__ == '__main__':
                 baudrate=19200
             )
             ui = tada_ui.TaDaUI(
-                layout_path="./src/tada_ui.json", 
+                layout_path=root+"/src/tada_ui.json", 
                 save_as_exec=_exec,
                 data_src=[tada, baro],
                 log_path = root + "/../../data/experimental_log.csv",
