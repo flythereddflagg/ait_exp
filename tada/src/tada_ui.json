@@ -299,27 +299,32 @@
             "y2 label" : "Pressure (torr)"
         },
         "lines axis 1" : {
-            "Temp 1" : {
-                "color" : "salmon",
-                "linestyle" : ":"
+            "Temp 1 (top)" : {
+                "color" : "crimson",
+                "linestyle" : ":",
+                "linewidth" : 2.0
             },
-            "Temp 2" : {
+            "Temp 2 (equator)" : {
                 "color" : "gold",
-                "linestyle" : "-."
+                "linestyle" : "-.",
+                "linewidth" : 1.5
             },
-            "Temp 3" : {
+            "Temp 3 (bottom)" : {
                 "color" : "darkorange",
-                "linestyle" : "--"
+                "linestyle" : "--",
+                "linewidth" : 1.5
             },
-            "Temp 4" : {
+            "Temp 4 (center)" : {
                 "color" : "lime",
-                "linestyle" : "-"
+                "linestyle" : "-",
+                "linewidth" : 2.0
             }
         },
         "lines axis 2" : {
-            "Pressure" : {
-                "color" : "crimson",
-                "linestyle" : "--"
+            "Abs. Pressure (torr)" : {
+                "color" : "cyan",
+                "linestyle" : "--",
+                "linewidth" : 1.0
             }
     
         }

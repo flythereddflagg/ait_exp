@@ -1,6 +1,6 @@
 from serial import Serial, SerialException, SerialTimeoutException
 from serial.tools.list_ports import comports
-
+import time
 
 class SerialDataSource():
 
@@ -9,8 +9,9 @@ class SerialDataSource():
             self.timeout = timeout
             self.comport = self.serial_port() if comport is None else comport
             if not self.connect(): 
-                raise Exception("Unable to connect to Serial Port")
-    
+                raise Exception(f"Unable to connect to Serial Port: {self.comport!r}")
+            self.ser.reset_input_buffer()
+            
 
     def connect(self):
         """
@@ -62,7 +63,7 @@ class SerialDataSource():
 
 class BaroDataSource(SerialDataSource):
 
-    def __init__(self, comport=None, baudrate=9600, timeout=0.0):
+    def __init__(self, comport=None, baudrate=9600, timeout=0.25):
             super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
             self.data = [0]
 
@@ -73,17 +74,24 @@ class BaroDataSource(SerialDataSource):
         """
         if self.ser.in_waiting:
             data_string = self.ser.readline().decode().strip()
+            if not data_string: return self.data
             self.data = [
                 float(element) for element in data_string.split()
             ]
+            self.ser.reset_input_buffer()
         return self.data
+        
 
 
 class TADADataSource(SerialDataSource):
 
     def __init__(self, comport=None, baudrate=9600, timeout=1.0):
         super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
-    
+        self.reset_confirmed = False
+
+    def reset(self):
+        super().reset()
+        self.reset_confirmed=False
 
     def collect_data(self):
         self.ser.write(b'1')
@@ -110,12 +118,16 @@ class TADADataSource(SerialDataSource):
         """ 
         Get Data from the serial source and return it as a list.
         """
-        data_string = self.ser.readline().decode()
-        
-        if len(data_string) == 0: # check for empty string
+        try:
+            data_string = self.ser.readline().decode()
+        except UnicodeDecodeError as e:
             return self.get_data()
         
-        if   data_string[0] == '|' and data_string[-1] == '\n':
+        if not data_string: # check for empty string
+            return self.get_data()
+        
+        if   data_string[0] == '|' and data_string[-1] == '\n' and\
+                self.reset_confirmed:
             # if the data_string is valid, process it
             data_string = data_string.strip()            
             data = data_string.split(',')            
@@ -124,7 +136,8 @@ class TADADataSource(SerialDataSource):
                 
             return data
 
-        elif data_string[0] == '+' and data_string[-1] == '\n':
+        elif data_string[0] == '+' and data_string[-1] == '\n' and\
+                self.reset_confirmed:
             # if the data_string is a valid time stamp, process it
             # self.system_timestamp = "\nSystem start time is: "\
             #     "%s" % strftime("%Y/%m/%d %H:%M:%S", localtime())
@@ -135,10 +148,12 @@ class TADADataSource(SerialDataSource):
         elif data_string[0] == '/' and data_string[-1] == '\n':
             # if string begins with / then it is a debug message and should
             # just be returned
+            if "setup finished" in data_string.lower(): 
+                self.reset_confirmed = True
             print(data_string.strip())
             return self.get_data()
         else:
-            # if the data_string is invalid, print it, and try again
+            # if the data_string is invalid try again
             return self.get_data()
 
 
@@ -147,11 +162,12 @@ if __name__ == '__main__':
     print("Setting up arduino...")
     ts = TADADataSource(comport='/dev/ttyACM0', baudrate=9600)
     print("setting up baro...")
-    baro = SerialDataSource(comport="/dev/ttyS0", baudrate=19200)
+    baro = BaroDataSource(comport="/dev/ttyS0", baudrate=19200)
     print("starting loop.")
     while True:
         try:
-            print(ts.get_data(), baro.get_data())
+            print(ts.get_data(), end=' ')
+            print(baro.get_data())
         except KeyboardInterrupt:
             
             break

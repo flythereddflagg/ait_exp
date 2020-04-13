@@ -42,7 +42,7 @@ class DataAquisitionUI(UserInterface):
         self.protocol("WM_DELETE_WINDOW", self.quit_app)
 
         self.init_plot()
-        self.clean_up()
+        self.cleanup()
 
 
     def init_plot(self):
@@ -73,7 +73,15 @@ class DataAquisitionUI(UserInterface):
             line.xdata, line.ydata = [], []
         
         labels = [l.get_label() for l in self.lines]
-        self.ax1.legend(self.lines, labels, loc='upper right')
+        legend = self.ax2.legend(
+                self.lines, labels, 
+                loc='upper left',
+                facecolor=bg_color,
+                edgecolor=bg_color,
+                framealpha=1.0
+            )
+        for text in legend.get_texts():
+            text.set_color(fg_color)
         
         for axis in [self.ax1, self.ax2]:
             axis.set_facecolor(bg_color)
@@ -94,7 +102,7 @@ class DataAquisitionUI(UserInterface):
         self.data_plot.grid(**pltconf['grid'])
 
 
-    def clean_up(self):
+    def cleanup(self):
         """ 
         Re-initializes the parameters for data collection and clears the 
         console screen.

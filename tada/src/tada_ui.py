@@ -20,7 +20,8 @@ class TaDaUI(DataAquisitionUI):
                 save_as_exec,
                 data_src = [DummyDataSource(), DummyBarometer()],
                 vis_data = 100,
-                log_path = "../experimental_log.csv"
+                log_path = "../experimental_log.csv",
+                datadir  = "../"
             ):
         super().__init__(layout_path, data_src, vis_data)
         self.data = []
@@ -48,6 +49,7 @@ class TaDaUI(DataAquisitionUI):
         self.save_as = False
         self.save_as_exec = save_as_exec
         self.save_as_task = None
+        self.datadir = datadir
 
 
     def setup_commands(self):
@@ -99,6 +101,7 @@ class TaDaUI(DataAquisitionUI):
 
         self.graph_data(data_point)
 
+
     def set_save_as(self, event=None):
         self.save_as = True
 
@@ -144,6 +147,12 @@ class TaDaUI(DataAquisitionUI):
         display_time = float(self.current_time - self.start_time)
         self.widgets['message']['text'] = \
             f"Collecting Data...\tTime (sec): {display_time:.1f}"
+
+
+    def graph_data(self, data_point):
+        new_data_point = [data for data in data_point[:-1]]
+        new_data_point[-1] += data_point[-1]
+        super().graph_data(new_data_point)
 
 
     def update_temp_equilbrium(self):
@@ -227,6 +236,7 @@ class TaDaUI(DataAquisitionUI):
         else: # this is the stop branch
             self.save_data()
             self.stop_reset()
+            self.cleanup()
 
         
     def save_data(self):
@@ -279,20 +289,21 @@ class TaDaUI(DataAquisitionUI):
             f.write('time,t1,t2,t3,t4,pressure\n')
             f.write(text_out)
         
-        self.clean_up()  
+        self.cleanup()  
     
     
     def stop_reset(self):
         """ Resets the buttons and indicates Data collection is ready"""
         # tell the Arduino to stop writing its data to the SD card
         self.data_src[0].stop_collecting_data()
+        for src in self.data_src:
+            src.reset()
         self.collect = False
         self.widgets["collect button"]['bg'] = 'green'
         self.widgets["collect button"]['fg'] = 'black'
         self.widgets["collect button"]['text'] = 'Collect Data'
         self.widgets["message"]['text'] = "Data Collection Ready"
-        print(
-            "\n\t--- Data Collection Stopped. Press ENTER to continue ---\n")
+        print("\n\tData Collection Stopped. Resetting system...\n")
 
     
     def get_data_fields(self):
@@ -317,7 +328,7 @@ class TaDaUI(DataAquisitionUI):
         temp_root.withdraw()
         f = asksaveasfilename(
                 parent = temp_root,
-                initialdir = "../",
+                initialdir = self.datadir,
                 title = "Select Target File",
                 filetypes = (
                     ("csv files","*.csv"),
