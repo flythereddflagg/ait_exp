@@ -4,26 +4,35 @@ from datetime import datetime
 import traceback
 import os
 
+DEMO = False
+
 root = os.path.dirname(os.path.abspath(__file__))
 
 if __name__ == '__main__':
     with ThreadPoolExecutor() as _exec:
         try:
-            tada = data_src.TADADataSource(
-                comport='/dev/ttyACM0', 
-                baudrate=9600
-            )
-            baro = data_src.BaroDataSource(
-                comport="/dev/ttyS0", 
-                baudrate=19200
-            )
-            ui = tada_ui.TaDaUI(
-                layout_path=root+"/src/tada_ui.json", 
-                save_as_exec=_exec,
-                data_src=[tada, baro],
-                log_path = root + "/../../data/experimental_log.csv",
-                datadir = root + "/../../data"
-            )
+            if not DEMO:
+                tada = data_src.TADADataSource(
+                    comport='/dev/ttyACM0', 
+                    baudrate=9600
+                )
+                baro = data_src.BaroDataSource(
+                    comport="/dev/ttyS0", 
+                    baudrate=19200
+                )
+                ui = tada_ui.TaDaUI(
+                    layout_path=root+"/src/tada_ui.json", 
+                    save_as_exec=_exec,
+                    data_src=[tada, baro],
+                    log_path = root + "/../../data/experimental_log.csv",
+                    datadir = root + "/../../data"
+                )
+            else:
+                ui = tada_ui.TaDaUI(
+                    layout_path=root + "/src/tada_ui.json", 
+                    save_as_exec=_exec
+                )
+
             ui.mainloop()
         except:
             track = traceback.format_exc()
