@@ -4,33 +4,40 @@ from datetime import datetime
 import traceback
 import os
 
-DEMO = False
+DEMO = True
+ROOT = os.path.dirname(os.path.abspath(__file__))
+LAYOUT = ROOT + "/data/tada_ui.json"
+LOG_PATH = ROOT + "/../../data/experimental_log.csv"
+DATADIR = ROOT + "/../../data"
+ARDUINO_COMPORT, ARDUINO_BAUDRATE = '/dev/ttyACM0', 9600
+RS232_COMPORT, RS232_BAUDRATE = "/dev/ttyS0", 19200
 
-root = os.path.dirname(os.path.abspath(__file__))
 
 if __name__ == '__main__':
     with ThreadPoolExecutor() as _exec:
         try:
             if not DEMO:
                 tada = data_src.TADADataSource(
-                    comport='/dev/ttyACM0', 
-                    baudrate=9600
+                    comport = ARDUINO_COMPORT, 
+                    baudrate = ARDUINO_BAUDRATE
                 )
                 baro = data_src.BaroDataSource(
-                    comport="/dev/ttyS0", 
-                    baudrate=19200
+                    comport = RS232_COMPORT, 
+                    baudrate = RS232_BAUDRATE
                 )
                 ui = tada_ui.TaDaUI(
-                    layout_path=root+"/src/tada_ui.json", 
-                    save_as_exec=_exec,
-                    data_src=[tada, baro],
-                    log_path = root + "/../../data/experimental_log.csv",
-                    datadir = root + "/../../data"
+                    layout_path=LAYOUT, 
+                    save_as_exec = _exec,
+                    data_src = [tada, baro],
+                    log_path = LOG_PATH,
+                    datadir = DATADIR
                 )
             else:
                 ui = tada_ui.TaDaUI(
-                    layout_path=root + "/src/tada_ui.json", 
-                    save_as_exec=_exec
+                    layout_path = LAYOUT,
+                    save_as_exec=_exec,
+                    log_path = LOG_PATH,
+                    datadir = DATADIR
                 )
 
             ui.mainloop()

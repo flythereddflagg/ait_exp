@@ -1,0 +1,9 @@
+20200413162152
+Traceback (most recent call last):
+  File ".\tada_main.py", line 15, in <module>
+    tada = data_src.TADADataSource(
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\data_src.py", line 89, in __init__
+    super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\data_src.py", line 12, in __init__
+    raise Exception(f"Unable to connect to Serial Port: {self.comport!r}")
+Exception: Unable to connect to Serial Port: '/dev/ttyACM0'
