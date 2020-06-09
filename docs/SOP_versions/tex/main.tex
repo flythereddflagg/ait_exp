@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage[margin=1.0in]{geometry} % set margins and general document geometries
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc} 			% looks better than default font encoding
+\usepackage{lmodern} 				% need a newer font to work with T1 font encoding
+\usepackage{graphicx} 				% for including images
+\usepackage{enumitem} 				% for adjusting lists
+\usepackage{setspace}				% for double spacing	
+\usepackage{pgffor}					% needed for the for-loop
+\usepackage{tabu}
+
+%%%%% PANDOC REQUIRED %%%%%%%%%%%%%%%%%
+%% pandoc-tablenos: required package
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{booktabs,siunitx}
+
+% DO NOT USE THE hyperref PACKAGE!
+% \usepackage{hyperref} 
+% for citing using the hyperlink command
+\newcommand{\href}{\cite}
+\newcommand{\hyperlink}{\ref}
+\newcommand{\hypertarget}[1]{\ignorespaces}
+\def\tightlist{}
+
+%% pandoc-tablenos: environment to disable table caption prefixes
+\makeatletter
+\newcounter{tableno}
+\newenvironment{tablenos:no-prefix-table-caption}{
+  \caption@ifcompatibility{}{
+	\let\oldthetable\thetable
+	\let\oldtheHtable\theHtable
+	\renewcommand{\thetable}{tableno:\thetableno}
+	\renewcommand{\theHtable}{tableno:\thetableno}
+	\stepcounter{tableno}
+	\captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+	\captionsetup{labelformat=default}
+	\let\thetable\oldthetable
+	\let\theHtable\oldtheHtable
+	\addtocounter{table}{-1}
+  }
+}
+\makeatother
+
+%% pandoc-fignos: environment to disable figure caption prefixes
+\makeatletter
+\newcounter{figno}
+\newenvironment{fignos:no-prefix-figure-caption}{
+  \caption@ifcompatibility{}{
+	\let\oldthefigure\thefigure
+	\let\oldtheHfigure\theHfigure
+	\renewcommand{\thefigure}{figno:\thefigno}
+	\renewcommand{\theHfigure}{figno:\thefigno}
+	\stepcounter{figno}
+	\captionsetup{labelformat=empty}
+  }
+}{
+  \caption@ifcompatibility{}{
+	\captionsetup{labelformat=default}
+	\let\thefigure\oldthefigure
+	\let\theHfigure\oldtheHfigure
+	\addtocounter{figure}{-1}
+  }
+}
+\makeatother
+%%%%% END PANDOC REQUIRED %%%%%%%%%%%%%
+
+\DeclareGraphicsExtensions{.jpg,.png}
+\graphicspath{{./media/}}
+
+\title{\textbf{AIT Measurement Standard Operating Procedure}}
+\date{\textbf{Last modified on: \today \hspace{1mm} by Mark Redd}}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item \textbf{NOTICE: Lab policy requires that any person performing 
+    AIT measurements must have done the following before performing any 
+    experimental work:}
+    
+    \begin{itemize}
+    \item \textbf{Complete pertinent laboratory safety training 
+    \item Read this SOP in its entirety
+    \item Become familiar with all the experimental steps and safety protocols 
+        outlined in this SOP (This includes everything in Sections 
+        \ref{sec:experiments}, \ref{sec:data}, \ref{sec:spills} and 
+        \ref{sec:e_shtdn})
+    \item Sign and date this page}
+    \end {itemize}
+\end{itemize}
+
+By signing this, I assert that I have completed the above steps and have 
+sufficient competence to carry out these experiments safely. 
+\begin{center}
+\begin{tabu} to 0.9\textwidth {X[c]|X[c]|X[c]}
+ Full Name (Please Print) & Signature & Date  \\ 
+ \hline
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+ \vspace{5mm} & & \\ \hline 
+
+ 
+\end{tabu}
+\end{center}
+
+\newpage
+% \renewcommand{\baselinestretch}{.4}\normalsize
+\tableofcontents    % insert the table of contents
+% \renewcommand{\baselinestretch}{1.0}\normalsize
+
+\newpage
+
+% PARITAL DOCUMENT BODY SECTION
+% If you would like to only compile one file from your document,
+% comment out the section below and uncomment the line below 
+% and specify the section by the prefix you
+% have specified in the content folder (e.g. 15-Section-Name.md would
+% be section15).
+
+% \input{section15}
+
+% DOCUMENT BODY SECTION
+% This is the code for the entire document based on the .tex source
+% files in the ./tex/ folder.
+
+\maketitle
+
+\foreach \i in {10,...,99} {%
+    \edef\FileName{./tex/section\i}%     The % here are necessary to eliminate any
+    \IfFileExists{\FileName}{%  spurious spaces that may get inserted
+       \input{\FileName}%       at these points
+    }
+}
+
+\end{document}
