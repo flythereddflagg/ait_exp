@@ -1,4 +1,4 @@
-# TOC and Outline
+# TOC and Outline {#sec:toc-and-outline}
 
 Stuff here.
 

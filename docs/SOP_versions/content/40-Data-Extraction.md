@@ -1,8 +1,8 @@
-# Data Extraction
+# Data Extraction {#sec:data-extraction}
 
 During experiments data are being recorded on the lab computer, the data logger and the camera. Both the camera and the data logger on the TADA have SD cards with a 32 GB storage capacity that allows multiple runs to be recorded without extraction. The following policies are in place to ensure ease of use, efficiency, and avoid common mistakes.
 
-## General Policies
+## General Policies {#sec:general-policies}
 
 - All data, including video and raw temperature data should be extracted at least *daily*
 
@@ -39,11 +39,11 @@ During experiments data are being recorded on the lab computer, the data logger 
 
 
 
-## Video Extraction
+## Video Extraction {#sec:video-extraction}
 
-The following procedure is necessary only if you have not or cannot extract and delete video via WiFi (See Section ???).
+The following procedure is necessary only if you have not or cannot extract and delete video via WiFi (See Section @sec:camera-operation).
 
-1. Connect the camera to the computer via a micro USB cable (See Figure reffig:cam_diag)
+1. Connect the camera to the computer via a micro USB cable (See Figure @fig:cam_diag)
 1. Press the "info/wireless" button on the camera to connect the camera to the computer
 1. A new icon should appear allowing you to access the SD card as if it were a USB drive.
 1. Video files should be copied to the DIPPR Legacy Server (a.k.a. The Properties of Gases and Liquids 6th Edition Server) and organized as explained above
@@ -56,7 +56,7 @@ The following procedure is necessary only if you have not or cannot extract and 
 If you have trouble with the above method, you may remove the SD card and copy the video to the server using a similar method as below.
 
 
-## Datalogger Extraction
+## Datalogger Extraction {#sec:datalogger-extraction}
 
 To extract data from the datalogger:
 

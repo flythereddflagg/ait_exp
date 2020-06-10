@@ -1,8 +1,8 @@
-# Measurement and Data Collection
+# Measurement and Data Collection {#sec:measurement-and-data-collection}
 
 This section enumerates the procedure for measuring AIT. Researchers should follow these procedures every day and for every experiment performed to ensure consistent results. The first priority should always be safety. Therefore, if any step of this process is found to be unsafe or pose an unacceptable risk it should be changed. This method is designed to conform to the ASTM E659 Method. Therefore, any policies and procedures violate standards set forth in ASTM E659 should be rectified to maintain conformity.
 
-## Startup
+## Startup {#sec:startup}
 
 
 1. Ensure the lid is off the pressure vessel and the vessel is being 
@@ -13,109 +13,96 @@ This section enumerates the procedure for measuring AIT. Researchers should foll
     been shut down for an extended period of time for maintenance 
 purposes
     
-2. Check the lab book to see if the flask needs to be changed before turning on the furnace. If needed, change the flask (See Section @sec:flask-and-lid ) and **indicate you did so in the lab notebook**.
+2. Check the lab book to see if the flask needs to be changed before turning on the furnace. If needed, change the flask (See Section @sec:flask-and-lid) and **indicate you did so in the lab notebook**.
 
 2. Ensure the furnace is plugged in to the 220 V outlet on the edge of the hood
 
 3. Power on the furnace and set furnace temperature between 10 - 20 degrees above your initial target flask temperature 
 
    - When powered on initially, the furnace may take 2 hours or more to reach a desired temperature and thermally equilibrate
-   - Use the TADA_UI to track the internal temperature of the flask
+   - Use the TADA User Interface to track the internal temperature of the flask
    - Once the internal temperature starts to reach equilibrium, you may adjust the set point temperature until the target temperature is reached
    - **CAUTION: The furnace may be hot during the start up sequence. Avoid touching anything inside the area enclosed by the aluminum ring atop the furnace including the ring itself.**
 
-4. Ensure the vessel rupture disk is intact and positioned correctly (See Figure @fig:rupture_disk)
+5. Ensure the vessel rupture disk is intact and positioned correctly (See Figure @fig:rupture_disk)
 
-   1. See the training on proper rupture disk installation (Section @sec:Changing-the-rupture-disk) if the this is not the case
-
-   ![Ensure the rupture disk is present and intact](../media/rupture_disk.jpg){#fig:rupture_disk}
-
-5. Start up computer and log on
-
-   - Use the "AIT Research Assistant" account to log in
-     - Username: aitra
-     - Password: hotflame16
-
-6. Ensure a compatible SD card is inserted securely into the TADA datalogger (See Figure @fig:sd_card_reader)
-
-    ![SD card slot location](../media/sd_card_reader.jpg){#fig:sd_card_reader}
+   - See the training on proper rupture disk installation (Section @sec:changing-the-rupture-disk) if the this is not the case
 
 7. Ensure the 4 furnace thermocouples are connected to their 
-   corresponding connectors inside the vessel and ensure that the wires are
-   tucked down between the side of the furnace and the wall of the vessel 
-   and are out of the way (See Figure @fig:Thermocouples)
+   corresponding connectors inside the vessel and ensure that the wires are tucked down between the side of the furnace and the wall of the vessel and are out of the way (See Figure @fig:rupture_disk)
+   
+   - Thermocouple wires coming out of the furnace are numbered and should connect to the corresponding brown wire connected to  the TADA
+     
+   
+   ![Ensure the rupture disk is present and intact, and the thermocouples are connected](../media/rupture_disk.jpg){#fig:rupture_disk}
+   
+7. Start up computer and log on
 
-   - Thermocouple wires coming out of the furnace are numbered and
-     should connect to the corresponding brown wire connected to 
-     the TADA
+    - Use the "AIT Research Assistant" account to log in
+      - Username: aitra
+      - Password: hotflame16
 
-     ![Thermocouple connections](../media/Thermocouples.jpg){#fig:Thermocouples}
+8. Ensure a compatible SD card is inserted securely into the TADA datalogger (See Figure @fig:tada_connect)
 
-8. Connect the TADA to the lab computer via the USB cable mounted 
+9. Connect the TADA to the lab computer via the USB cable mounted 
     under the edge of the hood (see Figure @fig:tada_connect) 
-    
-     ![TADA Connections](../media/24v_powersupply.jpg){#fig:tada_connect}
 
-9. Plug in the wall power to the TADA 24-volt power supply (see Figure @fig:tada_connect)
+10. Plug in the wall power to the TADA 24-volt power supply (see Figure @fig:tada_connect)
 
-10. Open the TADA user interface program
+    ![TADA Connections](../media/24v_powersupply.jpg){#fig:tada_connect}
 
-    - There should be a shortcut to this program on the desktop
-    - Path: `/home/aitra/Documents/ait_exp/tada/tada_main.py`
-    - The program will open two windows. **Ensure both windows are visible while using the program.**
-    - The serial communication LED in the TADA will start flashing
+11. Open the TADA user interface program
 
-![Control LEDs inside the TADA](../media/led_red_yellow.jpg){#fig:tada_leds}
+     - There should be a shortcut to this program on the desktop
+     - Path: `/home/aitra/Documents/ait_exp/tada/tada_main.py`
+     - The program will open two windows. **Ensure both windows are visible while using the program.** (The serial communication LED inside the TADA will start flashing.)
 
 12. Twist both of the ARIA lead screws by hand such that the mounting plate is all the way down and touching the base plate and the push block all the way back and is touching the horizontal stepper motor. (This is the shutdown position. See Figure @fig:shutdown_position)
 
-     ![The shutdown position for the ARIA](../media/shutdown_position.jpg){#fig:shutdown_position}
+13. Ensure the three molex cables are securely plugged in to the ARIA (see Figure @fig:shutdown_position)
     
-13. Ensure the three molex cables are securely plugged in to the ARIA (see Figure @fig:Molex_cables)
-    - Regardless of the experiments to be performed, ensure all three are plugged in and the corresponding cables are not strained
+ - Regardless of the experiments to be performed, ensure all three are plugged in and the corresponding cables are not strained
+   
+14. Plug 5 volt power supply into the ARIA control and wait for initial setup sequence to complete (The two button lights on the ARIA control will come on when the sequence is complete) (See Figure @fig:shutdown_position)
 
-     ![Molex cables secured and out of the way](../media/Molex_cables.jpg){#fig:Molex_cables}
-
-14. Plug 5 volt power supply into the ARIA control and wait for initial setup sequence to complete (The two button lights on the ARIA control will come on when the sequence is complete) (See Figure @fig:5V_cable)
-
-    ![Plug in ARIA; 5V ONLY](../media/5V_cable.jpg){#fig:5V_cable}
+     ![The ARIA shutdown position, ARIA Molex cable locations, and ARIA Power Plug (5V ONLY)](../media/shutdown_position.jpg){#fig:shutdown_position}
 
 15. Test the placement of the ARIA using the funnel and ring stand
 
-    - Use nitrile gloves when touching the ARIA
+     - Use nitrile gloves when touching the ARIA
 
-    - Ensure the ring stand is secure in the ARIA, place the funnel in the ring stand and run the solid program (Press the  "Solid" Button **without gloves on**)
+     - Ensure the ring stand is secure in the ARIA, place the funnel in the ring stand and run the solid program (Press the  "Solid" Button **without gloves on**)
 
-    - Note that the end of the ring stand rod must be nearly flush with the inside surface
-       of the ring stand mount block (See Figure @fig:flush_r_stand)
+     - Note that the end of the ring stand rod must be nearly flush with the inside surface
+        of the ring stand mount block (See Figure @fig:flush_r_stand)
 
-    - If the funnel does not go directly into the flask, adjust the placement and retest 
-      until properly positioned
+     - If the funnel does not go directly into the flask, adjust the placement and retest 
+       until properly positioned
 
-       ![Place the ring stand so its end is flush with the inside surface of the mount block](../media/flush_r_stand.jpg){#fig:flush_r_stand}
+        ![Place the ring stand so its end is flush with the inside surface of the mount block](../media/flush_r_stand.jpg){#fig:flush_r_stand}
 
-16. Test the placement of the mirror using the Camera Suite app and camera <!--SEE FIGURES -->
+16. Test the placement of the mirror using the Camera Suite app and camera
 
-    - Connect the computer to the camera's Wi-Fi (See Section refsec:cam_tab on how to do this)
-    - Open the Camera Suite app to use the camera's view finder
-    - Mount the camera on the side of the furnace (See Section refsec:cam_on_furn)
-    - Using the camera's view finder, adjust the position of the mirror on the furnace to align the camera's view to see directly down the center of the flask
-    - The camera should be positioned so that the hole in the furnace and the mirror are visible 
-    - Once you have aligned the mirror, remove and shutdown the camera for initial furnace heating
+     - Connect the computer to the camera's Wi-Fi (See Section @sec:connecting-to-the-camera on how to do this)
+     - Open the Camera Suite app to use the camera's view finder
+     - Mount the camera on the side of the furnace (See Section @sec:camera-placement-and-removal)
+     - Using the camera's view finder, adjust the position of the mirror on the furnace to align the camera's view to see directly down the center of the flask
+     - The camera should be positioned so that the hole in the furnace and the mirror are visible 
+     - Once you have aligned the mirror, remove and shutdown the camera for initial furnace heating
 
-17. Check the glass wool air filter in the inlet of the rotameter replace if necessary (See Section ???<!--Add section thingy here-->)
+17. Check the glass wool air filter in the inlet of the rotameter replace if necessary (See Section TO BE ADDED)
 
 18. Once the target temperature is reached, allow the system to come to equilibrium
 
-    - The "Temp Ready" indicator in the TADA_UI window should turn green when the system has come to an acceptable equilibrated state
-    - Sometimes the "Temp Ready" indicator may not turn green if the flask was not installed correctly (See Section @sec:Flask-and-Lid) or there are problems with the thermocouples even when the flask has reached thermal equilibrium. Therefore, while heating up or changing temperatures, check the temperatures that are displayed in the command line window of the TADA_UI. If the temperatures are not within about 20 K of each other the thermocouples may not be placed properly. If this is the case experiments may proceed as normal but thermal equilibrium must be verified manually by using the data on the command line window and neglecting the misplaced thermocouple.
-    - If any of the thermocouples in the command line window of the TADA_UI read "NAN" (not a number) then that thermocouple is not connected. Check all thermocouple connections and reconnect the thermocouple if possible.
+     - The "Temp Ready" indicator in the TADA User Interface window should turn green when the system has come to an acceptable equilibrated state
+     - Sometimes the "Temp Ready" indicator may not turn green if the flask was not installed correctly (See Section @sec:flask-and-lid) or there are problems with the thermocouples even when the flask has reached thermal equilibrium. Therefore, while heating up or changing temperatures, check the temperatures that are displayed in the command line window of the TADA User Interface. If the temperatures are not within about 20 K of each other the thermocouples may not be placed properly. If this is the case experiments may proceed as normal but thermal equilibrium must be verified manually by using the data on the command line window and neglecting the misplaced thermocouple.
+     - If any of the thermocouples in the command line window of the TADA User Interface read "NAN" (not a number) then that thermocouple is not connected. Check all thermocouple connections and reconnect the thermocouple if possible.
 
 
-## Experimental
+## Experimental {#sec:experimental}
 This section outlines the steps for experimental runs. Each experiment should be performed following these steps exactly (insofar as that is possible). Doing so will ensure consistent results with the lowest uncertainty possible.
 
-### Pre-Experimental Safety Checks
+### Pre-Experimental Safety Checks {#sec:pre-experimental-safety-checks}
 
 Before beginning experiments, ALL operators must do the following:
 
@@ -129,7 +116,7 @@ Before beginning experiments, ALL operators must do the following:
   - NOTE: Some SDS's will recommend using a face shield in addition to splash goggles when handing their respective  chemicals. In our lab we will use ventilation hoods which, when used properly, serve as better protection than face shields. Therefore, any time an SDS recommends using a face shield you may safely ignore that recommendation provided you are using the hood properly by positioning the sash between your face and the work being performed in the hood.
   - Unless an SDS states otherwise, lab coats are recommended but not required when handling chemicals
 
-### Experimental Procedure Steps
+### Experimental Procedure Steps {#sec:experimental-procedure-steps}
 
 1. Measure out sample
 
@@ -184,9 +171,9 @@ Before beginning experiments, ALL operators must do the following:
    
     - **Note for unpressurized experiments:** If you are performing unpressurized experiments (i.e. experiments with the lid off) you may safely skip the next **three** steps. Before proceeding, ensure that the vessel is being vented by the snorkel.
     
-1. **Simultaneously** remove the snorkel from inside the vessel and place above the rupture disk (see Figure fig:rupture_hood) textbfand place lid on pressure vessel and secure in place with the clamps and cable
+1. **Simultaneously** remove the snorkel from inside the vessel and place above the rupture disk (see Figure @fig:rupture_hood) **and** place lid on pressure vessel and secure in place with the clamps and cable
 
-     ![width=.3textwidth](../media/rupture_hood.jpg)Snorkel placement during operation{#fig:rupture_hood -->
+     ![Snorkel placement during operation](../media/rupture_hood.jpg){#fig:rupture_hood}
 
      - Two people are required to perform this step. One to remove the 
        snorkel (Person B) and the other to place the lid (Person A)   
@@ -202,16 +189,16 @@ Before beginning experiments, ALL operators must do the following:
      1. Ensure the lid is centered on the vessel by running your fingers around the edge to ensure the edge of the vessel and the lid are flush 
      1. Check that the lid lies flat on the O-ring and no wires or debris will break the seal
      1. Hand tighten all the pressure vessel clamps on the lip of the lid so the slack is taken out
-     1. Using your other hand to keep the pressure vessel from rotating, tighten the clamps in opposing pairs following the numbering on the back of each clamp (See Figure fig:sec_lid) a 3/4" box wrench, tightening each clamp about 1/4 turn
+     1. Using your other hand to keep the pressure vessel from rotating, tighten the clamps in opposing pairs following the numbering on the back of each clamp (See Figure @fig:sec_lid) a 3/4" box wrench, tightening each clamp about 1/4 turn
      1. Tighten each clamp another 1/4 turn with the torque wrench, this time by going around the circle
-     1. Loop the safety cable through both lid handles and through the handles on both sides of the vessel and then back through the lid handles so the two ends meet then secure the two ends together (See Figure fig:sec_lid)
+     1. Loop the safety cable through both lid handles and through the handles on both sides of the vessel and then back through the lid handles so the two ends meet then secure the two ends together (See Figure @fig:sec_lid)
 
-     ![Securing the pressure vessel lid (Clamp numbering and Safety Cable Installation)](../media/PV_lid_secure.jpg){#fig:sec_lid -->
+     ![Securing the pressure vessel lid (Clamp numbering and Safety Cable Installation)](../media/PV_lid_secure.jpg){#fig:sec_lid}
 
 1. Pressurize the vessel
 
      - **Safety glasses are required for everyone in the lab anytime the vessel is pressurized**
-     - The absolute pressure in the vessel can be read at the bottom of the TADA_UI window and should be plotted on the graph
+     - The absolute pressure in the vessel can be read at the bottom of the TADA User Interface window and should be plotted on the graph
        1. Ensure the ball valve connecting the regulators to the inlet hose is closed (valve handle perpendicular to the flow)
        2. Fully open the rotameter on the exhaust of the pressure vessel by **gently** rotating the rotameter knob counterclockwise 
        3. If it has not been done earlier in the day, slowly open the cylinder valve all the way and then turn back one quarter turn
@@ -219,12 +206,12 @@ Before beginning experiments, ALL operators must do the following:
        5. Slowly open the ball valve to allow air to flow into the sealed pressure vessel
        6. Slowly close the rotameter (rotate the knob clockwise) until the air flow reads 25 SCFH (The flow rate is read at the middle of the floating ball)
        7. Allow 1-2 minutes for equilibrium to be reached initially
-       8. Adjust pressure in vessel using low pressure regulator until the absolute pressure reading in the TADA_UI is highlighted green  indicating that the pressure in the vessel is sufficiently close to 1 atm (760 torr +/- 2 torr)
-          - This is easier with two people. One to read the pressure off the TADA_UI and the other adjust the regulator
+       8. Adjust pressure in vessel using low pressure regulator until the absolute pressure reading in the TADA User Interface is highlighted green  indicating that the pressure in the vessel is sufficiently close to 1 atm (760 torr +/- 2 torr)
+          - This is easier with two people. One to read the pressure off the TADA User Interface and the other adjust the regulator
           - While pressurizing, make sure that the rotameter reads about 25 SCFH. This may take some adjusting back and forth.
           - Allow at least 20 secs for equilibration each time the pressure is changed
        9. Ensure that there are no leaks around the lid before proceeding
-          - **Leak protocol:** If a loud, high pitched noise is heard or the pressure read on the TADA_UI fails to rise, there is likely a leak. If this occurs, do the following:
+          - **Leak protocol:** If a loud, high pitched noise is heard or the pressure read on the TADA User Interface fails to rise, there is likely a leak. If this occurs, do the following:
             1. Identify where the leak is happening (using the sound or Snoop A.K.A. Soapy water)
             2. If the leak is happening anywhere besides the O-ring, immediately close the ball valve and allow the vessel to fully vent to ambient pressure to fix the leak
             3. If the leak is happening somewhere along the O- ring, verify that there is no debris or wires breaking the seal. If a seal break from debris or wires is found, immediately close the ball valve and allow the vessel to fully vent to ambient pressure to fix the leak
@@ -233,7 +220,7 @@ Before beginning experiments, ALL operators must do the following:
 
 1. Look through the sight glass on the pressure vessel and ensure the vessel is sufficiently dark to see any flame from the mirror on top of the furnace
 
-1. In the TADA_UI program, press the "Choose Target File" button and choose where to save your file
+1. In the TADA User Interface program, press the "Choose Target File" button and choose where to save your file
 
      - Save all temperature data files in comma separated values (.csv) format
 
@@ -254,8 +241,8 @@ Before beginning experiments, ALL operators must do the following:
 1. Begin data collection 
 
       - **Note for unpressurized experiments:** If you are performing unpressurized experiments (i.e. experiments with the lid off) turn off the lights and ensure the laboratory is sufficiently dark to see any flame from the mirror on top of the furnace **before** beginning data collection.
-      - In the TADA_UI program, press the Enter key or click the "Collect Data" button on the TADA_UI
-      - The TADA_UI will keep track of the elapsed time since data collection began at the bottom of the window. This may be used to time the experiment
+      - In the TADA User Interface program, press the Enter key or click the "Collect Data" button on the TADA User Interface
+      - The TADA User Interface will keep track of the elapsed time since data collection began at the bottom of the window. This may be used to time the experiment
       - Press the "Record" button on the Camera Suite app to start recording
 
 1. Press the green or blue button on the ARIA control box that corresponds to the physical state of the sample (green for solid, blue for liquid) to initiate ARIA sample injection.
@@ -357,17 +344,17 @@ Before beginning experiments, ALL operators must do the following:
    - The heat gun should **only** be plugged in to the outlet when in use
    - Do not point the heat gun towards the ARIA at any time
 
-1. Extract, save and appropriately rename the video data between experiments (See Section refsec:vid_ex). Remember to delete the video
+1. Extract, save and appropriately rename the video data between experiments (See Section @sec:video-extraction). Remember to delete the video
       off the camera once you have made sure that it is saved to the computer.
 
 1. Once the next temperature is reached, allow the system to come to equilibrium
 
-      - The "Temp Ready" indicator in the TADA_UI window should turn green when the system has come to an acceptable equilibrated state
+      - The "Temp Ready" indicator in the TADA User Interface window should turn green when the system has come to an acceptable equilibrated state
 
 1. Once the system is at equilibrium, start this procedure over from step 1 (Measure Out Sample)
 
 
-## Shutdown
+## Shutdown {#sec:shutdown}
 
  
 
@@ -375,7 +362,7 @@ The following should be done before leaving the lab at the end of every work day
 
 1. Power off the furnace
 2. Shutdown TADA
-   1. Close the TADA_UI program
+   1. Close the TADA User Interface program
    2. Unplug TADA's USB connection
    3. Unplug the wall power from the TADA power supply
 3. Shutdown ARIA and store accessories
@@ -385,7 +372,7 @@ The following should be done before leaving the lab at the end of every work day
    4. Appropriately, discard the contents of beakers and prepare them for dish washing
    5. Discard any residual sample in syringes and store them in the syringe box in the AIT drawer without rinsing <!--Change POLICY for syringes-->
    6. Store all chemicals in the appropriate cabinets
-4. Remove any organic solid residue from working surfaces (See Section refsec:spill_solid) 
+4. Remove any organic solid residue from working surfaces (See Section @sec:spill-clean-up) 
 5. Ensure all air systems are depressurized 
    1. Ensure the ball valve is closed (the handle should be perpendicular to the flow)
    2. Slowly close the cylinder valve all the way

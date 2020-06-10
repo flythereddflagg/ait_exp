@@ -1,8 +1,8 @@
-# Spill Clean1.up
+# Spill Clean-up {#sec:spill-clean-up}
 
 In the event of any spill, appropriate PPE specified in the corresponding SDS should be used in clean1.up. Always check the SDS for special considerations when cleaning up any compound.
 
-## Liquids
+## Liquids {#sec:liquids}
 
 In the event of a small spill (i.e. less than 100 ml), the following protocol should be followed:
 
@@ -16,7 +16,7 @@ In the event of a small spill (i.e. less than 100 ml), the following protocol sh
 
 
 
-## Solids
+## Solids {#sec:solids}
 
 We will generally work with organic solids that readily dissolve in simple organic solvents (e.g. acetone). Researchers must always check chemical compatibility with solutes and solvents before dissolving any compound.
 

@@ -1,8 +1,8 @@
-# Experimental Design
+# Experimental Design {#sec:experimental-design}
 
 When performing AIT measurements researchers will have relatively small sample sizes to work with therefore following guidelines apply to minimize the amount of compound needed to effectively ascertain the AIT.
 
-## Sample Size Procedure
+## Sample Size Procedure {#sec:sample-size-procedure}
 
 There are 5 standard sample sizes specified by the ASTM method they are as follows:
 
@@ -40,7 +40,7 @@ For any compound measurement, there must be a minimum of 3 sample sizes tested. 
 
 1. Report the minimum AIT found between all of the sample sizes
 
-## Finding the minimum AIT
+## Finding the minimum AIT {#sec:finding-the-minimum-ait}
 
 The methodology for finding a minimum AIT for a particular sample size involves a bisection method described as follows:
 

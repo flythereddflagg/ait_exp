@@ -1,4 +1,4 @@
-# Emergency Shutdown
+# Emergency Shutdown {#sec:emergency-shutdown}
 
 In the event of an emergency do the following:
 

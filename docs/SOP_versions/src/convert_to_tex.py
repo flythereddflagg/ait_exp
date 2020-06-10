@@ -32,7 +32,7 @@ for root, dirs, files in os.walk('./content'):
                 filestring = f.read()
                 filestring = filestring.replace(
                     r"\includegraphics",
-                    r"\includegraphics[width=0.5\textwidth]"
+                    r"\includegraphics[width=0.75\textwidth]"
                 )
                 filestring = filestring.replace(
                     "../media/",
