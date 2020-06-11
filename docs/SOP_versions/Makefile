@@ -78,3 +78,15 @@ clean:
 	del *.run.xml
 	del *blx.bib
 	del .\tex\section*
+
+help:
+	@echo Usage: make [COMMAND]
+	@echo Commands:
+	@echo 	all     - check for bibliography. if it exists, run wbib, nobib otherwise
+	@echo 	wbib    - compile to pdf with bibliography
+	@echo 	nobib   - compile to pdf WITHOUT bibliography
+	@echo 	md      - convert from md to tex only
+	@echo 	pdf     - compile tex to pdf only
+	@echo 	clean   - delete all generated files
+	@echo 	display - show the compiled pdf if it exists
+	@echo 	help    - show this message

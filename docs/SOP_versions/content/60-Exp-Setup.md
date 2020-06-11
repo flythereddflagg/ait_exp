@@ -161,7 +161,7 @@ We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
 1. Discard the used aluminum foil in a normal trash can and set aside the thermocouples in the hood or on a surface where they will not catch on anything or become damaged
 1. Check the thermocouples and thermocouple wiring for damage or fraying that may affect thermocouple performance. If needed, replace the thermocouples before assembling the flask and lid.
 
-### Assembling the Flask and Lid {#sec:assembling-the-flask and-lid}
+### Assembling the Flask and Lid
 
 - Use the figures in this section as a reference when putting together the assembly
 
@@ -169,7 +169,9 @@ We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
 
 
 1. If dirty, wash out the flask using soap and water and dry as much as possible (See Section @sec:flask-cleaning); be sure to rinse thoroughly
+
 1. Any leftover water will boil away when the furnace heats up and before any measurements are taken
+
 1. Wrap entire flask in aluminum foil with thermocouples at the bottom, side and top of the round part of the flask (thermocouples should be touching the glass directly) (Refer to Figure @fig:wrap) **NOTE: The more reflective side of the foil should always be facing inward**
 
    1. Start by getting a long strip of aluminum foil (12" long or so)
@@ -184,8 +186,11 @@ We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
      ![Steps for wrapping the flask in foil](../media/wrap.jpg){#fig:wrap}
 
 1. Ensure the bracket screw is loose
+
 1. Fit the neck of the flask in the center hole of the ceramic lid assembly with the lip of the flask fitting into the groove at the base of the center hole on both sides
+
 1. Guide the thermocouple wires in the gap between the two ceramic halves so they are out of the way when the flask/lid assembly is inserted into the furnace
+
 1. Slide the loose half of the ceramic back in to be snug around the flask neck, replace the spring, and tighten the nut on the top to hold it in position
 
    - The two halves nearest to the top of the assembly should meet or very nearly meet; if they don't then some foil should be removed from the neck of the flask
@@ -193,7 +198,9 @@ We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
 1. Use a circular spring to help hold the halves together
 
 1. Make a "donut" of foil wrapped around the neck of the flask that will rest up against the bottom of the lid assembly
+
 1. Slide the foil "donut" up so and press it so it is flush against the ceramic and restricts air flow around the opening
+
 1. Carefully turn the flask/lid assembly over making sure the flask doesn't fall out
 
     - **Do this over a table or close to a level surface to avoid accidental breaking of the flask**
@@ -202,28 +209,32 @@ We use 1100 alloy extra thin aluminum foil as a rupture disk. This material has 
     
     - If the flask falls out, remove it and add more foil around the neck
     
-      ![Final state of the flask/lid assembly](../media/insert_in_lid_w_donut.jpg){#fig:flid_done}
-
 1. See Figure @fig:flid_done for the final flask/lid assembly before insertion into the furnace
+
 1. Place the prepared flask/lid assembly into the furnace by gripping the assembly with both hands by the screws on top and slowly lowering the assembly into place
+
 1. Turn the flask/lid assembly so the thermocouple wires point away from the ARIA
+
 1. Insert flask interior thermocouple (#4) carefully down the flask neck, making sure it goes straight in and the bead doesn't get 
    caught anywhere
    
 1. The bead of Thermocouple 4 should be suspended in the approximate center of the flask, not be touching any part
-1. The wire of Thermocouple 4 should run up the edge of the neck and not the middle to allow compound to be injected without making contact with the thermocouple
-1. Use the bracket on one of the two screws on top of the lid to secure the rubber hose holding the thermocouple in place
-1. Tighten the nut on the bracket hand tight and then give a half turn with a wrench to secure the nut (See Figure @fig:wrench_tight)
 
-     ![Position thermocouple 4 with the rubber hose and tighten](../media/top_of_furnace_w_wrench.jpg){fig:wrench_tight}
+1. The wire of Thermocouple 4 should run up the edge of the neck and not the middle to allow compound to be injected without making contact with the thermocouple
+
+1. Use the bracket on one of the two screws on top of the lid to secure the rubber hose holding the thermocouple in place
+
+1. Tighten the nut on the bracket hand tight and then give a half turn with a wrench to secure the nut (See Figure @fig:flid_done)
 
 1. Connect the thermocouple connectors to join the  
-   leads from the flask to the TADA, keeping the wires out of the way
-   of the ARIA and tucked down to the side of the furnace
+     leads from the flask to the TADA, keeping the wires out of the way
+     of the ARIA and tucked down to the side of the furnace
+
+    ![Final state of the flask/lid assembly; Tighten hose clam with a wrench](../media/insert_in_lid_w_donut.jpg){#fig:flid_done}
+
 1. Ensure the mirrors are set up correctly
+
 1. The final setup should resemble Figure @fig:in_furnace
-
-
 
 ![Diagram of the furnace when assembled](../media/Furnace_diagram_mod.jpg){#fig:in_furnace}
 

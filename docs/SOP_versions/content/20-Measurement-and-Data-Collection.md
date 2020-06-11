@@ -1,6 +1,8 @@
 # Measurement and Data Collection {#sec:measurement-and-data-collection}
 
-This section enumerates the procedure for measuring AIT. Researchers should follow these procedures every day and for every experiment performed to ensure consistent results. The first priority should always be safety. Therefore, if any step of this process is found to be unsafe or pose an unacceptable risk it should be changed. This method is designed to conform to the ASTM E659 Method. Therefore, any policies and procedures violate standards set forth in ASTM E659 should be rectified to maintain conformity.
+This section enumerates the procedure for measuring AIT. Researchers should follow these procedures to ensure consistent results. The first priority should always be safety. Therefore, if any step of this process is found to be unsafe or pose an unacceptable risk it should be changed. 
+
+This method is designed to conform to the ASTM E659 Method. Therefore, any policies and procedures violate standards set forth in ASTM E659 should be rectified to maintain conformity.
 
 ## Startup {#sec:startup}
 

@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[margin=0.5in]{geometry} % set margins and general document geometries
+\usepackage[margin=0.75in]{geometry} % set margins and general document geometries
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc} 			% looks better than default font encoding
 \usepackage{lmodern} 				% need a newer font to work with T1 font encoding
@@ -86,9 +86,7 @@
     \item \textbf{Complete pertinent laboratory safety training 
     \item Read this SOP in its entirety
     \item Become familiar with all the experimental steps and safety protocols 
-        outlined in this SOP (This includes everything in Sections 
-        \ref{sec:experiments}, \ref{sec:data}, \ref{sec:spills} and 
-        \ref{sec:e_shtdn})
+        outlined in this SOP
     \item Sign and date this page}
     \end {itemize}
 \end{itemize}
@@ -140,6 +138,7 @@ sufficient competence to carry out these experiments safely.
     \edef\FileName{./tex/section\i}%     The % here are necessary to eliminate any
     \IfFileExists{\FileName}{%  spurious spaces that may get inserted
        \input{\FileName}%       at these points
+	   \newpage
     }
 }
 
