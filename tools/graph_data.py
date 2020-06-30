@@ -5,7 +5,7 @@ import os
 
 
 def plot_data(data_path):
-    filename = data_path.split('\\')[-1]
+    filename = data_path.split('/')[-1]
     with open(data_path, 'r', newline='') as f:
         f.readline()
         run_info = f.readline()
@@ -50,10 +50,10 @@ def recurse_plot(path):
     for root, dirs, filenames in os.walk(path):
         for filename in filenames:
             if not filename.endswith(".csv"): continue
-            print("Processing {}...".format(root + '\\' + filename))
+            print("Processing {}...".format(root + '/' + filename))
             try:
-                plot_data(root + '\\' + filename)
-                plt.savefig(root + '\\' + filename[:-4] + '.png')
+                plot_data(root + '/' + filename)
+                plt.savefig(root + '/' + filename[:-4] + '.png')
             except Exception as e:
                 print("Plot failed because:")
                 print(e)

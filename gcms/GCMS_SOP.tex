@@ -1,0 +1,205 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{titlesec}
+\usepackage[document]{ragged2e}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\setlength{\parskip}{1em}
+
+\DeclareGraphicsExtensions{.jpg,.JPG}
+
+\newcommand*{\TitleFont}{
+      \usefont{\encodingdefault}{\rmdefault}{b}{n}
+      \fontsize{12}{20}
+      \selectfont}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    %\addtocounter{page}{-1}%
+    \newpage}
+    
+\begin{document}
+
+% generates the title
+%\maketitle
+\begin{center}
+\TitleFont Gas Chromatograph Mass Spectrometer Standard Operating Procedures\newline
+\TitleFont Last modified on: \today \hspace{1mm} by Mark Redd \newline
+\end{center}
+
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+ 
+% ~~~~ Does below section need to be included for GCMS???
+\begin{itemize}
+\item \textbf{NOTICE: Lab policy requires that any person performing 
+    GCMS measurements must have done the following before performing any 
+    experimental work:}
+    
+    \begin{itemize}
+    \item \textbf{Complete pertinent laboratory safety training 
+    \item Read this SOP in its entirety
+    \item Become familiar with all the experimental steps outlined in this SOP
+    \item Sign and Date the GCMS SOP Signatures Sheet}
+    \end {itemize}
+\end{itemize}
+
+\renewcommand{\baselinestretch}{.75}\normalsize
+\tableofcontents    % insert the table of contents
+\renewcommand{\baselinestretch}{1.0}\normalsize
+%\tableofcontents 
+
+
+\section{Start up Procedures}
+	\begin{itemize}
+        \item Ensure that HiVac is not lower than $1.0*10^{-6}$ and not higher than $3.5*10^{-5}$
+             
+        \end{itemize}
+        
+\section{Tuning the GCMS}
+	\subsection{Tune MSD should be done weekly}
+    	%\begin{itemize}
+    	%\item Input steps to do weekly tuning
+    	%\end{itemize}
+    \subsection{Quick Tune should be done daily}
+    	\begin{itemize}
+    	\item Save as pdf $\Longrightarrow$ TuneCreationDate
+        	\begin{itemize}
+        	\item Creation Date is listed, just copy and paste it in File Name
+            	\begin{itemize}
+            	\item Ex: Tune20151103091307
+            \item Save on the Desktop in Folder ``MS Tune Reports''
+            \item In pdf files, ensure Relative Abundance for Mass 502 is above 3\% and roughly the same as the day before
+            	\end{itemize}
+        	\end{itemize}
+    	\end{itemize}
+        
+\section{Edit Method $\Longrightarrow$ This is where you tell the GCMS how to run (flow rates, temperatures, ramp rates, sample size, etc.)}
+	\begin{itemize}
+	\item This process is where the ``art'' of GCMS work comes in. Use p. 33-37 of black binder for MSD to determine how to change the method to get smoother/more resolved peaks.
+    \item Click pencil icon underneath ``method''
+    \item Everything on the left hand side should read ``Ready'' except GC Ready State
+    \item Oven Icon
+    	\begin{itemize}
+    	\item Choose duration of temperature holding a ramp rate 
+        \end{itemize}
+    \item CFT Icon
+    	\begin{itemize}
+    	\item Choose Control method (flow rate or pressure) and specify
+        \end{itemize}
+    \item Inlets Icon
+    	\begin{itemize}
+    	\item Use the Back Inlet Tab
+        \item Total Flow can \textbf{never} be above 1250 mL/min
+        \item Split ratio can be adjusted as long as Total Flow is not too large
+        \end{itemize}
+    \item ALS Icon
+    	\begin{itemize}
+    	\item Choose injection volume
+        	\begin{itemize}
+        	\item The large the molecule, the smaller injection volume
+        	\end{itemize}
+		\begin{itemize}
+		\item Solvent Washes
+        	\begin{itemize}
+        	\item Always want at least one wash for Solvent A (Acetone) both Pre and Post Injection to keep the needle clean. If necessary, use Solvent B (Methanol).
+        	\end{itemize}
+        \item Click \textbf{OK} until you reach \textbf{Save Method}
+        \item Save method as \textbf{CompoundName.M} in Compound Folder
+		\end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Single Runs}
+	\begin{itemize}
+	\item Start the Run
+    	\begin{itemize}
+    	\item Click the big green arrow
+        \item Change the operator intiials
+        \item Ensure correct data path
+        \item File Name
+        	\begin{itemize}
+        	\item If you have changed something in the method, include that in the file name
+            	\begin{itemize}
+            	\item Ex: NOV 2 HEXYLCYCLOHEXANE 5 	-- 190c, 25KMIN, SPLIT.D
+            	\end{itemize}
+        	\end{itemize}
+    	\end{itemize}
+        \item To Do the Next Run
+        	\begin{itemize}
+        	\item Repeat Procedure 5
+            \item If you are changing the method in any way, you will also need to repeat Procedure 4
+        	\end{itemize}
+        \item Run Several \textbf{BLANK} runs between each sample run to flush out any residual sample (simply use an empty vial)
+        	\begin{itemize}
+        	\item When running blanks, label the runs around the sample runs:
+            	\begin{itemize}
+            	\item{} [Date] Blank 1aa (the first ``a'' means ``before the sample run'', the second ``a'' means ``the first blank done'')
+                \item{} [Date] Blank lab
+                \item{} [Date] [Sample] 1
+                \item{} [Date] Blank 1ba (the ``b'' means ``after the sample run'')
+                \item{} [Date] Blank 1bb
+                \item{} [Date] Acetone 1 (to clean everything out)
+                \item{} [Date] Blank 2aa
+                \item{} [Date] Blank 2ab
+                \item{} [Date] [Sample] 2...
+            	\end{itemize}
+        	\end{itemize}
+	\end{itemize}
+
+\section{Multiple Runs (Sequence)}
+	\begin{itemize}
+	\item Edit Sequence
+    	\begin{itemize}
+    	\item Click the pencil icon underneath ``Sequence''
+        \item Keep data path the same as the method path (same folder)
+        \item Choose Type (Sample or Blank), Vial position, and Sample Name
+        \item Method should be spelled the exact same as the \textbf{.M} file used (CompoundName)      
+    	\end{itemize}
+    \item Running Sequences
+    	\begin{itemize}
+    	\item Include the desired number of runs in the Edit Sequence step
+        \item To run, click the running man underneath ``Sequence'' instead of the big green arrow, then click ``Run Sequence''
+    	\end{itemize}
+	\end{itemize}
+    
+\section{Analysis}
+	\begin{itemize}
+	\item Purity
+    	\begin{itemize}
+    	\item Tmplibrp.txt file includes acetone in purity, so use rteres.txt file to compute actual purity
+        	\begin{itemize}
+        	\item Add up the corrected peak areas excluding acetone and divide each peak area by the total
+        	\end{itemize}
+    	\end{itemize}
+    \item Compound identification
+    	\begin{itemize}
+    	\item Open AMDIS from the Desktop
+        	\begin{itemize}
+        	\item Open the file you wish to analyze
+           	\item Click Run near the top of the window
+            \item In the top graph, zoom in on a peak
+            \item Click on the top of the peak
+            \item Analyze $\Longrightarrow$ Go to NIST MS Program
+            \item Right center graph compares MS data (red) to known compound MS (blue)
+            	\begin{itemize}
+            	\item Use tabs below to select different comparisons 
+            	\end{itemize}
+            \item Lower left list gives compounds that are similar to collected MS
+            	\begin{itemize}
+            	\item Prob. Column gives probability of a match
+            	\end{itemize}
+            \item On the bar graph, the farther to the left the red bar is, the better the math
+            \item Bottom graph gives structure of selected compound
+        	\end{itemize}
+    	\end{itemize}
+	\end{itemize}
+
+\end{document}

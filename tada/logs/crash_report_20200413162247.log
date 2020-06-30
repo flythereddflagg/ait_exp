@@ -1,0 +1,13 @@
+20200413162247
+Traceback (most recent call last):
+  File ".\tada_main.py", line 31, in <module>
+    ui = tada_ui.TaDaUI(
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\tada_ui.py", line 26, in __init__
+    super().__init__(layout_path, data_src, vis_data)
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\daq_ui.py", line 36, in __init__
+    super().__init__(layout_path)
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\ui.py", line 27, in __init__
+    self.ui_config = self.dict_from_jsonfile(layout_path)
+  File "K:\Users\redddog\AIT\ait_exp\tada\src\ui.py", line 64, in dict_from_jsonfile
+    with open(path, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'K:\\Users\\redddog\\AIT\\ait_exp\\tada/src/tada_ui.json'
