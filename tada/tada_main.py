@@ -4,7 +4,7 @@ from datetime import datetime
 import traceback
 import os
 
-DEMO = True
+DEMO = False
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LAYOUT = ROOT + "/data/tada_ui.json"
 LOG_PATH = ROOT + "/../../data/experimental_log.csv"
@@ -45,7 +45,7 @@ if __name__ == '__main__':
             track = traceback.format_exc()
             now = datetime.now()
             dt_string = now.strftime("%Y%m%d%H%M%S")
-            log_file = root + f"/logs/crash_report_{dt_string}.log"
+            log_file = ROOT + f"/logs/crash_report_{dt_string}.log"
             print(track)
             with open(log_file, 'w') as f:
                 f.write(dt_string + '\n' + track)
