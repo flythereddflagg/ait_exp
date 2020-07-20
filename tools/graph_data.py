@@ -1,7 +1,9 @@
+import os
+import tkinter as tk
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 
 
 def plot_data(data_path):
@@ -57,25 +59,47 @@ def recurse_plot(path):
             except Exception as e:
                 print("Plot failed because:")
                 print(e)
+    plt.close('all')
 
 
+def run_plot(file_, root, event=None):
+    try:
+        if file_:
+            input_path = tk.filedialog.askopenfilename(master=root)
+            if not input_path: return
+            plt.figure()
+            plot_data(input_path)
+            plt.show()
+            plt.close('all')
+        else:
+            input_path = tk.filedialog.askdirectory(master=root)
+            if not input_path: return
+            plt.figure()
+            recurse_plot(input_path)
+        print("DONE PROCESSING.")
+    except Exception as e:
+        print(type(e), e)
+        print("Plot Generation Failed. Please try again.")
 
-def main():            
-    prompt = "\nEnter a '.csv' data path, r "\
-        "with a directory or q to quit\n ---> "
-    input_path = input(prompt).replace("'", "").strip()
-    while input_path != 'q':
-        try:
-            if input_path.split()[0] == 'r':
-                recurse_plot(' '.join(input_path.split()[1:]))
-            else:
-                plot_data(input_path)
-                plt.show()
-        except Exception as e:
-            print(e)
-            print("Plot Generation Failed. Please try again.")
-        input_path = input(prompt)
 
+def main():
+    root = tk.Tk()
+    root.geometry("300x150+500+500")
+    tk.Label(
+        root, 
+        text="Select a directory of data or a single file"
+    ).pack(side="top")
+    tk.Button(
+        root, 
+        text="Directory", 
+        command=lambda: run_plot(False, root)
+    ).pack(side='left', fill="x", expand=1, padx=5)
+    tk.Button(
+        root, 
+        text="Single File", 
+        command=lambda: run_plot(True, root)
+    ).pack(side='right', fill="x", expand=1, padx=5)
+    root.mainloop()
 
 
 if __name__ == '__main__':
