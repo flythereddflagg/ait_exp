@@ -1,7 +1,13 @@
+import os
+from sys import argv
+
+import tkinter as tk
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import statsmodels.api as sm
+
 # $$P_{ignition} = \frac{1}{1 + e^{\frac{3}{R_{95}}(T-AIT_{P=50})}}$$
 # P_ignition = 1/(1 + exp(sig_radus/r95*(T - AIT_p50)))
 
@@ -18,7 +24,7 @@ def gen_items(list_of_things):
 
 
 marker = gen_items(["+", "x", '|', '1', (5, 2, 0)])
-color = gen_items(['green', 'blue', "darkorange", "red", "purple",])
+color = gen_items(['green', 'blue', "darkorange", "red", "purple", 'black'])
 # linestyle = gen_items(["-", "--", '-.', ':', "-"]) # varied line styles
 linestyle = gen_items(["-"])
 
@@ -29,15 +35,34 @@ def regressAIT(data, confidence_level=0.95, r_ci_guess=2):
     x_w_const = sm.add_constant(xplt)
     model = sm.Logit(yplt, x_w_const)
 
-    ait_exp = min([i[0] for i in data if i[1] == 1])
+    ignitions = [i[0] for i in data if i[1] == 1]
+    if not ignitions:
+        return None, float("nan"), float("nan")
+    ait_exp = min(ignitions)
     # sig_radius is the solution to: P = 1 / (1 + exp(-T))
     sig_radius = -np.log(1 / confidence_level - 1)
     sharpness = sig_radius / r_ci_guess
     sigma = [-ait_exp*sharpness, sharpness]
     
-    result = model.fit(start_params=sigma, method='bfgs', disp=0)
+    for method_ in [
+        # 'newton',
+        # 'nm',
+        'bfgs',
+        'lbfgs',
+        'cg',
+        'ncg',
+        'powell',
+        'basinhopping',
+    ]:
+        result = model.fit(start_params=sigma, method=method_, disp=False)
+        if result.mle_retvals['converged']:
+            print(f"Method '{method_}' successfully converged")
+            break
     aitp50 = -result.params[0]/result.params[1]
-    r_ci = sig_radius/result.params[1]
+    if not result.mle_retvals['converged']:
+        r_ci = 0.02 * (aitp50 + 273.15)
+    else:
+        r_ci = sig_radius/result.params[1]
     
     return result, aitp50, r_ci
 
@@ -72,50 +97,57 @@ def generate_report(file_path, data_sheet="Data Summary", header=1,
     plt.figure(figsize=(10,8))
     plt.subplot(211)
     report_text = ""
+    min_ait = 1e6
     for ss in sample_sizes:
-        if ss != 150: continue
+        # if ss != 150: continue
         data = ss_sets[ss]
         xplt, yplt = list(map(list, zip(*data)))
         result, aitp50, r95 = regressAIT(data)
-        flpth = file_path.replace('\\', '/').split('/')[-1][:-5]
-        regression_name = f"{flpth} @ {int(ss)} μL/mg sample size"
-
-    #     print(result.summary(
-    #         yname="ignition state",
-    #         xname=["constant", 'x1'],
-    #         title=f"Logit Regression Results for: {regression_name}",
-    #         alpha=0.05
-    #     ))
-    #     print("\nConfidence Intervals:\n", result.conf_int(alpha=0.05))
-    #     print(f"Regressed params     : {sigma}")
-
-
-        # report_text += "\n".join([
-        #     f"Regression Results for: {regression_name}",
-        #     f"AIT (Exp)     :  {min([i[0] for i in data if i[1] == 1]):5.1f} ᵒC",
-        #     f"AIT (P = 0.5) :  {aitp50:5.1f} ᵒC",
-        #     f"R (P = 0.95)  : ±{r95:5.1f} ᵒC\n\n",
-        # ])
-        aitexp = min([i[0] for i in data if i[1] == 1])
-        std_tc_err = aitexp * 0.0075
-        if std_tc_err < 2.2: std_tc_err = 2.2
-        tc_lo_err = aitexp - std_tc_err
-        lo_uncertainty = aitp50 - r95
-        if lo_uncertainty > tc_lo_err: lo_uncertainty = tc_lo_err
-        hi_uncertainty = aitexp + std_tc_err
-        assert lo_uncertainty < aitexp < hi_uncertainty, "Uncertainty mismatch"
-        report_text += "\n".join([
-            f"Regression Results for: {regression_name}",
-            f"AIT (Exp) :  {aitexp:5.1f} ᵒC",
-            f"Lower Uncertainty :  {lo_uncertainty:5.1f} ᵒC",
-            f"Upper Uncertainty : {hi_uncertainty:5.1f} ᵒC\n\n",
-        ])
-        
-        lims = [min(xplt), max(xplt)]
-        xs = np.linspace(*lims, 100)
-        sigma = list(result.params)
-        ys = result.model.cdf(sigma[0] + sigma[1] * xs)
         ncolor = next(color)
+        if result:
+            flpth = file_path.replace('\\', '/').split('/')[-1][:-5]
+            regression_name = f"{flpth} @ {int(ss)} μL/mg sample size"
+            fit_add = ""
+            if not result.mle_retvals['converged']:
+                regression_name += " (Unconverged)"
+                fit_add = " (Unconverged)"
+            ignitions = [i[0] for i in data if i[1] == 1]
+            aitexp = min(ignitions)
+            std_tc_err = aitexp * 0.0075
+            if std_tc_err < 2.2: std_tc_err = 2.2
+            tc_lo_err = aitexp - std_tc_err
+            lo_uncertainty = aitp50 - r95
+            if lo_uncertainty > tc_lo_err: lo_uncertainty = tc_lo_err
+            hi_uncertainty = aitexp + std_tc_err
+            assert lo_uncertainty < aitexp < hi_uncertainty,\
+                "Uncertainty mismatch"
+            report_text += "\n".join([
+                f"Regression Results for: {regression_name}",
+                f"AIT (Exp) :  {aitexp:5.1f} ᵒC",
+                f"Lower Uncertainty : {lo_uncertainty:5.1f} ᵒC",
+                f"Upper Uncertainty : {hi_uncertainty:5.1f} ᵒC\n\n",
+            ])
+            if aitexp < min_ait:
+                min_ait = aitexp
+                final = "\n".join([
+                    f"*** Final AIT report for: {flpth}",
+                    f"AIT (Exp) :  {aitexp:5.1f} ᵒC",
+                    f"Sample Size: {int(ss)} μL/mg",
+                    f"Lower Uncertainty : {lo_uncertainty:5.1f} ᵒC",
+                    f"Upper Uncertainty : {hi_uncertainty:5.1f} ᵒC\n\n",
+                ])
+            lims = [min(xplt), max(xplt)]
+            xs = np.linspace(*lims, 100)
+            sigma = list(result.params)
+            ys = result.model.cdf(sigma[0] + sigma[1] * xs)
+            plt.plot(
+                xs, ys, 
+                label=f"{int(ss)} μL/mg (fit) {fit_add}", 
+                color=ncolor, 
+                linestyle=next(linestyle),
+                linewidth=0.7
+            )
+        
         plt.scatter(
             xplt, yplt, 
             marker=next(marker), 
@@ -124,19 +156,37 @@ def generate_report(file_path, data_sheet="Data Summary", header=1,
             linewidth=1.0,
             s = 100
         )
-        plt.plot(
-            xs, ys, 
-            label=f"{int(ss)} μL/mg (fit)", 
-            color=ncolor, 
-            linestyle=next(linestyle),
-            linewidth=0.7
-        )
-    plt.gcf().text(0.1, 0.01, report_text, ha="left", fontsize=10)
+    report_text += final
+    plt.gcf().text(0.1, 0.45, report_text, ha="left", va='top', fontsize=10)
     plt.legend()
     plt.ylabel("Probablity of ignition")
     plt.xlabel("Temperature (ᵒC)")
-    plt.show()
+    
+
+
+def main():
+    root = tk.Tk()
+    root.withdraw()
+    if len(argv) < 2:
+        filename = tk.filedialog.askopenfilename(parent=root)
+        if not filename: return
+        root.destroy()
+        generate_report(filename)
+        plt.show()
+    elif argv[1] == '-r':
+        dirname = tk.filedialog.askdirectory(parent=root)
+        root.destroy()
+        if not dirname: return
+        for root, dirs, files in os.walk(dirname):
+            for file_ in files:
+                if file_.endswith(".xlsx"):
+                    generate_report(root + "/" + file_)
+                    plt.savefig(root + "/" + file_[:-5] + '.png')
+            break
+    else:
+        print("Error: Invalid argument.")
+        root.destroy()
 
 
 if __name__ == "__main__":
-    generate_report("./compound_summaries/n-tetracosane_summary.xlsx")
+    main()
