@@ -128,7 +128,7 @@ class TaDaUI(DataAquisitionUI):
         OVERRIDDEN FROM PARENT
         Do any processing needed before data collection and graphing.
         """
-        if len(data_point != 7):
+        if len(data_point) != 7:
             print("bad data point")
             return
         self.current_time = data_point[0]
