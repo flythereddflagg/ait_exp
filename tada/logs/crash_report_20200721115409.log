@@ -1,0 +1,11 @@
+20200721115409
+Traceback (most recent call last):
+  File "/home/aitra/Documents/ait_exp/tada/tada_main.py", line 43, in <module>
+    ui.mainloop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 75, in mainloop
+    self.daq_loop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 98, in daq_loop
+    self.process_data(data_point)
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 133, in process_data
+    self.p_gauge, self.p_baro = data_point[5:]
+ValueError: too many values to unpack (expected 2)

@@ -1,0 +1,13 @@
+20200721110533
+Traceback (most recent call last):
+  File "/home/aitra/Documents/ait_exp/tada/tada_main.py", line 43, in <module>
+    ui.mainloop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 75, in mainloop
+    self.daq_loop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 92, in daq_loop
+    data_point += src.get_data()
+  File "/home/aitra/Documents/ait_exp/tada/src/data_src.py", line 134, in get_data
+    data = [float(val) for val in data[1:]]
+  File "/home/aitra/Documents/ait_exp/tada/src/data_src.py", line 134, in <listcomp>
+    data = [float(val) for val in data[1:]]
+ValueError: could not convert string to float: '0.898\r5'
