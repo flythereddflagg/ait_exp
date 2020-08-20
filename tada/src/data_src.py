@@ -129,12 +129,18 @@ class TADADataSource(SerialDataSource):
         if   data_string[0] == '|' and data_string[-1] == '\n' and\
                 self.reset_confirmed:
             # if the data_string is valid, process it
-            data_string = data_string.strip()            
-            data = data_string.split(',')            
-            data = [float(val) for val in data[1:]]
-            data[0] /= 1000
-                
-            return data
+            try:
+                data_string = data_string.strip()            
+                data = data_string.split(',')
+                assert len(data) == 7, "Bad data Length"       
+                data = [float(val) for val in data[1:]]
+                data[0] /= 1000
+                    
+                return data
+            except (AssertionError, ValueError) as e:
+                print("Error:", type(e), e)
+                return self.get_data()
+
 
         elif data_string[0] == '+' and data_string[-1] == '\n' and\
                 self.reset_confirmed:

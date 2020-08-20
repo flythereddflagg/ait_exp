@@ -1,0 +1,13 @@
+20200820094807
+Traceback (most recent call last):
+  File "/home/aitra/Documents/ait_exp/tada/tada_main.py", line 43, in <module>
+    ui.mainloop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 75, in mainloop
+    self.daq_loop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 102, in daq_loop
+    self.graph_data(data_point)
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 158, in graph_data
+    super().graph_data(new_data_point)
+  File "/home/aitra/Documents/ait_exp/tada/src/daq_ui.py", line 155, in graph_data
+    line.ydata.append(data1[i+1])
+IndexError: list index out of range
