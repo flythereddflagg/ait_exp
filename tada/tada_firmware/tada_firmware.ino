@@ -150,14 +150,19 @@ double sigToTorr(int sig)
 bool temp_read_ready()
 {
 /**
- *  checks if all the temperatures are ready to be read. If
- *  all are ready to be read it returns true.
- *  Returns false otherwise
- */
-  if (sensors.isConversionAvailable(tc0) &&
-      sensors.isConversionAvailable(tc1) &&
-      sensors.isConversionAvailable(tc2) &&
-      sensors.isConversionAvailable(tc3)) return true;
+*  Sets the time and then
+*  checks if all the temperatures are ready to be read. If
+*  all are ready to be read it returns true.
+*  Returns false otherwise
+*/
+  tnow = millis(); // get the current time
+ 
+  if (
+    sensors.isConversionAvailable(tc0) &&
+    sensors.isConversionAvailable(tc1) &&
+    sensors.isConversionAvailable(tc2) &&
+    sensors.isConversionAvailable(tc3) 
+  ) return true;
   else return false;
 }
 
@@ -267,7 +272,6 @@ void setup(void)
 
   Serial.println("/--- SETUP FINISHED ---");
   sensors.requestTemperatures(); // get the first temp reading
-  tnow = millis(); // get the time of that first reading
 }
 
 
@@ -300,13 +304,10 @@ void loop(void)
         break;
     }
     sensors.requestTemperatures(); // new temperature request
-    tnow = millis(); // get the current time
-    
   }
   else { 
     // if you get a missed temperature try again
     sensors.requestTemperatures();
-    tnow = millis();
   }
 }
 

@@ -7,9 +7,11 @@ class SerialDataSource():
     def __init__(self, comport=None, baudrate=9600, timeout=1.0):
             self.baudrate = baudrate
             self.timeout = timeout
-            self.comport = self.serial_port() if comport is None else comport
+            self.comport = self.serial_port() if not comport else comport
             if not self.connect(): 
-                raise Exception(f"Unable to connect to Serial Port: {self.comport!r}")
+                raise Exception(
+                    f"Unable to connect to Serial Port: {self.comport!r}"
+                )
             self.ser.reset_input_buffer()
             
 
@@ -64,7 +66,11 @@ class SerialDataSource():
 class BaroDataSource(SerialDataSource):
 
     def __init__(self, comport=None, baudrate=9600, timeout=0.25):
-            super().__init__(comport=comport, baudrate=baudrate, timeout=timeout)
+            super().__init__(
+                comport=comport, 
+                baudrate=baudrate, 
+                timeout=timeout
+            )
             self.data = [0]
 
 
@@ -135,10 +141,11 @@ class TADADataSource(SerialDataSource):
                 assert len(data) == 7, "Bad data Length"       
                 data = [float(val) for val in data[1:]]
                 data[0] /= 1000
-                    
+                if self.ser.in_waiting: self.ser.reset_input_buffer()
                 return data
             except (AssertionError, ValueError) as e:
                 print("Error:", type(e), e)
+                if self.ser.in_waiting: self.ser.reset_input_buffer()
                 return self.get_data()
 
 

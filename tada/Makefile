@@ -18,3 +18,4 @@ upload:
 clean:
 	rm -f ./$(SRC)/*.hex
 	rm -f ./$(SRC)/*.elf
+	rm -rf ./$(SRC)/build
