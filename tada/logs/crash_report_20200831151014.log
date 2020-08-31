@@ -1,0 +1,55 @@
+20200831151014
+Traceback (most recent call last):
+  File "tada_main.py", line 43, in <module>
+    ui.mainloop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 75, in mainloop
+    self.daq_loop()
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 102, in daq_loop
+    self.graph_data(data_point)
+  File "/home/aitra/Documents/ait_exp/tada/src/tada_ui.py", line 158, in graph_data
+    super().graph_data(new_data_point)
+  File "/home/aitra/Documents/ait_exp/tada/src/daq_ui.py", line 163, in graph_data
+    self.figure.canvas.draw()
+  File "/usr/lib/python3.8/site-packages/matplotlib/backends/backend_tkagg.py", line 9, in draw
+    super(FigureCanvasTkAgg, self).draw()
+  File "/usr/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py", line 407, in draw
+    self.figure.draw(self.renderer)
+  File "/usr/lib/python3.8/site-packages/matplotlib/artist.py", line 41, in draw_wrapper
+    return draw(artist, renderer, *args, **kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/figure.py", line 1863, in draw
+    mimage._draw_list_compositing_images(
+  File "/usr/lib/python3.8/site-packages/matplotlib/image.py", line 131, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/usr/lib/python3.8/site-packages/matplotlib/artist.py", line 41, in draw_wrapper
+    return draw(artist, renderer, *args, **kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/cbook/deprecation.py", line 411, in wrapper
+    return func(*inner_args, **inner_kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/axes/_base.py", line 2748, in draw
+    mimage._draw_list_compositing_images(renderer, self, artists)
+  File "/usr/lib/python3.8/site-packages/matplotlib/image.py", line 131, in _draw_list_compositing_images
+    a.draw(renderer)
+  File "/usr/lib/python3.8/site-packages/matplotlib/artist.py", line 41, in draw_wrapper
+    return draw(artist, renderer, *args, **kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/axis.py", line 1169, in draw
+    tick.draw(renderer)
+  File "/usr/lib/python3.8/site-packages/matplotlib/artist.py", line 41, in draw_wrapper
+    return draw(artist, renderer, *args, **kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/axis.py", line 291, in draw
+    artist.draw(renderer)
+  File "/usr/lib/python3.8/site-packages/matplotlib/artist.py", line 41, in draw_wrapper
+    return draw(artist, renderer, *args, **kwargs)
+  File "/usr/lib/python3.8/site-packages/matplotlib/text.py", line 725, in draw
+    textrenderer.draw_text(gc, x, y, clean_line,
+  File "/usr/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py", line 195, in draw_text
+    font = self._get_agg_font(prop)
+  File "/usr/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py", line 272, in _get_agg_font
+    fname = findfont(prop)
+  File "/usr/lib/python3.8/site-packages/matplotlib/font_manager.py", line 1314, in findfont
+    return os.path.realpath(filename)
+  File "/usr/lib/python3.8/posixpath.py", line 391, in realpath
+    path, ok = _joinrealpath(filename[:0], filename, {})
+  File "/usr/lib/python3.8/posixpath.py", line 425, in _joinrealpath
+    if not islink(newpath):
+  File "/usr/lib/python3.8/posixpath.py", line 167, in islink
+    st = os.lstat(path)
+KeyboardInterrupt

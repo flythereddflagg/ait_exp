@@ -118,7 +118,7 @@ class TaDaUI(DataAquisitionUI):
         else:
             print_out = ""
             for datum in data_point:
-                print_out += f"{datum:7.2f}  "
+                print_out += f"{datum:6.2f}  "
             print(print_out[:-2])
             return True
 
