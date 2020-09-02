@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+import tkinter.filedialog as fd
 from sys import argv
 
 import numpy as np
@@ -12,13 +13,18 @@ def plot_data(data_path):
     with open(data_path, 'r') as f:
         f.readline()
         run_info = f.readline()
+        headertxt = "time,t1,t2,t3,t4"
+        for i, line in enumerate(f.readlines()):
+            header = i + 1
+            if headertxt in line: break
 
-    with open(data_path, 'r') as f:
-        try:
-            data = pd.read_csv(f, header=4)
-        except Exception as e:
-            print(f"File: {data_path}: {type(e)}: {e}")
-            return
+    # with open(data_path, 'r') as f:
+    try:
+        print(header)
+        data = pd.read_csv(data_path, header=header)
+    except Exception as e:
+        print(f"File: {data_path}: {type(e)}: {e}")
+        return
     
     print(data.keys())
     ignition_status = run_info.split(',')[5]
@@ -72,14 +78,14 @@ def recurse_plot(path):
 def run_plot(file_, root, event=None):
     try:
         if file_:
-            input_path = tk.filedialog.askopenfilename(master=root)
+            input_path = fd.askopenfilename(master=root)
             if not input_path: return
             plt.figure()
             plot_data(input_path)
             plt.show()
             plt.close('all')
         else:
-            input_path = tk.filedialog.askdirectory(master=root)
+            input_path = fd.askdirectory(master=root)
             if not input_path: return
             plt.figure()
             recurse_plot(input_path)
@@ -99,7 +105,7 @@ def main():
         try:
             plot_data(filename)
         except Exception as e:
-            print(f"File: {data_path}: {type(e)}: {e}")
+            print(f"File: {filename}: {type(e)}: {e}")
             return
         plt.show()
     elif argv[1] == '-r':
