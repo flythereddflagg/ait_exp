@@ -14,19 +14,11 @@ def get_dataframe(data_path):
     with open(data_path, 'r') as f:
         f.readline()
         run_info = f.readline()
-        headertxt = "time,t1,t2,t3,t4"
-
-    header_row = 0
-    with open(data_path, 'r') as f:
-        for i, line in enumerate(f.readlines()):
-            if "time,t1,t2,t3,t4,pressure" in line:
-                header_row = i
-                break
 
     try:
         data = pd.read_csv(
             data_path, 
-            header=header_row,
+            skiprows=2,
             index_col=False, 
             usecols=["time","t1","t2","t3","t4","pressure"]
         )
@@ -36,6 +28,7 @@ def get_dataframe(data_path):
         return None, None
 
 def plot_data(data_path):
+    print(f"plotting: {data_path}")
     filename = data_path.split('/')[-1] 
     data, run_info = get_dataframe(data_path)
     
@@ -51,7 +44,7 @@ def plot_data(data_path):
     test_temp, min_ = find_test_temp(time_pts, data)
     pm = test_temp - min_
     data_title = filename[:-4] + \
-        f" (Temp: {test_temp:.2f} +/- {pm:.2f} \u00B0C - {ignition_status} ignition)"
+        f"\n(Temp: {test_temp:.2f} +/- {pm:.2f} \u00B0C - {ignition_status} ignition)"
 
     plt.clf()
     plt.subplot(211)
@@ -86,6 +79,7 @@ def recurse_plot(path):
             try:
                 plot_data(root + '/' + filename)
                 plt.savefig(root + '/' + filename[:-4] + '.png')
+                plt.savefig(root + '/' + filename[:-4] + '.svg')
             except Exception as e:
                 print("Plot failed because:")
                 print(e)
@@ -138,7 +132,8 @@ def main():
                     # except Exception as e:
                     #     print(f"File: {root + '/' + file_}: {type(e)}: {e}")
                     #     continue
-                    plt.savefig(root + "/" + file_[:-5] + '.png')
+                    plt.savefig(root + "/" + file_[:-4] + '.png')
+                    # plt.savefig(root + '/' + file_[:-4] + '.svg')
             break
     else:
         print("Error: Invalid argument.")
