@@ -18,7 +18,7 @@ def get_dataframe(data_path):
     try:
         data = pd.read_csv(
             data_path, 
-            skiprows=2,
+            skiprows=4,
             index_col=False, 
             usecols=["time","t1","t2","t3","t4","pressure"]
         )
@@ -29,9 +29,10 @@ def get_dataframe(data_path):
 
 def plot_data(data_path):
     print(f"plotting: {data_path}")
+    data_path = data_path.replace('\\', "/")
+
     filename = data_path.split('/')[-1] 
     data, run_info = get_dataframe(data_path)
-    
     assert data is not None and run_info is not None, "Data retrival failed."
 
     ignition_status = run_info.split(',')[5]
@@ -40,6 +41,8 @@ def plot_data(data_path):
 
     times = np.array(data['time'])
     time_pts = (times - times[0]) / 60
+    if time_pts[-1] > 100:
+        time_pts /= 1000
     pressure = np.array(data['pressure'])
     test_temp, min_ = find_test_temp(time_pts, data)
     pm = test_temp - min_
@@ -107,37 +110,40 @@ def run_plot(file_, root, event=None):
 
 
 def main():
-    root = tk.Tk()
-    root.withdraw()
+
     if len(argv) < 2:
+        root = tk.Tk()
+        root.withdraw()
         filename = tk.filedialog.askopenfilename(parent=root)
         if not filename: return
         root.destroy()
         plot_data(filename)
-        # try:
-        #     plot_data(filename)
-        # except Exception as e:
-        #     print(f"File: {filename}: {type(e)}: {e}")
-        #     return
         plt.show()
     elif argv[1] == '-r':
+        root = tk.Tk()
+        root.withdraw()
         dirname = tk.filedialog.askdirectory(parent=root)
         root.destroy()
         if not dirname: return
         for root, dirs, files in os.walk(dirname):
             for file_ in files:
                 if file_.endswith(".csv"):
-                    # try:
-                    plot_data(root + "/" + file_)
-                    # except Exception as e:
-                    #     print(f"File: {root + '/' + file_}: {type(e)}: {e}")
-                    #     continue
+                    try:
+                        plot_data(root + "/" + file_)
+                    except Exception as e:
+                        print(f"File: {root + '/' + file_}: {type(e)}: {e}")
+                        continue
                     plt.savefig(root + "/" + file_[:-4] + '.png')
                     # plt.savefig(root + '/' + file_[:-4] + '.svg')
             break
+    elif argv[1].endswith(".csv"):
+        plot_data(argv[1])
+        plt.show()
     else:
-        print("Error: Invalid argument.")
-        root.destroy()
+        print(
+            "Error: Invalid argument.\n"\
+            "Usage: python graph_data.py [-r | FILENAME.csv]"
+        )
 
 
 if __name__ == "__main__":
